@@ -1,0 +1,491 @@
+html {
+    font-size: 20px;
+}
+body, p, ul, li, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Microsoft Yahei, Helvertica, Arial, sans-serif;
+    font-size: 87.5%;
+    line-height: 1.5;
+}
+@media screen and (min-width: 1025px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+				.header {
+					width: 640px !important;
+					margin: 0 auto;
+					right: 0;
+				}
+			}
+ul, li {
+    list-style: none;
+}
+
+/* loading spinner */
+.loading-spinner {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0, .4);
+}
+.loading-spinner:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    border: 4px solid rgba(0,0,0, .3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    -webkit-animation: spinning linear 1s infinite;
+            animation: spinning linear 1s infinite;
+}
+.loaded .loading-spinner {
+    display: none;
+}
+
+
+/* baidu share */
+.bdsharebuttonbox > div {
+    border-bottom: 1px #efefef solid;
+    padding: .5rem 0;
+}
+#ShareCon img {
+	max-width: 90px;
+	max-height: 90px;
+    vertical-align: middle;
+}
+#ShareCon h2 {
+    font-size: .8rem;
+}
+.bdsharebuttonbox {
+    display: none;
+    padding-top: 1rem;
+    background: #fff;
+    text-align: center;
+    line-height: 2rem;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 4px #efefef solid;
+}
+.bdsharebuttonbox i {
+    font-size: 2rem;
+    margin: 0 0.5rem;
+    z-index: -9999;
+    position: relative;
+}
+.icon-xinlangweibo {
+    color: #e90f24;
+}
+.icon-tengxunweibo {
+    color: #64c8d6;
+}
+.icon-qq {
+	color: #2af;
+}
+.icon-douban {
+	color: #3ca353;
+}
+.icon-qqkongjian {
+    color: #ffc02a;
+}
+.icon-renrenicon {
+    color: #2af;
+}
+.bdshare-button-style0-32 a,
+.bdshare-button-style0-32 .bds_more {
+    float: none !important;
+    display: inline-block !important;
+    margin: 0 4px !important;
+    vertical-align: top !important;
+}
+.bdshare-button-style0-32 a {
+    background: 0 !important;
+    text-indent: initial;
+    width: 2.8rem  !important;
+    height: 2rem  !important;
+    position: absolute;
+}
+#ShareBg {
+  display: none;
+  background: #000;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index:1002;
+  top:0;
+  left: 0;
+  filter:alpha(opacity=30);       /* IE */
+ -moz-opacity:0.3;              /* 老版Mozilla */
+ -khtml-opacity:0.3;              /* 老版Safari */
+  opacity: 0.3;
+}
+
+@-webkit-keyframes spinning {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+     -webkit-transform: rotate(360deg);
+             transform: rotate(360deg);
+  }
+}
+
+@keyframes spinning {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+     -webkit-transform: rotate(360deg);
+             transform: rotate(360deg);
+  }
+}
+#imglist img {width: 100%;display: table;}
+#wxqq {display: none;position: fixed;z-index: 1003;}
+#wxqq img {width: 100%;}
+
+
+
+/* 留言评论 */
+.discuss_betting {
+	position: relative;
+	/*margin: .4rem .6rem .4rem .4rem;*/
+	padding-bottom: 2rem;
+}
+.talk_title_betting {
+	font-size: .8rem;
+	padding: .4rem 0 0 0;display: none;
+}
+.talk_title_betting span {
+	float: right;
+	font-size: .7rem;
+}
+.talk_title_betting span i {
+	font-size: .7rem;
+	margin-right: .2rem;
+}
+.talk_comment {
+	background: #fff;
+	padding: .5rem;
+	position: relative;
+	border-bottom: 1px #ccc dashed;
+}
+.post-photo {
+	width: 1.5rem;
+	height: 1.5rem;
+	float: left;
+	background: #f1f1f1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.talk_comment img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.talk_comment li {
+	clear: both;
+	line-height: 1.5rem;
+}
+.talk_comment li:nth-child(1) {
+	font-size: .5rem;
+}
+.talk_comment li:nth-child(1) h3 {
+	float: left;
+	margin-left: .5rem;
+	color: #212332;
+}
+.talk_comment li:nth-child(1) time {
+	color: #969799;
+	float: right;
+}
+.talk_comment li p {
+	font-size: .5rem;
+	padding: 0 1rem;
+	width: 78%;
+	color: #333;
+}
+.talk_comment small {
+	position: absolute;
+	right: .8rem;
+	top: 2.4rem;
+	font-size: .6rem;
+	color: #808080;
+}
+.talk_comment small i {
+	font-size: .8rem;
+	margin-right: .2rem;
+}
+.post-tip {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: #aaa;
+}
+.publish_betting {
+	position: fixed;
+	right:.6rem;
+	bottom:.6rem;
+	background: url(http://cdn.icomicool.cn/m/act/tsukkomi/images/icon_input_press.png) no-repeat;
+	height:2.5rem;
+	width: 2.5rem;
+	background-size:2.5rem;
+}
+.publish_betting i {
+	font-size: .6rem;
+}
+#imglist img {width: 100%;display: table;}
+#newNav {position: fixed;z-index: 1999;}
+#praise {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+			}
+			
+			#praise span {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				top:.5rem;
+				color: #ff4352;
+				font-size: 1.3rem;
+			}
+			
+/* 孤形分享 */
+@import url(http://fonts.useso.com/css?family=Lato);
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #222;
+}
+
+.bar {
+  display: block;
+  width:1rem;
+  height:.1rem;
+  background-color: #fff;
+  border-radius: 2px;
+  transition: all 0.4s linear 0.1s;
+  -webkit-transition: all 0.4s linear 0.1s;
+  -moz-transition: all 0.4s linear 0.1s;
+  -o-transition: all 0.4s linear 0.1s;
+  -ms-transition: all 0.4s linear 0.1s;
+}
+
+.wrap {
+  position: fixed;
+  top:7rem;
+  right:.5rem;
+  margin: auto;
+  width: 2.5rem;
+  height: 100px;
+  filter: url("../index.html/#filt");
+  -webkit-filter: url("#filt");
+}
+.wrap .blob {
+  display: block;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  position: absolute;
+  width:2rem;
+  height:2rem;
+  border-radius: 50%;
+  z-index: 10;
+  background: #000;
+  color: #fff;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  opacity: .8;
+  
+}
+.wrap .blob .iconfont {font-size:1rem;}
+.wrap .blob[for="checking"] {
+  z-index: 30;
+  text-align: center;
+  color: #fff;
+  outline: none;
+  transition: transform 0.5s ease-in-out 0.2s;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out 0.2s;
+  -moz-transition: transform 0.5s ease-in-out 0.2s;
+  -o-transition: transform 0.5s ease-in-out 0.2s;
+  -ms-transition: transform 0.5s ease-in-out 0.2s;
+}
+.wrap .blob:not([for="checking"]) {
+  top:0;
+  left:0;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+.wrap .blob:not([for="checking"]):hover {
+  color: #F44336;
+  animation: harlem 0.5s linear forwards;
+  -webkit-animation: harlem 0.5s linear forwards;
+  -moz-animation: harlem 0.5s linear forwards;
+  -o-animation: harlem 0.5s linear forwards;
+  -ms-animation: harlem 0.5s linear forwards;
+}
+.wrap > #checking:checked ~ .blob:nth-child(2) {
+  margin-left: -85px;
+  opacity: 1;
+}
+
+.wrap > #checking:checked ~ .blob:nth-child(4) {
+  margin-top: 85px;
+  opacity: 1;
+}
+.wrap > #checking:checked ~ .blob:nth-child(3) {
+  margin-top: 63px;
+  margin-left: -63px;
+    opacity: 1;
+}
+
+.wrap > .blob > .bar:nth-child(1) {position: absolute;top:50%;left:50%;
+ -ms-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);  }
+.wrap > .blob > .bar:nth-child(2) {
+  position: absolute;top:50%;left:50%;
+ -ms-transform: translate(-50%,-50%) rotate(90deg);
+        -moz-transform: translate(-50%,-50%) rotate(90deg);
+        -o-transform: translate(-50%,-50%) rotate(90deg);
+        transform: translate(-50%,-50%) rotate(90deg); 
+    /*position: absolute;top: 30px;left: 20px;*/
+  }
+.wrap > #checking:checked ~ .blob[for="checking"] > .bar:nth-child(1) {
+  transform:translate(-50%,-50%)  rotate(45deg);
+  -webkit-transform:translate(-50%,-50%)  rotate(45deg);
+  -moz-transform:translate(-50%,-50%)  rotate(45deg);
+  -o-transform:translate(-50%,-50%)  rotate(45deg);
+  -ms-transform:translate(-50%,-50%)  rotate(45deg);
+}
+.wrap > #checking:checked ~ .blob[for="checking"] > .bar:nth-child(2) {
+  transform:translate(-50%,-50%)  rotate(-45deg);
+  -webkit-transform:translate(-50%,-50%)  rotate(-45deg);
+  -moz-transform:translate(-50%,-50%)  rotate(-45deg);
+  -o-transform:translate(-50%,-50%)  rotate(-45deg);
+  -ms-transform:translate(-50%,-50%)  rotate(-45deg);
+}
+
+@keyframes harlem {
+  0% {
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -o-transform: translate(0);
+    -ms-transform: translate(0);
+  }
+  25% {
+    transform: translate(5px, 5px);
+    -webkit-transform: translate(5px, 5px);
+    -moz-transform: translate(5px, 5px);
+    -o-transform: translate(5px, 5px);
+    -ms-transform: translate(5px, 5px);
+  }
+  50% {
+    transform: translate(-5px, -5px);
+    -webkit-transform: translate(-5px, -5px);
+    -moz-transform: translate(-5px, -5px);
+    -o-transform: translate(-5px, -5px);
+    -ms-transform: translate(-5px, -5px);
+  }
+  75% {
+    transform: translate(2px, 2px);
+    -webkit-transform: translate(2px, 2px);
+    -moz-transform: translate(2px, 2px);
+    -o-transform: translate(2px, 2px);
+    -ms-transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -o-transform: translate(0);
+    -ms-transform: translate(0);
+  }
+}
+@-webkit-keyframes harlem {
+  0% {
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -o-transform: translate(0);
+    -ms-transform: translate(0);
+  }
+  25% {
+    transform: translate(5px, 5px);
+    -webkit-transform: translate(5px, 5px);
+    -moz-transform: translate(5px, 5px);
+    -o-transform: translate(5px, 5px);
+    -ms-transform: translate(5px, 5px);
+  }
+  50% {
+    transform: translate(-5px, -5px);
+    -webkit-transform: translate(-5px, -5px);
+    -moz-transform: translate(-5px, -5px);
+    -o-transform: translate(-5px, -5px);
+    -ms-transform: translate(-5px, -5px);
+  }
+  75% {
+    transform: translate(2px, 2px);
+    -webkit-transform: translate(2px, 2px);
+    -moz-transform: translate(2px, 2px);
+    -o-transform: translate(2px, 2px);
+    -ms-transform: translate(2px, 2px);
+  }
+  100% {
+    transform: translate(0);
+    -webkit-transform: translate(0);
+    -moz-transform: translate(0);
+    -o-transform: translate(0);
+    -ms-transform: translate(0);
+  }
+}
+.writingshit {
+  width: 60%;
+  margin: 50px auto;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0 0 10px 2px #000;
+  -webkit-box-shadow: 0 0 10px 2px #000;
+  -moz-box-shadow: 0 0 10px 2px #000;
+  -o-box-shadow: 0 0 10px 2px #000;
+  -ms-box-shadow: 0 0 10px 2px #000;
+}
+.writingshit .wow {
+  padding: 30px;
+}
+.writingshit .wow p {
+  padding: 0 30px;
+}			

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>二次元考试季</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="二次元考试季,试试看你真的属于(zhai)次(fu)元(ji)吗?">
+		<meta name="keywords" content="二次元漫画,漫画App,在线漫画阅读,在线漫画,恐怖漫画,漫画网,可米酷,可米酷漫画" />
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+			.imglist img {
+				display: table;
+				width: 100%;
+			}
+			
+			#fraction {
+				position: relative;
+			}
+			
+			#fraction span {
+				position: absolute;
+				right: 3rem;
+				top: 2.3rem;
+				color: #cc0200;
+				font-size: 1.3rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        二次元考试季
+        <p>试试看你真的属于(zhai)次(fu)元(ji)吗?</p>
+        <img src="http://cdn.icomicool.cn/m/act/201604/exam/images/result/examShare.jpg">
+    </h1>
+    <header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<div class="loading-spinner"></div>
+		<!-- 主要内容：开始 -->
+		<div class="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/exam/images/result/result_01.jpg" alt="二次元考试季" /></li>
+			<li id="fraction"></li>
+			<li id="resultShare"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/exam/images/result/result_04.jpg" alt="二次元考试季" /></li>
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}}
+					{{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'>
+					{{/if}}
+					{{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script>
+						
+			setShareInfo({
+				title: '二次元考试季',
+				describe: '试试看你真的属于(zhai)次(fu)元(ji)吗?',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201604/exam/images/result/examShare.jpg',
+				pageUrl: window.location.href + "&restart=1"
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+				window.onload=function(){
+					var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					trigger = _('#resultShare');
+				var fraction = document.getElementById("fraction"),
+					resultShare = document.getElementById("resultShare"),
+					getKey = getQueryString("key");
+				getKey = getKey ? getKey : 0;
+				if (getKey >= 0 && getKey <= 50) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/50.jpg'>";
+				} else if (getKey > 52 && getKey <= 80) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/60.jpg'>";
+				} else if (getKey > 81 && getKey <= 90) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/90.jpg'>";
+				} else {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/100.jpg'>";
+				}
+				var restart = getQueryString("restart");
+				if (restart == 1) {
+					trigger.innerHTML = "<img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/result_033.jpg'>";
+					trigger.addEventListener("click", function() {
+						window.location.href = "index.html";
+					});
+				} else {
+					trigger.innerHTML = "<img src='http://cdn.icomicool.cn/m/act/201604/exam/images/result/result_03.jpg'>";
+					trigger.addEventListener('click', function() {
+						if (isApp) {
+							callAppFunction('popupSharePanel', {
+								"title": '二次元考试季',
+								"describe": '试试看你真的属于(zhai)次(fu)元(ji)吗?',
+								"imageurl": 'http://cdn.icomicool.cn/m/act/201604/exam/images/result/examShare.jpg',
+								"page_url": window.location.href + "&restart=1",
+								"weibo_describe": "二次元考试季,试试看你真的属于(zhai)次(fu)元(ji)吗?"
+							});
+						} else {
+							var mask = _('#ShareBg'),
+								panel = _('.bdsharebuttonbox');
+							mask.style.display = panel.style.display = 'block';
+						}
+					})
+				}
+				}
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

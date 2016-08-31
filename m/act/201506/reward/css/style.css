@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+html,body { font-size: 20px; width: 100%; height: 100%;}
+body { color: #333; line-height: 1.42; font-size: .6rem;}
+body, div, p, h1, h2, h3, article, section, header, footer, aside, nav, dialog, ul, ol, li, input, button {
+	margin: 0; padding: 0; -webkit-box-sizing:border-box; box-sizing:border-box;
+}
+ul,ol { list-style: none; }
+h1,h2,h3 { font-size: .7rem; font-weight: normal;}
+i,em { font-style: normal;}
+input,button { background-color: transparent; border: 0; vertical-align: middle; line-height: 1.2; outline: 0;}
+img { border:0; vertical-align:middle; width: 100%;}
+li, i, span, a { outline: 0; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+a { text-decoration: none; color: #333;}
+a:active { color: #333; opacity: .9;}
+.cl:after { display: block; content: ''; clear: both; height: 0; visibility: hidden;}
+
+body { background:transparent url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+.pagebox { background: #fff;}
+
+.reward-c { width: 100%; height: 10.65rem; background:url(../images/4.jpg) no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+.reward-c h3 { text-align: center; height: 2.55rem; overflow: hidden; color: #888888; font-size: .8rem;}
+.reward-info { -webkit-box-sizing:content-box; box-sizing:content-box; border: .15rem solid #bababa; margin: auto; width:10.6rem; height: 4.625rem; position: relative;}
+.reward-canvas, .reward-status { position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-repeat: no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+.reward-canvas { background-image: url(../images/price-bg.png); z-index: 100; background-color: #c64336;}
+.reward-status { background-image: url(../images/price-txt0.png); z-index: 50; background-color: #000;}
+.status1 { background-image: url(../images/price-txt1.png);}
+.status2 { background-image: url(../images/price-txt2.png);}
+.status3 { background-image: url(../images/price-txt3.png);}
+.status4 { background-image: url(../images/price-txt4.png);}
+
+.inputbox { padding-top: 3.2rem; font-size: 0; display: none;}
+.inputbox input , .inputbox button { display: inline-block; vertical-align: middle; font-size: .6rem;}
+.inputbox input { margin: 0 .45rem; width: 7.2rem; padding: 0 .35rem; height: .9rem; line-height: .9rem; border-radius: .4rem; background-color: #fff;}
+.inputbox button { width: 2rem;} 
+.reward-c p { padding: 0 16.5625%; width: 100%; line-height: 1.2;}
+.reward-c b { color: #c64336; font-size: .7rem;}
+
+.reward-list { margin-top: .35rem; min-height: 3rem; max-height: 8rem; overflow-y:scroll; }
+.reward-list ul { padding: 0 .75rem;}
+.reward-list li { line-height: 1rem;}
+.reward-list li i { float: right; }
+.reward-list li b { color: #c4350f;}
+
+.reward-b { padding-bottom: .6rem;}
+
+/*loading样式*/
+.loading { position: fixed; z-index: 500; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(52,52,52,.2); color: #fff; display: none;}
+.loading .loading-inner { height: auto; text-align: center; width: 100; position: relative; top: 50%; -webkit-transform:translate3d(0,-50%,0); transform:translate3d(0,-50%,0);}
+.loading .loading-con { width: 15.9375%; margin: auto;}
+.loading p { padding-top: 15px; text-align: center; font-size: .8rem;}
+.loading img { -webkit-animation: loading 2s linear infinite;
+  animation: loading 2s linear infinite;}
+
+@-webkit-keyframes loading{
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(720deg);}
+}
+@keyframes loading{
+  0%{transform: rotate(0deg);-webkit-transform: rotate(0deg);}
+  100%{transform: rotate(720deg);-webkit-transform: rotate(720deg);}
+}
+
+/*错误样式*/
+.errorbox { position: fixed; z-index: 550; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background: #fff; text-align: center; font-size: .7rem;}
+.error-con { -webkit-transform:translate3d(0,-50%,0); transform:translate3d(0,-50%,0); position: relative; top: 45%;}
+.error-con p { color: #ac7733; padding: 10px 0;}
+
+/*点击按钮样式*/
+.btn-common { display: block; margin: auto;width:41.25%;font-size:.7rem;color:#fff; text-align: center;padding: 2% 0 1.5%; background: #df5b00; border-radius: 5px; font-weight: bold;
+  -webkit-box-shadow: inset 0px 1px 0px #df5b00, 0px 5px 0px 0px #be3100;
+  box-shadow: inset 0px 1px 0px #df5b00, 0px 5px 0px 0px #be3100;}
+.btn-common:active { opacity: 0.8; color: #fff;}
+.btn-reload { padding: 2.5% 0 2%; background: #58aef7;
+  -webkit-box-shadow: inset 0px 1px 0px #58aef7, 0px 5px 0px 0px #628fea;
+  box-shadow: inset 0px 1px 0px #58aef7, 0px 5px 0px 0px #628fea;}

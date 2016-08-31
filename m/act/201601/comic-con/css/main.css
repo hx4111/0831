@@ -1,0 +1,29 @@
+.play video {
+	width: 100%;
+}
+
+.play {
+	padding: 1rem 1rem;
+	border-radius: .6rem;
+	width: 80%;
+	margin: 1rem auto;position: absolute;left: 0;top: 0;
+}
+#photo {
+    opacity: .3;
+    width:7.5rem;
+    height:8rem;
+    display: table;
+    position: absolute;
+    z-index: 999;
+    top:6rem;
+}
+#photo2 {
+    opacity: .3;
+    width:7.5rem;
+    height:8rem;
+    display: table;
+    position: absolute;
+    z-index: 999;
+    top:6rem;
+    right: 0;
+}

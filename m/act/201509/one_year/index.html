@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>获奖公布推广达人</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/global.js"></script>
+	<style>
+	body {
+		background-image: url(images/result_bg.jpg) !important;
+		line-height: 1.2;
+	}
+	.tarento-intro {
+		padding: .8rem 1rem;
+	}
+	.tarento-awards {
+		margin-left: 4.5rem;
+	}
+	.tarento-awards li {
+		height: 5rem;
+		margin-bottom: 1.1rem;
+	}
+	.tarento-awards li .photo {
+		float: left;
+		width: 5rem;
+		height: 5rem;
+		background: url(images/user-photos.png) no-repeat;
+		-webkit-background-size: 300% auto;
+		background-size: 300% auto;
+	}
+	.tarento-awards li .cell {
+		width: 15rem;
+	}
+	.tarento-awards li .title {
+		display: block;
+		height: 2rem;
+		padding: 0 .5em;
+		border-radius: .2em;
+		margin-bottom: .3em;
+		background: #ffc000;
+		line-height: 2rem;
+		color: #fff;
+		overflow: hidden;
+	}
+	.tarento-awards li .name {
+		float: left;
+	}
+	.tarento-awards li .score {
+		float: right;
+		font-size: 1rem;
+	}
+	.tarento-awards li:nth-child(2) .title {
+		background: #ff7070;
+	}
+	.tarento-awards li:nth-child(3) .title {
+		background: #b54400;
+	}
+	.tarento-awards li:nth-child(2) .photo {
+		background-position: center;
+	}
+	.tarento-awards li:nth-child(3) .photo {
+		background-position: right center;
+	}
+	.tarento-awards li .cell {
+		float: left;
+		padding-left: 1em;
+	}
+	.tarento-awards li .detail {
+		font-size: 1.2rem;
+	}
+	.tarento-awards li strong {
+		font-size: 100%;
+	}
+	.notice {
+		background: #6fdae1;
+		color: #fff;
+		margin: 3rem 4.5rem;
+		padding: 1.5em;
+		border-radius: .5rem;
+		text-align: center;
+		font-size: 1.2rem;
+	}
+	</style>
+</head>
+<body class="tarento">
+	<div class="loading-page"></div>
+	<p class="tarento-intro">活动期间，【某人某事】、【海☆盜` 】、【空白】童鞋获得了我们可米酷平台推广前三名，恭喜【某人某事】童鞋获得我们可米酷最佳推广达人称号。
+	</p>
+	<p class="time">活动已结束</p>
+	<ul class="tarento-awards">
+		<li>
+			<div class="photo"></div>
+			<div class="cell">
+				<p class="title">
+					<span class="name">某人某事</span>
+					<span class="score">共推广754人</span>
+				</p>
+				<p class="detail">获得<strong>500</strong>元的奖励<br>
+				并获得最佳推广达人称号</p>
+			</div>
+		</li>
+		<li>
+			<div class="photo"></div>
+			<div class="cell">
+				<p class="title">
+					<span class="name">海☆盜`</span>
+					<span class="score">共推广751人</span>
+				</p>
+				<p class="detail">获得<strong>200</strong>元的奖励</p>
+			</div>
+		</li>
+		<li>
+			<div class="photo"></div>
+			<div class="cell">
+				<p class="title">
+					<span class="name">&nbsp;</span>
+					<span class="score">共推广404人</span>
+				</p>
+				<p class="detail">获得<strong>100</strong>元的奖励</p>
+			</div>
+		</li>
+	</ul>
+	<div class="notice">
+		请联系客服领取奖金哟~<br>
+		客服QQ：2107690292
+	</div>
+	<script>
+		(function () {
+			var inviteBtn = $.one('.invite-btn');
+			var backIcon = $.one('#back');
+
+			backIcon.addEventListener('touchend', function () {
+				if (history.length > 1) {
+					history.back();
+				} else {
+					window.location.href = 'index.html';
+				}
+			}, false);
+
+			//如果是可米酷app
+			if (isApp) {
+				setByUserLoginStatus(
+					loginCallback,
+					function () {
+						inviteBtn.addEventListener('touchend', jumpLoginPage, false);
+						//设置App里登录后的回调函数
+						callAppFunction('setJSCallback', {
+						    'account_event': 'loginHandler'
+						});
+					}
+				);
+			} else {
+				inviteBtn.addEventListener('touchend', jumpDownload, false);
+			}
+
+			//登录面板跳回页面后的回调(安卓的坑：要放在全局空间里)
+			window.loginHandler = function(obj) {
+				setByUserLoginStatus(loginCallback);
+				inviteBtn.removeEventListener('touchend', jumpLoginPage);
+			}
+
+			function loginCallback(userInfo) {
+				var queryString = serialize(userInfo);
+				var shareJsonObj = {
+				    'title' : '可米酷一周年，安装赚红包',
+				    'describe' : '无节操有内涵的漫画君约你一起赚钱啦，点击即可拿红包，更多精彩请脑补~',
+				    'imageurl' : 'http://7xkjeb.com2.z0.glb.qiniucdn.com/comi_share_icon.jpg',
+				    'page_url': 'http://promote.comicool.cn/app/index.php?' + queryString
+				};
+				
+				inviteBtn.addEventListener('touchend', function () {
+					callAppFunction('popupSharePanel', shareJsonObj);
+				}, false);
+			}
+
+			function jumpLoginPage() {
+				callAppFunction('openLoginPage', {});
+			}
+		})();
+	</script>
+</body>
+</html>

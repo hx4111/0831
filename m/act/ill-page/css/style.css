@@ -1,0 +1,748 @@
+@charset "utf-8";
+/* CSS Document */
+html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 62.5%;}
+body { color: #000000; font-size: 1.2rem; line-height: 1.42;}
+*{padding: 0;margin: 0; -webkit-box-sizing:padding-box; box-sizing:padding-box;}
+ul,ol,li { list-style: none; }
+/* a, button, li, ul, */ img { text-decoration: none; outline: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+img, button { border: none; vertical-align: middle }
+table { border-collapse: collapse; border-spacing: 0; }
+.cl:after, .cl:before { content: ""; clear: both; display: table; }
+.cl { clear: both; }
+img { width: 100%; max-width: 100%;}
+
+/*页面样式开始*/
+body { background: #E12428;}
+
+/*宣传介绍页*/
+body.body-intro { background: #fff;}
+.intro-box { padding-bottom: 4rem;}
+.intro-icon { padding-bottom: 1.2rem;}
+.intro-icon a { display: block; margin: auto; width: 21.5625%;}
+#readLnk {background: rgba(0,0,0,.8);position: fixed;bottom: 0;left: 0;width: 100%;padding: 3% 0;text-align: center;z-index: 100;}
+#readLnk a {padding: 2% 5% 1.4%;display: inline-block;color: #fff;border-radius: 2rem;background: #e62c32;background-clip: padding-box;-webkit-background-clip: padding-box; text-decoration: none;}
+
+/*loading样式*/
+.loading { position: fixed; z-index: 500; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,1); color: #fff; display: block;}
+.loading .loading-inner { height: auto; text-align: center; width: 100%; position: relative; top: 45%; -webkit-transform:translate3d(0,-50%,0); transform:translate3d(0,-50%,0);}
+.loading .loading-con { width: 50px; height: 50px; margin: auto;border: solid 2px #9b59b6;border-right-color: transparent;border-left-color: transparent;
+-webkit-border-radius: 50%; border-radius: 50%;
+-webkit-animation: spinDisc1 1.5s linear infinite;
+animation: spinDisc1 1.5s linear infinite;}
+.loading span { margin: auto; display: block;margin: 10px;background: #3498db;width: 30px; height: 30px;
+-webkit-border-radius: 50%; border-radius: 50%;
+-webkit-animation: spinDisc2 1.5s linear infinite;
+animation: spinDisc2 1.5s linear infinite;}
+/* .loading p { padding-top: 15px; text-align: center; font-size: 1.6rem;}
+.loading img { -webkit-animation: loading 2s linear infinite;
+  animation: loading 2s linear infinite;} */
+@-webkit-keyframes spinDisc1 {
+  50% { border-top-color: #3498db; border-bottom-color: #3498db;}
+  100% { -webkit-transform: rotate(360deg);}
+}
+@keyframes spinDisc1 {
+  50% { border-top-color: #3498db; border-bottom-color: #3498db;}
+  100% { -webkit-transform: rotate(360deg);}
+}
+@-webkit-keyframes spinDisc2 {
+  33.33% { background-color: #2ecc71;}
+  66.66% { background-color: #FFFF26;}
+}
+@keyframes spinDisc2 {
+  33.33% { background-color: #2ecc71;}
+  66.66% { background-color: #FFFF26;}
+}
+.error { position: fixed; z-index: 600; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,1); color: #fff; display: none;}
+.error .inner { display: table; width: 100%; height: 100%;}
+.error .inner div { display: table-cell; width: 100%; height: 100%; text-align: center; font-size: 1.4rem; color: #fff; vertical-align: middle; line-height: 1.5;}
+.error .inner span { display: inline-block; width: 6%; margin-right: 5px;}
+.error .inner span img { width: 100%;}
+
+#music-btn { display: none; position: fixed; top: 10px; left: 10px; width: 30px; height: 30px; z-index: 500; background-image: url(http://cdn.icomicool.cn/m/act/ill-page/images/audio.png); background-position: 0 0; background-repeat: no-repeat; -webkit-background-size: 100% 200%; background-size: 100% 200%;}
+#music-btn.defalut { -webkit-animation: rotateBox 2s linear infinite;
+  animation: rotateBox 2s linear infinite;}
+#music-btn.curr { background-position: 0 100%;}
+.autio-area { position: absolute; left: -999px; top: -999px;} 
+
+.coverbox { position: fixed; z-index: 300; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%;}
+
+
+.container { position: fixed; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height: 100%; overflow: hidden; display: none; }
+.page-index {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/index-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; text-align: center; z-index: 11; display: block;}
+
+.index-txt1 { }
+body.play .index-txt1 img { opacity: 0;
+-webkit-animation: titleLtoR 1s ease-in-out 5s 1 forwards;
+animation: titleLtoR 1s ease-in-out 5s 1 forwards;}
+.index-txt2 { padding-top: 2rem;}
+body.play .index-txt2 img { opacity: 0;
+-webkit-animation: homeTxtTwoShow 1.2s ease-in-out 0.2s 1 forwards;
+animation: homeTxtTwoShow 1.2s ease-in-out 0.2s 1 forwards;}
+body.play .index-txt2.curr {
+-webkit-animation: wobble 0.5s ease-in-out 1.4s 2 forwards;
+animation: wobble 0.5s ease-in-out 1.4s 2 forwards;}
+
+/*敲键盘*/
+.index-txt3 span { display: inline-block; width: 47.1875%;}
+body.play .index-txt3 span.curr { background: url(http://cdn.icomicool.cn/m/act/ill-page/images/index-31.png) 0 0 no-repeat; 
+-webkit-background-size:1200% 100%; 
+background-size:1200% 100%;
+-webkit-animation: typewriteShow 2s step-end 2s 1 forwards;
+animation: typewriteShow 2s step-end 2s 1 forwards;}
+
+.index-btn { padding-top: 5.5rem;}
+.index-btn a { display: inline-block; width: 43.28125%;}
+.index-btn a.curr { -webkit-animation: btnStaringFir 1.2s linear 0 infinite;
+animation: btnStaringFir 1.2s linear 0 infinite;}
+
+/*邪恶笑声*/
+.index-face { width: 28.75%; position: absolute; z-index: 100; left: 0; top: 36%; background: url(http://cdn.icomicool.cn/m/act/ill-page/images/index-face.png) 0 0 no-repeat; 
+-webkit-background-size:200% 100%; 
+background-size:200% 100%;}
+body.play .index-face.curr {-webkit-animation: homeEyeOpen 0.6s step-start 4.5s 3 forwards;
+animation: homeEyeOpen 0.6s step-start 4.5s 3 forwards;}
+
+/*页面1样式*/
+.page-first {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page1/fir-bg1.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; text-align: center; z-index: 12;}
+.first-face { position: relative;}
+.first-face .first-face-body { background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page1/fir-face2.png) no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+/* body.play1 .first-face .first-face-body {-webkit-transform-origin: bottom center; 
+-webkit-animation:firstManShow 0.5s ease-in 1.2s 1 forwards;
+animation:firstManShow 0.5s ease-in 1.2s 1 forwards; opacity: 0;} */
+
+.first-head { position: absolute; top: 3rem; left: 0; width: 100%; z-index: 100;}
+.first-head span { display: block; margin: auto; width: 21.09375%; position: relative;}
+body.play1 .first-head span img.fir-head-img { opacity: 0;
+-webkit-animation: slowOpen 2s ease-in 1.5s 1 forwards;
+animation: slowOpen 2s ease-in 1.5s 1 forwards;}
+.first-head i { display: block; position: absolute; top: 0; left: 0; width: 100%;}
+.first-head i img { opacity: 0;
+-webkit-animation: eyeSecOpen 1.5s ease-in 3.2s 1 forwards;
+animation: eyeSecOpen 1.5s ease-in 3.2s 1 forwards;}
+
+.first-tit { position: absolute; bottom: 1.3rem; left: 0; width: 100%; z-index: 100;}
+body.play1 .first-tit img.first-tit-img { opacity: 0;
+-webkit-animation: titleRtoL 1s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1s ease-in-out 0s 1 forwards;}
+body.play1 .first-tit img.first-tit-num { position: absolute; top: 0; left: 0; width: 100%; z-index: 20;
+ opacity: 0;-webkit-transform-origin: left center; 
+-webkit-animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;
+animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;}
+
+ul.first-list { padding-top: 0.5rem; width: 100%;}
+ul.first-list li { cursor: pointer; margin-bottom: 0.6rem;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page1/fir-litxt.png) no-repeat; -webkit-background-size:100% 300%; background-size:100% 300%;}
+body.play1 ul.first-list li:nth-child(1){ background-position: 0 0; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 3.2s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 3.2s 1 forwards;}
+body.play1 ul.first-list li:nth-child(2){ background-position: 0 50%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 4.4s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 4.4s 1 forwards;}
+body.play1 ul.first-list li:nth-child(3){ background-position: 0 100%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 5.6s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 5.6s 1 forwards;}
+
+ul.first-list span { display: block; margin-left: 10%; width: 23.75%;}
+
+body.play1 ul.first-list li:nth-child(1) img { -webkit-animation: btnStaring 3.6s linear 3.8s infinite;
+animation: btnStaring 3.6s linear 3.8s infinite;}
+body.play1 ul.first-list li:nth-child(2) img { -webkit-animation: btnStaring 3.6s linear 5s infinite;
+animation: btnStaring 3.6s linear 5s infinite;}
+body.play1 ul.first-list li:nth-child(3) img { -webkit-animation: btnStaring 3.6s linear 6.2s infinite;
+animation: btnStaring 3.6s linear 6.2s infinite;}
+
+
+/*页面2样式*/
+.page-second {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page2/second-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; z-index: 13;}
+.second-tit { margin-top: 3.5rem; position: relative;}
+body.play2 .second-tit img.second-tit-img { opacity: 0;
+-webkit-animation: titleRtoL 1s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1s ease-in-out 0s 1 forwards;}
+body.play2 .second-tit img.second-tit-num { position: absolute; top: 0; left: 0; width: 100%; z-index: 20;
+ opacity: 0;-webkit-transform-origin: left center; 
+-webkit-animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;
+animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;}
+
+ul.second-list { padding-top: 2rem; width: 100%; position: relative; z-index: 100;}
+ul.second-list li { cursor: pointer; margin-bottom: 0.8rem;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page2/second-litxt.png) no-repeat; -webkit-background-size:100% 300%; background-size:100% 300%;}
+body.play2 ul.second-list li:nth-child(1){ background-position: 0 0; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 1.5s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 1.5s 1 forwards;}
+body.play2 ul.second-list li:nth-child(2){ background-position: 0 50%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 2.7s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 2.7s 1 forwards;}
+body.play2 ul.second-list li:nth-child(3){ background-position: 0 100%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 3.9s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 3.9s 1 forwards;}
+
+ul.second-list span { display: block; margin-left: 11%; width: 23.75%;}
+
+body.play2 ul.second-list li:nth-child(1) img { -webkit-animation: btnStaring 3.6s linear 2.1s infinite;
+animation: animation: btnStaring 3.6s linear 2.1s infinite;}
+body.play2 ul.second-list li:nth-child(2) img { -webkit-animation: btnStaring 3.6s linear 3.3s infinite;
+animation: animation: btnStaring 3.6s linear 3.3s infinite;}
+body.play2 ul.second-list li:nth-child(3) img { -webkit-animation: btnStaring 3.6s linear 4.5s infinite;
+animation: animation: btnStaring 3.6s linear 4.5s infinite;}
+
+.second-person { position: absolute; z-index: 50; bottom: -3%; left: 0; width: 100%;}
+body.play2 .second-person img { -webkit-animation:wobble 1.5s ease-in-out 1.5s infinite;
+animation:wobble 1.5s ease-in-out 1.5s infinite;}
+
+
+/*页面3样式*/
+.page-third {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page3/third-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; z-index: 14;}
+.third-tit { position: relative;}
+body.play3 .third-tit img.third-tit-img { opacity: 0;
+-webkit-animation: titleRtoL 1s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1s ease-in-out 0s 1 forwards;}
+body.play3 .third-tit img.third-tit-num { position: absolute; top: 0; left: 0; width: 100%; z-index: 20;
+ opacity: 0;-webkit-transform-origin: left center; 
+-webkit-animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;
+animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;}
+
+ul.third-list { padding-top: 1.5rem; width: 100%; position: relative; z-index: 100;}
+ul.third-list li { cursor: pointer; margin-bottom: 0.5rem;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page3/third-litxt.png) no-repeat; -webkit-background-size:100% 300%; background-size:100% 300%;}
+body.play3 ul.third-list li:nth-child(1){ background-position: 0 0; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 3s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 3s 1 forwards;}
+body.play3 ul.third-list li:nth-child(2){ background-position: 0 50%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 4.2s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 4.2s 1 forwards;}
+body.play3 ul.third-list li:nth-child(3){ background-position: 0 100%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 5.4s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 5.4s 1 forwards;}
+
+ul.third-list span { display: block; margin-left: 3%; width: 23.75%;}
+
+
+body.play3 ul.third-list li:nth-child(1) img { -webkit-animation: slowOpen 3.6s linear 3.6s infinite;
+animation: animation: slowOpen 3.6s linear 3.6s infinite;}
+body.play3 ul.third-list li:nth-child(2) img { -webkit-animation: slowOpen 3.6s linear 4.8s infinite;
+animation: animation: slowOpen 3.6s linear 4.8s infinite;}
+body.play3 ul.third-list li:nth-child(3) img { -webkit-animation: slowOpen 3.6s linear 6s infinite;
+animation: animation: slowOpen 3.6s linear 6s infinite;}
+
+
+.third-person { position: absolute; z-index: 50; bottom: -3%; left: -2%; width: 53.28125%;}
+body.play3 .third-person img { -webkit-animation:wobble 1.5s ease-in-out 2.5s 2 forwards;
+animation:wobble 1.5s ease-in-out 2.5s 2 forwards;}
+
+.third-love { position: absolute; z-index: 50; bottom: -2%; right: 0; width: 63.59375%;}
+.third-love img {}
+body.play3 .third-love span { display: block; position: absolute; z-index: 60; left: 28.74692875%; top: 0; width: 16.46191646%;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page3/third-fly.png) 0 0 no-repeat; -webkit-background-size:400% 100%; background-size:400% 100%; }
+body.play3 .third-love span.curr {-webkit-animation: loveFlyShow 1s step-end 1s infinite;
+animation: loveFlyShow 1s step-end 1s infinite;}
+
+
+/*页面4样式*/
+.page-fourth {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page4/fourth-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; z-index: 15;}
+.fourth-tit { position: relative; z-index: 100;}
+body.play4 .fourth-tit img.fourth-tit-img { opacity: 0;
+-webkit-animation: titleRtoL 1s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1s ease-in-out 0s 1 forwards;}
+body.play4 .fourth-tit img.fourth-tit-num { position: absolute; top: 0; left: 0; width: 100%; z-index: 120;
+ opacity: 0;-webkit-transform-origin: left center; 
+-webkit-animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;
+animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;}
+
+ul.fourth-list { padding-top: 2rem; width: 100%; position: relative; z-index: 100;}
+ul.fourth-list li { cursor: pointer; margin-bottom: 1rem;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page4/fourth-litxt.png) no-repeat; -webkit-background-size:100% 300%; background-size:100% 300%;}
+body.play4 ul.fourth-list li:nth-child(1){ background-position: 0 0; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 4s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 4s 1 forwards;}
+body.play4 ul.fourth-list li:nth-child(2){ background-position: 0 50%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 5.2s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 5.2s 1 forwards;}
+body.play4 ul.fourth-list li:nth-child(3){ background-position: 0 100%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 6.4s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 6.4s 1 forwards;}
+
+ul.fourth-list span { display: block; margin-left: 3%; width: 23.75%;}
+
+body.play4 ul.fourth-list li:nth-child(1) img { -webkit-animation: slowOpen 3.6s linear 4.6s infinite;
+animation: slowOpen 3.6s linear 4.6s infinite;}
+body.play4 ul.fourth-list li:nth-child(2) img { -webkit-animation: slowOpen 3.6s linear 5.8s infinite;
+animation: slowOpen 3.6s linear 5.8s infinite;}
+body.play4 ul.fourth-list li:nth-child(3) img { -webkit-animation: slowOpen 3.6s linear 7s infinite;
+animation: slowOpen 3.6s linear 7s infinite;}
+
+.column { width: 19.0625%; background: #000; right: 0; top: 0; height: 100%; position: absolute; z-index: 20;}
+
+.fourth-body { position: absolute; right: 0; bottom: 0; width: 64.84375%;}
+.fourth-body span { display: block; position: absolute; z-index: 20;}
+span.fourth-face { width: 30.84337349%; bottom: 16.74595623%; right: 29.39759036%;}
+span.fourth-hand { bottom: -5rem; right: -1rem; width: 40.2409638%;}
+body.play4 span.fourth-hand img { -webkit-animation: handRunShow 6s ease-in 3s infinite;
+animation: handRunShow 6s ease-in 3s infinite;}
+
+.fourth-body i.fourth-eye { display: block; width: 39.0625%; height: 9.16666667%; position: absolute; left: 38%; top: 23%; background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page4/fourth-eye2.png) no-repeat; -webkit-background-size:600% 100%; background-size:600% 100%}
+body.play4 .fourth-body i.fourth-eye.curr {-webkit-animation: eyeMoveShow 1s step-start 3s 2 forwards;
+animation: eyeMoveShow 1s step-start 3s 2 forwards;}
+
+.fourth-body em.fourth-blood { display: block; width: 10.9375%; height: 14.58333333%; position: absolute; right: 5%; top: 54%; background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page4/fourth-blood.png) no-repeat; -webkit-background-size:1200% 100%; background-size:1200% 100%;}
+body.play4 .fourth-body em.fourth-blood.curr {-webkit-animation: typewriteShow 3s step-end 3s 1 forwards;
+animation: typewriteShow 3s step-end 3s 1 forwards}
+
+
+.fourth-man { width: 34.6875%; position: absolute; z-index: 50; left: -2px; bottom: 0;}
+body.play4 .fourth-man img { opacity: 0;
+-webkit-animation: manRunShow 3s ease-in-out 1.2s 1 forwards;
+animation: manRunShow 3s ease-in-out 1.2s 1 forwards; }
+/* .fourth-man.curr { -webkit-animation: wobble 2s ease-in-out 5.5s infinite forwards;
+webkit-animation: wobble 2s ease-in-out 5.5s infinite forwards} */
+
+/*页面5样式*/
+.page-fifth {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page5/fifth-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; z-index: 16;}
+.fifth-tit { position: relative;}
+body.play5 .fifth-tit img.fifth-tit-img { opacity: 0;
+-webkit-animation: titleRtoL 1s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1s ease-in-out 0s 1 forwards;}
+body.play5 .fifth-tit img.fifth-tit-num { position: absolute; top: 0; left: 0; width: 100%; z-index: 20;
+ opacity: 0;-webkit-transform-origin: left center; 
+-webkit-animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;
+animation: titleNumChange 1s ease-in-out 0.2s 1 forwards;}
+
+ul.fifth-list { padding-top: 1rem; width: 100%; position: relative; z-index: 100;}
+ul.fifth-list li { cursor: pointer; margin-bottom: 2px;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page5/fifth-litxt.png) no-repeat; -webkit-background-size:100% 300%; background-size:100% 300%;}
+body.play5 ul.fifth-list li:nth-child(1){ background-position: 0 0; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 2s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 2s 1 forwards;}
+body.play5 ul.fifth-list li:nth-child(2){ background-position: 0 50%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 3.2s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 3.2s 1 forwards;}
+body.play5 ul.fifth-list li:nth-child(3){ background-position: 0 100%; opacity: 0;
+-webkit-animation: titleLtoR 1.2s ease-in-out 4.4s 1 forwards;
+animation: titleLtoR 1.2s ease-in-out 4.4s 1 forwards;}
+
+ul.fifth-list span { display: block; margin-left: 3%; width: 23.75%;}
+
+body.play5 ul.fifth-list li:nth-child(1) img { -webkit-animation: btnStaring 3.6s linear 2.6s infinite;
+animation: btnStaring 3.6s linear 2.6s infinite;}
+body.play5 ul.fifth-list li:nth-child(2) img { -webkit-animation: btnStaring 3.6s linear 3.8s infinite;
+animation: btnStaring 3.6s linear 3.8s infinite;}
+body.play5 ul.fifth-list li:nth-child(3) img { -webkit-animation: btnStaring 3.6s linear 5s infinite;
+animation: btnStaring 3.6s linear 5s infinite;}
+
+.fifth-man { position: absolute; z-index: 50; right: -1%; bottom: -2%; width: 68.75%;}
+body.play5 .fifth-man img.fifth-man-img { opacity: 0; -webkit-animation:manShowAndWobble 2.5s ease-in-out 0.8s 1 forwards;
+animation:manShowAndWobble 2.5s ease-in-out 0.8s 1 forwards;}
+.fifth-man span { display: block; position: absolute; left: 17.72727273%; top: 17.5%; width: 39.09090909%;}
+body.play5 .fifth-man span img { opacity: 0;  
+  -webkit-transform-origin:right bottom; 
+  transform-origin:right bottom; 
+  -webkit-animation:sayWordShow 0.3s ease-in-out 1.8s 1 forwards;
+  animation:sayWordShow 0.3s ease-in-out 1.8s 1 forwards; }
+body.play5 .fifth-man.curr { -webkit-animation:wobble 0.5s ease-in-out 4.5s 1 forwards;
+animation:wobble 0.5s ease-in-out 4.5s 1 forwards;}
+
+
+/*end页面样式*/
+.page-sixth {background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page6/sixth-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover; z-index: 17;}
+.sixth-tit { padding: 2rem 0 0 0;}
+body.play6 .sixth-tit img { opacity: 0;
+-webkit-animation: titleRtoL 1.5s ease-in-out 0s 1 forwards;
+animation: titleRtoL 1.5s ease-in-out 0s 1 forwards;}
+
+.sixth-ill-txt { position: relative;}
+.sixth-ill-txt ul { position: absolute; z-index: 50; left: 0; top: 0; width: 100%; height: 100%;}
+.sixth-ill-txt ul li { width: 100%; height: 100%; background-image:url(http://cdn.icomicool.cn/m/act/ill-page/images/page6/sixth-ill-tit.png); background-repeat: repeat-y; -webkit-background-size:100% 900%; background-size:100% 900%;}
+
+.sixth-main { position: relative;}
+.sixth-main a.result-a { display: block; position: absolute; right: 0; top: 5%; z-index: 100; width: 55%; height: 65%;}
+
+body.play6 .result-img img { opacity: 0;
+-webkit-animation: titleRtoL 1.5s ease-in-out 4s 1 forwards;
+animation: titleRtoL 1.5s ease-in-out 4s 1 forwards;}
+
+.result-con { position: absolute; z-index: 50; width: 95%; left: 0; top: 0; padding-left: 5%; font-size: 1.8rem; line-height: 1.6; letter-spacing: -1px; opacity: 0;}
+
+.result-con h3 { padding-top: 8rem; font-size: 1.8rem; font-weight: normal; line-height: 1.6}
+.result-con .result-lnk a { display: block; width: 35%; padding: 0.6rem 0 0.9rem 0;}
+.result-con p { }
+.result-con p span { margin: 0 2px;}
+/*body.play6 .result-con h3 { opacity: 0; -webkit-animation: btnStaringSec 1.5s linear 2.5s 1 forwards;
+animation: btnStaringSec 1.5s linear 2.5s 1 forwards;}
+body.play6 .result-con p { opacity: 0; -webkit-animation: btnStaringSec 1.5s linear 2.5s 1 forwards;
+animation: btnStaringSec 1.5s linear 2.5s 1 forwards;}*/
+body.play6 .result-con .result-lnk a img { opacity: 0; -webkit-animation: pointMove 1s linear 4s infinite;
+animation: pointMove 1s linear 4s infinite;}
+body.play6 .result-con { opacity: 0; -webkit-animation: btnStaringSec 1.5s linear 4.5s 1 forwards;
+animation: btnStaringSec 1.5s linear 4.5s 1 forwards;} 
+
+.sixth-btn { text-align: center; position: absolute; left: 0; bottom: 2.5rem; width: 100%; z-index: 150; font-size: 0;}
+.sixth-btn a { display: inline-block; vertical-align: top; width: 30%; margin: 0 4%;}
+body.play6 .sixth-btn a.btn-download { -webkit-animation: btnStaring 3s linear 0 infinite;
+animation: btnStaring 3s linear 0 infinite;}
+body.play6 .sixth-btn a.btn-share { -webkit-animation: btnStaring 3s linear 1.5s infinite;}
+.sixth-btn p:nth-child(2){ padding-top: 1rem;}
+.sixth-btn a.btn-rule { width: 71.875%; margin: 0;}
+
+.share-tip { position: fixed; z-index: 600; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; /*background:#e12428;*/ display: none; overflow: hidden;background:url(http://cdn.icomicool.cn/m/act/ill-page/images/page6/sixth-bg.jpg) no-repeat; -webkit-background-size:cover; background-size:cover;}
+.rule { position: fixed; z-index: 700; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; display: none; overflow: hidden;}
+.rule-inner { position: relative; top: 50%; width: 90.78125%; -webkit-transform:translate3d(0,-50%,0); transform:translate3d(0,-50%,0); text-align: left; background:rgba(0,0,0,.9); margin: auto;}
+.rule a.rule-clo { width: 6.5404475%; position: absolute; right: 10px; top: 10px;}
+
+@media screen and (max-width:413px) {
+  .result-con { font-size: 1.6rem;}
+  .result-con h3 { font-size: 1.6rem;}
+}
+@media screen and (max-width:321px) {
+  .index-face { top: 38%;}
+  .first-head { top: 2.5rem;}
+  ul.first-list li { margin-bottom: 0;}
+  .second-tit { margin-top: 3rem;}
+  ul.second-list { padding-top: 1rem;}
+  .result-con .result-lnk a { width: 35%;}
+  .result-con h3 { padding-top: 6rem;}
+  .result-con { font-size: 1.5rem;}
+  .index-txt2 { padding-top: 1rem;}
+  .second-person { bottom: -5%;}
+  ul.third-list { padding-top: 0.8rem;}
+  ul.fourth-list { padding-top: 1rem;}
+  ul.fourth-list li { margin-bottom: 0.8rem;}
+  .fifth-man { bottom: -5%;}
+  ul.fifth-list li { margin-bottom: 0;}
+}
+
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2) {/* 兼容iphone4/4s/ipod */
+  .index-btn { padding-top: 3.5rem;}
+  ul.first-list { padding-top: 0;}
+  ul.first-list li { margin-bottom: 0;}
+  .second-tit { margin-top: 2.5rem;}
+  ul.second-list li { margin-bottom: 0;}
+  .third-person { bottom: -5%;}
+  .third-love { bottom: -4%;}
+  .result-con h3 { padding-top: 4rem;}
+}
+
+
+/*主页面 txt2文字效果*/
+@-webkit-keyframes homeTxtTwoShow {
+  0% {opacity: 0; -webkit-transform:scale3d(0.4,0.4,0.4);}
+  100% {opacity: 1; -webkit-transform:scale3d(1,1,1);}
+}
+@keyframes homeTxtTwoShow {
+  0% {opacity: 0; -webkit-transform:scale3d(0.4,0.4,0.4); transform:scale3d(0.4,0.4,0.4);}
+  100% {opacity: 1; -webkit-transform:scale3d(1,1,1); transform:scale3d(1,1,1);}
+}
+
+/*主页面 txt3文字打字效果 首页*/
+@-webkit-keyframes typewriteShow{
+    0% {background-position: 0 0;}
+    9.09091% {background-position: 9.09091% 0;}
+    18.18182% {background-position: 18.18182% 0;}
+    27.27273% {background-position: 27.27273% 0;}
+    36.36364% {background-position: 36.36364% 0;}
+    45.45455% {background-position: 45.45455% 0;}
+    54.54546% {background-position: 54.54546% 0;}
+    63.63637% {background-position: 63.63637% 0;}
+    72.72728% {background-position: 72.72728% 0;}
+    81.81819% {background-position: 81.81819% 0;}
+    90.9091% {background-position: 90.9091% 0;}
+    100% {background-position: 100% 0;}
+}
+@keyframes typewriteShow{
+    0% {background-position: 0 0;}
+    9.09091% {background-position: 9.09091% 0;}
+    18.18182% {background-position: 18.18182% 0;}
+    27.27273% {background-position: 27.27273% 0;}
+    36.36364% {background-position: 36.36364% 0;}
+    45.45455% {background-position: 45.45455% 0;}
+    54.54546% {background-position: 54.54546% 0;}
+    63.63637% {background-position: 63.63637% 0;}
+    72.72728% {background-position: 72.72728% 0;}
+    81.81819% {background-position: 81.81819% 0;}
+    90.9091% {background-position: 90.9091% 0;}
+    100% {background-position: 100% 0;}
+}
+
+/*主页面 眨眼效果 首页*/
+@-webkit-keyframes homeEyeOpen{
+    0% {background-position: 100% 0;}
+    50% {background-position: 0 0;}
+    100% {background-position: 100% 0;}
+}
+@keyframes homeEyeOpen{
+    0% {background-position: 100% 0;}
+    50% {background-position: 0 0;}
+    100% {background-position: 100% 0;}
+}
+
+/*内容第一页 魔鬼出来效果*/
+/*@-webkit-keyframes firstManShow{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}*/
+@-webkit-keyframes firstManShow {
+    0% {-webkit-transform: rotateX(-90deg); opacity: 0;}
+  100% {-webkit-transform: rotateX(0deg); opacity: 1;}
+}
+@keyframes firstManShow {
+    0% {-webkit-transform: rotateX(-90deg); transform: rotateX(-90deg); opacity: 0;}
+  100% {-webkit-transform: rotateX(0deg); transform: rotateX(0deg); opacity: 1;}
+}
+
+/*内容第一页 眼睛慢慢显示效果*/
+@-webkit-keyframes slowOpen{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes slowOpen{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+/*内容第一页 眼睛慢慢显示效果*/
+@-webkit-keyframes eyeSecOpen{
+    0%{opacity: 0;}
+    30%{opacity: 1;}
+    60%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes eyeSecOpen{
+    0%{opacity: 0;}
+    30%{opacity: 1;}
+    60%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+
+/*title文字从右至左效果*/
+@-webkit-keyframes titleRtoL{
+  0%{-webkit-transform:translate3d(100%,0,0); opacity: 0;}
+  70%{ opacity: 0.4;}
+  100%{-webkit-transform:translate3d(0,0,0); opacity: 1;}
+}
+@keyframes titleRtoL{
+  0%{-webkit-transform:translate3d(100%,0,0); transform:translate3d(100%,0,0); opacity: 0;}
+  70%{ opacity: 0.4;}
+  100%{-webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0); opacity: 1;}
+}
+
+/*title文字从左至右效果*/
+@-webkit-keyframes titleLtoR{
+  0%{-webkit-transform:translate3d(-100%,0,0); opacity: 0;}
+  70%{ opacity: 0.4;}
+  100%{-webkit-transform:translate3d(0,0,0); opacity: 1;}
+}
+@keyframes titleLtoR{
+  0%{-webkit-transform:translate3d(-100%,0,0); transform:translate3d(-100%,0,0); opacity: 0;}
+  70%{ opacity: 0.4;}
+  100%{-webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0); opacity: 1;}
+}
+
+
+/*内容第一页 title数字效果*/
+@-webkit-keyframes titleNumChange{
+  0%{-webkit-transform:scale3d(0.3,0.3,1); opacity: 0;}
+  55%{-webkit-transform:scale3d(1.3,1.3,1);}
+  70%{-webkit-transform:scale3d(0.8,0.8,1); opacity: 1;}
+  85%{-webkit-transform:scale3d(1.3,1.3,1);}
+  100%{-webkit-transform:translate3d(1,1,1); opacity: 1;}
+}
+@keyframes titleNumChange{
+  0%{-webkit-transform:scale3d(0.3,0.3,1); transform:scale3d(0.3,0.3,1); opacity: 0;}
+  55%{-webkit-transform:scale3d(1.3,1.3,1); transform:scale3d(1.3,1.3,1);}
+  70%{-webkit-transform:scale3d(0.8,0.8,1); transform:scale3d(0.8,0.8,1); opacity: 1;}
+  85%{-webkit-transform:scale3d(1.3,1.3,1); transform:scale3d(1.3,1.3,1);}
+  100%{-webkit-transform:translate3d(1,1,1); transform:translate3d(1,1,1); opacity: 1;}
+}
+
+
+/*内容第三页 红心飞出*/
+@-webkit-keyframes loveFlyShow{
+    0% {background-position: 0 0;}
+    20% {background-position: 33.33% 0;}
+    40% {background-position: 66.66% 0;}
+    60% {background-position: 100% 0;}
+    80% {background-position: 100% 0;}
+    100% {background-position: 100% 0;}
+}
+@keyframes loveFlyShow{
+    0% {background-position: 0 0;}
+    20% {background-position: 33.33% 0;}
+    40% {background-position: 66.66% 0;}
+    60% {background-position: 100% 0;}
+    80% {background-position: 100% 0;}
+    100% {background-position: 100% 0;}
+}
+
+/*内容第四页 man走路效果*/
+@-webkit-keyframes manRunShow{
+    0% {-webkit-transform:scale3d(0.4,0.4,1) translate3d(-100%,100%,0); opacity: 0;}
+    50% {-webkit-transform:scale3d(0.8,0.8,1) translate3d(-50%,50%,0); opacity: 0.3;}
+    80% { opacity: 0.5;}
+    100% {-webkit-transform:scale3d(1.2,1.2,1) translate3d(0,0,0); opacity: 1;}
+}
+@keyframes manRunShow{
+    0% {-webkit-transform:scale3d(0.4,0.4,1) translate3d(-100%,100%,0); transform:scale3d(0.4,0.4,1) translate3d(-100%,100%,0); opacity: 0;}
+    50% {-webkit-transform:scale3d(0.8,0.8,1) translate3d(-50%,50%,0); transform:scale3d(0.8,0.8,1) translate3d(-50%,50%,0); opacity: 0.3;}
+    80% { opacity: 0.5;}
+    100% {-webkit-transform:scale3d(1.2,1.2,1) translate3d(0,0,0); transform:scale3d(1.2,1.2,1) translate3d(0,0,0); opacity: 1;}
+}
+
+/*内容第四页 手移动效果*/
+@-webkit-keyframes handRunShow{
+    0% {-webkit-transform:translate3d(0,0,0);}
+    20% {-webkit-transform:translate3d(-1px,-1rem,0);}
+    40% {-webkit-transform:translate3d(1px,-2rem,0);}
+    60% {-webkit-transform:translate3d(-1px,0,0);}
+    80% {-webkit-transform:translate3d(1px,2rem,0);}
+    100% {-webkit-transform:translate3d(0,0,0);}
+}
+@keyframes handRunShow{
+    0% {-webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+    20% {-webkit-transform:translate3d(-1px,-1rem,0); transform:translate3d(-1px,-1rem,0);}
+    40% {-webkit-transform:translate3d(1px,-2rem,0); transform:translate3d(1px,-2rem,0);}
+    60% {-webkit-transform:translate3d(-1px,0,0); transform:translate3d(-1px,0,0);}
+    80% {-webkit-transform:translate3d(1px,2rem,0); transform:translate3d(1px,2rem,0);}
+    100% {-webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+}
+
+/*内容第四页 眼珠抖动效果*/
+@-webkit-keyframes eyeMoveShow{
+    0% {background-position: 0 0;}
+    14.2857% {background-position: 20% 0;}
+    28.5714% {background-position: 40% 0;}
+    42.8571% {background-position: 60% 0;}
+    57.1428% {background-position: 80% 0;}
+    71.4285% {background-position: 100% 0;}
+    85.7142% {background-position: 100% 0;}
+    100% {background-position: 100% 0;}
+}
+@keyframes eyeMoveShow{
+    0% {background-position: 0 0;}
+    14.2857% {background-position: 20% 0;}
+    28.5714% {background-position: 40% 0;}
+    42.8571% {background-position: 60% 0;}
+    57.1428% {background-position: 80% 0;}
+    71.4285% {background-position: 100% 0;}
+    85.7142% {background-position: 100% 0;}
+    100% {background-position: 100% 0;}
+}
+
+/*内容第五页 人物出来效果  从左至右出，然后抖动*/
+@-webkit-keyframes manShowAndWobble {
+  0%{-webkit-transform:translate3d(100%,0,0); opacity: 0;}
+  20% { opacity: 0.4;}
+  30% { -webkit-transform:translate3d(0,0,0); opacity: 1;}
+  76%{ -webkit-transform:translate3d(0,0,0);}
+  80%{ -webkit-transform:translate3d(-6px,0,0) rotate(-4deg);}
+  84%{ -webkit-transform:translate3d(5px,0,0) rotate(3deg);}
+  88%{ -webkit-transform:translate3d(-4px,0,0) rotate(-2deg);}
+  92%{ -webkit-transform:translate3d(3px,0,0) rotate(1deg);}
+  96%{ -webkit-transform:translate3d(-2px,0,0) rotate(-1deg);}
+  100%{ -webkit-transform:translate3d(0,0,0); opacity: 1;}
+}
+@keyframes manShowAndWobble {
+  0%{-webkit-transform:translate3d(100%,0,0); transform:translate3d(100%,0,0); opacity: 0;}
+  20% { opacity: 0.4;}
+  30% { -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0); opacity: 1;}
+  76%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+  80%{ -webkit-transform:translate3d(-6px,0,0) rotate(-4deg); transform:translate3d(-6px,0,0) rotate(-4deg);}
+  84%{ -webkit-transform:translate3d(5px,0,0) rotate(3deg); transform:translate3d(5px,0,0) rotate(3deg);}
+  88%{ -webkit-transform:translate3d(-4px,0,0) rotate(-2deg); transform:translate3d(-4px,0,0) rotate(-2deg);}
+  92%{ -webkit-transform:translate3d(3px,0,0) rotate(1deg); transform:translate3d(3px,0,0) rotate(1deg);}
+  96%{ -webkit-transform:translate3d(-2px,0,0) rotate(-1deg); transform:translate3d(-2px,0,0) rotate(-1deg);}
+  100%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0); opacity: 1;}
+}
+
+/*内容第五页 说话效果*/
+@-webkit-keyframes sayWordShow {
+  0% {opacity: 0; -webkit-transform:scale3d(0.3,0.3,1); }
+  80% {opacity: 1; }
+  100% {opacity: 1; -webkit-transform:scale3d(1,1,1); }
+}
+@keyframes sayWordShow {
+  0% {opacity: 0; -webkit-transform:scale3d(0.3,0.3,1); transform:scale3d(0.3,0.3,1); }
+  80% {opacity: 1; }
+  100% {opacity: 1; -webkit-transform:scale3d(1,1,1); transform:scale3d(1,1,1);}
+}
+
+/*内容末页 指向移动效果*/
+@-webkit-keyframes pointMove {
+  0% { -webkit-transform:translate3d(-2px,0,0); opacity:0.2;}
+  50% { -webkit-transform:translate3d(8px,0,0); opacity:1;}
+  100% { -webkit-transform:translate3d(-2px,0,0); opacity:0.2;}
+}
+@keyframes pointMove {
+  0% { -webkit-transform:translate3d(-2px,0,0); transform:translate3d(-2px,0,0); opacity:0;}
+  50% { -webkit-transform:translate3d(8px,0,0); transform:translate3d(8px,0,0); opacity:1;}
+  100% { -webkit-transform:translate3d(-2px,0,0); transform:translate3d(-2px,0,0); opacity:0;}
+}
+
+/* 摇晃效果效果*/
+@-webkit-keyframes wobble{
+    0%{ -webkit-transform:translate3d(0,0,0);}
+    15%{ -webkit-transform:translate3d(-6px,0,0) rotate(-4deg);}
+    30%{ -webkit-transform:translate3d(5px,0,0) rotate(3deg);}
+    45%{ -webkit-transform:translate3d(-4px,0,0) rotate(-2deg);}
+    60%{ -webkit-transform:translate3d(3px,0,0) rotate(1deg);}
+    75%{ -webkit-transform:translate3d(-2px,0,0) rotate(-1deg);}
+    100%{ -webkit-transform:translate3d(0,0,0);}
+}
+@keyframes wobble{
+    0%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+    15%{ -webkit-transform:translate3d(-6px,0,0) rotate(-4deg); transform:translate3d(-6px,0,0) rotate(-4deg);}
+    30%{ -webkit-transform:translate3d(5px,0,0) rotate(3deg); transform:translate3d(5px,0,0) rotate(3deg);}
+    45%{ -webkit-transform:translate3d(-4px,0,0) rotate(-2deg); transform:translate3d(-4px,0,0) rotate(-2deg);}
+    60%{ -webkit-transform:translate3d(3px,0,0) rotate(1deg); transform:translate3d(3px,0,0) rotate(1deg);}
+    75%{ -webkit-transform:translate3d(-2px,0,0) rotate(-1deg); transform:translate3d(-2px,0,0) rotate(-1deg);}
+    100%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+}
+
+/* 按钮闪烁效果*/
+@-webkit-keyframes btnStaring{
+  0%{opacity: 1;}
+  30%{opacity: 1;}
+  50%{opacity: 0.2;}
+  70%{opacity: 1;}
+  100%{opacity: 1;}
+}
+@keyframes btnStaring{
+  0%{opacity: 1;}
+  30%{opacity: 1;}
+  50%{opacity: 0.2;}
+  70%{opacity: 1;}
+  100%{opacity: 1;}
+}
+
+@-webkit-keyframes btnStaringFir{
+  0%{opacity: 1;}
+  50%{opacity: 0.2;}
+  100%{opacity: 1;}
+}
+@keyframes btnStaringFir{
+  0%{opacity: 1;}
+  50%{opacity: 0.2;}
+  100%{opacity: 1;}
+}
+
+@-webkit-keyframes btnStaringSec{
+  0%{opacity: 0;}
+  50%{opacity: 0.2;}
+  100%{opacity: 1;}
+}
+@keyframes btnStaringSec{
+  0%{opacity: 0;}
+  50%{opacity: 0.2;}
+  100%{opacity: 1;}
+}
+
+/* roatebox效果*/
+@-webkit-keyframes rotateBox{
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(720deg);}
+}
+@keyframes rotateBox{
+  0%{transform: rotate(0deg);-webkit-transform: rotate(0deg);}
+  100%{transform: rotate(720deg);-webkit-transform: rotate(720deg);}
+} 
+
+
+
+
+
+
+
+
+

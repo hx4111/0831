@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>可米酷七夕节</title>
+	<meta name="keywords" content="可米酷,七夕">
+	<meta name="description" content="可米酷">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/act/201608/qixi/css/style.css?_=1470496396">
+	<script src="http://touch.code.baidu.com/touch-0.2.14.min.js"></script>
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<!-- <script src="http://cdn.icomicool.cn/m/js/vconsole.min.js" type="text/javascript" charset="utf-8"></script> -->
+</head>
+<body>
+	<img style="display: none" src="http://cdn.icomicool.cn/m/act/201608/qixi/images/qixi-share.jpg" alt="">
+	<div class="loading">
+		<div class="load-word">
+			可米酷七夕节，有爱晒出来
+		</div>
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+	</div>
+	<div class="music-btn">
+		<img src="http://cdn.icomicool.cn/m/act/201608/qixi/images/music.png" alt="">
+		<audio id="music" src="http://cdn.icomicool.cn/m/act/201608/qixi/images/qixi.mp3" autoplay="autoplay" loop="loop"></audio>
+	</div>
+	<div class="page-container">
+		<div class="page page01">
+			<div class="page01-header">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page01-title.gif" alt="">
+			</div>
+			<div class="page-over">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page-over-btn.png" alt="">
+			</div>
+		</div>
+		<div class="page page02">
+			<div class="page-over">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page-over-btn.png" alt="">
+			</div>
+		</div>
+		<div class="page page03">
+			<div class="page-over">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page-over-btn.png" alt="">
+			</div>
+		</div>
+		<div class="page page04">
+			<div class="page-over">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page-over-btn.png" alt="">
+			</div>
+		</div>
+		<div class="page page05">
+			<div class="page-over">
+				<img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/page-over-btn.png" alt="">
+			</div>
+		</div>
+		<div class="page page06">
+			<div class="btn-block share-block"><div class="btn-block-inner share-btn share-trigger" id="bd-comi-read-01"></div></div>
+			<div class="btn-block post-block"><div class="btn-block-inner to-post smart-tip-inst" id="bd-comi-read-02"></div></div>
+			<div class="go-block go" id="bd-comi-read-03" data-ccid="11738"><img data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/go-img.png" alt=""></div>
+			<div class="word-block01">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word01.png" alt="">
+			</div>
+			<div class="word-block">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word02.png" alt="">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word03.png" alt="">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word04.png" alt="">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word05.png" alt="">
+				<img class="fadeInWord" data-src="http://cdn.icomicool.cn/m/act/201608/qixi/images/word06.png" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="page-cover"></div>
+	<!-- 百度分享面板 -->
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+<script src="http://cdn.icomicool.cn/m/act/201608/qixi/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script>
+
+	window.onload = function() {
+		loadAnimation();
+		touch.on('.page', 'touchstart', function(ev){
+			ev.preventDefault();
+		});
+
+		touch.on('.page01', 'swipeleft', function(ev){
+			$('.page01').addClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page02', 'swipeleft', function(ev){
+			$('.page02').addClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page03', 'swipeleft', function(ev){
+			$('.page03').addClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page04', 'swipeleft', function(ev){
+			$('.page04').addClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page05', 'swipeleft', function(ev){
+			$('.page05').addClass('fadeOutLeftEnd');
+			$('.fadeInWord').each(function(i) {
+				var _self = $(this);
+				setTimeout(function() {
+					_self.css('opacity', 1);
+				}, (i+1)*1000)
+			})
+		});
+
+		touch.on('.page02', 'swiperight', function(ev){
+			console.info('page02 swiperight');
+			$('.page01').removeClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page03', 'swiperight', function(ev){
+			$('.page02').removeClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page04', 'swiperight', function(ev){
+			$('.page03').removeClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page05', 'swiperight', function(ev){
+			$('.page04').removeClass('fadeOutLeftEnd');
+		});
+
+		touch.on('.page06', 'swiperight', function(ev){
+			$('.page05').removeClass('fadeOutLeftEnd');
+		});
+
+		init();
+		post2Statistics();
+	}
+
+	function post2Statistics() {
+		for (var i = 1; i < 4; i++) {
+			$('#bd-comi-read-0' + i).on('touchend', function() {
+				console.info('post2Statistics ' + $(this).attr('id'));
+				$.get('http://stat.comicool.cn/act/201607/kuxia/index.html?' + $(this).attr('id'), function(res) {
+					console.info(res);
+				})
+			})
+		}
+	}
+
+	function loadAnimation() {
+		var $imgArray = $('.page-container img');
+		$imgArray.each(function(i, el) {
+			var img = new Image(),
+				src = $(this).data('src');
+			img.src = src;
+
+			img.onload = function() {
+				el.src = src;
+				if (i == $imgArray.length-1) {
+					setTimeout(function() {
+						$('.loading').hide();
+					}, 1000)
+				}
+			}
+		})
+	}
+
+	function init() {
+		$('.to-post').on('touchend', function() {
+			if (CONFIG.isIOSApp && !CONFIG.isPPTV) {
+				callAppFunction('returnToMainTab', {'tab_name': 'daily'});
+			} else if (CONFIG.isAndroidApp && !CONFIG.isPPTV) {
+				callAppFunction('returnToMainTab', {'tab_name': 'social'});
+			} else {
+				new TipBox({
+					str: '下载可米酷App才能继续玩耍哦，看更多精彩漫画还能领奖励！', 
+	                btnText: ['取消', '确认'], 
+	                btnCallback: function() {
+	                	var url = 'http://m.app.comicool.cn/smart_open/main.php?ch=prom12';
+	                    if (this.innerText == '确认') {
+	                        window.location.href = url;
+	                    } else {
+	                        return;
+	                    }
+	                }
+				})
+			}
+		})
+ 
+		$('.share-btn').on('touchend', function() {
+			if (CONFIG.isApp) {
+				callAppFunction('popupSharePanel', {
+					"title": "可米酷七夕节",
+					"describe": "手绘一份你和TA的故事,晒出来吧",
+					"imageurl": "http://cdn.icomicool.cn/m/act/201608/qixi/images/qixi-share.jpg",
+					"page_url": window.location.href
+				});
+			}
+		})
+
+		var musicPlay = true;
+		$('.music-btn').on('touchend', function() {
+			if (musicPlay) {
+				$('#music')[0].pause();
+				$(this).find('img').attr('src', 'http://cdn.icomicool.cn/m/act/201608/qixi/images/no-music.png');
+				musicPlay = false;
+			} else {
+				$('#music')[0].play();
+				$(this).find('img').attr('src', 'http://cdn.icomicool.cn/m/act/201608/qixi/images/music.png');
+				musicPlay = true;
+			}
+		})
+	}
+	
+	var shareJsonObj = {
+        'title' : '可米酷七夕节',
+        'describe' : '手绘一份你和TA的故事,晒出来吧',
+        'imageUrl' : 'http://cdn.icomicool.cn/m/act/201608/qixi/images/qixi-share.jpg',
+        'pageUrl': window.location.href
+    };
+    setShareInfo(shareJsonObj, {
+        use: 'baidu',
+        init: initBaiduSharePanel
+    });
+
+    function initBaiduSharePanel() {
+        var _ = function(selector, parent) {
+                return (parent || document).querySelector(selector);
+            },
+            trigger = $('.share-trigger'),
+            mask = _('#ShareBg'),
+            shareBtn = _('#share-btn'),
+            panelTitle = _('#ShareCon h2'),
+            panel = _('.bdsharebuttonbox'),
+            cancelBtn = _('.share-clo', panel),
+            panelImageCont = _('#ShareCon em'),
+            panelImage = new Image(),
+            hidePanel = function() {
+                mask.style.display = panel.style.display = 'none';
+            };
+        panelTitle.innerHTML = this.title;
+        panelImage.src = this.imageUrl;
+        panelImageCont.appendChild(panelImage);
+        if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+			trigger.on('touchend', function() {
+				document.getElementById('ShareBg').style.display = 'block';
+				document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+			});
+			document.getElementById('ShareBg').addEventListener('click', function(){
+				document.getElementById('ShareBg').style.display = 'none';
+			})
+		} else {
+			trigger.on('touchend', function() {
+				mask.style.display = panel.style.display = 'block';
+			});
+			mask.addEventListener('click', hidePanel);
+			cancelBtn.addEventListener('click', hidePanel);
+		}
+    }
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

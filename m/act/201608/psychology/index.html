@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>想知道你是攻还是受吗?</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="想知道你是攻还是受吗?">
+		<!--<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/act/201608/psychology/css/style.css" />
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        想知道你是攻还是受吗?
+        <p>点进来，准到没朋友.</p>
+        <img src="http://cdn.icomicool.cn/m/act/201608/psychology/images/psychology_share.jpg">
+    </h1>
+		<div id="index">
+			<img src="http://cdn.icomicool.cn/m/act/201608/psychology/images/index_bg.jpg" />
+			<ul id="index_box" class="center">
+				<li><input type="text" name="username" id="username" value="" placeholder="输入昵称" /></li>
+				<li><button id="index_btn">推门测试</button></li>
+			</ul>
+		</div>
+		<div id="lamp">
+			<img class="delay1 fadeIn" src="http://cdn.icomicool.cn/m/act/201608/psychology/images/lamp.jpg" />
+			<ul class="center">
+				<li class="fadeIn delay2">
+					<p>每一个答案都会决定</p>
+					<p>结局的走向</p>
+				</li>
+				<li class="fadeIn delay3">
+					<p>所以请遵从你的内心</p>
+					<p>在6秒内选出你的答案吧</p>
+				</li>
+			</ul>
+		</div>
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/tpl/dist/act-global.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-share.min.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201608/psychology/js/script.js?v=201608241028" type="text/javascript" charset="utf-8"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201608/psychology/js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('#index_btn').on('click', function() {
+				var username = $('#username').val();
+				if (username) {
+					setCookie('username', username);
+					var uri = 'subject.html';
+					$('#index').hide();
+					$('#lamp').show();
+					$('#lamp').on('click', function() {
+						window.location.href = uri;
+					});
+					setTimeout(function() {
+						window.location.href = uri;
+					}, 8000)
+				} else {
+					alert('请输入您的昵称');
+				}
+			})
+			setNewShareInfo({
+				title: '想知道你是攻还是受吗?',
+				describe: '点进来，准到没朋友.',
+				imageurl: 'http://cdn.icomicool.cn/m/act/201608/psychology/images/psychology_share.jpg',
+				page_url: 'http://m.comicool.cn/act/201608/psychology/index.html'
+			}, {
+				use: 'customize', //baidu or customize
+				init: '' // function or null
+			});
+		</script>
+	</body>
+
+</html>

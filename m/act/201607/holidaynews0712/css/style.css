@@ -1,0 +1,122 @@
+.img-list {
+  background-color: #b7e1fe;
+  color: #610909;
+  font-size: .8rem;
+}
+.user-container {
+  font-size: .6rem;
+}
+.user-container div {
+  display: inline-block;
+}
+.user-container .userinfo {
+  width: 45%;
+  font-weight: bolder;
+  padding-left: .5rem;
+}
+.user-container .userinfo .usericon {
+  vertical-align: middle;
+  width: 20%;
+}
+.user-container .userinfo .usericon img {
+  width: 100%;
+}
+.user-container .userinfo .unlogin-handle {
+  text-decoration: underline;
+}
+.user-container .bx-jd {
+  width: 50%;
+  font-weight: bolder;
+}
+.user-container .bx-jd div {
+  vertical-align: middle;
+}
+.user-container .bx-jd .bx-img-outer {
+  width: 30%;
+}
+.user-container .bx-jd .bx-img-outer img {
+  width: 100%;
+}
+.user-container .bx-jd .bx-content {
+  width: 68%;
+}
+.day-container {
+  margin-top: .5rem;
+  width: 100%;
+}
+.day-container div {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  position: relative;
+}
+.day-container div .book-content {
+  font-size: .7rem;
+  position: absolute;
+  top: .7rem;
+  width: 100%;
+  text-align: center;
+}
+.day-container div.now-block {
+  padding-top: .5rem;
+}
+.day-container div.now-block .book-content {
+  color: #ec6b02;
+  top: 1.2rem;
+}
+.book-container {
+  margin: .5rem .2rem;
+  background-color: #fff;
+  border: 1px solid #EAC97D;
+}
+.book-container .book-header {
+  margin: .3rem 0;
+}
+.book-container .book-header .book-header-left {
+  display: inline-block;
+  font-size: 1rem;
+  width: 50%;
+}
+.book-container .book-header .book-header-left .header-left-inner {
+  text-align: center;
+  color: #fff;
+  margin-left: -0.2rem;
+  width: 60%;
+  background-color: #ec6b02;
+}
+.book-container .book-header .book-header-right {
+  display: inline-block;
+  color: #7e7e7e;
+  width: 45%;
+  font-size: .8rem;
+  text-align: right;
+}
+.book-container .book-tip {
+  padding: .3rem 0;
+  font-size: .6rem;
+}
+.book-container .book-tip .book-tip-left {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 45%;
+  text-align: center;
+  color: #7e7e7e;
+}
+.book-container .book-tip .book-tip-right {
+  display: inline-block;
+  vertical-align: bottom;
+  width: 49%;
+  clear: both;
+}
+.book-container .book-tip .book-tip-right .tip-button {
+  border-radius: 5px;
+  text-align: center;
+  color: #fff;
+  width: 50%;
+  background-color: #d52626;
+  padding: .2rem;
+  float: right;
+}
+#book-cover {
+  background-color: #fff;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>奖品兑换规则</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Expires" CONTENT="0">
+	<script>
+		(function () {
+			var caclFontSize = function () {
+				var screenWidth = document.documentElement.offsetWidth;
+				var deviceSizeRatio = window.devicePixelRatio;
+				var baseWidth = 320;
+				var htmlFontSize = (screenWidth / baseWidth) * 20;
+				document.documentElement.style.fontSize = htmlFontSize + 'px';
+			};
+
+			caclFontSize();
+			window.addEventListener('resize', caclFontSize);
+		})();
+	</script>
+	<style type="text/css">
+	body {margin: 0 auto;padding: 0;}
+		.wrap img {
+			width: 100%;display: table;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="images/duiba_01.jpg" alt="">
+		<img src="images/duiba_02.jpg" alt="">
+	</div>
+</body>
+</html>

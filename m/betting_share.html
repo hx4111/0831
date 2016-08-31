@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/betting.css" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1446605848_0024004.css" />
+	<title>押宝分享_条漫™</title>
+	<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+</head>
+<body>
+	<article class="betting_share">
+		<div class="betting_share_works">
+			<script type="text/template" id="tmpl-comic">
+				<dl id="comic" data-cid="{{ext.comic_id}}" data-epid="{{ext.ep_id}}">
+					<dt><img src="http://cdn.icomico.com/{{res.comic_info.comic_cover_url}}"></dt>
+					<dd>{{res.comic_info.comic_title}}</dd>
+					<dd>{{res.comic_info.comic_desc_lite}}</dd>
+				</dl>
+			</script>
+		</div>
+		<div id="betting_share_btn"><a href="http://m.app.comicool.cn/smart_open/main.php">点我押宝</a></div>
+		<!-- 押宝分享作品 end -->
+		<div class="betting_share_explain">
+			<h2>押宝说明：</h2> 
+			<p>1.一注为50酷币，点击下注按钮，即表示押该作品在下周 周赛中获得冠军;</p>
+			<p>2.支持下多注，每点击一次下注按钮，即加一注;</p>
+			<p>3.若押宝作品最后获得冠军，则押注所耗酷币返还至账户 中，并给予一定比例奖励，比例从0.1至10倍酷币不等 ;</p>
+			<p>4.押宝时间：周赛作品参赛前一周;</p>
+		</div>
+		<!-- 押宝说明 end -->
+	</article>
+	<script src="http://www.comicool.cn/common/js/template.js"></script>
+	<script src="m-common/js/app.js"></script>
+	<script>
+		//获取页面URL参数名
+		function getQueryString(name) {
+		    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		    var r = window.location.search.substr(1).match(reg);
+		    if (r != null) return decodeURI(r[2]); return null;
+		};
+
+		function render(templateID, data, cb) {
+		    document.getElementById(templateID).outerHTML = template(templateID, data);
+		    typeof cb === 'function' && cb();
+		}
+
+		function jsonp(options) {
+		    var src = options.url;
+		    var data = typeof options.data === 'object' ? options.data : null;
+		    var qs = serialize(data);
+		    var script = document.createElement('script');
+		    var head = document.getElementsByTagName('head')[0];
+
+		    if (qs) {
+		        if (src.indexOf('?') > -1) {
+		            src += '&' + qs;
+		        } else {
+		            src += '?' + qs;
+		        }
+		    }
+
+		    window[options.callback] = options.success;
+		    script.src = src;
+		    head.appendChild(script);
+
+		    function serialize(data) {
+		        var arr = [];
+		        for (var n in data) {
+		            arr.push(n + '=' + data[n]);
+		        }
+		        return arr.join('&');
+		    }
+		}
+
+		(function () {
+			var comic_id = getQueryString('comic_id');
+			var ep_id = getQueryString('ep_id');
+
+			jsonp({
+				url: 'http://proxy.icomico.com/comicdetail4h5',
+				data: {
+					comic_id: comic_id
+				},
+				callback: 'jsonp_comicdetail',
+				success: function (res) {
+					console.log(res);
+					render('tmpl-comic', {
+						res: res,
+						ext: {
+							comic_id: comic_id,
+							ep_id: ep_id
+						}
+					});
+					bindOpenComicEvents();
+				}
+			});
+
+			function bindOpenComicEvents() {
+				var readComic;
+				var champion = document.getElementById('comic');
+
+				if (isApp) {
+					readComic = function (cid, epid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: cid,
+							ep_id: epid
+						});
+					}
+				} else {
+					readComic = function (cid, epid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + cid + '&ep_id=' + epid;
+					}
+				}
+				comic.addEventListener('click', function (e) {
+					var cid = this.dataset.cid;
+					var epid = this.dataset.epid;
+					readComic(cid, epid);
+				});
+			}
+		})();
+	</script>
+</body>
+</html>

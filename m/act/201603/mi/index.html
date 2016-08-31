@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>吃谜少女隆重上线</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="抖动文化与良筑良作联袂打造“悬疑推理”动态漫画，国内知名CV倾情献声。为了青春永驻，勿让智商掉线！">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style type="text/css">
+			body {
+				background: #525276;
+				position: relative;
+			}
+			
+			.imglist img {
+				width: 100%;
+			}
+			
+			.imglist a {
+				width: 100%;
+				overflow: hidden;
+				height: 10rem;
+				display: block;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        吃谜少女隆重上线
+        <p>抖动文化与良筑良作联袂打造“悬疑推理”动态漫画，国内知名CV倾情献声。为了青春永驻，勿让智商掉线！</p>
+        <img src="http://cdn.icomicool.cn/m/act/201603/mi/images/200.jpg">
+    </h1>
+		<div class="loading-spinner"></div>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<div id="wxqq">
+			<img src="http://cdn.icomicool.cn/m/images/shareTip.png">
+		</div>
+		<!-- 主要内容：开始 -->
+		<div class="imglist">
+			<img src="http://cdn.icomicool.cn/m/act/201603/mi/images/index.jpg" alt="吃谜少女隆重上线" />
+			<a id='btn' href="javascript:;"></a>
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			var btn = document.getElementById("btn");
+			btn.addEventListener("click", function() {
+				if (isAndroidApp) {
+					callAppFunction('openEpisodeReaderPage', {
+						comic_id: 11039,
+						ep_id: 1
+					});
+				} else {
+					window.location.href = "http://m.comicool.cn/content/reader.html?comic_id=11039&ep_id=1";
+				}
+			})
+
+			function getByClass(clsName, parent) {
+				//定义函数getByClass()实现获取document或指定父元素下所有class为on的元素  
+				var body = document.body || document.documentElement,
+					oParent = parent ? document.getElementById(parent) : body,
+					elements = oParent.getElementsByTagName("*"),
+					arr = [];
+				for (var i = 0; i < elements.length; i++) {
+					if (elements[i].className == clsName) {
+						arr.push(elements[i]);
+					}
+				}
+				return arr;
+			}
+
+			function callAppFunction(func, args, callback) {
+				var argsString = JSON.stringify(args);
+				if (isAndroidApp) {
+					if (!comicool) {
+						return false;
+					}
+					var result = eval("comicool." + func + "('" + argsString + "');");
+					if (callback) {
+						callback(result);
+					}
+				} else if (isIOSApp) {
+					function handleCallback(func, args) {
+						if (func != "setJSCallback") {
+							return;
+						}
+						for (var eventName in args) {
+							(function(eventName) {
+								window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+									var appDataStr = JSON.stringify(data);
+									eval(args[eventName] + "('" + appDataStr + "');");
+								});
+							})(eventName);
+						}
+					}
+					if (window.WebViewJavascriptBridge) {
+						window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+						handleCallback(func, args);
+					} else {
+						document.addEventListener('WebViewJavascriptBridgeReady', function() {
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						}, false);
+					}
+				} else {
+					return false;
+				}
+				return true;
+			}
+			setShareInfo({
+				title: '吃谜少女隆重上线',
+				describe: '抖动文化与良筑良作联袂打造“悬疑推理”动态漫画，国内知名CV倾情献声。为了青春永驻，勿让智商掉线！',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201603/mi/images/320.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = wxqq.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				wxqq.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isApp || isWeixin || isQQ || isWeibo) {
+					header.style.display = 'none';
+				}
+			}
+		</script>
+		<script src="http://cdn.icomicool.cn/m/m-common/js/fastclick.min.js"></script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

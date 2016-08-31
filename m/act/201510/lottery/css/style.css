@@ -1,0 +1,126 @@
+html {
+	font-size: 20px;
+}
+body, ul, li, p {
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: #c3faff url(../images/bg.png) no-repeat;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.8;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
+	padding-bottom: 2.825rem;
+}
+ul, li {
+	list-style: none;
+}
+.loading-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background: rgba(0,0,0, .5);
+}
+.loading-page:after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	content: "";
+	border: 5px solid rgba(255,255,255, .4);
+	border-right-color: rgba(255,255,255, 1);
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+	border-radius: 50%;
+	-webkit-animation: spin linear 1s infinite;
+	        animation: spin linear 1s infinite;
+}
+.loaded .loading-page {
+	display: none;
+}
+.records {
+	margin: 0 .9rem;
+	margin-top: 13.45rem;
+	padding: 0 1rem;
+	height: 6.7rem;
+	overflow: hidden;
+	font-size: .8rem;
+	color: #ffc000;
+	text-align: center;
+}
+.records-list li {
+	line-height: 2.1;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.awards-list {
+	margin-top: 4.4rem;
+	padding-left: 1.7rem;
+}
+.awards-list li {
+	height: 3.25rem;
+	width: 7.3rem;
+	margin-bottom: 2.45rem;
+	background: #fff url(../images/awards.jpg) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.awards-list .second {
+	background-position: 0 25%;
+}
+.awards-list .third {
+	background-position: center;
+}
+.awards-list .fourth {
+	background-position: 0 75%;
+}
+.awards-list .fifth {
+	background-position: bottom;
+}
+.bottom-btn {
+	display: none;
+	margin: 0 auto;
+	margin-top: 3.9rem;
+	width: 6.875rem;
+	height: 3.3rem;
+	background: url(../images/btn.png) no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+#download-btn {
+	background-position: bottom;
+}
+.download-tip {
+	display: none;
+	margin-top: 1em;
+	font-size: .7rem;
+	text-align: center;
+	color: #019aa7;
+}
+
+@-webkit-keyframes spin {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}

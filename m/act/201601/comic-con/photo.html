@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>漫展精选集</title>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* gallery */
+.gallery {padding:1rem;}
+.gallery li{display:block;float:left;margin:.2rem;width:6.2rem;border: .2rem #ff95a1 solid;border-radius:.7rem;}
+.gallery li a img{max-width:6.2rem;min-height:8.2rem;border-radius:.5rem;box-shadow: .2rem .2rem .4rem #ff95a1;}
+#auto-loop {
+	background: url(http://cdn.icomicool.cn/m/act/201601/comic-con/images/mz_02.jpg) repeat-y;background-size:100%;
+}
+.clearfix{overflow:auto;_height:1%}
+</style>
+
+<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/act/201601/comic-con/css/lightGallery.css" />
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/201601/comic-con/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/201601/comic-con/js/lightGallery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#auto-loop").lightGallery({
+		loop:true,
+		auto:false,
+		pause:4000
+	});
+	//页面字体大小全局改变
+function caclFontSize() {
+	var screenWid = document.documentElement.offsetWidth; //测试window.screen.availWidth,window.screen.width在各平台、各浏览器有差异，故舍弃
+	var deviceSizeRatio = window.devicePixelRatio;
+	var fixWid = 320; //设置页面宽度基准值
+	var htmlFontSize = (screenWid / fixWid) * 20; //字体大小比例，20为页面html样式字体大小
+	document.documentElement.style.fontSize = htmlFontSize + 'px';
+}
+//执行函数
+caclFontSize();
+window.onresize = caclFontSize;
+});
+</script>
+
+</head>
+<body>
+	<div>
+		<img src="images/mz_01.jpg" width="100%">
+
+<ul id="auto-loop" class="gallery clearfix">
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/1.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/1.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/2.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/2.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/3.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/3.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/4.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/4.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/5.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/5.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/6.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/6.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/7.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/7.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/8.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/8.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/9.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/9.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/10.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/10.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/11.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/11.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/12.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/12.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/13.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/13.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/14.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/14.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/15.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/15.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/16.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/16.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/17.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/17.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/18.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/18.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/19.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/19.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/20.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/20.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/21.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/21.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/23.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/23.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/24.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/24.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/25.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/25.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/26.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/26.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/27.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/27.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/28.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/28.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/29.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/29.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/30.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/30.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/31.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/31.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/32.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/32.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/33.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/33.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/34.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/34.jpg" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/35.jpg"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo/35.jpg" /></a></li>
+</ul>
+		<img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/mz_04.jpg" width="100%">
+	</div>
+</body>
+</html>

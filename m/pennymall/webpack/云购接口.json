@@ -1,0 +1,103 @@
+?cc_id=xxx&user_type=xxxx&cctoken=xxxx&deviceid=xxx
+
+yungou/act_id/periodicl/current
+
+{
+	"status": 0,
+	"data": {
+		"total_p": 5,
+		"current_p": 2,
+		"end_time": "" #时间错 
+	}
+}
+
+user
+
+{
+	"status": 0,
+	"data": {
+		"money": 500,
+		"cc_id": 300
+	}
+}
+
+
+yungou/act_id/periodicl/pid
+
+{
+	"status": 0,
+	"data": [
+		{
+			"status": "", # 1: 上架, 0: 售完
+			"title": "",
+			"rmb_price": "",
+			"pre_kubi": "",
+			"up_limit": "",
+			
+			"yb_nums": "", # 押宝份数
+			"yb_sold": "", # 已售份数
+			"yb_count": "", # 用户的押宝数量
+		}
+	]
+}
+
+
+yungou/act_id/good/goodid
+
+{
+	"status": 0,
+	"data": {
+		"status": "", # 1: 上架, 0: 售完
+		"title": "",
+		"rmb_price": "",
+		"pre_kubi": "",
+		"up_limit": "",
+		"yb_nums": "", # 押宝份数
+		"yb_sold": "", # 已售份数
+		"yb_count": "", # 用户的押宝数量
+	}
+}
+
+
+yungou/act_id/buy/goodid/nums
+
+{
+	"status": 0,
+	"data": {
+		"yb_count": 300
+	}
+}
+
+yungou/act_id/record/pid
+
+{
+	"status": 0,
+	"data": {
+		"good_id": "",
+		"title": "",
+		"time": "",
+		"num": "",
+		"result": ""
+	}
+}
+
+yungou/results/pid
+{
+	"status": 0,
+	"data": [
+		{
+			"pid": "",
+			"good_id": "",
+			"title": "",
+			"cc_id": "",
+			"nickname": "",
+		}, 
+	]
+}
+
+
+
+1. 商品列表区分类型 大额与普通
+2. 商品信息里图片的地址
+3. 商品列表里没有商品id
+4. 商品列表与获奖信息的请求重复

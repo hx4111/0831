@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>1月获奖榜单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="1月获奖榜单-粉丝助力人气急升榜">
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.clearfix:after {
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden
+			}
+			
+			.clearfix {
+				*+height: 1%;
+			}
+			
+			.top {
+				background: url(http://cdn.icomicool.cn/m/act/201602/fansAwards/images/fans_01.jpg) no-repeat;
+				height: 12rem;
+				background-size: 100%;
+			}
+			
+			.awards {
+				background: url(http://cdn.icomicool.cn/m/act/201602/fansAwards/images/fans_02.jpg) no-repeat;
+				height: 19rem;
+				background-size: 100%;
+				padding-top: .9rem;
+			}
+			
+			.awards h2 {
+				font-size: .5rem;
+			}
+			
+			.awards span {
+				display: block;
+			}
+			
+			.awards {
+				font-size: .5rem;
+			}
+			
+			.awards_one,
+			.awards_three {
+				margin-left: 1.8rem;
+			}
+			
+			.awards_one img,
+			.awards_three img {
+				width: 7.1rem;
+				height: 4.6rem;
+				margin: -.8rem 0 0 .8rem;
+				border-radius: .4rem;
+			}
+			
+			.awards_one small,
+			.awards_three small {
+				width: 6rem;
+				display: block;
+				text-align: center;
+				line-height: 1.1rem;
+				color: #9f2a27;
+				font-size: .6rem;
+			}
+			
+			.awards_one li,
+			.awards_three li {
+				width: 5.5rem;
+				height: 4rem;
+				text-align: center;
+				margin-top: .4rem;
+				float: left;
+			}
+			
+			.awards_one h2,
+			.awards_three h2 {
+				padding-top: 1rem;
+			}
+			/* 季军 */
+			
+			.awards_two {
+				margin: .8rem 0 0 .8rem;
+			}
+			
+			.awards_two small {
+				width: 5rem;
+				display: block;
+				text-align: center;
+				line-height: 1.1rem;
+				color: #9f2a27;
+				font-size: .6rem;
+				float: right;
+				margin-right: 2rem;
+			}
+			
+			.awards_two img {
+				width: 7.1rem;
+				height: 4.6rem;
+				border-radius: .4rem;
+			}
+			
+			.awards_two p {
+				float: left;
+				margin-top: .3rem;
+			}
+			
+			.awards_two li {
+				width: 5.5rem;
+				height: 3rem;
+				text-align: center;
+				margin: 1rem 0 0 .7rem;
+				float: left;
+			}
+			
+			.awards_three {
+				margin-top: 1.2rem;
+			}
+			
+			.popularity {
+				background: url(http://cdn.icomicool.cn/m/act/201602/fansAwards/images/fans_03.jpg) no-repeat;
+				height: 8.8rem;
+				background-size: 100%;
+				padding-top: .9rem;
+			}
+			/* 列表 */
+			
+			.list {
+				background: #ff5654;
+				padding: 1rem 0;
+				font-size: .5rem;
+			}
+			
+			.list ul {
+				padding-left: .5rem;
+				clear: both;
+			}
+			
+			.list p {
+				background: #fff;
+				border-radius: .4rem;
+				width: 6.5rem;
+				height: 4rem;
+				padding: .2rem;
+				float: left;
+				margin-top: .8rem;
+			}
+			
+			.list img {
+				width: 6.5rem;
+				height: 4rem;
+				border-radius: .4rem;
+			}
+			
+			.list li {
+				background: url(http://cdn.icomicool.cn/m/act/201602/fansAwards/images/fans_06.jpg) no-repeat;
+				width: 8rem;
+				height: 4.5rem;
+				float: right;
+				background-size: 100%;
+				padding-top: .7rem;
+				text-align: center;
+			}
+			
+			.list li big {
+				color: #fff100;
+				font-size: 1rem;
+			}
+			
+			.list li big b {
+				margin-right: .5rem;
+			}
+			
+			.list li big small {
+				margin: 0;
+				position: absolute;
+				font-weight: bold;
+			}
+			
+			.list li span {
+				display: block;
+			}
+			
+			footer {
+				color: #fff;
+				background: url(http://cdn.icomicool.cn/m/act/201602/fansAwards/images/footer_bg.jpg);
+				font-size: .5rem;
+				text-align: center;
+				padding: 2rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        12月获奖榜单
+        <p>粉丝助力人气急升榜</p>
+    </h1>
+		<div class="loading-spinner"></div>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div>
+			<div class="top"></div>
+			<div class="awards">
+				<ul class="awards_one clearfix">
+					<small></small>
+					<li>
+						<h2></h2>
+						<span></span>
+						<a href="#"></a>
+					</li>
+					<p><img src="http://cdn.icomico.com/77_ccover_dbe6a3afd380ad8b.jpg?imageView2/2/w/540"></p>
+				</ul>
+				<ul class="awards_two clearfix">
+					<small></small>
+					<p><img src="http://cdn.icomico.com/77_ccover_dbe6a3afd380ad8b.jpg?imageView2/2/w/540"></p>
+					<li>
+						<h2></h2>
+						<span></span>
+						<a href="#"></a>
+					</li>
+
+				</ul>
+				<ul class="awards_three clearfix">
+					<small></small>
+					<li>
+						<h2></h2>
+						<span></span>
+						<a href="#"></a>
+					</li>
+					<p><img src="http://cdn.icomico.com/77_ccover_dbe6a3afd380ad8b.jpg?imageView2/2/w/540"></p>
+				</ul>
+			</div>
+			<div class="popularity"></div>
+			<div class="list clearfix">
+				<!--<ul>
+				<p><img src="http://cdn.icomico.com/77_ccover_dbe6a3afd380ad8b.jpg?imageView2/2/w/540"></p>
+					<li>
+						<small>1000￥ 10</small>
+						<h2>《水电费老客户》</h2>
+						<span>作者:玩儿完任务二</span>
+						<a href="#">点击查看</a>
+					</li>
+				</ul>-->
+			</div>
+			<footer>
+				特别提示：该榜单限独家签约连载中作品！
+			</footer>
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			var list = '';
+			var awards = getByClass("awards")[0];
+			for (var i = 0, len = data[1].Awards.length; i < len; i++) {
+				var res = data[1].Awards[i];
+				awards.getElementsByTagName("ul")[i].setAttribute("data-cid",res.id);
+				awards.getElementsByTagName("h2")[i].innerHTML = res.name;
+				awards.getElementsByTagName("span")[i].innerHTML = res.author;
+				awards.getElementsByTagName("small")[i].innerHTML = res.bonus;
+				awards.getElementsByTagName("img")[i].src = res.img;
+			}
+			for (var i = 0, len = data[1].winner_list.length; i < len; i++) {
+				var res = data[1].winner_list[i];
+				list += '<ul data-cid=' + res.id + '><p><img src="' + res.img + '"></p><li><big><b>' + res.bonus + '</b>' + res.up + '<small>↑</small></big><h2>《' + res.name + '》</h2><span>作者:' + res.author + '</span><a href="javascript:;">点击查看</a></li></ul>';
+			}
+			$(".list").html(list);
+			var oUl = document.querySelectorAll("ul"),
+				readComic;
+			if (isApp) {
+				readComic = function(cid, epid) {
+					callAppFunction('openEpisodeReaderPage', {
+						comic_id: cid,
+						ep_id: epid
+					});
+				}
+			} else {
+				readComic = function(cid, epid) {
+					window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + cid + '&ep_id=' + epid;
+				}
+			}
+//			var clickEventType=((document.ontouchstart!==null)?'click':'touchstart');
+			[].forEach.call(oUl, function(el) {
+				el.addEventListener("click", function() {
+					var cid = this.dataset.cid,
+						epid = 1;
+					readComic(cid, epid);
+				}, false);
+			});
+
+			function getByClass(clsName, parent) {
+				//定义函数getByClass()实现获取document或指定父元素下所有class为on的元素  
+				var body = document || document.documentElement,
+					oParent = parent ? document.getElementById(parent) : body,
+					elements = oParent.getElementsByTagName("*"),
+					arr = [];
+				for (var i = 0; i < elements.length; i++) {
+					if (elements[i].className == clsName) {
+						arr.push(elements[i]);
+					}
+				}
+				return arr;
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

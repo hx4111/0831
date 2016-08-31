@@ -1,0 +1,102 @@
+.nav-container {
+	width: 100%;
+}
+
+.nav-list {
+	overflow: hidden
+}
+.nav-inner {
+	// padding-left: 4%;
+	font-size: .6rem;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	    width: 88%;
+    margin: 0 auto;
+
+}
+
+.nav-inner li {
+		-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	background: #CFAA7F;
+	color: #472A16;
+	text-align:center;
+}
+
+
+.nav-inner .on {
+	background-color: #F0D3A5;
+	color: #472A16;
+}
+
+.nav-content {
+	text-align:center;
+	font-size: 1rem;
+}
+
+.post-address {
+	display: none;
+	position: fixed;
+	width: 70%;
+	top: 25%;
+	left: 1.5rem;
+	overflow: auto;
+	background-color: #EFD3A4;
+	color: #6A170E;
+	padding: .5rem .5rem;
+	border-radius: 5px;
+	font-size: .6rem;
+	box-shadow: 3px 3px 3px #180E04;
+	border: 1px solid #6A170E;
+}
+
+.post-pannel {
+	margin: .5rem 0;
+}
+
+.text-left {
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+}
+
+.text-right {
+	display: inline-block;
+	width: 65%;
+	text-align: center;
+}
+
+.text-right input {
+	border-radius: 5px;
+	outline: none;
+}
+
+.post-btn-pannel {
+	width: 80%;
+	margin: .5rem auto;
+}
+
+.post-btn-pannel button {
+	padding: .3rem;
+	background-color: #2D1103;
+	border: 1px solid #2D1103;
+	border-radius: 6px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.cancel-btn {
+	width: 40%;
+	margin-right: .6rem;
+}
+
+.submit-btn {
+	width: 40%;
+	margin-left: .6rem;
+}

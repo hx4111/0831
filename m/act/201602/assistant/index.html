@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>从此就这么看漫画</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="从此就这么看漫画">
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style type="text/css">
+			.imglist img {
+				width: 100%;
+				display: table;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 主要内容：开始 -->
+		<div class="imglist">
+	<img src="http://cdn.icomicool.cn/m/act/201602/assistant/images/index_01.jpg" alt="从此就这么看漫画" />
+	<img src="http://cdn.icomicool.cn/m/act/201602/assistant/images/index_02.jpg" alt="从此就这么看漫画" />
+	<img src="http://cdn.icomicool.cn/m/act/201602/assistant/images/index_03.jpg" alt="从此就这么看漫画" />
+	<img src="http://cdn.icomicool.cn/m/act/201602/assistant/images/index_04.jpg" alt="从此就这么看漫画" />
+	<img id="task" src="http://cdn.icomicool.cn/m/act/201602/assistant/images/index_05.jpg" alt="从此就这么看漫画" />
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			function jumpDownload() {
+				window.location.href = "http://m.app.comicool.cn/smart_open/main.php";
+			}
+			window.onload = function() {
+				var exchangeBtn = document.getElementById('task');
+				exchangeBtn.addEventListener("touchend", function() {
+					if (isApp) {
+						callAppFunction('returnToMainTab', {
+							"tab_name": "mine",
+						});
+					}
+				});
+				//如果是可米酷app
+				if (isApp) {
+					setByUserLoginStatus(
+						loginCallback,
+						function() {
+							exchangeBtn.addEventListener('touchend', jumpLoginPage, false);
+							//设置App里登录后的回调函数
+							callAppFunction('setJSCallback', {
+								'account_event': 'loginHandler'
+							});
+						}
+					);
+				} else {
+					exchangeBtn.addEventListener('touchend', jumpDownload, false);
+				}
+				window.loginHandler = function(obj) {
+					setByUserLoginStatus(loginCallback);
+					exchangeBtn.removeEventListener('touchend', jumpLoginPage);
+				}
+
+				function loginCallback(userInfo) {
+					exchangeBtn.addEventListener('touchend', function() {
+						callAppFunction('returnToMainTab', {
+							"tab_name": "mine",
+						});
+					}, false);
+				}
+
+				function jumpLoginPage() {
+					callAppFunction('openLoginPage', {});
+				}
+			}
+
+			function setByUserLoginStatus(isLogin, unLogin) {
+				var userInfo = {};
+				var done = [];
+				var cb = function(i) {
+					done.push(i);
+					//所有异步任务完成
+					if (fnQueue.length === done.length) {
+						typeof isLogin === 'function' && isLogin(userInfo);
+					}
+				};
+				var fnQueue = [
+					function(i) {
+						callAppFunction('getDeviceID', {}, function(DeviceID) {
+							userInfo.deviceid = DeviceID;
+							cb(i);
+						});
+					},
+					function(i) {
+						callAppFunction('getChannelId', {}, function(ChannelId) {
+							userInfo.channel = ChannelId;
+							cb(i);
+						});
+					},
+					function(i) {
+						callAppFunction('getAppVersionName', {}, function(AppVersionName) {
+							userInfo.version_code = AppVersionName.split('.').pop();
+							cb(i);
+						});
+					},
+					function(i) {
+						if (isIOSApp) {
+							userInfo.os_type = 'ios';
+						} else if (isAndroidApp) {
+							userInfo.os_type = 'anr';
+						}
+						cb(i);
+					}
+				];
+				callAppFunction('getAccountInfo', {}, function(result) {
+					var result = function() {
+						if (isAndroidApp) {
+							return result ? JSON.parse(result) : {};
+						}
+						return result;
+					}();
+					userInfo.ccid = result.ccid;
+					userInfo.usertype = result.usertype;
+					userInfo.cctoken = result.cctoken;
+					userInfo.username = result.nickname || 'TODO用户名';
+					//登录
+					if (result.cctoken && result.ccid && result.usertype) {
+						fnQueue.forEach(function(fn, i) {
+							fn(i);
+						});
+					} else {
+						//未登录
+						typeof unLogin === 'function' && unLogin();
+					}
+				});
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

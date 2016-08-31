@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>管理收货信息</title>
+	<meta name="keywords" content="可米酷,收货地址">
+	<meta name="description" content="管理收货信息">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css?_=1468223173180">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="header-block">
+		<div class="header-bar">
+			管理收货信息
+		</div>
+	</div>
+	<ul class="address-list">
+	</ul>
+	<div class="submit-block">
+		<button>新增收货地址</button>
+	</div>
+	<div class="no-address">暂无收货地址</div>
+<script src="js/address-config.js"></script>
+<script>
+
+//请求路径规则
+//index.html?ccid=XXX&cctoken=XXX&device_id=XXX&usertype=XXX
+//&oid=XXX 这种情况是直接传入订单号
+//&actid=XXX&goodsid=XXX&pid=XXX 这种情况时传入活动id、商品id和期次id（可选） 
+	"use strict";
+	var user = {
+		cc_id: getQueryString('ccid'),
+		cctoken: getQueryString('cctoken'),
+		device_id: getQueryString('device_id'),
+		usertype: getQueryString('usertype'),
+		pass: 1
+	};
+	var oid = getQueryString('oid'),
+		actid = getQueryString('actid'),
+		goodsid = getQueryString('goodsid'),
+		pid = getQueryString('pid'),
+		isExist = false;
+
+
+	window.onload = function() {
+
+		getAddressList(user);
+		$('.submit-block').on('click', function() {
+			window.location.href = 'addAddress.html' + window.location.search;
+		});
+
+		//删除地址;
+		$(document).on('click', '.del-block', function() {
+			var $delItem = $(this).parents('.address-item');
+			var delId = $delItem.data('aid');
+			new TipBox({str: '确认删除该地址?', btnText: ['确认', '取消'], btnCallback: function() {
+				if (this.innerText == '确认') {
+					//发送删除请求
+					$.ajax({
+						url: ajaxBase + 'api/v1/user/address/delete/' + delId,
+						dataType: 'jsonp',
+						data: user,
+						success: function(data) {
+							console.info(data);
+						}
+					});
+					$delItem.remove();
+				} else {
+					return;
+				}
+			}});
+		});
+
+		$(document).on('click', '.userinfo, .useraddress', function() {
+			var $item = $(this).parents('.address-item');
+
+			var username = $(this).find('.username').html();
+			var phoneNum = $(this).find('.userphone').html();
+			var userqq = $(this).find('.userqq').html();
+			var address = $(this).find('.address').html();
+			var info = '姓名: ' + username + ', 电话: ' + phoneNum + ', QQ: ' + userqq + ', 地址: ' + address;
+
+			var orderObj = {
+				address: info
+			};
+			if (getQueryString('oid')) {
+				orderObj.order_id = getQueryString('oid');
+			} else {
+				orderObj.act_id = getQueryString('actid');
+				orderObj.goods_id = getQueryString('goodsid');
+				if (getQueryString('pid')) {
+					orderObj.act_id = getQueryString('pid');
+				}
+			}
+
+			$.ajax({
+				url: ajaxBase + 'order/address',
+				dataType: 'jsonp',
+				data: orderObj,
+				success: function(data) {
+					if (data) {
+						window.location.href = document.referrer;
+					}
+				}
+			});
+			$item.siblings().removeClass('choose');
+			$item.addClass('choose');
+		});
+	};
+
+	function getOrderCheck() {
+		var jsonpData = {};
+		$.extends(jsonpData, user);
+		if (oid) {
+			jsonpData.orderid = oid;
+			$.ajax({
+				url: ajaxBase + 'api/v1/order/check',
+				dataType: 'jsonp',
+				data: jsonpData,
+				success: function(data) {
+					if (data && data.data) {
+						isExist = true;
+					}
+				}
+			})
+		} else if (actid && goodsid) {
+			jsonpData.actid = actid;
+			jsonpData.goodsid = goodsid;
+			$.ajax({
+				url: ajaxBase + 'api/v1/order/check',
+				dataType: 'jsonp',
+				data: jsonpData,
+				success: function(data) {
+					if (data && data.data) {
+						isExist = true;
+					}
+				}
+			})
+		} else {
+			isExist = false;
+			$('.no-address').html('暂无可领取的奖品').show();
+		}
+	}
+
+	function getAddressList(userObj) {
+		$.ajax({
+			url: ajaxBase + 'api/v1/user/address',
+			dataType: 'jsonp',
+			data: userObj,
+			success: function(data) {
+				if (data.data && data.data.length > 0) {
+					console.info(data);
+					renderAddressList(data.data);
+				} else {
+					$('.no-address').show();
+				}
+			}
+		});
+	}
+
+	function renderAddressList(data) {
+		var listHtml = '';
+
+		for (var i = 0, len = data.length; i < len; i++) {
+			var item = data[i];
+			listHtml +=
+				'<li class="address-item" data-aid="' + item.id + '">' +
+				'	<div class="userinfo">' +
+				'		<span class="username">' + item.name + '</span>' +
+				'		<span class="userphone">' + item.phone_num + '</span>' +
+				'	</div>' +
+				'	<div class="useraddress clearfix">' +
+				'		<div class="userqq">QQ: <span>' + item.qq + '</span></div>' +
+				'		<div class="address">' + item.province + item.city + item.district + item.address + '</div>' +
+				'		<div class="del-block">删除</div>' +
+				'	</div>' +
+				'</li>';
+		}
+
+		$('.address-list').html(listHtml);
+	}
+
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

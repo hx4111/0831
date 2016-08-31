@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画搜索|热门漫画_搜你所想-漫画从此就这么看</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画搜索,热门漫画,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,看漫画"/>
+    <meta name="description" content="漫画搜索|热门漫画:可米酷原创漫画，搞笑贱逗萌，少女情窦记，校园恐怖耽美不会少，丰富漫画连载内容看不完哟。"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zepto.js"></script>
+    <script src="js/config.js"></script>
+    <style type="text/css">
+        .list-container {
+            width: 100%;
+            position: relative;
+            padding-left: 3%;
+        }
+
+        .list-container li {
+            display: inline-block;
+            margin: 15px 16px;
+            -webkit-transition: all 0.5s;
+            width: 14%;
+        }
+
+        .focus-block {
+            -webkit-transform: scale(1.3);
+        }
+
+        li img {
+            border-radius: 10px;
+            width: 90%;
+        }
+
+        @media screen and (device-width: 960px) {
+            .list-container li {
+                width: 12%;
+            }
+
+            li img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body class="main-container">
+    <div class="header">
+        <div class="logo fl"></div>
+        <div class="header-list fr"></div>
+    </div>
+    <div class="container">
+        <ul class="list-container">
+
+        </ul>
+    </div>
+<script src="js/common-tv.js"></script>
+<script>
+
+    generatHeader('category');
+    var escUrl = 'index.html';
+    escPressEvent(escUrl);
+    setCookie('his', 'category', 30);
+    //分类
+    getByAjax({
+        container: $('.list-container'),
+        api: 'categorylist4h5',
+        jsonpCallback: 'jsonp_categorylist',
+        success: function (data) {
+            if (data.msg == 'success') {
+                var cateList = data.category_list.sort(function(a, b){return a.category_order-b.category_order});
+                var html = '';
+                for (var i = 0, len = cateList.length; i < len; i++) {
+                    var cate = cateList[i];
+                    var cover = cate.category_cover_url;
+                    var url = '/content/category-list.html?' + 'listpagetype=1' + '&listpageid=' + cate.category_id + '&listpagetitle=' + cate.category_title;
+                    var imgCutSize = '?imageView2/2/w/200';
+                    html += ''
+                            + '<li class="keyEventItem">'
+                            + '<a href="' + url + '">'
+                            + '<img src="' +  CONFIG.placeholder + '" data-src="'+ cover + imgCutSize +'" alt="">'
+                            + '</a>'
+                            + '</li>';
+                }
+                $('.list-container').html(html);
+                $('body').css('height', 'auto');
+
+                var keyEventConfig = {
+                    container: $('body'),
+                    'rowCnt': [0, 6],
+                    'eventArray': [$('.header-item'), $('.keyEventItem')],
+                    'firstFoucs': {x:1, y:0},
+                    'esckeyCallback': function () {
+                        window.location.href = 'index.html';
+                    }
+                };
+                new KeyPressEvent(keyEventConfig);
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

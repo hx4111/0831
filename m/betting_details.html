@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/betting.css" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1446605848_0024004.css" />
+	<title>押宝明细-押宝-可米酷原创动漫_条漫™</title>
+	<meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网" />
+	<meta name="description" content="可米酷漫画押宝活动,www.comicool.cn" />
+	<meta name="generator" content="Comicool" />
+	<meta name="author" content="Comicool Team and Comicool UI Team" />
+	<meta name="copyright" content="2014-2015 Comicool Inc." />
+	<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+	<script src="../js/config.js"></script>
+</head>
+<body>
+	<div class="betting_details" id="container">
+		<p>正在加载...</p>
+		<script type="text/template" id="tmpl-record">
+			<h2>押宝累计消耗{{bet_total_cost}}酷币，押中奖励{{bet_total_earn}}酷币</h2>
+			{{each bet_record as item index}}
+				<li><span>{{item.title}}</span> <em>{{item.subtitle}}</em></li>
+			{{/each}}
+		</script>
+	</div>
+	<script src="http://www.comicool.cn/common/js/template.js"></script>
+	<script src="m-common/js/app.js"></script>
+	<script>
+		function jsonp(options) {
+		    var src = options.url;
+		    var data = typeof options.data === 'object' ? options.data : null;
+		    var qs = serialize(data);
+		    var script = document.createElement('script');
+		    var head = document.getElementsByTagName('head')[0];
+
+		    if (qs) {
+		        if (src.indexOf('?') > -1) {
+		            src += '&' + qs;
+		        } else {
+		            src += '?' + qs;
+		        }
+		    }
+
+		    window[options.callback] = options.success;
+		    script.src = src;
+		    head.appendChild(script);
+
+		    function serialize(data) {
+		        var arr = [];
+		        for (var n in data) {
+		            arr.push(n + '=' + data[n]);
+		        }
+		        return arr.join('&');
+		    }
+		}
+
+		setByUserLoginStatus({
+			isLogin: function (userInfo) {
+				jsonp({
+					url: CONFIG.ajaxBase+'betdetail4h5',
+					// url: 'http://192.168.10.54:8888/betdetail4h5',
+					data: userInfo,
+					callback: 'jsonp_betdetail',
+					success: function (res) {
+//						console.log(res);
+						var html = template('tmpl-record', res);
+						document.getElementById('container').innerHTML = html;
+					}
+				});
+			},
+			unLogin: function () {
+				document.getElementById('container').innerHTML = '您尚未登录';
+			}
+		});
+	</script>
+</body>
+</html>

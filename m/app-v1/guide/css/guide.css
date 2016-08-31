@@ -1,0 +1,38 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #f7f5e9;
+}
+body.ios {
+	background: #fffef4;
+}
+img {
+	border: 0;
+}
+.wrap {
+	padding: 50px 0;
+	max-width: 600px;
+	margin: auto;
+}
+.wrap img {
+	width: 100%;
+	margin: 50px 0;
+}
+#qrcode-box {
+	display: none;
+	text-align: center;
+	padding: 0;
+}
+#qrcode-box img {
+	width: 50%;
+	margin: 0;
+}
+#qrcode-box p {
+	padding: 0 20px;
+}
+#qrcode {
+	display: inline-block;
+	width: 50%;
+	padding-top: 50%;
+	background-color: rgba(0,0,0, .1);
+}

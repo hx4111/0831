@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>六月新作推荐</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+
+<style type="text/css">
+html {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+body { font-size: 1.4rem; line-height: 1.42; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+* { margin: 0; padding: 0;}
+img { border:none; vertical-align:middle; width: 100%;}
+a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; }
+a:active { outline: 0; }
+a:active { color: #006699; }
+body { background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+.pagebox { width: 100%;}
+
+.imglist li { position: relative;}
+.imglist li .btnbox { width: 100%; position: absolute; top: 0; left: 0; z-index: 50; font-size: 0;}
+.imglist li a { display: none; width: 100%;}
+.imglist li a.curr { display: inline-block;}
+
+.imglist li .btnbox-spec { width: 100%; position: absolute; bottom: 8%; left: 0; z-index: 50; font-size: 0;}
+
+</style>
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        六月新作推荐
+        <p>小伙伴们，六月新作漫画预告即将来袭咯~~~</p>
+        <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/share-img2.jpg" alt="可米酷漫画,comicool" />
+    </h1>
+
+    <article class="pagebox may-news">
+    	<header class="page-head">
+            <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/top.jpg" alt="可米酷漫画,comicool" />
+        </header>
+        <section>
+            <ul class="imglist">
+                <li>
+                    <div class="btnbox">
+                        <a href="javascript:;" class="btn"><img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/btn.png" /></a>
+                    </div>
+                    <div class="imgbox">
+                        <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/1.jpg" alt="可米酷漫画,comicool" />
+                    </div>
+                    <!--curr"   onclick="openDetailPage(1092)" 好朋友#1092-->
+                </li>
+                <!-- <li>
+                    <div class="btnbox">
+                        <a href="javascript:;" class="btn"><img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/btn.png" /></a>
+                    </div>
+                    <div class="imgbox">
+                        <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/2.jpg" alt="可米酷漫画,comicool" />
+                    </div>
+                </li> -->
+                <li>
+                    <div class="btnbox">
+                        <a href="javascript:;" class="btn"><img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/btn.png" /></a>
+                    </div>
+                    <div class="imgbox">
+                        <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/3.jpg" alt="可米酷漫画,comicool" />
+                    </div>
+                    <!--curr"   onclick="openDetailPage(1094)" 机装魅魔#1094-->
+                </li>
+                <li>
+                    <div class="btnbox">
+                        <a href="javascript:;" class="btn"><img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/btn.png" /></a>
+                    </div>
+                    <div class="imgbox">
+                        <img src="http://cdn.icomicool.cn/m/act/201505/june-news/images/4.jpg" alt="可米酷漫画,comicool" />
+                    </div>
+                    <!--curr"   onclick="openDetailPage(1095)" 丘比丘比特#1095-->
+                </li>
+            </ul>
+        </section>
+    </article>
+</body>
+<script src="http://cdn.icomicool.cn/m/m-common/js/zepto.min.js"></script>
+<script type="text/javascript">
+    //客户端分享按钮，页面传 调用接口数据
+    var ua = navigator.userAgent.toLowerCase();
+    //获取设置的苹果安卓客户端ua信息
+    var isApp = (/icomico/i.test(ua)) ? true : false ;
+
+    (function(){
+        var shareJsonObj = {
+            'title' : '六月新作推荐',
+            'describe' : '小伙伴们，六月新作漫画预告即将来袭咯~~~',
+            'imageurl' : 'http://cdn.icomicool.cn/m/act/201505/june-news/images/share-img.jpg',
+            'page_url' : 'http://m.comicool.cn/act/201505/june-news/index.html'
+        };
+        var shareJsonStr = JSON.stringify(shareJsonObj);
+            
+        if( isApp ){
+            try {
+                comicool.showShareBtn(shareJsonStr);
+            } catch (e) {
+                window.location.href= 'http://comicool/showShareBtn?title=' + shareJsonObj.title + '&describe=' + shareJsonObj.describe + '&imageurl=' + shareJsonObj.imageurl;
+            }
+        }
+    })();
+
+    function openDetailPage(comicId){
+        var actJsonObj = {
+            'comic_id': comicId
+        };
+        var actJsonStr = JSON.stringify(actJsonObj);
+
+        if( isApp ){
+            try {
+                comicool.openComicDetailsPage(actJsonStr);
+            } catch (e) {
+                window.location.href="http://comicool/openComicDetailsPage?comic_id=" + comicId;
+            }
+        }else{
+            window.location.href = 'http://m.comicool.cn/content/detail.html?comic_id=' + comicId;
+        }
+    }
+ 
+    //百度统计代码安装
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+</script>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>新年特别企划之勇者传说</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="新年特别企划之勇者传说" />
+		<meta name="description" content="新年特别企划之勇者传说,www.comicool.cn" />
+		<meta name="generator" content="Comicool" />
+		<meta name="author" content="Comicool Team and Comicool UI Team" />
+		<meta name="copyright" content="2014-2015 Comicool Inc." />
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style>
+			@media screen and (min-width: 1025px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+				.header {
+					width: 640px;
+					margin: 0 auto;
+					right: 0;
+				}
+			}
+			
+			.imglist li {
+				position: relative;
+			}
+			
+			.imglist {
+				background: #fff;
+				margin: 0 auto;
+				text-align: center;
+			}
+			
+			.imglist li img {
+				width: 100%;
+				display: inherit;
+			}
+			
+			li {
+				position: relative;
+			}
+			
+			.colockbox {
+				overflow: hidden;
+				color: #000;
+				text-align: center;
+				margin: 0 auto;
+				width: 80%;
+			}
+			
+			.colockbox ul {
+				position: absolute;
+				bottom:.8rem;
+			}
+			
+			.colockbox ul span {
+				padding: 0 .1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 主要内容：开始 -->
+		<div class="pagebox">
+			<div>
+				<ul class="imglist">
+				</ul>
+			</div>
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+		<script>
+			var startDay = "";
+			var startHour = "";
+			var startMinute = "";
+			var startSecond = "";
+			var list = [
+//			'images/index_01.jpg',
+				'images/index_01.jpg',
+				'images/index_02.jpg',
+				'images/index_03.jpg',
+				'images/index_04.jpg',
+				'images/index_05.jpg',
+				'images/index_06.jpg',
+				'images/index_07.jpg',
+				'images/index_08.jpg',
+				'images/index_09.jpg',
+				'images/index_10.jpg',
+				'images/index_11.jpg',
+				'images/index_12.jpg',
+				'images/index_13.jpg',
+				'images/index_14.jpg',
+				'images/index_15.jpg'
+			];
+			loadpic(list, function() {
+				if (isMobile || isApp) {
+					var events = "touchend";
+				} else {
+					var events = "click";
+				}
+				$('.imglist li').eq(9).append('<div class="colockbox" id="colockbox1"><ul>活动倒计时:<span class="day">'+ startDay + '</span>天<span class="hour">'+startHour+'</span>时<span class="minute">'+startMinute+'</span>分<span class="second">'+startSecond+'</span>秒</ul></div>');
+				countDown("2016/02/07 00:00:00", "#colockbox1");
+				//				$('.imglist li').eq(9).on(events,function(){
+				//					alert(1)
+				//				});
+				$('.imglist li').eq(11).on(events, function() {
+					if (isApp) {
+						callAppFunction('returnToMainTab', {
+							"tab_name": "mine",
+						});
+					}
+				});
+				$('.imglist li').eq(13).on(events, function() {
+					window.location.href = "http://comicool.cn/act/201601/surperStar/index.html";
+				});
+				$('.imglist li:last').attr("id","exchange-btns")
+				$('.imglist li:last').on(events, function() {
+					callAppFunction('openMallPage', {});
+				});
+				var exchangeBtn = document.getElementById('exchange-btns');
+				//如果是可米酷app
+				if (isApp) {
+					setByUserLoginStatus(
+						loginCallback,
+						function() {
+							exchangeBtn.addEventListener('touchend', jumpLoginPage, false);
+							//设置App里登录后的回调函数
+							callAppFunction('setJSCallback', {
+								'account_event': 'loginHandler'
+							});
+						}
+					);
+				} else {
+					exchangeBtn.addEventListener('touchend', jumpDownload, false);
+				}
+				window.loginHandler = function(obj) {
+					setByUserLoginStatus(loginCallback);
+					exchangeBtn.removeEventListener('touchend', jumpLoginPage);
+				}
+
+				function loginCallback(userInfo) {
+					exchangeBtn.addEventListener('touchend', function() {
+						callAppFunction('openMallPage', {});
+					}, false);
+				}
+
+				function jumpLoginPage() {
+					callAppFunction('openLoginPage', {});
+				}
+				function jumpDownload() {
+				window.location.href = "http://m.app.comicool.cn/smart_open/main.php";
+			}
+			});
+			countDown("2016/02/07 00:00:00", "#colockbox1");
+			function countDown(time, id) {
+				var day_elem = $(id).find('.day');
+				var hour_elem = $(id).find('.hour');
+				var minute_elem = $(id).find('.minute');
+				var second_elem = $(id).find('.second');
+				var end_time = new Date(time).getTime(), //月份是实际月份-1
+					sys_second = (end_time - new Date().getTime()) / 1000;
+				var timer = setInterval(function() {
+					if (sys_second > 1) {
+						sys_second -= 1;
+						var day = startDay = Math.floor((sys_second / 3600) / 24);
+						var hour = startHour = Math.floor((sys_second / 3600) % 24);
+						var minute = startMinute = Math.floor((sys_second / 60) % 60);
+						var second = startSecond = Math.floor(sys_second % 60);
+						day_elem && $(day_elem).text(day); //计算天
+						$(hour_elem).text(hour < 10 ? "0" + hour : hour); //计算小时
+						$(minute_elem).text(minute < 10 ? "0" + minute : minute); //计算分钟
+						$(second_elem).text(second < 10 ? "0" + second : second); //计算秒杀
+					} else {
+						clearInterval(timer);
+					}
+				}, 1000);
+			}
+
+			function callAppFunction(func, args, callback) {
+				var argsString = JSON.stringify(args);
+				if (isAndroidApp) {
+					if (!comicool) {
+						return false;
+					}
+					var result = eval("comicool." + func + "('" + argsString + "');");
+					if (callback) {
+						callback(result);
+					}
+				} else if (isIOSApp) {
+					function handleCallback(func, args) {
+						if (func != "setJSCallback") {
+							return;
+						}
+						for (eventName in args) {
+							window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+								var appDataStr = JSON.stringify(data);
+								eval(args[eventName] + "('" + appDataStr + "');");
+							});
+						}
+					}
+					if (window.WebViewJavascriptBridge) {
+						window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+						handleCallback(func, args);
+					} else {
+						document.addEventListener('WebViewJavascriptBridgeReady', function() {
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						}, false);
+					}
+				} else {
+					return false;
+				}
+				return true;
+			}
+			// 图片递归加载
+			function loadpic(list, callback) {
+				if ($.isArray(list) && list.length) {
+					var item = list.shift(),
+						image = new Image(),
+						$imgHtml = $('<li></li>');
+					// loadpic(list);
+					image.src = item;
+					image.alt = '独家专访西陵学院作者集山绿米';
+					image.onload = function() {
+						$('.imglist').append($imgHtml);
+						$imgHtml.append($(this));
+						loadpic(list, callback);
+					};
+				} else {
+					$.isFunction(callback) && callback(list);
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

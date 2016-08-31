@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>可米酷漫画|寻师伏魔录主题</title>
+    <meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载,寻师伏魔录主题"/>
+    <meta name="description" content="寻师伏魔录主题|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧"/>
+    <link href="css/devIndex.css" rel="stylesheet" type="text/css"/>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oVideo = document.getElementById("video");
+            if (document.all && !window.atob) { //IE9以下
+                oVideo.innerHTML = '<script src="http://cdn.icomicool.cn/act/special/seven/flowplayer-3.2.11.min.js" type="text/javascript"><\/script><div id="player"><object onclick="_hmt.push([\'_trackEvent\', \'video\', \'play\', \'xunshitv\']);" width="100%" height="100%" id="player_api" name="player_api" data="http://cdn.icomicool.cn/act/special/seven/flowplayer-3.2.12.swf" type="application/x-shockwave-flash"><param name="allowfullscreen" value="true"><param name="allowscriptaccess" value="always"><param name="quality" value="high"><param name="bgcolor" value="#000000"><param name="flashvars" value="config={&quot;clip&quot;:{&quot;url&quot;:&quot;http://cdn.icomicool.cn/act/special/xunshi/images/xunshi.mp4&quot;,&quot;autoPlay&quot;:false,&quot;autoBuffering&quot;:true},&quot;playerId&quot;:&quot;player&quot;,&quot;playlist&quot;:[{&quot;url&quot;:&quot;http://cdn.icomicool.cn/act/special/xunshi/images/xunshi.mp4&quot;,&quot;autoPlay&quot;:false,&quot;autoBuffering&quot;:true}]}"></object></div><script>flowplayer("player", "http://cdn.icomicool.cn/act/special/seven/flowplayer-3.2.12.swf", { clip: { url: "http://cdn.icomicool.cn/act/special/xunshi/images/xunshi.mp4", autoPlay: false, autoBuffering: true} });<\/script>';
+            } else {
+                var playtv = $("#playTv");
+                var flag = true;
+                playtv.on("click", function () {
+                    if (flag) {
+                        playtv.get(0).play();
+                        flag = false;
+                    } else {
+                        playtv.get(0).pause();
+                        flag = true;
+                    }
+                })
+            }
+            $("#down_look").on("click", function () {
+                $(".bg").show();
+                $("#ewm").show();
+            })
+            $(".bg").on("click", close);
+            $("#ewm").on("click", close);
+
+            function close() {
+                $(".bg").hide();
+                $("#ewm").hide();
+            }
+        }
+    </script>
+</head>
+
+<body>
+<!--遮罩层-->
+<div class="bg"></div>
+<div class="bg-index bg-index01">
+    <div class="inner">
+        <div id="video">
+            <video id="playTv" onclick="_hmt.push(['_trackEvent', 'video', 'play', 'xunshitv'])" src="http://cdn.icomicool.cn/act/special/xunshi/images/xunshi.mp4" width="100%" height="100%" poster="http://cdn.icomicool.cn/act/special/xunshi/images/tv.jpg" controls="controls">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+<div class="bg-index bg-index02">
+</div>
+<div class="bg-index bg-index03">
+    <div class="inner">
+        <div class="wrap">
+            <p class="f14px orange fh20 mb20">天真无邪的小猴子，历尽沧海桑田，成佛还是成魔？</p>
+            <p class="f14px orange fh20 mb20">那少年时期的心愿是否还要坚持？</p>
+            <p>
+                <a href="http://www.comicool.cn/content/reader.html?comic_id=10622&ep_id=1&update_weekday=1"
+                   target="_blank"><img id="online_look"
+                                        src="http://cdn.icomicool.cn/act/special/seven/images/pc_watch.png" width="156"
+                                        height="54"/></a> <span class=" pl20"><img id="down_look"
+                                                                                   src="http://cdn.icomicool.cn/act/special/seven/images/app_watch.png"
+                                                                                   width="198" height="54"/></span></p>
+            <div id="ewm">
+                <div class="fl"><img src="http://cdn.icomicool.cn/act/special/seven/images/scanning.png" width="224"
+                                     height="147"/></div>
+                <div class="fr scanning">
+                    <li>
+                        <a href="https://itunes.apple.com/cn/app//id945311534?ls=1&mt=8" target="_blank"><img id="ios"
+                                                                                                              src="http://cdn.icomicool.cn/act/special/seven/images/ios_icon.png"
+                                                                                                              width="104"
+                                                                                                              height="39"/></a>
+                    </li>
+                    <li>
+                        <a href="http://app.comicool.cn/package/comi.apk" target="_blank"><img
+                                id="android" src="http://cdn.icomicool.cn/act/special/seven/images/android_icon.png"
+                                width="104" height="39"/></a>
+                    </li>
+                    <p>下载APP，免费看漫画。
+                        <br/> 超多好看的彩色漫画等你来哟！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+
+</html>

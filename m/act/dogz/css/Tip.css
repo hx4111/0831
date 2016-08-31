@@ -1,0 +1,73 @@
+/*插件css*/
+#TipBox{
+    width:70%;
+    height:auto;
+    background:#fff;
+    border-radius:.5rem;
+    position:fixed;
+    left:50%;
+    top:50%;
+    -webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+    z-index:1001;
+}
+
+#TipBox .tip {
+    margin: .2rem;
+    text-align: center;
+    font-size: .8rem;
+}
+#TipBox .dec_txt{padding:1rem;}
+.btn-text {
+    text-align: center;
+    color: #fff;
+    border-radius: 3px;
+    background: #ff5d57;
+    cursor: pointer;
+    border-radius:.5rem;
+    padding: .3rem 1rem;
+     position:relative;
+    left:50%;
+    bottom:.5rem;
+    -webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+	width: 30%;
+}
+
+.mask{
+    width:100%;
+    height:100%;
+    background-color:#000;
+    opacity:.5;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index:1000;
+}
+
+#toast{
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate3d(-50%,0,0);
+    -ms-transform: translate3d(-50%,0,0);
+    -moz-transform: translate3d(-50%,0,0);
+    -webkit-transform: translate3d(-50%,0,0);
+    -o-transform: translate3d(-50%,0,0);
+    border-radius: .3rem;
+    background:#000;
+    color: #fff;
+    padding: .5rem 1rem ;
+    text-align:center;
+    opacity: .7;
+    -webkit-tap-highlight-color:transparent;
+    /*The good stuff */
+    -webkit-transition: opacity 0.5s ease-out; /* Saf3.2+, Chrome */
+    -moz-transition: opacity 0.5s ease-out; /* FF4+ */
+    -ms-transition: opacity 0.5s ease-out; /* IE10? */
+    -o-transition: opacity 0.5s ease-out; /* Opera 10.5+ */
+    transition: opacity 0.5s ease-out;
+    z-index: 9999;
+}

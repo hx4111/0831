@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>comicool可米酷</title>
+	<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+	<link rel="stylesheet" href="http://192.168.170.81:8020/comicool/m/css/style.css">
+	<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+	<style>
+		body {
+			background: #292929;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		/*li,ul {list-style: none;}*/
+	</style>
+</head>
+
+<body>
+<a href="javascript:history.go(-1);" class="login-cancel">取消</a>
+<div class="tbl">
+	<div class="tbl-cell">
+		<div class="login-logo">
+			<i class="icon-logo logo"></i>
+			<h1>可米酷漫画</h1>
+			<strong class="slogan">从此漫画就这么看</strong>
+		</div>
+		<div class="login-btns">
+			<!-- 			<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxe54f078ee26f6aa5&redirect_uri=http://post.comicool.cn/wxlogin.html&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect" class="btn-wechat">
+        <i class="icon-wechat"></i>微信账号登录
+    </a> -->
+
+			<?php
+
+			if (CLI_TYPE == 'weixin' || CLI_TYPE == 'weibo' || CLI_TYPE == 'qq' ) {
+				if(CLI_TYPE == 'weixin') {
+					echo '<a href="'.$weixin_url.'" class="login-btn" id="wx-btn">微信登录</a>';
+				}elseif(CLI_TYPE == 'weibo') {
+					echo '<a class="login-btn btn-weibo" href="'.$sae_url.'">
+						<i class="icon-weibo"></i>微博账号登录
+						<span id="btn-weibo"></span>
+					</a>';
+				}elseif(CLI_TYPE == 'qq') {
+					echo '<a class="login-btn btn-qq" href="index.php?goqq=1">
+							<i class="icon-qq"></i>QQ 账号登录
+							<span id="btn-qq"></span>
+						</a>';
+					}
+				} else {
+					echo '<a class="login-btn btn-qq" href="index.php?goqq=1">
+							<i class="icon-qq"></i>QQ 账号登录
+							<span id="btn-qq"></span>
+						</a>
+						<a class="login-btn btn-weibo" href="'.$sae_url.'">
+							<i class="icon-weibo"></i>微博账号登录
+							<span id="btn-weibo"></span>
+						</a>
+					';
+
+					if(!IS_MOBILE) {
+						echo '<a href="'.$weixin_url.'"  class="login-btn" id="wx-btn">微信登录</a>';
+					}
+				}
+			?>
+
+		</div>
+		<p class="login-legal">登录后意味着你同意可米酷漫画的<a href="app-v1/legacy.html">《使用协议》</a></p>
+	</div>
+</div>
+
+</body>
+
+</html>

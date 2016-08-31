@@ -1,0 +1,614 @@
+html {
+	font-size: 20px;
+}
+body, ul, li {
+	margin: 0;
+	padding: 0;
+}
+body.home {
+	background: url(../images/bg.png) no-repeat;
+	-webkit-background-size: cover;
+	        background-size: cover;
+	font-family: Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+}
+ul, li {
+	list-style: none;
+}
+a {
+	color: #24828b;
+}
+i, b, em {
+	font-style: normal;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+}
+.response-v {
+	display: block;
+	height: 100%;
+	margin: auto;
+}
+.response-h {
+	display: block;
+	width: 100%;
+}
+.text-center {
+	text-align: center;
+}
+
+.loading-page {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background: rgba(0,0,0, .5);
+}
+.loading-page:after {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	content: "";
+	border: 5px solid rgba(255,255,255, .4);
+	border-right-color: rgba(255,255,255, 1);
+	width: 50px;
+	height: 50px;
+	margin: -25px 0 0 -25px;
+	border-radius: 50%;
+	-webkit-animation: spin linear 1s infinite;
+	        animation: spin linear 1s infinite;
+}
+.focus-main {
+	position: relative;
+	height: 21rem;
+	opacity: 0;
+}
+.red-bags {
+	position: absolute;
+	top: 5%;
+	width: 100%;
+	height: 80%;
+	background: url(../images/red_bags.png) center top no-repeat;
+	-webkit-background-size: 80% auto;
+	        background-size: 80% auto;
+	opacity: 0;
+	-webkit-transition: all .5s .6s;
+	transition: all .5s .6s;
+	-webkit-transform: translate3d(0, -50%, 0);
+	transform: translate3d(0, -50%, 0);
+}
+.data-panel {
+	margin: 0 2.2rem;
+	padding-top: .6rem;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	height: 10.9rem;
+}
+.data-item {
+	margin-bottom: .4rem;
+	height: 3.9rem;
+	line-height: 3.9rem;
+}
+.data-item strong {
+	float: left;
+	width: 14.5rem;
+	text-align: center;
+	font-size: 1.4rem;
+	color: #7c500b;
+}
+.data-item .number {
+	float: left;
+	width: 10.1rem;
+	height: 2.3rem;
+	margin: .8rem 0;
+	text-align: center;
+	font-size: 2.13rem;
+	color: #ff5757;
+	overflow: hidden;
+}
+.data-item .number ul {
+	line-height: 1.2;
+	display: inline-block;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+.scroll-info {
+	margin: 0 2.2rem;
+	height: 3.1rem;
+	line-height: 3.1rem;
+	font-size: 1.2rem;
+	color: #b11212;
+	text-align: center;
+	overflow: hidden;
+}
+.scroll-info ul {
+	position: relative;
+	top: 0;
+	padding: 0 .5em;
+}
+.scroll-info li {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.goods-list {
+	position: relative;
+	z-index: 2;
+	margin-top: 6.8rem;
+	height: 32.5rem;
+}
+.goods-list li {
+	position: absolute;
+	border-radius: 50%;
+	overflow: hidden;
+	border: .3rem solid #fff;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	background: #fff;
+}
+.goods-list li img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.goods-list li:nth-child(1) {
+	top: 0;
+	left: 2rem;
+	width: 10.7rem;
+	height: 10.7rem;
+}
+.goods-list li:nth-child(2) {
+	top: 1.4rem;
+	left: 17.5rem;
+	width: 10.5rem;
+	height: 10.5rem;
+}
+.goods-list li:nth-child(3) {
+	top: 12.3rem;
+	left: 9.5rem;
+	width: 10.2rem;
+	height: 10.2rem;
+}
+.goods-list li:nth-child(4) {
+	top: 12.7rem;
+	left: 22.3rem;
+	width: 7.5rem;
+	height: 7.5rem;
+}
+.goods-list li:nth-child(5) {
+	top: 21.8rem;
+	left: 1.8rem;
+	width: 7.4rem;
+	height: 7.4rem;
+}
+.goods-list li:nth-child(6) {
+	top: 22.3rem;
+	left: 16.5rem;
+	width: 9.5rem;
+	height: 9.5rem;
+}
+.chongzhijun {
+	height: 29.6rem;
+	padding: 0 1.4rem;
+	text-align: center;
+	color: #24828b;
+	font-size: 1.2rem;
+}
+.chongzhijun img {
+	position: relative;
+	z-index: 2;
+}
+.index-btn {
+	display: block;
+	width: 11rem;
+	height: 4.2rem;
+	margin: auto;
+	margin-bottom: .8rem;
+	background: url(../images/index_btns.png) no-repeat;
+	-webkit-background-size: 400% 100%;
+			background-size: 400% 100%;
+}
+.invite-btn {
+	background-position: 33.33333%;
+}
+.login-btn {
+	background-position: 66.66666%;
+}
+.download-btn {
+	background-position: right;
+}
+.clouds {
+	position: relative;
+	overflow-x: hidden;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.clouds .cloud {
+	position: absolute;
+	background: url(../images/clouds.png) no-repeat;
+}
+.goods-area .cloud:nth-of-type(1) {
+	top: 6.6rem;
+	left: 26rem;
+	width: 4rem;
+	height: 2.4rem;
+	-webkit-background-size: 220% 250%;
+	background-size: 220% 250%;
+	-webkit-animation: cloud linear 10s infinite alternate;
+	animation: cloud linear 10s infinite alternate;
+}
+.goods-area .cloud:nth-of-type(2) {
+	top: 21rem;
+	left: 1rem;
+	width: 10rem;
+	height: 3rem;
+	-webkit-background-size: 100% 200%;
+	background-size: 100% 200%;
+	background-position: left bottom;
+	-webkit-animation: cloud linear 10s -10s infinite alternate;
+	animation: cloud linear 10s -10s infinite alternate;
+}
+.chongzhijun .cloud:nth-of-type(1) {
+	z-index: 3;
+	top: 4.5rem;
+	left: 26rem;
+	width: 4rem;
+	height: 2.4rem;
+	-webkit-background-size: 220% 250%;
+	background-size: 220% 250%;
+	-webkit-animation: cloud linear 10s -5s infinite alternate;
+	animation: cloud linear 10s -5s infinite alternate;
+}
+.chongzhijun .cloud:nth-of-type(2) {
+	top: 10.5rem;
+	left: 1rem;
+	width: 5rem;
+	height: 3rem;
+	-webkit-background-size: 220% 200%;
+	background-size: 220% 200%;
+	background-position: right top;
+	-webkit-animation: cloud linear 10s -15s infinite alternate;
+	animation: cloud linear 10s -15s infinite alternate;
+}
+
+/*页面加载完后的动画*/
+.loaded .loading-page {
+	display: none;
+}
+.loaded .focus-main {
+	-webkit-animation: down ease-out .6s .2s forwards;
+	animation: down ease-out .6s .2s forwards;
+}
+
+.loaded .red-bags {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+.top-tarento {
+	height: 44.4rem;
+	font-size: 1.2rem;
+	color: #4ba1bd;
+}
+.top-tarento .title {
+	height: 4rem;
+	line-height: 4rem;
+	margin: 0;
+	color: #fff;
+	font-size: 1.77rem;
+}
+.top-list {
+	width: 22.4rem;
+	height: 20.6rem;
+	margin: auto;
+	margin-top: 1.7rem;
+	padding-top: .3rem;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.top-list li {
+	padding: .7rem 0;
+	padding-left: 5rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: left;
+}
+.top-list .user-icon {
+	display: inline-block;
+	width: 2.8rem;
+	height: 2.8rem;
+	border: .2rem solid #fff;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border-radius: 50%;
+	overflow: hidden;
+	vertical-align: middle;
+	background: #fff;
+}
+.top-list .user-icon img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.top-list .user-nick {
+	display: inline-block;
+	width: 8.5rem;
+	padding-left: .5rem;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	font-size: 1.2rem;
+	color: #4598b0;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	vertical-align: middle;
+	word-break: break-all;
+}
+.top-list .user-invitetimes {
+	display: inline-block;
+	padding: 0 .3rem;
+	background-color: rgba(255, 214, 125, .44);
+	border-radius: .4rem;
+	color: #fe6b6b;
+	height: 2rem;
+	line-height: 2rem;
+}
+.top-list li:first-child .user-invitetimes {
+	background-color: rgba(255, 214, 125, 1);
+}
+.top-list .user-invitetimes > i {
+	display: inline-block;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	padding: 0 .2rem;
+	background: #ffd67d;
+	border-radius: 100%;
+}
+.top-tarento .tip {
+	margin: .5rem 0 .8rem;
+	text-align: center;
+	font-size: .8rem;
+}
+.top-tarento .cur-inviteinfo i {
+	font-size: 1.2em;
+	color: red;
+}
+
+/* 如何兑换 */
+.header {
+	height: 2rem;
+	padding: 0 .5rem;
+}
+.header .icon {
+	position: relative;
+	padding: 2rem;
+	display: inline-block;
+	color: #FF605C;
+	font-size: 1.5rem;
+}
+.header #back:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: .5rem;
+	margin-top: -.5rem;
+	border: .5rem solid;
+	border-top-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+}
+body.exchange-shiwu {
+	background: #fff3cf;
+}
+body.exchange-liuliang {
+	background: #c3faff;
+}
+body.exchange-chongzhi {
+	background: #ffccc8;
+}
+.guide-tab {
+	padding: 1rem;
+	margin: 2rem 0;
+	text-align: center;
+}
+.guide-tab li {
+	position: relative;
+	display: inline-block;
+	width: 33.333%;
+	padding-top: 28%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.guide-tab li:after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	content: "";
+	top: 0;
+	left: 0;
+	background: url(../images/guide_tab.png) left center no-repeat;
+	-webkit-background-size: 300% auto;
+	        background-size: 300% auto;
+}
+.guide-tab .liuliang:after {
+	background-position: center center;
+}
+.guide-tab .chongzhi:after {
+	background-position: right center;
+}
+.guide-tab .on {
+	background: url(../images/guide_tab_on.png) center bottom no-repeat;
+	-webkit-background-size: 100% auto;
+	        background-size: 100% auto;
+}
+.guide-main li {
+	display: none;
+}
+.guide-main .on {
+	display: block;
+}
+.guide-main img {
+	display: block;
+	width: 100%;
+}
+#exchange-btns {
+	position: relative;
+	z-index: 2;
+	display: block;
+	width: 37.8125%;
+	margin: auto;
+	margin-top: -24.84375%;
+	padding-top: 16.09375%;
+}
+
+/*如何推广*/
+body.tarento {
+	background: url(../images/tarento_bg.jpg) no-repeat;
+	-webkit-background-size: 100% auto;
+	        background-size: 100% auto;
+}
+.header-abs {
+	position: absolute;
+	top: 0;
+}
+.tarento .header .icon {
+	color: #25A6AB;
+}
+.tarento-intro {
+	height: 7.7rem;
+	margin: 0 2.5rem;
+	margin-top: 12.7rem;
+	padding: 1.5rem 1rem;
+	color: #0173ac;
+	font-size: 1.2rem;
+	line-height: 1.4;
+	text-indent: 2em;
+	box-sizing: border-box;
+}
+.tarento .time {
+	margin: 0;
+	margin-top: .8rem;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	font-size: 1.4rem;
+	text-align: center;
+	color: #fff;
+}
+.tarento-awards {
+	margin-left: 10.3rem;
+	margin-top: 10.5rem;
+}
+.tarento-awards li {
+	display: table;
+	height: 4.5rem;
+	margin-bottom: 2rem;
+	padding: 0 1rem;
+	font-size: 1.7rem;
+	box-sizing: border-box;
+}
+.tarento-awards li:nth-child(1) {
+	color: #f9aa00;
+}
+.tarento-awards li:nth-child(2) {
+	color: #ec4b4b;
+}
+.tarento-awards li:nth-child(3) {
+	color: #b54400;
+}
+.tarento-awards li strong {
+	font-size: 2.1rem;
+}
+.tarento-awards li .cell {
+	display: table-cell;
+	vertical-align: middle;
+}
+.tarento-awards li p {
+	margin: 0;
+	font-size: 1.4rem;
+}
+.tarento .invite-btn {
+	margin-bottom: 5rem;
+}
+
+@-webkit-keyframes spin {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg);
+	}
+}
+@-webkit-keyframes down {
+	0% {
+		-webkit-transform: translate3d(0, -100%, 0);
+	}
+	50% {
+		-webkit-transform: translate3d(0, 10%, 0);
+	}
+	80% {
+		-webkit-transform: translate3d(0, -5%, 0);
+	}
+	100% {
+		-webkit-transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+@keyframes down {
+	0% {
+		-webkit-transform: translate3d(0, -100%, 0);
+		        transform: translate3d(0, -100%, 0);
+	}
+	50% {
+		-webkit-transform: translate3d(0, 10%, 0);
+		        transform: translate3d(0, 10%, 0);
+	}
+	80% {
+		-webkit-transform: translate3d(0, -5%, 0);
+		        transform: translate3d(0, -5%, 0);
+	}
+	100% {
+		-webkit-transform: translate3d(0, 0, 0);
+		        transform: translate3d(0, 0, 0);
+		opacity: 1;
+	}
+}
+@keyframes cloud {
+	0% {
+		left: -20%;
+	}
+	100% {
+		left: 110%;
+	}
+}
+@-webkit-keyframes cloud {
+	0% {
+		left: -20%;
+	}
+	100% {
+		left: 110%;
+	}
+}

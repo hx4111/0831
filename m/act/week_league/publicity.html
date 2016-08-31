@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>可米酷漫画周赛获奖作品公示</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<link rel="stylesheet" href="css/publicity.css">
+		<script type="text/javascript">
+			(function() {
+				var caclFontSize = function() {
+					var screenWidth = document.documentElement.offsetWidth;
+					var baseWidth = 320;
+					var htmlFontSize = (screenWidth / baseWidth) * 20;
+					document.documentElement.style.fontSize = htmlFontSize + 'px';
+				};
+				caclFontSize();
+				window.addEventListener('resize', caclFontSize);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<script type="text/template" id="tmpl-league">
+			<strong class="period-num">{{league_info.league_order}}</strong>
+			<p class="period-date">{{league_info.league_date}}</p>
+			<ul class="rank-list">
+				{{each ep_list as item index}} {{if index < 3}} <li>
+					<a data-cid="{{item.comic_id}}" href="http://m.comicool.cn/content/reader.html?comic_id={{item.comic_id}}&ep_id={{item.ep_id}}">
+						<div class="comic-thumb">
+							<img src="http://cdn.icomico.com/{{item.ep_poster}}" alt="">
+							<em>{{index+1}}</em>
+						</div>
+						<div class="comic-info">
+							<div class="summary">
+								<h3>{{item.ep_title}}</h3>
+								<p>作者：{{item.author_name}}</p>
+							</div>
+							<div class="rating">{{(praiseCountMap[item.comic_id]/totalPraise*100).toFixed(2)}}%</div>
+						</div>
+					</a>
+					</li>
+					{{/if}}
+					 {{/each}}
+			</ul>
+		</script>
+		<script type="text/template" id="tmpl-remark">
+			{{if list.length}}
+			<ul class="remark-list">
+				{{each list as item index}}
+				<li>
+					<div class="judge-photo">
+						<img src="images/publicity/{{judges[item.judge_id].icon}}" alt="">
+					</div>
+					<div class="remark-right">
+						<h4>{{item.judge}}</h4>
+						<div class="remark-shape">
+							<p class="remark-content">{{item.content}}</p>
+							<p class="remark-comic">
+								<!--<a data-cid="{{item.comic_id}}" href="http://m.comicool.cn/content/reader.html?comic_id={{item.comic_id}}&ep_id={{idMap[item.comic_id]}}">——《{{item.comic}}》</a>-->
+								<a data-cid="{{item.comic_id}}" href="http://m.comicool.cn/content/reader.html?comic_id={{item.comic_id}}&ep_id=1">——《{{item.comic}}》</a>
+							</p>
+						</div>
+					</div>
+				</li>
+				{{/each}}
+			</ul>
+			<div class="publicity-statement">
+				<img src="images/publicity/publicity_statement.png">
+			</div>
+			{{/if}}
+		</script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/remark.js"></script>
+		<script>
+			function $(selector, parent) {
+				parent = parent || document;
+				return parent.querySelector(selector);
+			}
+
+			function $$(selector, parent) {
+				parent = parent || document;
+				return parent.querySelectorAll(selector);
+			}
+
+			function getQueryString(param) {
+				var qs = window.location.search.slice(1);
+				var r = new RegExp('&?' + param + '=([^&]+)', 'ig');
+				var match = r.exec(qs) || [];
+				return match[1];
+			}
+
+			function jsonp(options) {
+				var src = options.url;
+				var data = typeof options.data === 'object' ? options.data : null;
+				var qs = serialize(data);
+				var script = document.createElement('script');
+				var head = document.getElementsByTagName('head')[0];
+				if (qs) {
+					if (src.indexOf('?') > -1) {
+						src += '&' + qs;
+					} else {
+						src += '?' + qs;
+					}
+				}
+				window[options.callback] = options.success;
+				script.src = src;
+				head.appendChild(script);
+
+				function serialize(data) {
+					var arr = [];
+					for (var n in data) {
+						arr.push(n + '=' + data[n]);
+					}
+					return arr.join('&');
+				}
+			}
+
+			function render(templateID, data) {
+				document.getElementById(templateID).outerHTML = template(templateID, data);
+			}
+			(function() {
+				var ua = navigator.userAgent.toLowerCase(),
+					isMobile = ua.indexOf('mobile') > 0,
+					isWeixin = (/micromessenger/.test(ua)) ? true : false,
+					isQQ = (/qq\//.test(ua)) ? true : false,
+					isIOS = ua.indexOf('(ip') > 0 && isMobile,
+					isWeibo = (/Weibo/i.test(ua)) ? true : false,
+					isApp = (/icomico/i.test(ua)) ? true : false,
+					isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+					isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+				function callAppFunction(func, args, callback) {
+					var argsString = JSON.stringify(args);
+					if (isAndroidApp) {
+						if (!comicool) {
+							return false;
+						}
+						var result = eval("comicool." + func + "('" + argsString + "');");
+						if (callback) {
+							callback(result);
+						}
+					} else if (isIOSApp) {
+						function handleCallback(func, args) {
+							if (func != "setJSCallback") {
+								return;
+							}
+							for (eventName in args) {
+								window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+									var appDataStr = JSON.stringify(data);
+									eval(args[eventName] + "('" + appDataStr + "');");
+								});
+							}
+						}
+						if (window.WebViewJavascriptBridge) {
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						} else {
+							document.addEventListener('WebViewJavascriptBridgeReady', function() {
+								window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+								handleCallback(func, args);
+							}, false);
+						}
+					} else {
+						return false;
+					}
+					return true;
+				}
+				jsonp({
+					url: 'http://proxy.icomico.com/league4h5',
+					callback: 'jsonp_league',
+					data: {
+						league_order: getQueryString('league_order'),
+						vote_support: 1
+					},
+					success: function(res) {
+						console.log(res, remarkData);
+						var totalPraise = 0;
+						var league_order = res.league_info.league_order;
+						var league_status = res.league_info.league_status;
+						var idMap = {};
+						var praiseCountMap = {};
+						//league_order大于最新一期的公示，重定向
+						if (league_status !== 'ago' && !getQueryString('force')) {
+							var url = location.href.split('?')[0];
+							if (league_status === 'now') {
+								league_order -= 1;
+							} else if (league_status === 'later') {
+								league_order -= 2;
+							}
+							location.replace(url + '?league_order=' + league_order);
+							return false;
+						}
+						for (var i = 0, len = res.ep_ext_list.length; i < len; i++) {
+							var item = res.ep_ext_list[i];
+							var count = item.praise_count;
+							var comic_id = item.comic_id;
+							idMap[item.comic_id] = item.ep_id;
+							totalPraise += count;
+							praiseCountMap[item.comic_id] = count;
+						}
+						res.praiseCountMap = praiseCountMap;
+						res.totalPraise = totalPraise;
+						res.ep_list = res.ep_list.sort(function(item1, item2) {
+							return praiseCountMap[item2.comic_id] - praiseCountMap[item1.comic_id];
+						});
+						render('tmpl-league', res);
+						render('tmpl-remark', {
+							list: remarkData.remarks[league_order] || [],
+							judges: remarkData.judges,
+							idMap: idMap
+						});
+						if (isApp) {
+							var rankList = $('.rank-list');
+							var remarkList = $('.remark-list');
+							var slice = Array.prototype.slice;
+							var anchorsList = slice.call($$('a', rankList), 0).concat(slice.call($$('a', remarkList), 0));
+							for (var i = 0, anchor; anchor = anchorsList[i++];) {
+								(function() {
+									var cid = anchor.dataset.cid;
+									var eid = idMap[cid];
+									anchor.addEventListener('click', function(e) {
+										e.preventDefault();
+										callAppFunction('openEpisodeReaderPage', {
+											comic_id: cid,
+											ep_id: eid
+										});
+									}, false);
+								})();
+							}
+							callAppFunction('showShareBtn', {
+								'title': '可米酷漫画周赛获奖作品公示',
+								'describe': '可米酷漫画周赛获奖作品公示',
+								'imageurl': 'http://m.comicool.cn/act/week_league/images/publicity/share-img.jpg'
+							});
+						}
+					}
+				});
+			})();
+		</script>
+		<!-- 百度统计代码 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

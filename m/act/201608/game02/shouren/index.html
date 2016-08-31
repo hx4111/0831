@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>兽人崛起</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box img {
+				width: 100%;
+			}
+			
+			@media screen and (min-width: 1025px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px!important;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<img id="btn" src="http://cdn.icomicool.cn/m/act/201608/game02/shouren/bg.jpg" />
+		</div>
+		<script type="text/javascript">
+			function link() {
+				//					闪屏
+				window.location.href = 'http://cmcoo.cn/ad_srjq_st__splash';
+			}
+			window.onload = function() {
+				link();
+				var btn = document.getElementById('btn');
+				btn.addEventListener('click', function() {
+					link();
+				})
+			}
+		</script>
+	</body>
+
+</html>

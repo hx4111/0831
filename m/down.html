@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷下载页|漫画app_手机漫画_条漫™</title>
+<meta name="keywords" content="可米酷漫画下载,手机漫画,漫画app,原创漫画,二次元,漫画连载,条漫" />
+<meta name="description" content="下载页|漫画app:国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script type="text/javascript" src="http://cdn.icomicool.cn/app/app-common/js/islider.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/app/app-common/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://www.comicool.cn/common/common-v1.js"></script>
+<link rel="stylesheet" type="text/css" href="css/down.css" />
+</head>
+
+<body> 
+
+<div id="iSlider">
+	<header class="page-t cl">
+		<a class="h-lnk" href="http://m.award.comicool.cn"><img src="http://cdn.icomicool.cn/app/m/images/h-lnk.png" alt="可米酷漫画,comicool" /></a>
+		<div class="h-logo"><a class="home-lnk" href="http://m.comicool.cn/"><img src="http://cdn.icomicool.cn/m/images/h-logo.png" alt="可米酷漫画,comicool" /></a></div>
+	</header>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	var list = [{
+				'content' : '<div class="content page1"><div class="secbox sec1"><img src="http://cdn.icomicool.cn/m/images/img1.png" alt="可米酷漫画,comicool" /><a class="download" id="first-down-btn" href="javascript:;">立即下载</a></div><div class="pointMove"><img src="http://cdn.icomicool.cn/m/images/point.png" alt="可米酷漫画,comicool" /></div></div>'
+			},
+			{
+				'content' : '<div class="content page2"><div class="secbox sec2"><img src="http://cdn.icomicool.cn/m/images/img2.jpg" alt="可米酷漫画,comicool" /></div><div class="pointMove"><img src="http://cdn.icomicool.cn/m/images/point.png" alt="可米酷漫画,comicool" /></div></div>'
+			},
+			{
+				'content' : '<div class="content page3"><div class="secbox sec3"><img src="http://cdn.icomicool.cn/m/images/img3.jpg" alt="可米酷漫画,comicool" /></div><div class="pointMove"><img src="http://cdn.icomicool.cn/m/images/point.png" alt="可米酷漫画,comicool" /></div></div>'
+			},
+			{
+				'content' : '<div class="content page4"><div class="secbox sec4"><img src="http://cdn.icomicool.cn/m/images/img4.jpg" alt="可米酷漫画,comicool" /></div><div class="pointMove"><img src="http://cdn.icomicool.cn/m/images/point.png" alt="可米酷漫画,comicool" /></div></div>'
+			},
+			{
+				'content' : '<div class="content page5"><div class="secbox sec5"><img src="http://cdn.icomicool.cn/m/images/img5.png" alt="可米酷漫画,comicool" /></div><div class="download"><a href="#down" id="down-btn">点击下载</a></div><div class="tips hide"></div></div>'
+			}];
+
+	var islider = new iSlider({
+	    type: 'dom',
+	    dom: document.getElementById("iSlider"),
+	    data: list,
+	    duration: 1000,
+	    isVertical: true,
+	    onslidechange : function(){
+	    	//执行手机系统判断
+			checkPrompt();
+			$(window).resize();
+	    }// onslidechange回调函数结束
+	});
+
+	function isTipsShow(){
+		// 微信等判断出现提示内容
+		var downLink = document.getElementById('down-btn');
+		var firstDownBtn = document.getElementById('first-down-btn');
+		var bindEvents = function (btn) {
+			btn.ontouchstart = function(){
+				var MOBComico = {};
+			    var ua=navigator.userAgent.toLowerCase();
+			    MOBComico.isIOS = false;
+			    MOBComico.isMobile = ua.indexOf('mobile')>0;
+			    MOBComico.isWeixin = (/micromessenger/.test(ua)) ? true : false ;
+			    MOBComico.isQQ = (/qq\//.test(ua)) ? true : false ;
+			    MOBComico.isIOS = ua.indexOf('(ip')>0 && MOBComico.isMobile;
+			    MOBComico.isWeibo = (/Weibo/i.test(ua)) ? true : false ;
+				
+				//增加ul元素层级
+				//$('ul').css({ 'position' : 'relative' , 'zIndex' : 999 });
+
+				if (MOBComico.isIOS && MOBComico.isWeibo) {
+				  	$('.tips').removeClass('hide');
+				  	if (window.location.href.indexOf('#down') == -1 ) {
+				  		window.location.href = window.location.href + '#down';
+				  	}
+				}else{
+					window.location.href = combinUrl("app.", "/down.php");
+				  	//window.open( combinUrl("app.", "/down.php") );
+				}
+			}
+		};
+
+		if (downLink != null) {
+			bindEvents(downLink);
+		} else if (firstDownBtn != null) {
+			bindEvents(firstDownBtn);
+		}
+	}// 微信等判断出现提示内容
+
+	//微信链接跳转
+	var url = window.location.hash; //获取url中"#"符后的字串
+	if (url.indexOf("#") != -1) {
+	  var str = url.substr(1);
+	  if (str == "down") {
+	        islider.slideTo(4);// 跳转到下载页
+	  }
+	};
+
+	//去除判断安卓与苹果的区别
+	/*function isMobileSystem(){
+		isTipsShow();
+	}*/
+
+	//横屏图片宽高比
+	function viewSize(){
+		var zoom = 0,
+			viewWid = $(window).width(),
+			viewHei = $(window).height(),
+			viewImg = $('.secbox img'),
+		    clientRatio = viewWid / viewHei, //视口宽高比
+		    imageRatio = 640 / 1136; //图片初始宽高比
+		if (clientRatio > imageRatio) {
+			//console.log('横屏');
+			zoom = viewHei / 1136;
+			viewImg.height(viewHei + 'px').width(640 * zoom + 'px');
+			//alert(zoom);
+		} else {
+		  	//console.log('竖屏');
+		  	zoom = viewWid / 640;
+		  	viewImg.height(1136 * zoom + 'px').width(viewWid + 'px');
+			//alert(zoom);
+		};
+
+		//横竖屏样式判断
+		if (viewWid > viewHei) {
+		  $('.page-t .h-logo, .page-t a.h-lnk').css({'width':'16%'});
+		  $('.page5 .download a').css({'width':'16%','fontSize':'10px','padding-top':'0.8%','padding-bottom':'0.6%'});
+		  $('.pointMove img').width('2.5%');
+		  $('.page5 .links a').css({'fontSize':'10px'});
+		} else {
+		  $('.page-t .h-logo, .page-t a.h-lnk').css({'width':'32%'});
+		  $('.page5 .download a').css({'width':'36%','fontSize':'14px','padding-top':'2.6%','padding-bottom':'2.4%'});
+		  $('.page5 .links a').css({'fontSize':'14px'});
+		}
+	}
+
+	//获取页面URL参数名
+	function getQueryString(name) {
+	    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return decodeURI(r[2]); return null;
+	}
+
+	function checkPrompt() {
+		// juju中的链接非常变态，直接粗暴的在url后面增加?user=xxxx，变为http://xxx/xxx.html?channel=juju?user=xxx，导致我们的参数判断失效，因此加入直接在完整url中找channel的处理
+		if (getQueryString('ch') == 'ju' || getQueryString('channel') == 'juju' || window.location.href.indexOf("?channel=juju") > 0) {
+			var $ptxt = '<a class="simple-link" href="javascript:;"><p>juju暂不支持直接下载，<br>请打开浏览器输入comi.so！</p></a>';
+			$('.download').html('').append($ptxt);
+			$('a.simple-link').attr('href','http://comi.so');
+			return;
+		}
+		//isMobileSystem();
+		isTipsShow();
+	}
+
+	var lastViewWid = 0;
+	var lastViewHei = 0;
+	window.onresize = function(){
+		var viewWid = $(window).width(),
+			viewHei = $(window).height();
+		//alert('屏幕：' + viewWid + ', ' + viewHei);
+	  	viewSize();
+	  	checkPrompt();
+		if (viewWid == lastViewWid && viewHei == lastViewHei) {
+			islider._setting();
+		} else {
+			islider.reset();
+		}
+		viewSize();
+		checkPrompt();
+
+		lastViewWid = viewWid;
+		lastViewHei = viewHei;
+		
+	};
+	$(window).resize();
+
+	//重新load一次，消除阻止事件，以便下载
+	window.onload = function(){
+		islider.onslidechange();
+	}
+
+});
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body>
+</html>

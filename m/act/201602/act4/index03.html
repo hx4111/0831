@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>四重活动来袭</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="4重活动来袭">
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style>
+			@media screen and (min-width:640px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+			}
+			@media screen and (min-width:640px) {
+				#userTip {
+					width: 640px !important;
+					margin: 0 auto;
+				}
+			}
+			.index_01 {background: url(http://cdn.icomicool.cn/m/act/201602/act4/images/index_03.jpg) no-repeat;height: 33rem;background-size: 100%;}
+			.index01 {width: 3.3rem;height: 6.7rem;display:inline-block;}
+			.index02 {width: 3.3rem;height: 6.7rem;display:inline-block;}
+			.index03 {width: 5.5rem;height: 6.7rem;display:inline-block;}
+			.index04 {width: 3rem;height: 6.7rem;display:inline-block;}
+			.act-btn {margin-left: 3.5rem;margin-top: -2rem;}
+		</style>
+	</head>
+
+	<body>
+		<div class="loading-spinner"></div>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div class="index_01">
+		<a class="index01" href="index.html"></a>
+		<a class="index02" href="index02.html"></a>
+		<a class="index03" href="#"></a>
+		<a class="index04" href="index04.html"></a>
+		</div>
+		<div class="act-btn">
+			<img id="tie-btn" src="http://cdn.icomicool.cn/m/act/201602/act4/images/tie.jpg" width="70%">
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			window.onload = function() {
+				var tieBtn = document.getElementById('tie-btn');
+				tieBtn.addEventListener("touchend", function() {
+					callAppFunction('openPostDetail', {"post_id": 717200});
+				});
+			}
+		</script>
+		<!-- 百度统计 -->
+		 <script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

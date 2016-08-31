@@ -1,0 +1,39 @@
+body, p, ul, li {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: #91d5f8;
+}
+.wrap {
+    position: relative;
+}
+.wrap img {
+    width: 100%;
+    vertical-align: middle;
+    line-height: 1;
+}
+.links a {
+    position: absolute;
+    z-index: 9;
+}
+.links .post {
+    left: 2.15rem;
+    top: 53rem;
+    width: 11.48rem;
+    height: 1.6rem;
+}
+.links .wb1, .links .wb2, .links .wb3 {
+    left: 8.3rem;
+    width: 4rem;
+    height: 1.1rem;
+}
+.links .wb1 {
+    top: 112rem;
+}
+.links .wb2 {
+    top: 121.3rem;
+}
+.links .wb3 {
+    top: 129.8rem;
+}

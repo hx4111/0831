@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画列表页|漫画网_二次元</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫"/>
+    <meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/zepto.js"></script>
+    <script src="../js/config.js"></script>
+    <style>
+
+        .container {
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            left: 3%;
+        }
+
+        .video-container {
+            width: 63%;
+        }
+
+        .info-container {
+            width: 35%;
+            height: 300px;
+        }
+
+        .img-block img {
+            border-radius: 10px;
+            width: 80%;
+            max-height: 120px;
+        }
+
+        .item-title {
+            font-size: 30px;
+            color: #fff;
+        }
+
+        .item-des {
+            font-size: 20px;
+            color: #fff;
+            width: 80%;
+        }
+
+        .reader-btn {
+            position: absolute;
+            bottom: 10px;
+            font-size: 25px;
+            border: 2px solid #864F02;
+            border-radius: 10px;
+            opacity: 1;
+            /*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#691B1A), to(#782B1A));*/
+            width: 200px;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .playTv {
+            border: 2px solid #6c6c6c;
+            width: 100%;
+            max-height: 400px;
+        }
+
+        .focus-block.reader-btn {
+            border-color: #fff;
+        }
+
+    </style>
+</head>
+<body class="main-container">
+<div class="header">
+    <div class="logo fl"></div>
+</div>
+<div class="container">
+    <div class="fl video-container">
+        <video id="videoBox" class="playTv" src=""
+               poster="">
+            您的浏览器不支持 video 标签。
+        </video>
+    </div>
+    <div class="fr info-container">
+        <div class="img-block">
+            <img src="">
+            <p class="item-title"></p>
+            <p class="item-des ellipsis"></p>
+        </div>
+        <div class="reader-btn" data-a="">
+            在线看漫画
+        </div>
+    </div>
+</div>
+<script src="../js/common-tv.js"></script>
+<script type="text/javascript">
+    var comic_id = getQueryString('comic_id');
+    var video_id = getQueryString('video_id');
+    function init() {
+
+        if (comic_id == 10565) {
+            if (video_id == 'seven01') {
+                $('.img-block img').attr('src', 'http://cdn.icomicool.cn/images/pic/seven.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/seven01.jpg'});
+            } else if (video_id == 'seven02') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10565_63_acover_eb8b8f23893b70eb.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/seven02.jpg'});
+            } else if (video_id == 'seven03') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10565_8_acover_cab62c312bb07ee6.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/seven03.jpg'});
+            }
+            $('.item-title').html('&nbsp;Seven');
+            $('.item-des').html('&nbsp;呆萌少女夏梨被卷入无穷的灵异事件中，人气男李优君舍命来');
+        } else if (comic_id == 10622) {
+            if (video_id == 'xunshi01') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10622_ccover_261b56bedde1a58b.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xunshi01.jpg'});
+            } else if (video_id == 'xunshi02') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10622_2_acover_5939d778d79baa60.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xunshi02.jpg'});
+            }
+            $('.item-title').html('&nbsp;寻师伏魔录');
+            $('.item-des').html('&nbsp;天真无邪的小猴子，经历沧海桑田，成佛还是成魔？那少年时期的心愿是否还要坚持？');
+        } else if (comic_id == 77) {
+            if (video_id == 'shenshou01') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/77_ccover_d161715c5019cd78.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/shenshou01.jpg'});
+            }
+            $('.item-title').html('&nbsp;神兽退散');
+            $('.item-des').html('&nbsp;神兽变身萌宠，萌动世界');
+        }  else if (comic_id == 70) {
+            if (video_id == 'gll01') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_3_acover_86f81d5293f1f876.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_lt.jpg'});
+            } else if (video_id == 'gll02') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_4_acover_a08b5f5d6cb1e0c2.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_lt.jpg'});
+            } else if (video_id == 'gll03') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_1_acover_new.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_lt.jpg'});
+            } else if (video_id == 'gll04') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_33_acover_7c22ced97402cd2f.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_l.jpg'});
+            } else if (video_id == 'gll05') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_63_acover_aa80d0e392f0230e.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_yy.jpg'});
+            } else if (video_id == 'gll06') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/70_41_acover_bd8f1c735635d2e2.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/gll_yy.jpg'});
+            }
+            $('.item-title').html('&nbsp;诡来了');
+            $('.item-des').html('&nbsp;光明下有黑暗，阳光下也有阴影。是荒野外的鬼哭狼嚎还是城市里的魔光鬼影，是口口相传的故事还是心生暗鬼的幻相？');
+        }  else if (comic_id == 3701) {
+            if (video_id == 'tpz01') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/3701_ccover_c59920e8f1129d2f.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/tpz_tv.jpg'});
+            } else if (video_id == 'tpz02') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/3701_4_acover_d6ab98275d1cb6b2.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/tpz_02.jpg'});
+            } else if (video_id == 'tpz03') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/3701_18_acover_af2f9c8b0f644f9c.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/tpz_03.jpg'});
+            } else if (video_id == 'tpz04') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/3701_29_acover_01210b8d08de41ce.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/tpz_04.jpg'});
+            }
+            $('.item-title').html('&nbsp;太平镇');
+            $('.item-des').html('&nbsp;一切皆开始于太平镇，一切将平静于太平…镇…');
+        }  else if (comic_id == 10424) {
+            if (video_id == 'xlxy01') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10424_ccover_91c3cef4c6ddcb90.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xlxy_01.jpg'});
+            } else if (video_id == 'xlxy02') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10274_ccover_9cce8e3424d167bc.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xlxy_02.jpg'});
+            } else if (video_id == 'xlxy03') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10424_22_acover_ffa3d13e916b56f8.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xlxy_03.jpg'});
+            } else if (video_id == 'xlxy04') {
+                $('.img-block img').attr('src', 'http://cdn.icomico.com/10424_6_acover_119715fbdb0d4a4e.jpg');
+                $('.playTv').attr({'poster': 'http://cdn.icomicool.cn/tv/images/poster/xlxy_04.jpg'});
+            }
+            $('.item-title').html('&nbsp;西陵学院');
+            $('.item-des').html('&nbsp;本篇讲述位于鬼丘市西陵街区的西陵中学出现的各种诡异的灵异事件。其中尤以3年2班---就像被诅咒了一般一次又一次发生诡异的惨案！');
+        }
+        $('.reader-btn').data('a', '/content/detail.html?comic_id=' + comic_id);
+        setCookie('his', 'video', 30);
+        document.getElementById('videoBox').load();
+    }
+
+    init();
+
+    var escUrl = CONFIG.rootUrl + '/comi-video/list.html';
+    escPressEvent(escUrl);
+
+    var keyeventConfig = {
+        'rowCnt': [0, 0],
+        'eventArray': [$('.playTv'), $('.reader-btn')],
+        'enterkeyCallback': function () {
+            if ($('.focus-block')[0] == $('.playTv')[0]) {
+                window.location.href = CONFIG.rootUrl + '/comi-video/videoPlay.html?comic_id=' + comic_id + '&video_id=' + video_id;
+            }
+        }
+    }
+    new KeyPressEvent(keyeventConfig);
+
+</script>
+</body>
+</html>

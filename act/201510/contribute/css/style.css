@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,
+body {
+	-webkit-text-size-adjust: 100%;
+	/*overflow:hidden;谷歌字体小于12兼容*/
+	
+	width: 100%;
+}
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+table,
+tr,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+body,
+input,
+textarea,
+select {
+	font: 12px/1.5 Microsoft YaHei, Tahoma, Arial, Helvetica, Geneva, sans-serif;
+	color: #333;
+}
+ol,
+ul {
+	list-style: none;
+}
+input,
+textarea,
+select {
+	resize: none;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	outline: none;
+	blr: expression(this.onFocus=this.blur());
+	color: #333;
+	cursor: pointer;
+}
+a,
+a:hover {
+	text-decoration: none;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+}
+.cl:before,
+.cl:after {
+	content: "";
+	display: table;
+}
+.cl:after {
+	clear: both;
+}
+.cl {
+	zoom: 1;
+}
+body {
+	background-color: #64c8d6;
+}
+.pagebox {
+	margin: auto;
+	width: 974px;
+}
+.imglist {padding-bottom: 60px;}
+.imglist li {
+	position: relative;
+}
+.imglist li a.contribute-btn {
+	position: absolute;
+bottom: 30px;
+  left: 591px;
+  display: block;
+  width: 158px;
+	height: 52px;
+}
+.imglist li a.contribute-postlink {
+	position: absolute;
+	top: 245px;
+	left: 196px;
+	display: block;
+	width: 544px;
+	height: 52px;
+	z-index: 9999;
+}

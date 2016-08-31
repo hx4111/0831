@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>可米酷漫画详情页|漫画连载_在线漫画_条漫™</title>
+		<meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载" />
+		<meta name="description" content="漫画详情页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧" />
+		<script type="text/javascript" src="../js/config.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../js/common-pc.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+		<!--[if lt IE 9]><script src="../js/html5.js"></script><![endif]-->
+	</head>
+
+	<body class="body-detail">
+		<div class="top">
+			<!--可米酷漫画头部-->
+		</div>
+		<article class="container">
+			<article class="mainbox detail-box cl">
+				<nav class="crumbs">
+					<b>我的位置：</b><a href="../index.html" title="可米酷首页">首页</a><em>&gt;</em><span>漫画详情</span>
+				</nav>
+				<section class="fl detail-main loader loading">
+
+				</section>
+				<aside class="side-right">
+					<section class="rank-box cl">
+						<h2>官网作品排行榜</h2>
+						<div id="rank-drop-box" class="drop-box">
+							<div class="drop-inner">
+								<!-- <div class="drop-t">
+							<span>全部</span>
+							<i></i>
+						</div>
+						<div class="drop-b">
+							<p><span>全部111</span></p>
+							<p><span>全部222</span></p>
+						</div> -->
+							</div>
+						</div>
+						<div class="rank-con scroll-container loader loading">
+							<ul class="rank-list scroll-content">
+							</ul>
+						</div>
+					</section>
+					<!-- <div class="ad-img ad-img3">
+				<img src="../images/ad/4.jpg" />
+			</div>
+			<div class="ad-img ad-img4">
+				<img src="../images/ad/5.jpg" />
+			</div>
+			<div class="ad-img ad-img5">
+				<img src="../images/ad/6.jpg" />
+			</div> -->
+				</aside>
+			</article>
+		</article>
+		<div class="footers">
+			<!--底部引入-->
+		</div>
+		<script type="text/javascript" src="../js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.2.js"></script>
+		<script type="text/javascript" src="../js/global.js"></script>
+		<script type="text/javascript">
+			$(document).on('click', '.detail-span-sort', function() {
+				$(".icon-shangjiantou").toggleClass("icon-hricon46");
+				if ($('.detail-list').html()) {
+					var lista = $('.detail-list li');
+					$('.detail-list').html([].slice.call(lista).reverse());
+				} else {
+					var lista = $('.detail-grid a');
+					$('.detail-grid').html([].slice.call(lista).reverse());
+				}
+			});
+			(function() {
+				var comic_id = blacklistFilter(getQueryString('comic_id'));
+				if (comic_id == null || isFilterComic(comic_id)) {
+					$('.detail-main').addClass('loading-error');
+					return false;
+				}
+				//阅读列表页
+				$('.detail-main').getByAjax({
+					api: 'comicdetail4web',
+					data: {
+						'comic_id': comic_id
+					},
+					jsonpCallback: "jsonp_comicdetail",
+					success: function(data) {
+//						console.log(data);
+						if (data.msg == 'success') {
+							var firstEpid = 1;
+							// 修改ep_id不从1开始的逻辑处理
+							if (data.ep_list && data.ep_list.length > 0) {
+								firstEpid = data.ep_list[0].ep_id;
+							}
+							var html = '',
+								noticeHTML = '',
+								comicInfo = data.comic_info,
+								rating = comicInfo.rating || '0.0',
+								recent = getCookie(comic_id),
+								comicSource = comicInfo.comic_source || '',
+								update_weekday = comicInfo.update_weekday;
+
+							//修改标题信息
+							document.title = comicInfo.comic_title + '-可米酷漫画连载_在线漫画';
+							//如果有漫画基本信息
+							if (comicInfo.comic_title) {
+								//如果有公告
+								if (comicInfo.notice) {
+									noticeHTML += '' + '<div class="detail-board cl">' + '<i class="circle-bg circle-red">公告</i>' + '<p class="detail-board-text">' + comicInfo.notice + '</p>' + '</div>';
+								}
+								html += '' + '<div class="detail-cover cl">' + '<div class="fl detail-cover-img">' + '<img src="' + CONFIG.placeholder + '" data-src="' + CONFIG.imgBase + comicInfo.pc_vertical_poster + '?imageView2/1/w/200/h/270/q/100" alt="' + CONFIG.imgAlt + '">' + '</div>' + '<div class="fr detail-cover-info">' + '<h1 class="ellipsis" title="' + comicInfo.comic_title + '">' + comicInfo.comic_title + '</h1>' + '<p class="detail-cover-author cl">' + '<span class="fl detail-span-author"><i>作者：</i>' + comicInfo.comic_auth + '</span>' + '</p>' + '<div class="detail-cover-state">' + '<i class="circle-bg">更新</i>' + comicInfo.update_txt + '</div>' + '<p class="detail-cover-desc" title="' + comicInfo.comic_desc + '">' + comicInfo.comic_desc + '</p>' + '<div class="star-rank">' + '<ul class="star-group" data-score="' + rating + '"></ul>' + '<span class="star-text">' + rating + '</span>' + '</div>' + '</div>' + '</div>' + noticeHTML;
+								if (recent) {
+									var webUrl = '<div class="detail-cover-btns">' + '<a class="btn btn-arr btn-red" href="' + CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=' + recent + '&update_weekday=' + update_weekday + '">继续阅读</a>' + '<a class="btn btn-arr btn-blue" href="' + CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=' + firstEpid + '&update_weekday=' + update_weekday + '">阅读第一篇</a>' + '</div>';
+								} else if (data.ep_list == null) {
+									var webUrl = '<div class="detail-cover-btns">' + '<a class="btn btn-arr btn-black" href="javascript:;" target="_blank">暂无作品</a>' + '</div>';
+								} else {
+									var webUrl = '<div class="detail-cover-btns">' + '<a class="btn btn-arr btn-blue" href="' + CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=' + firstEpid + '" target="_blank">阅读第一篇</a>' + '</div>';
+								}
+								$('.detail-main').prepend(html).removeClass('loading');
+								$('.detail-cover-info').append(webUrl);
+								$('.star-group').starRank();
+								//ext_list可能为空
+								try {
+									if (data.comic_info.ext_list[1].usage === 'category') {
+										var cate = data.comic_info.ext_list[1].desc.split('|');
+										var cateHtml = '<span class="fr detail-span-cate"><i>' + data.comic_info.ext_list[1].title + '：</i>';
+										for (var n = 0; n < cate.length; n++) {
+											cateHtml += '<a href="http://www.comicool.cn/genre.html?category_id=' + cate[n].split('#')[0] + '">' + cate[n].split('#')[1] + '</a>';
+										}
+										cateHtml += '</span>';
+										$('.detail-cover-author').append(cateHtml);
+									}
+								} catch (e) {
+									console.error(e);
+								}
+							}
+							//如果有几话列表
+							if (data.ep_list) {
+								var epList = data.ep_list.reverse();
+								var len = epList.length;
+								var imgCutSize = '?imageView2/1/w/112/h/74/q/100';
+								var listHTML = '';
+								var listTop = '<div class="detail-list-top">' + '	<span class="fl detail-span-count"><i>共' + len + '话</i></span>' + '	<span class="fr detail-span-sort">剧集<i class="icon-shangjiantou iconfont"></i></span>' + '</div>';
+								var setAnchorBeginTag = function(epInfo) {
+									if (epInfo.url) {
+										return '<a href="' + epInfo.url + '" target="_blank">'
+									} else {
+										return '<a href="' + CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=' + epInfo.ep_id + '&update_weekday=' + update_weekday + '">';
+									}
+								};
+								var renderer = {
+									'grid': function(epList) {
+										for (var i = 0, len = epList.length; i < len; i++) {
+											var epInfo = epList[i];
+											listHTML += '' + setAnchorBeginTag(epInfo) + epInfo.ep_title + '</a>';
+										}
+										listHTML = listTop + '<div class="detail-grid">' + listHTML + '</div>';
+									},
+									'normal': function(epList) {
+										for (var i = 0; i < len; i++) {
+											var epInfo = epList[i];
+											listHTML += '' + '<li>' + setAnchorBeginTag(epInfo) + '<div class="detail-list-thumb">' + '<img src="' + CONFIG.placeholder + '" data-src="' + CONFIG.imgBase + epInfo.ep_poster + imgCutSize + '" alt="' + CONFIG.imgAlt + '">' + '</div>' + '<p class="detail-list-name">' + epInfo.ep_title + '</p>' + '<div class="detail-list-date num">' + epInfo.update_date + '</div>' + '</a>' + '</li>'
+										}
+										listHTML = listTop + '<ul class="detail-list">' + listHTML + '</ul>';
+									}
+								};
+								//判断comicSource漫画来源是否存在
+								if (comicSource || comicInfo.flag.indexOf('grid') > -1) {
+									renderer.grid(epList);
+								} else {
+									renderer.normal(epList);
+								}
+								$('.detail-main').append(listHTML);
+							}
+						}
+					}
+				});
+			})();
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,207 @@
+<header>
+	<!-- top strat -->
+	<div class="h-top">
+		<div class="container">
+			<ul class="h-top-left">
+				<!--<li><a href="#">加入收藏</a></li>-->
+				<li><a href="http://www.comicool.cn/download.html" target="_blank" rel="nofollow">下载客户端</a></li>
+			</ul>
+			<ul class="h-top-right fr">
+				<li class="h-top-t">
+				</li>
+				<li>
+					<a href="http://post.comicool.cn/index.php?g=admin" target="_blank" title="立即投稿">
+						<button type="button" class="btn btn-top-contribute">立即投稿</button>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- top end -->
+	<!-- menu start -->
+	<div class="h-header">
+		<div class="h-top-b cl container">
+			<div class="h-logo">
+				<a href="../index.html" title="可米酷官网"><img class="h-logo-img" src="http://www.comicool.cn/images/h-logo-img.png" alt="可米酷官网" /></a>
+			</div>
+			<nav class="h-nav">
+				<a class="nav-link-first curr" href="../index.html" title="首页">首页</a>
+				<a href="../genre.html" title="漫画分类">漫画分类</a>
+				<a href="../league.html" title="周赛">周赛</a>
+				<a href="../update.html" title="今日更新">今日更新</a>
+				<a href="../finished.html" title="完结作品">完结作品</a>
+			</nav>
+			<form action="" class="h-top-form fr">
+				<div class="h-sou">
+					<a href="javascript:;"><i class="iconfont icon-sousuo"></i></a>
+					<input type="text" placeholder="搜索你喜欢的" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- menu end -->
+	<!--<div class="wxlogin-dialog"><a href="javascript:;" class="login-clo">×</a>
+		<div id="wxlogin-cont"></div>
+	</div>-->
+	<!--======-->
+	<div id="comiLogin" style="display:none;">
+		<div class="page login">
+			<a href="javascript:;" class="login-clo fadeIn delay6">×</a>
+			<h1 class="fadeIn delay1 logo"><img src="../images/h-logo-img.png" /></h1>
+			<input id="loginUsername" placeholder="手机号" type="number" class="input fadeIn delay2" />
+			<input id="loginPassword" placeholder="密码" type="password" class="input fadeIn delay3" />
+			<!--<div class="mobileLoginFp clearfix fadeIn delay4"><span id="forgetPassword">忘记密码?</span><span id="signup">快速注册</span></div>-->
+			<button id="phoneLogin" class="button load-btn fadeIn delay5 btn">立即登录
+          <div class="load-state btn">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+        </button>
+			<div>
+				<h3 class="fadeIn delay6"><p>使用第三方登录</p></h3>
+			</div>
+			<div class="third-login-btn"><span class="weixin-btn fadeIn delay7"><i class="iconfont icon-weixin" data-btn="wx"></i></span><span class="qq-btn fadeIn delay8"><i class="iconfont icon-qq4login" data-btn="qq"></i></span><span class="weibo-btn fadeIn delay9"><i class="iconfont icon-weibo" data-btn="wb"></i></span>
+				<span class="pptv-btn fadeIn delay10"><i class="iconfont icon-pptv" data-btn="pptv"></i></span>
+			</div>
+			<div class="error-message">
+				<!-- 错误提示 -->
+			</div>
+		</div>
+		<div class="page signup">
+			<a href="javascript:;" class="login-clo fadeIn delay6">×</a>
+			<!--<div class="page-content">-->
+			<h2 class="fadeIn">快速注册</h2>
+			<div id="codes" class="fadeIn delay1"></div>
+			<li class="fadeIn delay2"><input id="regUsername" type="text" placeholder="请输入手机号"></li>
+			<li class="fadeIn delay3"><input id="regCode" class="captcha" type="text" placeholder="请输入验证码"><span class="sendCaptcha btn">发送验证码</span></li>
+			<li class="fadeIn delay4"><input id="regPassword" type="password" placeholder="请输入6位以上密码" /></li>
+			<button id="phoneReg" class="button load-btn fadeIn delay5 btn">立即注册
+          <div class="load-state btn">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+        </button>
+			<li class="fadeIn delay6 returnLogin">返回登录</li>
+			<!--</div>-->
+			<div class="error-message">
+				<!-- 错误提示 -->
+			</div>
+		</div>
+		<div class="page forgot">
+			<a href="javascript:;" class="login-clo fadeIn delay6">×</a>
+			<!--<div class="page-content">-->
+			<h2 class="fadeIn">重置密码</h2>
+			<div id="codes" class="fadeIn delay1"></div>
+			<li class="fadeIn delay2"><input id="forgotUsername" type="text" placeholder="请输入手机号"></li>
+			<li class="fadeIn delay3"><input id="forgotCode" class="captcha" type="text" placeholder="请输入验证码"><span class="sendCaptcha btn">发送验证码</span></li>
+			<li class="fadeIn delay4"><input id="forgotPassword" type="password" placeholder="请输入6位以上密码" /></li>
+			<button id="phoneForgot" class="button load-btn fadeIn delay5 btn">重置密码
+          <div class="load-state btn">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+        </button>
+			<li class="fadeIn delay6 returnLogin">返回登录</li>
+			<!--</div>-->
+			<div class="error-message">
+				<!-- 错误提示 -->
+			</div>
+		</div>
+	</div>
+</header>
+<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1465870698_396874.css" />
+<script src="http://cdn.icomicool.cn/gcommon/js/area_code.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://cdn.icomicool.cn/gcommon/js/md5.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//关于搜索部分
+	$('.h-top-form, .search-result-t').on('submit', function(e) {
+		var target = $(this).data('target');
+		e.preventDefault();
+		if (target == 'self') {
+			sendKey($('#search-result-kw'));
+		} else {
+			sendKey($('.h-top-form .h-sou input'), true);
+		}
+	});
+	$('.h-top-form .h-sou a').on('click', function() {
+		sendKey($('.h-top-form .h-sou input'), true);
+	});
+
+	function sendKey($input, openNewPage) {
+		var keyVal = $input.val().substr(0, 30);
+		/*
+				var url = location.origin.indexOf('.cn');
+
+				if (url != -1) {
+					url = 'http://www.comicool.cn/';
+				}else{
+					url = 'http://www.comicool.com/';
+				}*/
+		if (keyVal.length > 0) {
+			if (openNewPage) {
+				window.open('http://www.comicool.cn/search.html?keyword=' + keyVal);
+			} else {
+				window.location.href = 'http://www.comicool.cn/search.html?keyword=' + keyVal;
+			}
+		} else {
+			alert('字符串不能为空');
+		}
+	}
+	//	nav高亮
+	var nav = $(".h-nav a");
+	for (var i = 0, len = nav.length; i < len; i++) {
+		nav.removeClass("curr");
+		var index = nav.eq(i).attr("href");
+		if (document.location.href.indexOf(index) != -1) {
+			nav.eq(i).addClass("curr");
+			break;
+		}
+	}
+	//	酷炫展示登录
+	jQuery(document).ready(function($) {
+		// If firefox
+		if (navigator.userAgent.toLowerCase().match(/firefox/)) {
+			$('.browser-warning').removeClass('hidden');
+			setTimeout(function() {
+				$('.browser-warning').addClass('hidden');
+			}, 6 * 1000);
+		}
+		// Display window (and start animation) when document is ready
+		$(document).on('click', '.link-register', ComiLoginWindow.resetAnimation);
+		//		忘记密码btn
+		$('#forgetPassword').on('click', function() {
+				$('#phoneLogin').addClass('done').closest('#comiLogin').addClass('forgot');
+			})
+			//		快速注册btn
+		$('#signup').on('click', function() {
+				$('#phoneLogin').addClass('done').closest('#comiLogin').addClass('register');
+				ComiPhone.code('.signup h2');
+			})
+			//			返回登录btn
+		$('.returnLogin').on('click', function() {
+				ComiLoginWindow.resetAnimation()
+			})
+			// 立即登录
+		$('#phoneLogin').on('click', function() {
+				var t = $(this);
+				ComiPhone.login(t);
+			})
+			// 快速注册
+		$('#phoneReg').on('click', function() {
+				var t = $(this);
+				ComiPhone.register(t);
+			})
+			//		重置密码
+		$('#phoneForgot').on('click', function() {
+				var t = $(this);
+				ComiPhone.forgot(t);
+			})
+			//	 发送验证码
+		$('.sendCaptcha').on('click', function() {
+			ComiPhone.sendCaptcha();
+		})
+	});
+</script>

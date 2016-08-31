@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>漫画在线_漫画_在线漫画_可米酷电视版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="神兽退散全集,DJ情感系列漫画阅读,诡来了恐怖漫画,玻璃花在线漫画,高陵先生漫画,不可思议少年漫画在线阅读,逆转童话漫画全集"/>
+    <meta name="description"
+          content="可米酷漫画是国内最大最权威的手机彩色条漫阅读平台，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机漫画而生!"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zepto.js"></script>
+    <script src="js/config.js"></script>
+    <style>
+
+        .index-logo {
+            text-align: center;
+            margin: 3% 38%;
+        }
+
+        .index-container {
+            display: none;
+            text-align: center;
+            width: 90%;
+            margin: 7% auto;
+        }
+
+        .row-block {
+            display: inline-block;
+            width: 30%;
+            transition: all 0.5s;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .row-block img {
+            width: 80%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin: 0 auto;
+        }
+
+        #tv_pp_pre .row-block {
+            display: inline-block;
+            width: 49%;
+            transition: all 0.5s;
+            margin: 0 auto;
+            text-align: center;
+        }
+        #tv_pp_pre .row-block img {
+            width: 60%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            margin: 0 auto;
+        }
+
+        .focus-block {
+            -webkit-transform: scale(1.2);
+        } 
+
+        .xiaomi-bg {
+            display: none;
+            position: absolute;
+            bottom: 1rem;
+            left: 35%;
+        }
+        
+        .xiaomi-bg img {
+            width: 60%;
+        }
+
+        @media screen and (device-width: 960px) {
+            
+        }
+
+        @media screen and (device-width: 1443px) {
+
+        }
+    </style>
+</head>
+<body class="main-container">
+    <div class="index-logo"><img src="images/logo_1.png" alt="" width="60%"></div>
+    <div class="container index-container" id="tv_pp">
+        <div class="row-block" data-a="/comi-video/list.html">
+            <img src="images/index_01.jpg">
+        </div>
+        <div class="row-block" data-a="/comi-category.html">
+            <img src="images/index_02.jpg">
+        </div>
+        <div class="row-block" data-a="/comi-rank.html">
+            <img src="images/index_03.jpg">
+        </div>
+        <div class="xiaomi-bg">
+            <img src="images/xiaomi-bg-01.png">
+        </div>
+    </div>
+    <div class="container index-container" id="tv_pp_pre">
+        <div class="row-block" data-a="/comi-category.html">
+            <img src="images/index_02.jpg">
+        </div>
+        <div class="row-block" data-a="/comi-rank.html">
+            <img src="images/index_03.jpg">
+        </div>
+    </div>
+<script src="js/common-tv.js"></script>
+<script>
+    window.onload = function () {
+        var version = getQueryString('ch') || getCookie('ch');
+        setCookie('ch', version, 30);
+        var ch = '';
+        if (version == 'tv_pp_pre' || version == 'tv_letv') {
+            ch = 'tv_pp_pre';
+            document.getElementById('tv_pp_pre').style.display = 'block';
+        } else {
+            ch = 'tv_pp';
+            document.getElementById('tv_pp').style.display = 'block';
+
+            if (version == 'tv_xiaomi') {
+                document.getElementsByClassName('xiaomi-bg')[0].style.display = 'block';
+            }
+
+        }
+
+        var keyConfigObj = {
+            'rowCnt': [0],
+            'eventArray': [$('#' + ch + ' .row-block')]
+        }
+        new KeyPressEvent(keyConfigObj);
+    }
+
+    escPressEvent();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>疯狂动物城帅气呆萌同人活动</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="zootopia疯狂动物城帅气呆萌同人活动">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160309">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<!--<link rel="stylesheet" href="css/style.css">-->
+	   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        zootopia疯狂动物城帅气呆萌同人活动
+        <p>zootopia疯狂动物城帅气呆萌同人活动</p>
+        <img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/320.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_01.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_02.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_03.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_04.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_05.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_06.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_07.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_08.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_09.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+				<img src="http://cdn.icomicool.cn/m/act/201603/zootopia/images/index_10.jpg" alt="zootopia疯狂动物城帅气呆萌同人活动" />
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}}
+					{{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'>
+					{{/if}}
+					{{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script>
+			setShareInfo({
+				title: '疯狂动物城帅气呆萌同人活动',
+				describe: '疯狂动物城帅气呆萌同人活动',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201603/zootopia/images/320.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

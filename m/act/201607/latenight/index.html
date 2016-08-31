@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>可米酷深夜直达列车</title>
+	<meta name="keywords" content="可米酷,福利,老司机,魔人都市">
+	<meta name="description" content="可米酷深夜直达列车即将发车,直达魔人都市,快上车">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://www.comicool.cn/m/tpl/css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://cdn.icomicool.cn/m/js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		
+		.img-list li {
+			position: relative;
+		}
+
+		.img-list .re-img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			-webkit-animation-name: fadeInOut;
+			-webkit-animation-timing-function: ease-in-out;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-duration: 6s;
+			-webkit-animation-direction: alternate;
+		}
+
+		.img-list .praise-block {
+			position: absolute;
+			top: 2rem;
+			left: 40%;
+			width: 20%;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		@-webkit-keyframes fadeInOut {
+           0% {
+               opacity:1;
+            }
+           25% {
+               opacity:0;
+           }
+           50% {
+               opacity: 1;    
+           }
+           75% {
+               opacity:0;
+           }
+       }
+
+       .book-blcok {
+       		position: absolute;
+       		top: 4.5rem;
+       		left: 2rem;
+       		width: 75%;
+       		height: 7.5rem;
+       }
+
+       .later-show {
+			display: block;
+       }
+
+	</style>
+</head>
+<body>
+	<header class="header header-fixed header-shadow">
+		<a href="http://m.comicool.cn"><i class="l-icon iconfont icon-home"></i></a>
+		<i class="r-icon iconfont icon-share"></i>
+	</header>
+	<ul class="img-list">
+	<!-- http://cdn.icomicool.cn/m/act/201607/latenight/ -->
+		<li><img src="images/index_01.jpg" alt="可米酷深夜直达列车"></li>
+		<li><img src="images/index_02.jpg" alt="可米酷深夜直达列车"></li>
+		<li>
+			<img src="images/index_03.jpg" alt="可米酷深夜直达列车">
+			<img class="re-img" src="images/index_r_03.jpg" alt="可米酷深夜直达列车">
+		</li>
+		<li class="later-show">
+			<img src="images/index_04.jpg" alt="可米酷深夜直达列车">
+			<div class="go book-blcok" data-ccid="10907"></div>
+		</li>
+		<li class="later-show">
+			<img src="images/index_05.jpg" alt="可米酷深夜直达列车">
+			<img class="re-img" src="images/index_r_05.jpg" alt="可米酷深夜直达列车">
+			<div class="praise-block">
+				<div class="praise-cnt">233</div>
+				<img src="images/icon-no-praise.png" alt="快来点赞吧">
+			</div>
+		</li>
+	</ul>
+	<div id="post-and-Ctrl"></div>
+	<!-- 百度分享面板 -->
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+<script src="http://www.comicool.cn/m/tpl/dist/act-global.js?_=1468223173180" type="text/javascript"></script>
+<script>
+
+	window.onload = function() {
+
+	}
+
+	var PraiseFun = {
+		praiseEvent: function(id, reqData, callback) {
+			$.ajax({
+				url: 'http://dev.comicool.cn/',
+				dataType: 'jsonp',
+				jsonpCallback: 'jsonp_',
+				data: reqData,
+				success: function(data){
+					pullLock = false;
+					if(data) {
+						callback(data);
+					}
+				},
+				error: function(err) {
+					callback(err);
+				}
+			})
+		}
+	}
+
+	ReactDOM.render(React.createElement(PostAndCtrl, {postType: "topic2040"}), document.getElementById('post-and-Ctrl'));
+	
+	var shareJsonObj = {
+        'title' : '可米酷深夜直达列车',
+        'describe' : '可米酷深夜直达列车即将发车,直达魔人都市,快上车',
+        'imageUrl' : 'http://cdn.icomicool.cn/m/act/201607/latenight/images/latenight-share.jpg',
+        'pageUrl': window.location.href
+    };
+    setShareInfo(shareJsonObj, {
+        use: 'baidu',
+        init: initBaiduSharePanel
+    });
+
+    function initBaiduSharePanel() {
+        var _ = function(selector, parent) {
+                return (parent || document).querySelector(selector);
+            },
+            header = _('.header'),
+            trigger = _('.icon-share', header),
+            mask = _('#ShareBg'),
+            shareBtn = _('#share-btn'),
+            panelTitle = _('#ShareCon h2'),
+            panel = _('.bdsharebuttonbox'),
+            cancelBtn = _('.share-clo', panel),
+            panelImageCont = _('#ShareCon em'),
+            panelImage = new Image(),
+            hidePanel = function() {
+                mask.style.display = panel.style.display = 'none';
+            };
+        header.style.display = 'block';
+        panelTitle.innerHTML = this.title;
+        panelImage.src = this.imageUrl;
+        panelImageCont.appendChild(panelImage);
+        if (CONFIG.isWeixin) {
+			trigger.addEventListener('click', function() {
+				document.getElementById('ShareBg').style.display = 'block';
+				document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+				header.style.display = 'none';
+			});
+			document.getElementById('ShareBg').addEventListener('click', function(){
+				document.getElementById('ShareBg').style.display = 'none';
+				header.style.display = 'block';
+			})
+		} else {
+			trigger.addEventListener('click', function() {
+				mask.style.display = panel.style.display = 'block';
+			});
+			mask.addEventListener('click', hidePanel);
+			cancelBtn.addEventListener('click', hidePanel);
+		}
+    }
+</script>
+</body>
+</html>

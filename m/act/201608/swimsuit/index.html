@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>夏日清凉特辑泳装大作战</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="夏日清凉特辑泳装大作战">
+		<meta name="format-detection" content="telephone=no" />
+		<meta http-equiv="x-rim-auto-match" content="none"> 
+		<!--<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="http://m.comicool.cn/js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>-->
+	</head>
+
+	<body>
+		<div id="case_right" class="case">
+			<span class="close_btn">
+				X
+			</span>
+			<img src="images/right_01.jpg" />
+			<h3 id="treasure_epid">宝箱在<span>0</span>话哟</h3>
+			<li class="go" id="treasure_ccid"><img src="images/right_01.jpg" /></li>
+		</div>
+		<div id="case_error" class="case">
+			<span class="close_btn">
+				X
+			</span>
+			<ul>
+				<img src="images/error_01.jpg" />
+			</ul>
+		</div>
+		<div id="loading">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+			<li>
+				请稍等一会...
+			</li>
+		</div>
+		<div id="box">
+			<img id="top" src="images/index_01.jpg" alt="" />
+			<div id="clothing">
+				<img id="clothing_bg" src="images/1/1.jpg" />
+				<ul id="clothing_select">
+				</ul>
+			</div>
+			<div>
+				<button id="select_btn">选好就戳我哟</button>
+			</div>
+			<div class="line">
+				<img src="images/index_04.jpg" />
+			</div>
+			<div id="user_box" class="clearfix">
+				<ul id="user">
+					<span id="username">请登录</span>
+				</ul>
+
+				<ul id="manhua_btn">
+					<li id="opus" class="go"><img src="images/go_mh.jpg" /></li>
+				</ul>
+			</div>
+			<div class="line">
+				<img src="images/index_04.jpg" />
+			</div>
+			<div id="rule">
+				<h3>活动规则</h3>
+				<p>1.每位用户每天登陆即可获得一次游戏参与机会，每日12：30开始，晚上21:00结束哟~~</p>
+				<p>2.可通过观看对应漫画单话，获得通关游戏提示<br /> （记得点击“给你好看"哟）
+				</p>
+				<p>3.每日10名完成游戏的幸运用户，将获得20Q币的奖励</p>
+				<p>4.当日对应漫画讨论区进行评论，我们会抽取3名<br /> 用户进行500酷币奖励~~
+				</p>
+				<p>5.获奖用户请与可米酱联系（QQ:2107690292）奖品将在活动结束后一个工作日内发放</p>
+				<p>6.本次活动最终解释权归可米酷漫画所有</p>
+			</div>
+
+			<div id="tab">
+				<nav id="tab_menu" class="clearfix">
+					<li class="on">昨日获奖</li>
+					<li>评论获奖</li>
+					<li>我获得的奖品</li>
+				</nav>
+				<div class="tab_div clearfix" style="display: block;">
+					<li class="tab_explain">
+						<h3>男神我来了：泳装大赛老子能赢！</h3></li>
+					<li class="tab_th"><em>用户昵称</em><span>奖励</span></li>
+					<ul class="user_list">
+						<!-- 获奖列表 -->
+					</ul>
+				</div>
+				<div class="tab_div clearfix">
+					<li class="tab_explain">
+						<h3>男神我来了：泳装大赛老子能赢！</h3></li>
+					<li class="tab_th"><em>用户昵称</em><span>奖励</span></li>
+					<ul class="comment_list">
+						<!-- 评论获奖列表 -->
+					</ul>
+				</div>
+				<div class="tab_div clearfix">
+					<li class="tab_explain">
+						<h3>男神我来了：泳装大赛老子能赢！</h3></li>
+						<li class="tab_th"><em>获奖类型</em><span>奖励</span></li>
+					<ul class="user_award">
+						<!-- 我获奖列表 -->
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div id="grey_bg">
+
+		</div>
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../../tpl/dist/act-global.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		</script>
+		<script type="text/javascript">
+			$('#tab_menu li').on('click', function() {
+				var index = $(this).index();
+				$('.tab_div').hide();
+				$('#tab_menu li').removeClass('on');
+				$(this).addClass('on');
+				$('.tab_div').eq(index).show();
+			})
+		</script>
+	</body>
+
+</html>

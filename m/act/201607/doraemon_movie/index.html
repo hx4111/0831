@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>可米酱邀你一起看哆啦A梦电影</title>
+	<meta name="keywords" content="可米酷,电影票,哆啦A梦,新大雄的日本诞生">
+	<meta name="description" content="可米酱邀你一起去电影院看哆啦A梦电影">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+
+		.img-list {
+			background: #d0e4ff url('http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/bg.jpg') repeat;
+			background-size: 100%;
+		}
+		.img-list li {
+			position: relative;
+		}
+
+		.share-btn {
+			position: absolute;
+			bottom: .5rem;
+			width: 100%;
+		}
+
+		.share-btn img {
+			margin: 0 auto;
+			width: 50%;
+		} 
+
+		.go-post {
+			position: absolute;
+			bottom: 24%;
+			width: 100%;
+		}
+
+		.go-post img {
+			margin: 0 auto;
+			width: 50%;
+		}
+
+		.users-list {
+			position: relative;
+			width: 100%;
+			margin-bottom: 2rem;
+		}
+
+		.users-list .list-header {
+			display: block;
+			margin-left: 1%;
+		}
+
+		.users-list .list-header li {
+			display: inline-block;
+			width: 33%;
+			text-align: center;
+		}
+
+		.day-item {
+			border-radius: 15px;
+			width: 80%;
+			margin: 0 auto;
+			background-color: #67d1e4;
+			border: 2px solid #fff;
+			color: #fff;
+		}
+
+		.now-item {
+			background-color: #02a8e3;
+			color: #fff;
+		}
+
+		.users-content {
+			width: 90%;
+			margin-top: 1rem;
+			margin-left: 3%;
+			background-color: #67d1e4;
+			color: #fff;
+			border-radius: 5px;
+			border: 2px solid #fff;
+			padding: .3rem;
+		}
+
+		.users-content table {
+			width: 100%;
+			text-align: center;
+		}
+
+		.user-content td {
+			overflow: hidden;
+			text-overflow:ellipsis;
+			white-space: nowrap;
+		}
+
+		.users-tip {
+			display: none;
+			padding: .2rem 1rem;
+		}
+
+		.rules-btn {
+			position: absolute;
+			bottom: 53%;
+			right: -0.3rem;
+			width: 1rem;
+			font-size: .8rem;
+			padding: .3rem;
+			color: #fff;
+			font-weight: bold;
+			background-color: #3b68b3;
+			border-radius: 15px 0 0 15px;
+			border: 2px solid #fff;
+		}
+
+		.rule-content {
+			display: none;
+			position: fixed;
+			top: 20%;
+			width: 100%;
+			z-index: 11;
+			font-size: .8rem;
+		}
+
+		.rule-content-inner {
+			width: 90%;
+			margin: 0 auto;
+			background-color: #67d1e4;
+			color: #fff;
+			border: 2px solid #fff;
+			border-radius: 5px;
+			padding: .5rem;
+		}
+
+		.pageCover {
+			display: none;
+			position: fixed;
+			z-index: 10;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			opacity: 0.3;
+		}
+
+		.post-tip {
+			text-align: center;
+			color: #67d1e4;
+		}
+
+		.video-block {
+			margin: 0 auto .5rem;
+			text-align: center;
+		}
+
+		.index-video {
+			background-color: #000;
+			border: 3px solid #000;
+			padding: 2px 0;
+			border-radius: 5px;
+			width: 95%
+		}
+	</style>
+</head>
+<body>
+	<header class="header header-fixed header-shadow">
+		<a href="http://m.comicool.cn"><i class="l-icon iconfont icon-home"></i></a>
+		<i class="r-icon iconfont icon-share share-trigger"></i>
+	</header>
+	<ul class="img-list">
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/index_01r.jpg" alt="可米酷送电影票啦">
+		</li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/index_02r.jpg" alt="可米酷送电影票啦">
+		</li>
+		<li class="video-block">
+			<video class="index-video" controls="controls" poster="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/poster.jpg">
+				<source src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/index.mp4" type="video/mp4"/>
+			</video>
+		</li>
+		<li>
+			<img src="images/index_021.jpg" alt="可米酷送电影票啦">
+			<div class="share-btn smart-tip-inst share-trigger">
+				<img src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/share-btn.png" alt="分享送电影票">
+			</div>
+			<div class="rules-btn">
+				活动规则
+			</div>
+		</li>
+		<li class="video-block">
+			<img src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/index_03.jpg" alt="可米酷送电影票啦">
+			<div class="go-post smart-tip-inst">
+				<img src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/go-post-btn.png" alt="评论送电影票">
+				<div class="post-tip">需在App中评论</div>
+			</div>
+		</li>
+		<div class="users-list">
+			<div class="list-header">
+				<li data-did="0">
+					<div class="day-item">07-20</div>
+				</li><li data-did="1">
+					<div class="day-item">07-21</div>
+				</li><li data-did="2">
+					<div class="day-item">07-22</div>
+				</li>
+			</div>
+			<div class="users-content">
+				<strong>&nbsp;&nbsp;&nbsp;| 电影票</strong>
+				<table id="users-table"></table>
+				<div class="users-tip">
+					获奖名单次日中午进行公布，获奖用户请添加可米酱QQ: 2107690292
+				</div>
+			</div>
+		</div>
+	</ul>
+	<div class="rule-content">
+		<div class="rule-content-inner">
+			<p>电影代金券使用说明</p>
+			<p>1.猫眼电影通兑券绑定方法：猫眼app-我的-我的优惠券，最上方，输入券码，点击添加。</p>
+			<p>2.通兑券兑换使用方法：在猫眼APP内，选择电影《哆啦A梦》场次，选座下单，支付阶段选择“使用优惠券”，并“确认支付”。</p>
+			<p>3.使用时间2016年7月22日截止至2016年8月7日（电影代金券兑换具体开始时间以电影上映档期为准），仅限60元以下的场次兑换使用。（结束时间以当地影院排片为准，请尽快使用）</p>
+		</div>
+	</div>
+	<div class="pageCover"></div>
+	<div id="post-and-Ctrl"></div>
+	<!-- 百度分享面板 -->
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js" type="text/javascript"></script>
+<script src="http://cdn.icomicool.cn/m/act/201607/doraemon_movie/users-list.js?_=1467711416237" type="text/javascript"></script>
+<script>
+	window.onload = function() {
+		init();
+	}
+
+	$('.index-video').on('click', function() {
+		$(this)[0].play();
+	})
+
+	function init() {
+		var nowDate = new Date().getDate();
+		var nowIndex = nowDate - 20;
+		if (nowIndex > 3) {
+			nowIndex = 3
+		}
+		if (nowIndex <= 0) {
+			nowIndex = 1;
+		}
+		
+		renderList(nowIndex-1);
+		$('.users-list li').on('touchend', function() {
+			var dataIndex = $(this).data('did');
+			renderList(dataIndex);
+		})
+
+		$('.go-post').on('click', function() {
+			if (CONFIG.isApp) {
+				callAppFunction('openPostSend', {
+					"post_type":"topic2045",
+				});
+			} else {
+				new TipBox({
+                    str: '下载可米酷App才能继续玩耍哦，看更多精彩漫画还能领奖励！', 
+                    btnText: ['取消', '确认'], 
+                    btnCallback: function() {
+                        if (this.innerText == '确认') {
+                            window.location.href = 'http://m.app.comicool.cn/smart_open/main.php?ch=prom7';
+                        } else {
+                            return;
+                        }
+                    }
+                })
+			}
+		})
+
+		$('.share-btn').on('click', function() {
+			if (CONFIG.isApp) {
+				callAppFunction('popupSharePanel', {
+					"title": "可米酱邀你一起看哆啦A梦电影",
+					"describe": "精彩暑期档,可米酱邀你一起去电影院看哆啦A梦电影",
+					"imageurl": "http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/doraemon_movie-share1.jpg",
+					"page_url": window.location.href
+				});
+			} 
+		})
+
+		$('.rules-btn').on('click', function() {
+			$('.pageCover').show();
+			$('.rule-content').show();
+			$('body').css("overflow","hidden");
+		})
+
+		$('.rule-content, .pageCover').on('click', function() {
+			$('.pageCover').hide();
+			$('.rule-content').hide();
+			$('body').css("overflow","auto");
+		})
+	}
+
+	function renderList(index) {
+		$('.day-item').removeClass('now-item');
+		$('.list-header li').eq(index).find('.day-item').addClass('now-item');
+
+		if (usersList[index]) {
+			var tableHtml = '<tr>';
+			for (var i=0, len=usersList[index].length; i<len; i++) {
+				if ((i % 2 == 0) && (i != 0)) {
+					tableHtml += '</tr><tr>'
+				}
+				tableHtml += '<td>' + usersList[index][i] + '</td>';
+			}
+			tableHtml += '</tr>';
+
+			$('#users-table').html(tableHtml).show();
+			$('.users-tip').hide();
+		} else {
+			$('#users-table').hide();
+			$('.users-tip').show();
+		}
+	}
+
+	var shareJsonObj = {
+        'title' : '可米酱邀你一起看哆啦A梦电影',
+        'describe' : '精彩暑期档,可米酱邀你一起去电影院看哆啦A梦电影',
+        'imageUrl' : 'http://cdn.icomicool.cn/m/act/201607/doraemon_movie/images/doraemon_movie-share1.jpg',
+        'pageUrl': window.location.href
+    };
+    setShareInfo(shareJsonObj, {
+        use: 'baidu',
+        init: initBaiduSharePanel
+    });
+
+    function initBaiduSharePanel() {
+        var _ = function(selector, parent) {
+                return (parent || document).querySelector(selector);
+            },
+            header = _('.header'),
+            trigger = $('.share-trigger'),
+            mask = _('#ShareBg'),
+            shareBtn = _('#share-btn'),
+            panelTitle = _('#ShareCon h2'),
+            panel = _('.bdsharebuttonbox'),
+            cancelBtn = _('.share-clo', panel),
+            panelImageCont = _('#ShareCon em'),
+            panelImage = new Image(),
+            hidePanel = function() {
+                mask.style.display = panel.style.display = 'none';
+            };
+        header.style.display = 'block';
+        panelTitle.innerHTML = this.title;
+        panelImage.src = this.imageUrl;
+        panelImageCont.appendChild(panelImage);
+        if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+			trigger.on('click', function() {
+				document.getElementById('ShareBg').style.display = 'block';
+				document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+				header.style.display = 'none';
+			});
+			document.getElementById('ShareBg').addEventListener('click', function(){
+				document.getElementById('ShareBg').style.display = 'none';
+				header.style.display = 'block';
+			})
+		} else {
+			trigger.on('click', function() {
+				mask.style.display = panel.style.display = 'block';
+			});
+			mask.addEventListener('click', hidePanel);
+			cancelBtn.addEventListener('click', hidePanel);
+		}
+    }
+
+    ReactDOM.render(React.createElement(PostAndCtrl, {postType: "topic2045"}), document.getElementById('post-and-Ctrl'));
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

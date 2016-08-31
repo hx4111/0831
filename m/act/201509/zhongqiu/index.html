@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>中秋节明信片</title>
+    <script src="http://m.comicool.cn/act/act-common/config.js"></script>
+    <meta name="description" content="花好月圆人团圆，可米酷大大们亲手绘制中秋明信片">
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        中秋节明信片
+        <p>花好月圆人团圆，可米酷大大们亲手绘制中秋明信片</p>
+        <img src="images/480.jpg" alt="可米酷漫画,comicool" />
+    </h1>
+    <img src="images/bg.jpg" class="bg">
+    <ul class="lists" id="comic-list">
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=100">
+                <img src="images/01.png" alt="DJ情感系列">
+                <p>
+                   《DJ情感系列》<br>
+                    作者：Swamm
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=70">
+                <img src="images/02.png" alt="诡来了">
+                <p>
+                   《诡来了》<br>
+                    作者：黑白工厂
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=707">
+                <img src="images/03.png" alt="猫咪甜品屋">
+                <p>
+                   《猫咪甜品屋！》<br>
+                    作者：丸77
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=687">
+                <img src="images/04.png" alt="清蝉泪">
+                <p>
+                   《清蝉泪》<br>
+                    作者：吞赦日月
+                </p>
+            </a>
+    	</li>
+    	<li class="gutter">
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=703">
+                <img src="images/05.png" alt="逆转童话">
+                <p class="t3">
+                   《逆转童话！》<br>
+                    作者：步履/东方泽
+                </p>
+            </a>
+    	</li>
+    	<li class="gutter">
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=706">
+                <img src="images/06.png" alt="你好！我有病！">
+                <p>
+                   《你好！我有病！》<br>
+                    作者：纸小虫
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=76">
+                <img src="images/07.png" alt="玻璃花">
+                <p>
+                   《玻璃花》<br>
+                    作者：一色哈尼
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=77">
+                <img src="images/08.png" alt="神兽退散">
+                <p>
+                   《神兽退散》<br>
+                    作者：五仁月饼
+                </p>
+            </a>
+    	</li>
+    	<li class="gutter">
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=685">
+                <img src="images/09.png" alt="这个猩猩不太萌">
+                <p>
+                   《这个猩猩不太萌》<br>
+                    作者：瓜
+                </p>
+            </a>
+    	</li>
+    	<li class="gutter">
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=681">
+                <img src="images/10.png" alt="你好！我有病！">
+                <p>
+                   《君灵天下》<br>
+                    作者：CleverCool
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=1095">
+                <img src="images/11.png" alt="丘比丘比特">
+                <p>
+                   《丘比丘比特》<br>
+                    作者：阿小濑
+                </p>
+            </a>
+    	</li>
+    	<li>
+    		<a href="http://m.comicool.cn/content/detail.html?comic_id=734">
+                <img src="images/12.png" alt="千面具之咒">
+                <p>
+                   《千面具之咒》<br>
+                    作者：Calvin/冥梦
+                </p>
+            </a>
+    	</li>
+    </ul>
+    <a href="javascript:;" id="bottom-btn"></a>
+    <script>
+        var ua=navigator.userAgent.toLowerCase(),
+            isMobile = ua.indexOf('mobile')>0,
+            isWeixin = (/micromessenger/.test(ua)) ? true : false,
+            isQQ = (/qq\//.test(ua)) ? true : false,
+            isIOS = ua.indexOf('(ip')>0 && isMobile,
+            isWeibo = (/Weibo/i.test(ua)) ? true : false,
+            isApp = (/icomico/i.test(ua)) ? true : false,
+            isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+            isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+        var bottomBtn = document.getElementById('bottom-btn');
+
+        function callAppFunction (func, args, callback) {
+            var argsString = JSON.stringify(args);
+            if (isAndroidApp) {
+                if (!comicool) {
+                    return false;
+                }
+                var result = eval("comicool." + func + "('" + argsString + "');");
+                if (callback) {
+                    callback(result);
+                }
+            } else if (isIOSApp) {
+                function handleCallback(func, args) {
+                    if (func != "setJSCallback") {
+                        return;
+                    }
+                    for (eventName in args) {
+                        window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+                            var appDataStr = JSON.stringify(data);
+                            eval(args[eventName] + "('" + appDataStr + "');");
+                        });
+                    }
+                }
+
+                if (window.WebViewJavascriptBridge) {
+                    window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+                    handleCallback(func, args);
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                        window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+                        handleCallback(func, args);
+                    }, false);
+                }
+            } else {
+                return false;
+            }
+            return true;
+        }
+
+        function setByUserLoginStatus(isLogin, unLogin) {
+            var userInfo = {};
+            var done = [];
+            var cb = function (i) {
+                done.push(i);
+
+                //所有异步任务完成
+                if (fnQueue.length === done.length) {
+                    typeof isLogin === 'function' && isLogin(userInfo);
+                }
+            };
+            var fnQueue = [
+                function (i) {
+                    callAppFunction('getDeviceID', {}, function (DeviceID) {
+                        userInfo.deviceid = DeviceID;
+                        cb(i);
+                    });
+                },
+                function (i) {
+                    callAppFunction('getChannelId', {}, function (ChannelId) {
+                        userInfo.channel = ChannelId;
+                        cb(i);
+                    });
+                },
+                function (i) {
+                    callAppFunction('getAppVersionName', {}, function (AppVersionName) {
+                        userInfo.version_code = AppVersionName.split('.').pop();
+                        cb(i);
+                    });
+                },
+                function (i) {
+                    if (isIOSApp) {
+                        userInfo.os_type = 'ios';
+                    } else if (isAndroidApp) {
+                        userInfo.os_type = 'anr';
+                    }
+
+                    cb(i);
+                }
+            ];
+
+            callAppFunction('getAccountInfo', {}, function (result) {
+                var result = function () {
+                    if (isAndroidApp) {
+                        return result ? JSON.parse(result) : {};
+                    }
+
+                    return result;
+                }();
+
+                userInfo.ccid = result.ccid;
+                userInfo.usertype = result.usertype;
+                userInfo.cctoken = result.cctoken;
+                userInfo.username = result.nickname;
+
+                //登录
+                if (result.cctoken && result.ccid && result.usertype) {
+                    fnQueue.forEach(function (fn, i) {
+                        fn(i);
+                    });
+                } else {
+                //未登录
+                    typeof unLogin === 'function' && unLogin();
+                }
+            });
+        }
+
+        function jumpLoginPage() {
+            callAppFunction('openLoginPage', {});
+        }
+
+        function loginCallback() {
+            bottomBtn.addEventListener('touchend', function () {
+                try {
+                    callAppFunction('openMallPage', {});
+                } catch(e) {
+                    alert('哇哦，您的可米酷还不是最新版哦～快去更新吧～');
+                }
+            });
+        }
+
+        //登录面板跳回页面后的回调(安卓的坑：要放在全局空间里)
+        window.loginHandler = function(obj) {
+            setByUserLoginStatus(loginCallback);
+            bottomBtn.removeEventListener('touchend', jumpLoginPage);
+        };
+
+        if (isApp) {
+            var comicList = document.getElementById('comic-list');
+
+            comicList.addEventListener('click', function (e) {
+                var anchor = e.target.tagName === 'A' ? e.target : e.target.parentNode;
+                var comic_id = anchor.href.match(/comic_id=(\d+)/)[1];
+
+                e.preventDefault();
+                callAppFunction('openComicDetailsPage', {
+                    comic_id: comic_id
+                })
+            });
+            
+            bottomBtn.classList.add('door');
+
+            callAppFunction('showShareBtn', {
+                'title': '中秋节明信片',
+                'describe' : '花好月圆人团圆，可米酷大大们亲手绘制中秋明信片',
+                'imageurl' : 'http://m.comicool.cn/act/201509/zhongqiu/images/540.jpg'
+            });
+
+            setByUserLoginStatus(loginCallback, function () {
+                bottomBtn.addEventListener('touchend', jumpLoginPage);
+                //设置App里登录后的回调函数
+                callAppFunction('setJSCallback', {
+                    'account_event': 'loginHandler'
+                });
+            });
+        } else {
+            bottomBtn.classList.add('download');
+            bottomBtn.href = 'http://m.app.comicool.cn/smart_open/main.php';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+html,body { font-size: 20px; width: 100%; height: 100%;}
+body { color: #333; line-height: 1.42; font-size: .6rem;}
+body, div, p, h1, h2, h3, article, section, header, footer, aside, nav, ul, ol, li {
+	margin: 0; padding: 0;
+}
+ul,ol { list-style: none; }
+h1,h2,h3 { font-size: .7rem; font-weight: normal;}
+i,em,b { font-style: normal; font-weight: normal;}
+img { border:0; vertical-align:middle; width: 100%;}
+li, i, span, a, img { outline: 0; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+a { text-decoration: none; color: #333;}
+a:active { opacity: .9;}
+.cl:after { display: block; content: ""; clear: both;}
+
+body { background:transparent url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+.pagebox { background: #fefdbf;}
+.topbar { height: 2rem; position: fixed; left: 0px; top: 0px; width: 100%; background: -webkit-linear-gradient(rgba(0,0,0, .5) 0%, transparent 100%); display: none; z-index: 30;}
+.topbar a { position:absolute; display:block; width:1.5rem; height:1.5rem;}
+.topbar a img { width: 85%}
+.topbar a.icon-home { left:.5rem; top:.3rem; text-align: left;}
+.topbar a.icon-share { right:.5rem; top:.3rem; text-align: right;}
+
+ul.page-list li:nth-child(2) { position: relative;}
+ul.page-list li a.btn-post { height: 1.9rem; width: 100%; position: absolute; left: 0; bottom: 0; display: block;}
+
+.sharebox {display: none; position: fixed;z-index: 999;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0,0,0, .6); z-index: 50;}
+.share-table { display: table; width: 100%; height: 100%;}
+.share-table-cell { display:table-cell; vertical-align: middle; }
+.share-inner { height: 8rem; width: 15rem; background: #f0f0f0; margin: auto; border-radius: .4rem; position: relative; text-align: center;}
+.share-inner p { font-size: .7rem;}
+a.share-clo { font-size: 1.6rem; font-family: Arial; position: absolute; right: 0; top: 0; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; overflow: hidden; color: #333;}
+
+.tipbox { position: fixed; background-color: rgba(0,0,0,.6); left: 0; right: 0; top: 0; bottom: 0; overflow: hidden; z-index: 200; display: none;}
+
+.float-fix {display: none; position: fixed;left: 0;bottom: 0; background:rgba(0,0,0,.8); width: 100%; height: 2.5rem; z-index: 300;overflow: hidden;}
+.float-fix span { display:block; color: #fff; position: absolute;}
+.float-fix span.float-clo { top: .4rem; right: .2rem; width: 1.6rem; height: 1.6rem; text-align: center; font-size: 1.2rem; font-family: Arial;}
+.float-fix span.open-btn { width: 3rem; line-height: 1.25rem; height: 1.25rem; background-color: #e62c32; text-align: center; font-size: .5rem; border-radius: .2rem; top: .6rem; right: 2rem;}
+
+.bdsharebuttonbox { padding: 2.5rem 0 .8rem;}
+.bdshare-button-style0-32 a, .bdshare-button-style0-32 .bds_more {
+  float: none !important; display: inline-block !important; margin: 0 4px !important; vertical-align: top !important;
+}

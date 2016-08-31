@@ -1,0 +1,85 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+body{
+	position: relative;
+	font-size:13px;
+	font-family:'宋体'; 
+}
+ul, li {
+	list-style: none;
+}
+.bg{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1;
+    height:auto;
+}	
+.lists{
+	position: absolute;
+	top:13rem;
+	z-index:99;
+	overflow: hidden;
+	width:100%;
+	padding:0 10px;
+}
+.lists li{
+	float:left;
+	width:50%;
+	line-height: 1;
+	display: flex;
+	justify-content:center;
+	align-item:center;
+	margin-bottom:.7rem;
+}
+.lists li.gutter {
+	margin-top: 1.8rem;
+}
+.lists li.pt12{
+	padding-top:1rem;
+}
+.lists li.pt12 img{
+	width:90%;
+}
+.lists li a{
+	color: #ff4064;
+	display: block;
+	text-align: center;
+}
+.lists li a img{
+	text-decoration: none;
+	width:75%;
+	box-shadow: .1rem .15rem 0 #ff7a39;
+	border-radius: 50%;
+}
+.lists li a p{
+	font-size:.65rem;
+	margin-top: .2rem;
+}
+#bottom-btn{
+	position: absolute;
+	display:block;
+	width:4.5rem;
+	height:1.5rem;
+    z-index: 999;
+    top:79rem;
+    left:50%;
+    margin-left:-2.25rem;
+    border-radius:10px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    -webkit-background-size: 100%;
+}
+.door {
+	background-image: url(../images/door_btn.png);
+}
+.download {
+	background-image: url(../images/download_btn.png);
+}
+.t3{
+	margin-top:.3rem;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>元气男神</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="js/config.js"></script>
+<style type="text/css">
+    html,body { font-size: 20px; width: 100%; height: 100%;}
+    body { color: #333; line-height: 1.42; font-size: .6rem;}
+    body, div, p, h1, h2, h3, h4, article, section, header, footer, aside, nav, dialog, ul, ol, li, span {
+        margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box;
+    }
+    ul,ol { list-style: none; }
+    h1, h2, h3, h4 { line-height: 1.5;}
+    h1 { font-size: .9rem; }
+    h2 { font-size: .8rem; }
+    h3 { font-size: .7rem; }
+    h4 { font-size: .6rem; }
+    img { border:0; vertical-align:middle; width: 100%; max-width: 100%;}
+    div, li, i, span, a, img { outline: 0; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+    a { text-decoration: none; color: #607fa6;}
+    a:active { color: #607fa6; opacity: .9;}
+    .fl { float: left; }
+    .fr { float: right; }
+    .cl:after { display: block; content: ""; clear: both;}
+
+    .share-page { width: 100%; height: 100%; position: relative; margin: auto; background: #fff; padding:.8rem .5rem;}
+    .share-page img {width: 100%;}
+    .sr-head h2 { border-bottom: 1px solid #e7e7eb; padding-bottom: .3rem;}
+    .sr-head p { color: #8c8c8c; padding: .3rem 0; font-size: .55rem;}
+    .sr-con { text-align: center; padding: .5rem 0 1rem;}
+    .sr-icon { width: 0px; margin-left: 47%; border-bottom-width: .4rem; border-bottom-style: solid; border-bottom-color: #f96e57; border-top-color: #f96e57; border-left-width: .4rem !important; border-left-style: solid !important; border-left-color: transparent !important; border-right-width: .4rem !important; border-right-style: solid !important; border-right-color: transparent !important;}
+    .sr-tit { background: #f96e57; border-radius: .6rem; height: 1.2rem; line-height: 1.2rem; text-align: center; font-size: .5rem; color: #fff;}
+    .sr-tit span { float: left; width: 1.2rem; margin: .2rem 0 0 .2rem;}
+    .sr-tit span img {vertical-align: top;}
+    .sr-tit em { font-size: .55rem; font-style: normal; color: #515c7d;}
+    .sr-con-txt { border:3px solid #000; padding: 3px; margin-top: 1.2rem;}
+    .sr-con-txt .inner { border:1px solid #808080; padding: 8px;}
+    .sr-img { padding-top: .3rem;}
+    .wx-fixed { position: fixed; right: .5rem; top: 1rem; border: 1px solid #d9dadc; background: #fff; z-index: 500; font-size: .5rem; line-height: 1.2; text-align: center; padding:.1rem .1rem .3rem .1rem;}
+    .wx-fixed .wx-img { width: 4rem;}
+    .wx-box { position: absolute; left: 1rem; top: 3.4rem; z-index: 300; display: none;}
+    .wx-icon { width: 0px; margin-left: 23%; border-bottom-width: .4rem; border-bottom-style: solid; border-bottom-color: #d9dadc; border-top-color: #d9dadc; border-left-width: .4rem !important; border-left-style: solid !important; border-left-color: transparent !important; border-right-width: .4rem !important; border-right-style: solid !important; border-right-color: transparent !important; position: relative; top: 1px;}
+    .wx-icon span { display: block; position: absolute; left: -.4rem; top: 1px; border-bottom-width: .4rem; border-bottom-style: solid; border-bottom-color: #fff; border-top-color: #fff; border-left-width: .4rem !important; border-left-style: solid !important; border-left-color: transparent !important; border-right-width: .4rem !important; border-right-style: solid !important; border-right-color: transparent !important;}
+    .wx-inner { border:1px solid #d9dadc; padding: .3rem; width: 14rem; background: #fff;}
+    .wx-box .wx-img { float: left; margin-right: .5rem; width: 3.5rem;}
+    .wx-box .wx-txt { float: left; padding-top: .2rem;}
+    .wx-box .wx-txt h3 { font-weight: normal; font-size: .6rem; line-height: 1.6; padding-bottom: .1rem;}
+    .wx-box .wx-txt p { color:#adadad; line-height: 1.6; font-size: .55rem;}
+    .wx-box .wx-txt span { display: inline-block; width: 2.6rem; color: #333;}
+    .sr-foot { border-top: 1px solid #808080; padding: .8rem 0; text-align: center;}
+</style>
+</head>
+<body>
+    <!-- <div class="wx-fixed">
+        <div class="wx-img">
+           <img src="http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/ewm.png" alt="可米酷漫画,comicool" />
+        </div>
+        <p>微信扫一扫<br>关注该公众号</p>
+    </div> -->
+    <div class="wx-box">
+        <div class="wx-icon"><span></span></div>
+        <div class="wx-inner cl">
+            <div class="wx-img"><img src="http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/ewm.png" alt="可米酷漫画,comicool" /></div>
+            <div class="wx-txt">
+                <h3>可米酱</h3>
+                <p><span>微信号</span> kemijiang</p>
+                <p><span>功能介绍</span> 人贱不能复生</p>
+            </div>
+        </div>
+    </div>
+
+    <article class="share-page share-read">
+        <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+        <h1 class="share-info" style="display:none">
+            元气男神
+            <p>元气男神</p>
+            <img src="http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/ewm.png" alt="可米酷漫画,comicool" />
+        </h1>
+
+        <header class="sr-head cl">
+            <h2>元气男神</h2>
+            <p>2015-06-15 <a href="javascript:;">可米酱</a></p>
+        </header>
+        <section class="sr-con" id="sr-con">
+            <div class="sr-con-t">
+                <div class="sr-icon"></div>
+                <div class="sr-tit cl">
+                    <!-- <span><img src="images/wx-1/icon-t.webp" /></span> -->
+                    点击上方<em>“可米酱”</em>和我签订契约吧！
+                </div>
+            </div>
+            <div class="sr-con-txt">
+                <div class="inner">
+                    又到了露肉的夏天<br>
+                    清凉不够尺度来凑<br>
+                    ♡<br>
+                    ♡<br>
+                    ♡<br>
+                    元气男神等你来扒光
+                </div>
+            </div>
+            <div class="sr-img">
+                <!-- 图片延迟加载 -->
+            </div>
+        </section>
+    </article>
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<!-- <script type="text/javascript" src="http://www.comicool.cn/common/common-v1.js"></script> -->
+<script>
+//JS开始
+$(function(){
+    //设置各平台oa
+    var ua=navigator.userAgent.toLowerCase(),
+        isIOS = false,
+        isMobile = ua.indexOf('mobile')>0,
+        isWeixin = (/micromessenger/.test(ua)) ? true : false,
+        isQQ = (/qq\//.test(ua)) ? true : false,
+        isIOS = ua.indexOf('(ip')>0 && isMobile,
+        isWeibo = (/Weibo/i.test(ua)) ? true : false,
+        isAndr = ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
+
+    var imgList = [
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/1.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/2.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/3.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/4.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/5.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/6.jpg",
+        "http://cdn.icomicool.cn/m/act/201506/kuhua/images/wx-1/7.jpg"
+    ];
+
+    $('.sr-head a').on('click', function () {
+        $('.wx-box').show();
+    });
+
+    $('.wx-box').on('click', function () {
+        $('.wx-box').hide();
+    });
+
+    // 图片递归加载
+    function loadpic(list,callback){
+        if( $.isArray(list) && list.length ){
+            var item = list.shift(),
+                image = new Image();
+                image.alt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+            // loadpic(list);
+            image.src = item;
+            image.onload = function(){
+                 $('.sr-img').append($(this));
+               loadpic(list,callback);
+            };
+        }else{
+            $.isFunction(callback) && callback(list);
+        }
+    }
+    loadpic(imgList, function() {
+        var footerHtml =  '<footer class="sr-foot">'
+                       +        '关注微信号：kemijiang，<br>'
+                       +        '和可米酱在二次元相爱相杀吧'
+                       +  '</footer>'
+        $('.share-page').append(footerHtml);
+    });
+
+    //百度统计代码安装
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+});
+
+</script>
+</html>

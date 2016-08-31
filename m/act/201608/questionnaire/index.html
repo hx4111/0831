@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>可米酱有疑问</title>
+	<meta name="keywords" content="可米酱有疑问,送300酷币,送Q币">
+	<meta name="description" content="第一期可米酱有疑问,答题拿酷币,还能抽取Q币,快来参与吧">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://www.comicool.cn/m/tpl/css/style.min.css?_=1468223173180">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		
+		.img-list li {
+			position: relative;
+		}
+
+		.login-btn {
+			position: absolute;
+			top: 3%;
+			right: 12%;
+			width: 20%;
+			height: 2rem;
+			cursor: pointer;
+		}
+
+		.username {
+			position: absolute;
+			top: 5%;
+			left: 41%;
+			width: 30%;
+			height: 1.6rem;
+			cursor: pointer;
+			font-size: .6rem;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+
+		.go-question {
+			position: absolute;
+			bottom: 35%;
+			left: 30%;
+			width: 45%;
+			height: 2rem;
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body>
+	<header class="header header-fixed header-shadow">
+		<a href="http://m.comicool.cn"><i class="l-icon iconfont icon-home"></i></a>
+		<i class="r-icon iconfont icon-share"></i>
+	</header>
+	<ul class="img-list">
+	<!-- http://cdn.icomicool.cn/m/act/201608/questionnaire/ -->
+		<li><img src="http://cdn.icomicool.cn/m/act/201608/questionnaire/images/index_01.jpg" alt="可米酱有疑问"></li>
+		<li><img src="http://cdn.icomicool.cn/m/act/201608/questionnaire/images/index_02.jpg" alt="可米酱有疑问"></li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201608/questionnaire/images/index_03.jpg" alt="可米酱有疑问">
+			<div class="login-btn unlogin-handle"><img src="images/login-btn.png" alt="请登录"></div>
+			<div class="username"></div>
+			<div class="go-question unlogin-handle"></div>
+		</li>
+	</ul>
+	<div id="post-and-Ctrl"></div>
+	<!-- 百度分享面板 -->
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js?_=1468223173181" type="text/javascript"></script>
+<script src="http://cdn.icomicool.cn/m/act/201608/questionnaire/js/base64.js" type="text/javascript"></script>
+<script>
+
+	window.onload = function() {
+		init();
+	}
+
+	function init() {
+		if (CONFIG.isApp) {
+			setByUserLoginStatus({isLogin: loginCallback, unLogin: unloginCallback});
+		} else {
+			$('.unlogin-handle').on('click', function() {
+				new TipBox({
+					str: '下载可米酷App才能继续玩耍哦，看更多精彩漫画还能领奖励！', 
+	                btnText: ['取消', '确认'], 
+	                btnCallback: function() {
+	                	var url = 'http://m.app.comicool.cn/smart_open/main.php';
+	                    if (this.innerText == '确认') {
+	                        window.location.href = url;
+	                    } else {
+	                        return;
+	                    }
+	                }
+				})
+			})
+		}
+	}
+
+	function unloginCallback() {
+        //设置App里登录后的回调函数
+        callAppFunction('setJSCallback', {
+            'account_event': 'loginHandler'
+        });
+        $(document).on('touchend', '.unlogin-handle', jumpLoginPage);
+        window.loginHandler = function (obj) {
+            $(document).off('touchend', '.unlogin-handle', jumpLoginPage);
+			setByUserLoginStatus({isLogin: loginCallback});
+        }
+
+        function jumpLoginPage() {
+            callAppFunction('openLoginPage', {});
+        }
+    }
+
+    function loginCallback(userinfo) {
+		console.info(userinfo);
+		setCookie('qnNickName', userinfo.nickname);
+
+		var str = '{"cc_id":' + userinfo.ccid + ',"usertype":' + userinfo.usertype + ',"cctoken":"' + userinfo.cctoken + '","device_id":"' + userinfo.device_id + '","channel":"' + userinfo.channel + '"}';
+		var encodeStr = Base64.encode(str);
+
+		$('.username').html(userinfo.nickname);
+		$('.login-btn').hide();
+		$('.go-question').on('click', function () {
+			window.location.href = 'https://sojump.com/jq/9331871.aspx?sojumpparm=' + encodeStr;
+		})
+    }
+
+	ReactDOM.render(React.createElement(PostAndCtrl, {postType: "topic2064"}), document.getElementById('post-and-Ctrl'));
+	
+	var shareJsonObj = {
+        'title' : '可米酱有疑问',
+        'describe' : '可米酱有疑问,答题送酷币,还能抽取Q币,快来参与吧',
+        'imageUrl' : 'http://cdn.icomicool.cn/m/act/201608/questionnaire/images/questionnaire-share.jpg',
+        'pageUrl': window.location.href
+    };
+    setShareInfo(shareJsonObj, {
+        use: 'baidu',
+        init: initBaiduSharePanel
+    });
+
+    function initBaiduSharePanel() {
+        var _ = function(selector, parent) {
+                return (parent || document).querySelector(selector);
+            },
+            header = _('.header'),
+            trigger = _('.icon-share', header),
+            mask = _('#ShareBg'),
+            shareBtn = _('#share-btn'),
+            panelTitle = _('#ShareCon h2'),
+            panel = _('.bdsharebuttonbox'),
+            cancelBtn = _('.share-clo', panel),
+            panelImageCont = _('#ShareCon em'),
+            panelImage = new Image(),
+            hidePanel = function() {
+                mask.style.display = panel.style.display = 'none';
+            };
+        header.style.display = 'block';
+        panelTitle.innerHTML = this.title;
+        panelImage.src = this.imageUrl;
+        panelImageCont.appendChild(panelImage);
+        if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+			trigger.addEventListener('click', function() {
+				document.getElementById('ShareBg').style.display = 'block';
+				document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+				header.style.display = 'none';
+			});
+			document.getElementById('ShareBg').addEventListener('click', function(){
+				document.getElementById('ShareBg').style.display = 'none';
+				header.style.display = 'block';
+			})
+		} else {
+			trigger.addEventListener('click', function() {
+				mask.style.display = panel.style.display = 'block';
+			});
+			mask.addEventListener('click', hidePanel);
+			cancelBtn.addEventListener('click', hidePanel);
+		}
+    }
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

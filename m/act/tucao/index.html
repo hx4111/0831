@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>吐槽大会</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="../act-common/config.js"></script>
+<style type="text/css">
+html {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%;}
+body { font-size: .7rem; line-height: 1.42; color: #333333; height: 100%;}
+* { margin: 0; padding: 0;}
+img { border:none; vertical-align:middle; width: 100%; display: block;}
+a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; outline: 0;}
+a:active { opacity: .8; }
+body { background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+
+#readLnk { position: absolute; left: 0; width: 100%; z-index: 100; display: none;}
+#readLnk a { display: block; margin: auto; width: 44.02777778%;}
+
+.sharebox {display: none; position: fixed;z-index: 999;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0,0,0, .6);}
+.share-table { display: table; width: 100%; height: 100%;}
+.share-table-cell { display:table-cell; vertical-align: middle; }
+.share-inner { height: 8rem; width: 15rem; background: #fff; margin: auto; border-radius: .4rem; position: relative; text-align: center;}
+a.share-clo { font-size: 1.6rem; font-family: Arial; position: absolute; right: 0; top: 0; width: 1.5rem; height: 1.5rem; line-height: 1.5rem; overflow: hidden; color: #333;}
+.bdsharebuttonbox { padding: 2.5rem 0 .8rem;}
+.bdshare-button-style0-32 a, .bdshare-button-style0-32 .bds_more {
+  float: none !important; display: inline-block !important; margin: 0 4px !important; vertical-align: top !important;
+}
+</style>
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+      <h1 class="share-info" style="display:none">
+          吐槽大会
+          <p>可米酷的热心用户打造，对漫画、App的各种意见汇集，对症下药</p>
+          <img src="http://cdn.icomicool.cn/m/act/tucao/images/tc1.jpg?imageView2/2/w/480" alt="可米酷漫画,comicool" />
+      </h1>
+    <article class="pagebox tucao">
+    	<div class="imgbox">
+	        <!-- <img src="images/tc1.jpg">图片信息
+	        -->
+      </div>
+    </article>
+
+    <div class="sharebox">
+        <div class="share-table">
+            <div class="share-table-cell">
+                <div class="share-inner">
+                    <a href="javascript:;" class="share-clo">×</a>
+                    <div class="bdsharebuttonbox" data-tag="share_1">
+                      <a class="bds_tsina" data-cmd="tsina"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_count" data-cmd="count"></a>
+                    </div>
+                    <p>带我分享带我飞︿(￣︶￣)︿</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="readLnk">
+        <a href="javascript:;" class="lnk-read"><img src="http://cdn.icomicool.cn/m/act/tucao/images/btn.png"></a>
+    </div>
+
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.js"></script>
+<script src="../act-common/global.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+	//设置加载图片路径，并执行
+	var imgs = [
+      'http://cdn.icomicool.cn/m/act/tucao/images/tc1.jpg?imageView2/2/w/480',
+      'http://cdn.icomicool.cn/m/act/tucao/images/tc2.jpg?imageView2/2/w/480',
+      'http://cdn.icomicool.cn/m/act/tucao/images/tc3.jpg?imageView2/2/w/480'
+  ];
+
+  loadpic(imgs,function(){
+    //可写执行的操作函数内容
+    setTimeout(function (){
+        $('#readLnk').show().css('bottom', '2.5rem');
+
+        $('.lnk-read').on('click',function(evt){
+          if (isApp) {
+            try {
+              comicool.openFeedBackPage('');
+            } catch (e) {
+              window.location.href="http://comicool/openFeedBackPage";
+            }
+          } else {
+              window.location.href="http://shang.qq.com/wpa/qunwpa?idkey=229b1de775343214581f14ac096469ed8c286574c5ebf5677d45ada155c57e9b";
+          }
+        });
+
+    },500);
+    
+  });
+
+  // 图片递归加载
+  function loadpic(list,callback){
+      if( $.isArray(list) && list.length ){
+          var item = list.shift(),
+              image = new Image();
+          // loadpic(list);
+          image.src = item;
+          image.alt = '可米酷漫画,comicool';
+          image.onload = function(){
+               $('.imgbox').append($(this));
+             loadpic(list,callback);
+          };
+          image.onerror = function(){
+               $('.imgbox').append($(this));
+             loadpic(list,callback);
+          };
+      }else{
+          $.isFunction(callback) && callback(list);
+      }
+  }
+	
+});		
+</script>
+<script>
+  window._bd_share_config = {
+    common: {
+        bdText : '吐槽大会', 
+        bdDesc : '可米酷的热心用户打造，对漫画、App的各种意见汇集，对症下药', 
+        bdUrl : 'http://m.comicool.cn/act/tucao/index.html',   
+        bdPic : 'http://cdn.icomicool.cn/m/act/tucao/images/tc1.jpg'
+      },
+      share:  [{
+        "bdSize" : 32
+      }]
+  };
+
+  //以下为js加载部分
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+
+  //百度统计代码安装
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>可米酱的百宝囊</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="可米酷,可米酱的百宝囊">
+    <meta name="description" content="可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧">
+    <meta name = "format-detection" content = "telephone=no">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1466492243_479392.css">
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/Tip.js"></script>
+	<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+
+	<!-- <script type="text/javascript" src="js4app/js4app.js"></script> -->
+	<!-- <script type="text/javascript" src="http://cdn.icomicool.cn/m/js/vconsole.min.js"></script> -->
+</head>
+
+<body>
+	<div id="detail-main"></div>
+	<div class="detail-rank-top">
+		<img src="images/detail-rank.jpg" alt="神豪榜">
+	</div>
+	<ul class="rank-list">
+		<li></li>
+	</ul>
+	<div class="loading"></div>
+    <script>
+    var goodId = getQueryString('gid'); 
+	loginFun();
+
+    function loginFun() {
+
+	    if (CONFIG.isApp) {
+	        setByUserLoginStatus({isLogin: loginCallback, unLogin: unloginCallback});
+	        // setByUserLoginStatus({all: allCallback});
+	    } else {
+	        $(document).on('click', '.unlogin-handle', function() {
+	            if (CONFIG.isWeixin) {
+	                new TipBox({str: '点击右上角使用默认浏览器打开,下载最新App'});
+	                return;
+	            } else {
+	                new TipBox({
+	                    str: '下载可米酷App,看漫画,做任务,参与精美周边抽取', 
+	                    btnText: ['取消', '确认'], 
+	                    btnCallback: function() {
+	                        if (this.innerText == '确认') {
+	                            window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+	                        } else {
+	                            return;
+	                        }
+	                    }
+	                })
+	            } 
+	        })
+	    }
+
+	    //未登录回调
+	    function unloginCallback() {
+	        //设置App里登录后的回调函数
+	        callAppFunction('setJSCallback', {
+	            'account_event': 'loginHandler'
+	        });
+	        $(document).on('click', '.unlogin-handle', jumpLoginPage);
+	        window.loginHandler = function (obj) {
+	            $(document).off('click', '.unlogin-handle', jumpLoginPage);
+	            setByUserLoginStatus({isLogin: loginCallback});
+	        }
+
+	        function jumpLoginPage() {
+	            callAppFunction('openLoginPage', {});
+	        }
+	    }
+
+	    //已登录回调
+	    function loginCallback(userinfo) {
+	        //  全局化用户信息
+	        CONFIG.isLogin = true;
+	        CONFIG.p_userinfo = {};
+	        $.extend(CONFIG.p_userinfo, userinfo);
+	        GetInfo.getPeriodInfo().then(function(periodData) {
+	    		CONFIG.periodInfo = periodData;
+	    		GetInfo.getSingleGood({goodId: goodId, periodId: periodData.current_p}).then(function(goodData) {
+		    		Render.rendSingleGood(goodData);
+		    		GetInfo.getSingleRank(goodData.act_good_id).then(function(rankData) {
+		    			Render.renderSingleRank(rankData);
+		    		});
+		    		detailBind(goodData);
+		    	})
+		    })
+	    }
+
+	    //登录状态检查后的回调
+	   /* function allCallback(userinfo, loginState) {
+	    	GetInfo.getPeriodInfo().then(function(periodData) {
+	    		CONFIG.periodInfo = periodData;
+	    		CONFIG.isLogin = loginState;
+	        	CONFIG.p_userinfo = userinfo;
+	    		GetInfo.getSingleGood({goodId: goodId, periodId: periodData.current_p}).then(function(goodData) {
+		    		Render.rendSingleGood(goodData);
+		    		GetInfo.getSingleRank(goodData.act_good_id).then(function(rankData) {
+		    			Render.renderSingleRank(rankData);
+		    		});
+		    		detailBind(goodData);
+		    	})
+		    })
+	    }*/
+	}
+
+    function detailBind(data) {
+    	var goodDetail = data;
+
+    	$(document).on('touchend', '.detail-buy-btn', function() {
+	    	GetInfo.getSingleGood({goodId: goodId, periodId: CONFIG.periodInfo.current_p}).then(function(data) {
+	            var goodsInfo = data;
+	            var buyCnt = Number($('#detail-buy-cnt').val());
+	            if (!/^[0-9]*[1-9][0-9]*$/.test(buyCnt)) {
+	            	new TipBox({str: '请输入正整数'});
+	            	return;
+	            }
+	            if(buyCnt > Number(goodsInfo.yabao.total - goodsInfo.yabao.sold)) {
+	                new TipBox({str: '商品剩余份额不足'});
+	                return ;
+	            } 
+	            GetInfo.getKubi().then(function(data) {
+		            var buyMoney = buyCnt * Number(goodDetail.pre_kubi);
+		            if(buyMoney > data) {
+		                new TipBox({str: '酷币余额不足'});
+		                return;
+		            }
+		            if (CONFIG.lockBuy) {
+                        return false;
+                    }
+                    new TipBox({
+		                str: '需花费' + buyMoney + '酷币', 
+		                btnText: ['取消', '确认'], 
+		                btnCallback: function() {
+		                    if(this.innerText == '取消') {
+		                        return false;
+		                    } else {
+		                        if (CONFIG.lockBuy) {
+		                            return false;
+		                        }
+		                        GetInfo.buyGood({goodId: goodId, buyCnt: buyCnt}).then(function(data) {
+		                        	if (data.yb_count) {
+		                        		var strSuccess = '购买成功';
+		                        		strSuccess += data.refresh ? ',已刷新下一件商品' : '';
+		                        		new TipBox({str: strSuccess});
+		                        		GetInfo.getSingleGood({goodId: goodId, periodId: CONFIG.periodInfo.current_p}).then(function(data) {
+								    		Render.rendSingleGood(data);
+								    	})
+								    	GetInfo.getSingleRank(goodId).then(function(rankData) {
+						    				Render.renderSingleRank(rankData);
+							    		});
+		                        	}
+		                        })
+		                    }
+		                }
+		            })
+	            });
+	        })
+	    })
+
+        //加减按钮
+	    $(document).on('touchend', '.icon-plus', function() {
+	        var val = Number($('#detail-buy-cnt').val());
+	        var surplusCnt = Number(goodDetail.yabao.total) - Number(goodDetail.yabao.sold);
+	        if (surplusCnt == 0) {
+	        	new TipBox({str: '商品已售完'});
+	        }
+	        val ++;
+	        if(val > surplusCnt) {
+	            val = surplusCnt;
+	        }
+	        $('#detail-buy-cnt').val(val);
+	    })
+	    $(document).on('touchend', '.icon-reduce', function() {
+	        var val = Number($('#detail-buy-cnt').val());
+	        var surplusCnt = Number(goodDetail.yabao.total) - Number(goodDetail.yabao.sold);
+	        if (surplusCnt == 0) {
+	        	new TipBox({str: '商品已售完'});
+	        }
+	        val --;
+	        if(val < 1) {
+	            val = 1;
+	        }
+	        $('#detail-buy-cnt').val(val);
+	    })
+	    $(document).on('change', '#detail-buy-cnt', function() {
+	        var val = Number($('#detail-buy-cnt').val());
+	        var surplusCnt = Number(goodDetail.yabao.total) - Number(goodDetail.yabao.sold);
+	        if (surplusCnt == 0) {
+	        	new TipBox({str: '商品已售完'});
+	        }
+	        val = val > surplusCnt ? surplusCnt : val;
+	        val = val < 0 ? 1 : val;
+	        $('#detail-buy-cnt').val(val);
+	    })
+    }
+    </script>
+</body>
+
+</html>

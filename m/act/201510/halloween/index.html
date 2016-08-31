@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>你会和什么鬼约会？</title>
+		<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+		<link href="css/style.css" rel="stylesheet" id="abc">
+		<script type="text/javascript">
+			 //H5端宽度设置
+			new function() {
+				var _self = this;
+				_self.width = 320; //设置默认最大宽度
+				_self.fontSize = 44; //默认字体大小
+				_self.widthProportion = function() {
+					var p = (document.body && document.body.clientWidthdocument.getElementsByTagName("html")[0].offsetWidth) / _self.width;
+					return p > 1 ? 1 : p < 0.5 ? 0.5 : p;
+				};
+				_self.changePage = function() {
+					document.getElementsByTagName("html")[0].setAttribute("style", "font-size:" + _self.widthProportion() * _self.fontSize + "px !important");
+				}
+				_self.changePage();
+				window.addEventListener("resize", function() {
+					_self.changePage();
+				}, false);
+			};
+			var retry = true;
+			var ua = navigator.userAgent.toLowerCase(),
+				isMobile = ua.indexOf('mobile') > 0,
+				isWeixin = (/micromessenger/.test(ua)) ? true : false,
+				isQQ = (/qq\//.test(ua)) ? true : false,
+				isIOS = ua.indexOf('(ip') > 0 && isMobile,
+				isWeibo = (/Weibo/i.test(ua)) ? true : false,
+				isApp = (/icomico/i.test(ua)) ? true : false,
+				isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+				isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+			var shareImgUrlStr = 'http://cdn.icomicool.cn/m/act/201510/halloween/images/share-540.jpg';
+			var shareTextInfo = {
+				title: '万圣节百鬼夜行，你会和什么鬼约会？',
+				describe: '万圣节百鬼夜行，你会和什么鬼约会？',
+				imageUrl: shareImgUrlStr,
+				pageUrl: 'http://m.comicool.cn/act/201510/halloween/index.html'
+			};
+            if (isIOSApp) {
+                shareTextInfo.imageUrl = shareImgUrlStr + encodeURIComponent('?imageMogr2/thumbnail/240x');
+            }
+			$(function() {
+				var aLi = $('#brand .bd-box li');
+				var aImg = $('#brand .bd-box li img');
+				var aSpan = $('#brand .bd-box li span');
+				var timestamp = "css/style.css?time=" + Date.parse(new Date());
+				$("#abc").attr("href", timestamp);
+				aLi.each(function(index) {
+					$(this).click(function() {
+						aLi.find("img").show();
+						aLi.find("img").removeClass("on");
+						$(this).find("img").eq(1).hide();
+						$(this).find("img").eq(0).animate(1000, function() {
+							$(this).toggleClass("on");
+						})
+					})
+				});
+				//获取页面URL参数名
+				function getQueryString(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+					var r = window.location.search.substr(1).match(reg);
+					if (r != null) return decodeURI(r[2]);
+					return null;
+				};
+				if (isApp) {
+					var timestamp = "css/app.css?time=" + Date.parse(new Date());
+					$("#abc").attr("href", timestamp);
+					$('#brand .bd-box li a').on('click', function(e) {
+						e.preventDefault();
+						var openDetailObj = {
+							'comic_id': $(this).data('cid')
+						};
+						//调用接口数据
+						callAppFunction("openComicDetailsPage", openDetailObj);
+					});
+				}
+			});
+			$(function() {
+				if (!isApp) {
+					//底部状态条，打开app
+					$('.float-fix').show();
+					var floatHeight = $('.float-fix').height();
+					$('.pagebox').css('padding-bottom', floatHeight + 'px');
+					$('.float-clo').on('click', function() {
+						$('.float-fix').hide();
+						$('.pagebox').css('padding-bottom', 0);
+					});
+					$('.float-img, .open-btn').on('click', function() {
+						window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+					});
+					//微信\QQ\微博下无顶部状态条
+					if (isWeixin || isQQ || isWeibo) {
+						/*$('.icon-share').on('click', function () {
+						    $('.tipbox').show();
+						});
+						$('.tipbox').on('click', function () {
+						    $(this).hide();
+						});*/
+					} else {
+						$('.topbar').show();
+						$('.icon-share').on('click', function() {
+							$('.sharebox').show();
+						});
+						$('a.share-clo').on('click', function() {
+							$('.sharebox').hide();
+						});
+					}
+				}
+			});
+
+			function callAppFunction(func, args, callback) {
+				//alert(func + ', 1');
+				var argsString = JSON.stringify(args);
+				if (isAndroidApp) {
+					if (!comicool) {
+						return false;
+					}
+					var result = eval("comicool." + func + "('" + argsString + "');");
+					if (callback) {
+						callback(result);
+					}
+				} else if (isIOSApp) {
+					function handleCallback(func, args) {
+						//alert(func);
+						if (func != "setJSCallback") {
+							return;
+						}
+						for (eventName in args) {
+							window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+								var appDataStr = JSON.stringify(data);
+								eval(args[eventName] + "('" + appDataStr + "');");
+							});
+						}
+					}
+					if (window.WebViewJavascriptBridge) {
+						//alert(func + "1");
+						window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+						handleCallback(func, args);
+					} else {
+						document.addEventListener('WebViewJavascriptBridgeReady', function() {
+							//alert(func);
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						}, false);
+					}
+				} else {
+					return false;
+				}
+				return true;
+			}
+			window.onload = function() {
+					//app分享与微信分享
+					if (isApp) {
+						var appShareObj = {
+							'title': shareTextInfo.title,
+							'describe': shareTextInfo.describe,
+							'imageurl': shareTextInfo.imageUrl,
+							'page_url': shareTextInfo.pageUrl
+						};
+						var appShareStr = JSON.stringify(appShareObj);
+						try {
+							comicool.showShareBtn(appShareStr);
+						} catch (e) {
+							window.location.href = 'http://comicool/showShareBtn?title=' + appShareObj.title + '&describe=' + appShareObj.describe + '&imageurl=' + appShareObj.imageurl + '&page_url=' + encodeURIComponent(appShareObj.page_url);
+						}
+						//callAppFunction("showShareBtn", appShareObj);
+					};
+					if (isWeixin) {
+						var wxUrl = 'http://comicool.cn/webapi/wxauth.php?url=' + encodeURIComponent(location.origin + location.pathname + location.search);
+						$.ajax({
+							url: wxUrl,
+							type: 'GET',
+							dataType: 'jsonp',
+							jsonp: 'callback',
+							jsonpCallback: 'jsonp_wxapi',
+							success: function(data) {
+								//alert(data);
+								wx.config({
+									debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+									appId: data.appId, // 必填，公众号的唯一标识
+									timestamp: data.timestamp, // 必填，生成签名的时间戳
+									nonceStr: data.nonceStr, // 必填，生成签名的随机串
+									signature: data.signature, // 必填，签名，见附录1
+									jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+								});
+								wx.ready(function() {
+									var wxShareObj = {
+										title: shareTextInfo.title, // 分享标题
+										desc: shareTextInfo.describe, // 分享描述
+										link: shareTextInfo.pageUrl, // 分享链接
+										imgUrl: shareTextInfo.imageUrl
+									};
+									wx.onMenuShareAppMessage(wxShareObj);
+									wx.onMenuShareTimeline(wxShareObj);
+									wx.onMenuShareQQ(wxShareObj);
+								});
+							}
+						});
+					}
+				} //window.onload 结束
+			window._bd_share_config = {
+				common: {
+					bdText: shareTextInfo.title,
+					bdDesc: shareTextInfo.describe,
+					bdUrl: shareTextInfo.pageUrl,
+					bdPic: shareTextInfo.imageUrl
+				},
+				share: [{
+					"bdSize": 32
+				}]
+			};
+			 //以下为js加载部分
+			with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+		</script>
+	</head>
+
+	<body>
+		<!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+		<h1 class="share-info" style="display:none">
+        万圣节百鬼夜行
+        <p>你会和什么鬼约会?</p>
+        <img src="http://cdn.icomicool.cn/m/act/201510/halloween/images/share-480.jpg" alt="漫画网,二次元,看漫画" />
+    </h1>
+		<header class="topbar cl">
+			<a class="icon-home" href="http://m.comicool.cn/"><img src="http://cdn.icomicool.cn/m/act/act-common/icon-home.png"></a>
+			<a class="icon-share"><img src="http://cdn.icomicool.cn/m/act/act-common/icon-share.png"></a>
+		</header>
+
+		<div id="brand" class="clearfix">
+			<ul class='bd-box clearfix'>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=707" data-cid="707"><img src="images/1.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=76" data-cid="76"><img src="images/2.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=77" data-cid="77"><img src="images/3.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=703" data-cid="703"><img src="images/4.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=70" data-cid="70"><img src="images/5.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=683" data-cid="683"><img src="images/6.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=100" data-cid="100"><img src="images/7.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=687" data-cid="687"><img src="images/8.png" /></a>
+					<img src="images/back.png" />
+				</li>
+				<li>
+
+					<a href="http://m.comicool.cn/content/detail.html?comic_id=681" data-cid="681"><img src="images/9.png" /></a>
+					<img src="images/back.png" />
+				</li>
+			</ul>
+		</div>
+ <div class="sharebox">
+        <div class="share-table">
+            <div class="share-table-cell">
+                <div class="share-inner">
+                    <a href="javascript:;" class="share-clo">×</a>
+                    <div class="bdsharebuttonbox" data-tag="share_1">
+                      <a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_count" data-cmd="count"></a>
+                    </div>
+                    <p>带我分享带我飞︿(￣︶￣)︿</p>
+                </div>
+            </div>
+        </div>
+    </div>
+	</body>
+
+</html>

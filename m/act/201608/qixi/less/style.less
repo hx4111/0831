@@ -1,0 +1,201 @@
+
+
+body {
+	max-width: 640px;
+}
+
+.loading {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	color: #ccc;
+	font-weight: bolder;
+	z-index: 100;
+
+	.load-word {
+		text-align: center;
+		margin: 30% auto 0;
+	}
+
+	.spinner {
+		margin: 10px auto 0;
+		width: 150px;
+		text-align: center;
+
+		div {
+			width: 30px;
+			height: 30px;
+			background-color: #F295B2;
+
+			border-radius: 100%;
+			display: inline-block;
+			animation: bouncedelay 1.4s infinite ease-in-out;
+			animation-fill-mode: both;
+
+			&.bounce1 {
+				animation-delay: -0.32s;
+			}
+
+			&.bounce2 {
+				animation-delay: -0.16s;
+			}
+		}
+	}
+}
+
+@keyframes bouncedelay {
+	0%, 80%, 100% {
+		transform: scale(0.0);
+	} 40% {
+		transform: scale(1.0);
+	}
+}
+
+.page {
+	max-width: 640px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	transform: translate3d(0, 0, 0);
+	transition: transform 1s ease;
+
+	img {
+		width: 100%;
+	}
+
+	&.page01 {
+		background: url('../images/page01.jpg') bottom left no-repeat;
+		z-index: 10;
+		background-size: 100% 100%;
+
+		.page01-header {
+			position: absolute;
+			top: 1%;
+			left: 0;
+			width: 100%;
+		}
+	}
+
+	&.page02 {
+		background: url('../images/page02.jpg') bottom left no-repeat;
+		z-index: 9;
+		background-size: 100% 100%;
+	}
+
+	&.page03 {
+		background: url('../images/page03.jpg') bottom left no-repeat;
+		z-index: 8;
+		background-size: 100% 100%;
+	}
+
+	&.page04 {
+		background: url('../images/page04.jpg') bottom left no-repeat;
+		z-index: 7;
+		background-size: 100% 100%;
+	}
+
+	&.page05 {
+		background: url('../images/page05.jpg') bottom left no-repeat;
+		z-index: 6;
+		background-size: 100% 100%;
+	}
+
+	&.page06 {
+		background: url('../images/page-end.jpg') bottom left no-repeat;
+		z-index: 5;
+		background-size: 100% 100%;
+
+		.btn-block {
+			position: absolute;
+			width: 100%;
+			height: 6%;
+
+			.btn-block-inner {
+				margin: 0 auto;
+				width: 60%;
+				height: 100%;
+			}
+
+			&.share-block {
+				bottom: 11%;
+			}
+
+			&.post-block {
+				bottom: 3%;
+			}
+		}
+
+		.go-block {
+			position: absolute;
+			bottom: 18%;
+			left: 0;
+			width: 40%;
+		}
+		
+		.word-block01 {
+			position: absolute;
+			top: 20%;
+			left: 12%;
+			width: 45%;
+
+			img {
+				opacity: 0;
+			}
+		}
+
+		.word-block	{
+			position: absolute;
+		    top: 27%;
+		    left: 24%;
+		    width: 56%;
+
+		    img {
+				opacity: 0;
+			}
+		}
+
+		.fadeInWord {
+			transition: opacity 1s;
+		}
+	}
+
+	&.fadeOutLeftEnd {
+		transform: translate3d(-100%, 0, 0);
+	}
+}
+
+.music-btn {
+	position: fixed;
+	top: 3%;
+	right: 3%;
+	width: 2rem;
+	height: 2rem;
+	z-index: 20;
+
+	img {
+		width: 100%;
+	}
+}
+
+.page-over {
+	position: fixed;
+	top: 46%;
+	right: 1%;
+	width: 14%;
+	opacity: .8;
+	transform: translate3d(100%, 0, 0);
+	animation: pageover 1s infinite alternate;
+	animation-delay: 1s;
+}
+
+@keyframes pageover {
+	from {
+		transform: translate3d(-40%, 0, 0);
+	}
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}

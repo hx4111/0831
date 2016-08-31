@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>可米酷抽奖季</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="description" content="可米酷抽奖季">
+<style>
+body, ul, li, p {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, Helvetica, "Microsoft Yahei", sans-serif;
+	line-height: 1.5;
+	background: #c3faff url(images/bg.png) center top no-repeat;
+}
+ul, li {
+	list-style: none;
+}
+.wrap {
+	width: 640px;
+	margin: 0 auto;
+}
+.records {
+	height: 323px;
+	margin-top: 656px;
+	overflow: hidden;
+}
+.records-list {
+	text-align: center;
+	font-size: 36px;
+	color: #ffc000;
+}
+.awards-list {
+	margin-top: 212px;
+	padding-left: 10px;
+}
+.awards-list li {
+	height: 160px;
+	margin-bottom: 120px;
+	background: url(images/awards.jpg) no-repeat;
+}
+.awards-list .second {
+	background-position: 0 -160px;
+}
+.awards-list .third {
+	background-position: 0 -320px;
+}
+.awards-list .fourth {
+	background-position: 0 -480px;
+}
+.awards-list .fifth {
+	background-position: left bottom;
+}
+.download-btn {
+	display: block;
+	width: 337px;
+	height: 161px;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+.lottery-tip {
+	margin: 10px 0 100px;
+	text-align: center;
+	font-size: 30px;
+	color: #019aa7;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="records">
+			<ul class="records-list">
+			</ul>
+		</div>
+		<ul class="awards-list">
+			<li class="first"></li>
+			<li class="second"></li>
+			<li class="third"></li>
+			<li class="fourth"></li>
+			<li class="fifth"></li>
+		</ul>
+		<a href="http://app.comicool.cn/down.html" target="_blank" class="download-btn" title="下载App抽奖"></a>
+		<p class="lottery-tip">请登录后至“我-兑换”处参与</p>
+	</div>
+	<script type="text/javascript" src="http://comicool.cn/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript">
+	$(function () {
+		var records = [
+			{name:'F****桑',desc:'抽中颜文字抱枕一个'},
+			{name:'々**',desc:'抽中颜文字抱枕一个'},
+			{name:'B*******e',desc:'抽中颜文字抱枕一个'},
+			{name:'冰****糖~',desc:'抽中颜文字抱枕一个'},
+			{name:'V*******菜',desc:'抽中颜文字抱枕一个'},
+			{name:'透**、',desc:'抽中Q版手办一个'},
+			{name:'╰******╯',desc:'抽中Q版手办一个'},
+			{name:'闪***星',desc:'抽中Q版手办一个'},
+			{name:'*******&',desc:'抽中Q版手办一个'},
+			{name:'Y****N',desc:'抽中Q版手办一个'},
+			{name:'爱*****凉',desc:'抽中20元话费充值'},
+			{name:'木***鱼',desc:'抽中20元Q币充值'},
+			{name:'Ｌ*****灔',desc:'抽中20元Q币充值'},
+			{name:'*****r',desc:'抽中20元Q币充值'},
+			{name:'铃***当',desc:'抽中20元Q币充值'},
+			{name:'国***香',desc:'抽中20元Q币充值'},
+			{name:'在****你',desc:'抽中20元Q币充值'},
+			{name:'T********力👊',desc:'抽中20元Q币充值'},
+			{name:'♂****猫',desc:'抽中20元Q币充值'},
+			{name:'刺**人',desc:'抽中20元话费充值'},
+			{name:'无****.',desc:'抽中20元话费充值'},
+			{name:'C*****卡',desc:'抽中20元话费充值'},
+			{name:'ぺ*****ル',desc:'抽中20元话费充值'},
+			{name:'挂****愣',desc:'抽中20元话费充值'},
+			{name:'＂*******、',desc:'抽中20元话费充值'},
+			{name:'·*****r',desc:'抽中20元话费充值'},
+			{name:'斌*****.',desc:'抽中20元话费充值'},
+			{name:'唯***ι',desc:'抽中20元话费充值'},
+			{name:'A*****t',desc:'抽中20元话费充值'},
+			{name:'猪*****々',desc:'抽中20元话费充值'},
+			{name:'半****曲',desc:'抽中20元话费充值'},
+			{name:'≮****≯',desc:'抽中20元话费充值'},
+			{name:'乙**.',desc:'抽中20元话费充值'},
+			{name:'T*******l',desc:'抽中20元Q币充值'},
+			{name:'鎂**憶',desc:'抽中20元Q币充值'},
+			{name:'^****子',desc:'抽中20元Q币充值'},
+			{name:'T*******G',desc:'抽中20元Q币充值'},
+			{name:'****友',desc:'抽中20元Q币充值'},
+			{name:'鸭****y',desc:'抽中颜文字抱枕一个'},
+			{name:'F********u',desc:'抽中颜文字抱枕一个'},
+			{name:'福***拉',desc:'抽中颜文字抱枕一个'},
+			{name:'M*****O',desc:'抽中颜文字抱枕一个'},
+			{name:'*******t',desc:'抽中20元话费充值'},
+			{name:'******`',desc:'抽中20元话费充值'},
+			{name:'E****呀',desc:'抽中20元话费充值'},
+			{name:'晨**露',desc:'抽中20元Q币充值'},
+			{name:'在*****☆',desc:'抽中20元Q币充值'},
+			{name:'没****貓',desc:'抽中颜文字抱枕一个'},
+			{name:'Ｈ****ａ',desc:'抽中颜文字抱枕一个'},
+			{name:'雨***店',desc:'抽中颜文字抱枕一个'},
+			{name:'爱*****凉',desc:'抽中颜文字抱枕一个'},
+			{name:'花*生',desc:'抽中20元话费充值'},
+			{name:'若****人',desc:'抽中20元话费充值'},
+			{name:'Õ****y',desc:'抽中20元Q币充值'}
+		];
+
+		initRecords('.records-list', records);
+		new Roller('.records');
+
+		function initRecords(selector, arr) {
+			var html = '';
+
+			arr.sort(function () {
+				return Math.random() - 0.5;
+			});
+			$.each(arr, function (index, item) {
+				html += '<li>' + item.name + item.desc + '</li>';
+			});
+
+			$(selector).html(html);
+		}
+
+		function Roller(selector) {
+			var view = $(selector)[0],
+				list = view.getElementsByTagName('ul')[0],
+				li = list.children,
+				scrollDis = li[0].offsetHeight,
+				threshold = -list.offsetHeight,
+				curPos = 0,
+				interval = 3000,
+				timmer = null;
+
+
+			var clone = function () {
+				var clonePart = document.createDocumentFragment();
+
+				for (var i = 0, node; node = li[i++];) {
+					clonePart.appendChild(node.cloneNode(true))
+				}
+				list.appendChild(clonePart);
+			};
+
+			var scroll = function () {
+				timmer = setInterval(function () {
+					curPos = curPos - scrollDis;
+
+					$(list).animate({
+						'margin-top': curPos + 'px'
+					}, function () {
+						if (curPos == threshold) {
+							curPos = 0;
+							$(list).css('margin-top', 0)
+						}
+					});
+				}, interval);
+			};
+
+			var init = function () {
+				if (li.length > 1) {
+					clone();
+					scroll();
+				}
+			};
+
+			init();
+		}
+	});
+	</script>
+</body>
+</html>

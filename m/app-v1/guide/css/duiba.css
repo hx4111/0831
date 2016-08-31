@@ -1,0 +1,47 @@
+html {
+	font-size: 20px;
+}
+body, ul, li, p {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: .7rem;
+	font-family: Arial, Helvetica, sans-serif;
+	background: #4cd6e3 url(../images/duiba_02.jpg) no-repeat;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
+	line-height: 1.5;
+	color: #fff;
+}
+ul, li {
+	list-style: none;
+}
+.top-text {
+	box-sizing: border-box;
+	height: 6.25rem;
+	margin: 0 2rem;
+	margin-top: 8.7rem;
+	padding: .5rem;
+	padding-right: 1rem;
+	color: #006c76;
+}
+.middle-text {
+	box-sizing: border-box;
+	margin: 0 2rem;
+	margin-top: 1.15rem;
+	padding: .5em .3em;
+	height: 8.5rem;
+	font-size: .6rem;
+}
+.bottom-text {
+	font-size: .6rem;
+	margin-top: 3.85rem;
+	margin-left: 3.5rem;
+}
+.bottom-tip {
+	margin-top: 2rem;
+	margin-bottom: 3rem;
+	font-size: .6rem;
+	text-align: center;
+}

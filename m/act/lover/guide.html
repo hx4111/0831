@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+Remove this if you use the .htaccess -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>悸动--我们的第一次</title>
+<meta name="keywords" content="可米酷漫画，可米酷大赏，可米酷app，comicool，lezhin" />
+<meta name="description" content="深圳可米酷科技有限公司创立于2014年10月，位于深圳市宝安区前海。我们有专业、高效的开发、设计、产品和运营团队，致力于Android、iOS手机阅读App开发。" />
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/http://cdn.icomicool.cn/m/act/lover/images/favicon.ico" media="screen" />
+<meta name="author" content="TomGuan, JamJiang">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="HandheldFriendly" content="true" />
+<style type="text/css">
+html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%;}
+body { font-size: 100%; color: #333; font-size: 14px; line-height: 1.42; background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat;-webkit-background-size: 15px 15px; background-size: 15px 15px;overflow-x:hidden;}
+*{padding: 0;margin: 0; -webkit-box-sizing:padding-box; box-sizing:padding-box;}
+ul,ol,li { list-style: none; }
+a, button, li, ul, img { text-decoration: none; outline: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+img, button { border: none; vertical-align: middle }
+.cl:after, .cl:before { content: ""; clear: both; display: table; }
+.cl { clear: both; }
+.g-doc{ position:fixed;top:0;right:0;left:0;bottom:0;}
+.swiper-wrapper { width: 100%; height: 100%; overflow-x:hidden;}
+.swiper-slide { position: relative; }
+.swiper-slide img{ width:100%;}
+.con-inner { position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1;}
+
+.last-page { background:url(http://cdn.icomicool.cn/m/act/lover/images/img8.jpg) no-repeat; -webkit-background-size: 100% 100%; background-size: 100% 100%;}
+.last-txt { position: absolute; left:0%; top:12%; width: 100%; text-align: center;}
+.last-img { position: absolute; left:0%; top:25%; width: 100%; text-align: center;}
+.last-btn { position: absolute; left:0%; bottom:5%; width: 100%; text-align: right;}
+.last-btn a.last-lnk { display: inline-block; width:45%; margin-right: 8%; padding: 2% 0; -webkit-animation: pointMove 1.5s linear infinite;
+animation: pointMove 1.5s linear infinite;}
+@-webkit-keyframes pointMove {
+  0% { transform:translate3d(0,-2px,0); -webkit-transform:translate3d(0,-2px,0);}
+  50% { transform:translate3d(0,6px,0); -webkit-transform:translate3d(0,6px,0); opacity:0.6;}
+  100% { transform:translate3d(0,-2px,0); -webkit-transform:translate3d(0,-2px,0);}
+}
+
+.tips { position: fixed; top:0; left: 0; height: 100%; width: 100%; z-index: 999; background: #000; display: none;}
+.inner { display: table; width: 100%; height: 100%;}
+.inner div { display: table-cell; width: 100%; height: 100%; text-align: center; font-size: 18px; color: #fff; vertical-align: middle; line-height: 1.5; opacity: 0.9;}
+.inner span { display: inline-block; width: 6%; margin-right: 5px;}
+.inner span img { width: 100%;}
+.loading{position:fixed; top:0;right:0;left:0;bottom:0;z-index:300;width: 100%; height: 100%; background: rgba(255,255,255,1); text-align: center;}
+.loading img{ margin-top: 55%;}
+
+#audio { position: absolute; z-index: 200; top: -9999px; left: -9999px;}
+#musicPlay { position: fixed; top: 10px; right: 10px; width: 30px; height: 28px; z-index: 500; background-image: url(http://cdn.icomicool.cn/m/act/lover/images/sound.png); background-position: -1px -5px; background-repeat: no-repeat; background-size: 111%;}
+#musicPlay.curr { background-position: -1px -33px;}
+.open-tip { position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; font-size: 1em; height: 100%; background-color:rgba(0,0,0,1); z-index: 999; background-image: url(http://cdn.icomicool.cn/m/act/lover/images/tip.png); background-repeat: no-repeat; -webkit-background-size: 100% 100%;}
+.hide { display: none;}
+</style>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+	<div class="loading">
+		<img src="http://cdn.icomicool.cn/m/act/lover/images/loading.gif" />
+	</div>
+	<img id="wx-sm-img" src="http://cdn.icomicool.cn/m/act/lover/images/weibg.jpg" style="position:absolute; z-index:1; left:-9999px; top:-9999px; display:block;" />
+	<!-- ！！！坑爹的微信JS-SDK接口，网上各种技术文章暂时无法用，这里用另外的解决方案，将图片显示第一张放置顶层，经测试，这里不能隐藏掉，只好通过定位移掉，尺寸过于小也不行 -->
+	<div id="musicPlay"></div>
+	<div class="swiper-wrapper">
+		<div class="swiper-slide last-page">
+			<div class="last-txt">
+				<img src="http://cdn.icomicool.cn/m/act/lover/images/last-txt.png" alt="可米酷漫画,comicool" />
+			</div>
+			<div class="last-img">
+				<img src="http://cdn.icomicool.cn/m/act/lover/images/last-img1.png" alt="可米酷漫画,comicool" />
+			</div>
+			<div class="last-btn">
+				<a href="http://app.comicool.cn/down.php" class="last-lnk"><img src="http://cdn.icomicool.cn/m/act/lover/images/app-down2.png" alt="可米酷漫画,comicool" /></a>
+			</div>
+		</div>
+	</div>
+	<div class="tips">
+		<div class="inner">
+			<div><span><img src="http://cdn.icomicool.cn/m/act/lover/images/alarm3.png" alt="可米酷漫画,comicool" /></span>回忆的时候端正点嘛↖(^ω^)↗，横着拿可不行
+			</div>
+		</div>
+	</div>
+	<div class="open-tip hide"><img src="http://cdn.icomicool.cn/m/act/lover/images/tip.png" alt="可米酷漫画,comicool" /></div>
+	<audio autoplay preload="auto" controls="controls" loop="loop" id="audio">
+		<!-- 添加一个ID -->
+	    <source src="http://cdn.icomicool.cn/m/act/lover/images/music.mp3" type="audio/mpeg" />
+		<!-- 您的浏览器不支持音频播放。 -->
+	</audio>
+<script type="text/javascript">
+	$(function(){
+		function pageLoading(){
+			$('.loading').hide();
+		}
+		setTimeout(pageLoading,1);
+
+		var windowWidth = $(window).width(),
+			windowHeight = $(window).height();
+		$('.swiper-slide').width(windowWidth + 'px').height(windowHeight + 'px');
+
+
+		//最后屏的显示随机图片
+	    var lastImgArr = ["http://cdn.icomicool.cn/m/act/lover/images/last-img1.png","http://cdn.icomicool.cn/m/act/lover/images/last-img2.png"];
+		var index = Math.floor((Math.random()*lastImgArr.length)); 
+		$('.last-img img').attr('src', lastImgArr[index]);
+	})
+
+	//ios下微信QQ微博提示浏览器打开
+	$('.last-btn a.last-lnk').on('click',function(){
+		var MOBComico = {};
+	    var ua=navigator.userAgent.toLowerCase();
+		    MOBComico.isIOS = false;
+		    MOBComico.isMobile = ua.indexOf('mobile')>0;
+		    MOBComico.isWeixin = (/micromessenger/.test(ua)) ? true : false ;
+		    MOBComico.isQQ = (/qq\//.test(ua)) ? true : false ;
+		    MOBComico.isIOS = ua.indexOf('(ip')>0 && MOBComico.isMobile;
+		    MOBComico.isWeibo = (/Weibo/i.test(ua)) ? true : false ;
+
+			var get = function(selector){return document.querySelectorAll(selector);}
+			var getA = function(selector){return document.querySelector(selector);}
+			
+			function closeTips(){
+			  	getA('.open-tip').classList.add('hide');
+			};
+			
+			if (MOBComico.isIOS && (MOBComico.isWeibo || MOBComico.isWeixin || MOBComico.isQQ)) {
+			  	getA('.open-tip').classList.remove('hide');
+			  	if (window.location.href.indexOf('#down') == -1 ) {
+			  		window.location.href = window.location.href + '#down';
+			  	}
+			}else{
+			  	window.location.href = combinUrl("app.", "/down.php");
+			  	//window.open( combinUrl("app.", "/down.php") );
+			}
+	});
+
+
+	window.onload = function(){
+		var MOBComico = {},
+    		ua = navigator.userAgent.toLowerCase();
+	    //获取设置的苹果安卓客户端ua信息
+	    MOBComico.android = (/andriod/i.test(ua)) ? true : false ;
+	    MOBComico.app = (/icomico/i.test(ua)) ? true : false ;
+
+		var music = document.getElementById("audio");//获取ID
+	    if (music.paused || music.ended) { //判读是否播放
+			$('#musicPlay').addClass('curr');
+	    } else {
+	        $('#musicPlay').removeClass('curr');
+	    }
+	    //点击播放音乐或者停止音乐，安卓可以即时播放，苹果需点击操作
+		$('#musicPlay').on('click',function(){
+			var music = document.getElementById("audio");//获取ID
+		    if (music.paused || music.ended) { //判读是否播放
+	            music.play(); //没有就播放
+	            $(this).removeClass('curr');
+	    } else {
+	    		music.pause();
+	    		$(this).addClass('curr');
+		    }
+		});
+
+		if( MOBComico.android || MOBComico.app ){
+	    	$('#audio,#musicPlay').remove();
+	    }else{
+	    	$('#musicPlay').trigger('click');
+	    }
+	}
+
+	//百度统计代码安装
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+
+</body>
+</html>

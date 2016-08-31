@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷漫画_条漫™</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="http://cdn.icomicool.cn/m/m-common/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="http://www.comicool.cn/common/common-v1.js"></script>
+<script src="http://cdn.icomicool.cn/m/m-common/js/hammer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<style type="text/css">
+.save-img { position: absolute; top: -9999px; left: 0; z-index: 250;}
+#audio1 { position: absolute; z-index: 200; top: -9999px; left: -9999px;}
+#audio2 { position: absolute; z-index: 200; top: -9999px; left: -9999px;}
+
+.sr-bottomtip2 { bottom: 0; display: none; padding: 50px 0 0;
+background: rgba(68,68,68,.8);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(40%,rgba(255,255,255,.6)), color-stop(80%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1))); Chrome,Safari4+
+background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,.6) 40%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%);
+background: linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,.6) 40%, rgba(255,255,255,1) 80%, rgba(255,255,255,1) 100%); W3C}
+.sr-bottomtip2 a.openLnk2 { display: block; width: 100%; padding: 10px 0;} 
+</style>
+</head>
+<body>
+<img id="wx-sm-img" src="" style="position:absolute; z-index:1; left:-9999px; top:-9999px; display:block;" />
+<!-- ！！！坑爹的微信JS-SDK接口，网上各种技术文章暂时无法用，这里用另外的解决方案，将图片显示第一张放置顶层，经测试，这里不能隐藏掉，只好通过定位移掉，尺寸过于小也不行 -->
+<audio preload="auto" controls="controls" id="audio1">
+    <!-- 添加一个ID -->
+    <source src="r678-res/678_1.mp3" type="audio/mpeg" />
+    <!-- 您的浏览器不支持音频播放。 -->
+</audio>
+<audio preload="auto" controls="controls" id="audio2">
+    <!-- 添加一个ID -->
+    <source src="r678-res/678_2.mp3" type="audio/mpeg" />
+    <!-- 您的浏览器不支持音频播放。 -->
+</audio>
+
+<article class="share-page share-read">
+    <div class="tips hide">
+        <img src="http://cdn.icomicool.cn/m/content/images/tip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+    </div>
+    <header class="sr-head cl">
+        <a href="javascript:;" class="back-btn"><img src="http://cdn.icomicool.cn/m/content/images/share-prev.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></a>
+        <a href="javascript:;" class="share-btn"><img src="http://cdn.icomicool.cn/m/content/images/share-btn2.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></a>
+        <div class="head-inner">
+            <div class="head-table">
+                <div class="head-table-cell">
+    	           <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="sr-con" id="sr-con">
+        <!-- img图片内容 -->
+    </section>
+    <footer class="sr-foot">
+        <a href="javascript:;" class="prev-btn"><img src="http://cdn.icomicool.cn/m/content/images/point-prev.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></a>
+        <a href="javascript:;" class="next-btn"><img src="http://cdn.icomicool.cn/m/content/images/point-next.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></a>
+    </footer>
+
+    <div class="sr-contip sr-bottomtip2">
+        <a href="javascript:;" class="clo">×</a>
+        <a class="openLnk2" href="javascript:;"><img src="images/foot-open2.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></a>
+    </div>
+
+    <div class="sr-contip sr-bottomtip">
+        <img src="http://cdn.icomicool.cn/m/content/images/toptip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+        <div class="toptip-btn">
+            <div class="toptip-btn-inner">
+                <span><a class="openLnk" href="javascript:;">立即打开</a></span>
+                <span><a href="javascript:;" class="clo">×</a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="save-img save-img1">
+         <img src="r678-res/678gif1.gif" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+    </div>
+    <div class="save-img save-img2">
+         <img src="r678-res/678gif2.gif" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+    </div>
+</article>
+</body>
+<script>
+//JS开始
+//初始化漫画组合
+var frameGif1 = 2,
+    frameGif2 = 24,
+    frameTotal = 65;
+
+var gif1Shown = false,
+    gif2Shown = false;
+
+$(function(){
+    //设置各平台oa
+    var MOBComico = {};
+    var ua=navigator.userAgent.toLowerCase();
+    MOBComico.isIOS = false;
+    MOBComico.isMobile = ua.indexOf('mobile')>0;
+    MOBComico.isWeixin = (/micromessenger/.test(ua)) ? true : false ;
+    MOBComico.isQQ = (/qq\//.test(ua)) ? true : false ;
+    MOBComico.isIOS = ua.indexOf('(ip')>0 && MOBComico.isMobile;
+    MOBComico.isWeibo = (/Weibo/i.test(ua)) ? true : false ;
+    MOBComico.isAndr = ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
+
+    function tipsCtr(){
+        var _boxHeight = $('.share-page').css( 'minHeight', $(window).height()+'px' );
+        var _headHeight = $('.sr-head').height(),
+            _footerHeight = $('.sr-foot').height(),
+            viewHeight = $(window).height();
+        //$('.sr-toptip').css('top' , _headHeight+'px');
+        $('.sr-bottomtip,.sr-bottomtip2').css('bottom' , _footerHeight+'px');
+        //$('.head-inner').css('lineHeight' , _headHeight+'px');
+        $('.sr-con').css({'minHeight' : viewHeight+'px'});
+    };
+
+    function cssCtr(){  //点击前的初始化样式，点击后的执行变化
+        setTimeout(function(){
+            tipsCtr();
+            $('a.clo').bind('click',function(){
+                //点击关闭按钮执行的一系列效果变化
+                $(this).parents('.sr-bottomtip').hide();
+                tipsCtr();
+            });
+        },200);
+    };
+
+    $(window).resize(function(){
+        var zoom = 0,
+            viewWidth = $(window).width(),
+            viewHeight = $(window).height(),
+            clientRatio = viewWidth / viewHeight; //视口宽高比
+        if( clientRatio >  1 ){  //横屏
+            $('.sr-head a').css({'width' : '6%'});
+            $('.sr-foot a').css({'width' : '5%'});
+            $('.sr-bottomtip img').css({'width' : '50%'});
+            cssCtr();
+        } else {  //竖屏
+            $('.sr-head a').css({'width' : '10%'});
+            $('.sr-foot a').css({'width' : '9%'});
+            $('.sr-bottomtip img').css({'width' : '100%'});
+            cssCtr();
+        }
+    });
+    $(window).resize();
+
+
+    //阅读页请求拉取数据
+    var aj = $.ajax( {    
+        url : 'http://proxy.icomico.com/epinfo4web',// 跳转到 action 测试地址http://121.201.7.97/epinfo4web
+        data : {
+            'comic_id' : 678,  //漫画id
+            'ep_id' : 1      //单话id
+        },    
+        type : 'get',
+        timeout : '10000', 
+        cache : false,    
+        dataType : "jsonp",
+        jsonp: "callback",      //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonpCallback:"jsonp_epinfo",      //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        success : function(response , status , xhr) {
+                //alert("成功！");
+                if( !response.frame_list){
+                    losePreload('nul');
+                    return false;
+                };   //接口没有数据时返回 重新请求
+                
+                $('.head-inner span').html( response.extend_info.ep_title );  //获取单话标题
+
+                //循环获取单话阅读内容图片
+                var list_len = response.frame_list.length;
+                /*
+                def_page = 10;
+                //if( list_len > def_page && !(navigator.userAgent.indexOf('iPhone') > -1))
+                //之前设置的是苹果全部展示图片，安卓最大10张
+                if( list_len > def_page ){
+                    list_len = def_page;
+                }
+                */
+
+                if( $.isArray(response.frame_list) && response.frame_list.length ){
+
+                    loadpic( response.frame_list,function(){
+                        $(document).scroll(function(){
+                            function isFrameSectionHided(className) {
+                                return $('.sr-con img.' + className).length == 0 || $('.sr-con img.' + className)[0].style.display == 'none';
+                            }
+                            //console.log($(document).scrollTop())
+                            var scrTopHeight = $(document).scrollTop();
+                            if (!gif1Shown && $('.sr-con img.show0').length == frameGif1 + 1 && isFrameSectionHided('show1')) {
+                                var firstGifHeight = $('.sr-con img.show0').filter(":last").height(),
+                                    boxHeight = $('.sr-con').height();
+                                dif_Hei1 = boxHeight - firstGifHeight;
+
+                                if(dif_Hei1 > 0 && (scrTopHeight >= dif_Hei1 || scrTopHeight == dif_Hei1-1 || scrTopHeight == dif_Hei1+1 )){
+                                    $('.save-img1').css('top' , dif_Hei1);
+
+                                    var music = document.getElementById("audio1");//获取ID
+                                    if (music.paused || music.ended) { //判读是否播放
+                                        music.play(); //没有就播放
+                                    }
+                                    gif1Shown = true;
+                                    setTimeout(function(){
+                                        $('.sr-con img.show1').show();
+                                    },4500);
+                                }
+                            }
+                            if (!gif2Shown && $('.sr-con img.show1').length == frameGif2 - frameGif1 && !isFrameSectionHided('show1') && isFrameSectionHided('show2')) {
+                                var secGifHeight = $('.sr-con img.show1').filter(":last").height(),
+                                    boxHeight = $('.sr-con').height();
+                                dif_Hei2 = boxHeight - secGifHeight;
+                                if(dif_Hei2 > 0 && (scrTopHeight >= dif_Hei2 || scrTopHeight == dif_Hei2-1 || scrTopHeight == dif_Hei2+1 )){
+                                    $('.save-img2').css('top' , dif_Hei2);
+
+                                    var music = document.getElementById("audio2");//获取ID
+                                    if (music.paused || music.ended) { //判读是否播放
+                                        music.play(); //没有就播放
+                                    }
+                                    gif2Shown = true;
+
+                                    setTimeout(function(){
+                                        $('.sr-bottomtip').hide();
+                                        $('.sr-bottomtip2').show().css('z-index',300);
+                                    },3000);
+                                }
+                            }
+                        });
+                    });
+                }
+                //返回上一级
+                $('.back-btn').attr( 'href' , 'detail.html?comic_id=' + getQueryString('comic_id') );
+
+                //翻页功能--回调函数执行
+                turnPage(response.ep_num);
+
+                document.title = '[' + response.comic_title + '] ' + response.extend_info.ep_title + '-可米酷漫画';   //标题更换
+                $('#wx-sm-img').attr('src', response.ep_comic_cover + '?imageMogr2/thumbnail/480x');     //坑爹微信接口另外解决方案
+        },    
+        error : function() {
+              losePreload('excp');
+        }    
+    });
+
+    // 图片递归加载
+    function loadpic(list,callback){
+        if( $.isArray(list) && list.length ){
+            var index = frameTotal - list.length;
+            var item = list.shift(),
+                image = new Image();
+                image.alt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+
+            if(index <= frameGif1){
+                image.className = 'show0';
+            }else if (index > frameGif1 && index <= frameGif2) {
+                image.className = 'show1';
+                image.style.display = 'none';
+                /*$(document).scroll(function(){
+                    console.log($(document).scrollTop());
+                });*/
+            } else if (index > frameGif2) {
+                image.className = 'show2';
+                image.style.display = 'none';
+            }
+            // loadpic(list);
+            image.src = 'http://cdn.icomico.com/' + item.frame_url + '?imageMogr2/thumbnail/480x';
+            image.onload = function(){
+                $('.sr-con').append($(this));
+                loadpic(list,callback);
+                $.isFunction(callback) && callback(list);
+            };
+        }else{
+            $.isFunction(callback) && callback(list);
+        }
+    }
+    
+
+
+    //获取页面URL参数名
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    };
+
+    //翻页功能
+    function turnPage(num){
+        var ep_num = num,
+            ep_id = parseInt(getQueryString('ep_id'));                
+        var href = 'reader.html?ep_num=' +  num + '&comic_id=' +  getQueryString('comic_id') + '&ep_id=';
+
+        $('.prev-btn').on('click',function(){
+            if( ep_id > 1 ){
+                $(this).attr('href',href + (ep_id - 1));
+            }else{
+                alert('亲，已是第一页噢');
+            }
+        });
+        $('.next-btn').on('click',function(){
+            if( ep_id < num ){
+                $(this).attr('href',href + (ep_id + 1));
+            }else{
+                alert('亲，已是最后一页噢');
+            }
+        });
+    };
+
+    //打开阅读元素操作调用  
+    $('.openLnk, .sr-bottomtip2 img').on('click',function(){
+        if (isTipsShow()) {
+            $(this).parents('.sr-contip').hide();
+        } else {
+            openApp();
+        }
+    });
+
+    //设置页面判断打开客户端
+    function openApp() {
+        // 如果需要测试已安装App的打开，需要使用comicool.cn的固定地址
+        //window.location.href = 'http://m.app.comicool.cn/smart_open/main.php'
+        window.location.href = combinUrl("m.app.", "/smart_open/main.php");
+    }
+    //设置微信等判断出现提示内容
+    function isTipsShow(){
+        if (MOBComico.isIOS && MOBComico.isWeibo) {
+            $('.tips').removeClass('hide');
+            return true;
+        } else {
+            return false;
+        }
+    }// end
+
+    //协议延迟或者失败时
+    function losePreload(error){
+        $('.share-page').addClass('error').html('').append('<a href="javascript:;" class="error-lnk"></a>');
+        var message='三次元的网络不行呀';
+        if (error) {
+            message+='(' + error + ')';
+        }
+        $('.share-page a.error-lnk').append('<div class="error-con"><div class="error-img"><img src="http://cdn.icomicool.cn/m/content/images/error.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" /></div><p>' + message + '</p><p>╮(╯▽╰)╭</p></div>').on('click',function(){
+            $(this).attr('href', window.location.href);
+        });
+    }
+
+
+});
+
+window.onload = function(){
+    var hammertime = new Hammer(document.getElementById("sr-con"));
+    //为该dom元素指定触屏移动事件
+    hammertime.on('tap press', function (ev) {
+        var headShow = $('.sr-head')[0];
+        if( headShow.style.display=='block' || headShow.clientHeight !== 0 ){
+        $('.sr-head, .sr-foot').hide().css({'overflow':'hidden','height':0});
+            touchCssHide();
+        }else{
+            $('.sr-head, .sr-foot').show().css({'overflow':'visible','height':'auto'});
+            touchCssShow();
+        }
+        //控制台输出
+        //console.log(ev);
+    });
+    hammertime.on('pan pinch', function (ev) {
+        $('.sr-head, .sr-foot').hide().css({'overflow':'hidden','height':0});
+        touchCssHide();
+        //控制台输出
+        //console.log(ev);
+    });
+}
+
+function touchCssHide(){
+    var $top = $('.sr-head'),
+        //$ttip = $('.sr-toptip'),
+        $btip = $('.sr-bottomtip, .sr-bottomtip2'),     
+        $bot = $('.sr-foot'),
+        th = $top.height(),
+        fh = $bot.height();
+    /*$top.css({height:0,'overflow':'hidden'});*/ 
+    //$ttip.css({top:0});
+    $btip.css({bottom:0});
+}
+function touchCssShow(){
+    var $top = $('.sr-head'),
+        //$ttip = $('.sr-toptip'),
+        $btip = $('.sr-bottomtip, .sr-bottomtip2'),     
+        $bot = $('.sr-foot'),
+        th = $top.height(),
+        fh = $bot.height();
+    //$ttip.css({top:th});
+    $btip.css({bottom:fh});
+}
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+</html>

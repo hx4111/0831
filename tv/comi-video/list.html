@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画列表页|漫画网_二次元</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫"/>
+    <meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/zepto.js"></script>
+    <script src="../js/config.js"></script>
+    <style>
+        .list-container {
+            width: 100%;
+            padding-left: 5%;
+        }
+
+        .list-container  li {
+            display: inline-block;
+            width: 20%;
+            color: #fff;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+
+        .item-img {
+            width: 95%;
+            -webkit-transition: all 0.5s;
+        }
+
+        li .item-img img{
+            width: 100%;
+            height: 180px;
+            border-radius: 5px;
+        }
+
+        .item-title {
+            font-size: 16px;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        .focus-block .item-img{
+            -webkit-transform: scale(1.2);
+            background-color: #E37908;
+            border-radius: 5px;
+        }
+
+        @media screen and (device-width: 960px) {
+            li .item-img img {
+                height: 127px;
+            }
+        }
+    </style>
+</head>
+<body class="main-container">
+    <div class="header">
+        <div class="logo fl"></div>
+        <div class="header-list fr"></div>
+    </div>
+    <div class="container">
+        <ul class="list-container">
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10565&video_id=seven01">
+                <div class="item-img">
+                    <img src="http://cdn.icomicool.cn/images/pic/seven.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;seven01</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10565&video_id=seven02">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10565_63_acover_eb8b8f23893b70eb.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;seven02</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10565&video_id=seven03">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10565_8_acover_cab62c312bb07ee6.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;seven03</p>
+                </div>
+                
+            </li>
+            <!--<li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10622&video_id=xunshi01">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10622_ccover_261b56bedde1a58b.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;寻师伏魔录01</p>
+                </div>
+                
+            </li>
+             <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10622&video_id=xunshi02">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10622_2_acover_5939d778d79baa60.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;寻师伏魔录02</p>
+                </div>
+                
+            </li> -->
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=77&video_id=shenshou01">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/77_ccover_d161715c5019cd78.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;神兽退散</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll01">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_3_acover_86f81d5293f1f876.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-楼梯上</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll02">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_4_acover_a08b5f5d6cb1e0c2.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-楼梯中</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll03">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_1_acover_new.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-楼梯下</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll04">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_33_acover_7c22ced97402cd2f.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-螺</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll05">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_63_acover_aa80d0e392f0230e.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-雨夜上</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=70&video_id=gll06">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/70_41_acover_bd8f1c735635d2e2.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;诡来了-雨夜下</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=3701&video_id=tpz01">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/3701_ccover_c59920e8f1129d2f.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;太平镇-01</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=3701&video_id=tpz02">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/3701_4_acover_d6ab98275d1cb6b2.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;太平镇-02</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=3701&video_id=tpz03">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/3701_18_acover_af2f9c8b0f644f9c.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;太平镇-03</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=3701&video_id=tpz04">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/3701_29_acover_01210b8d08de41ce.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;太平镇-04</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10424&video_id=xlxy01">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10424_ccover_91c3cef4c6ddcb90.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;西陵学院-01</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10424&video_id=xlxy02">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10274_ccover_9cce8e3424d167bc.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;西陵学院-02</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10424&video_id=xlxy03">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10424_22_acover_ffa3d13e916b56f8.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;西陵学院-03</p>
+                </div>
+                
+            </li>
+            <li class="keyevent-item" data-a="/comi-video/videoPlay.html?comic_id=10424&video_id=xlxy04">
+                <div class="item-img">
+                    <img src="http://cdn.icomico.com/10424_6_acover_119715fbdb0d4a4e.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app">
+                    <p class="item-title">&nbsp;西陵学院-04</p>
+                </div>
+                
+            </li>
+        </ul>
+    </div>
+<script src="../js/common-tv.js"></script>
+<script type="text/javascript">
+    generatHeader('video');
+    var escUrl = CONFIG.rootUrl + '/index.html';
+    escPressEvent(escUrl);
+
+    var keyConfigObj = {
+        'rowCnt': [0, 4],
+        'eventArray': [$('.header-item'), $('.keyevent-item')],
+        'firstFoucs': {x:1, y:0},
+    }
+
+    new KeyPressEvent(keyConfigObj);
+    $('html').css('height', 'auto');
+</script>
+</body>
+</html>

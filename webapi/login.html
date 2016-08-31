@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../js/common-pc.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/config.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../m/js/global.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../m/js/config.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<!--<div>正在登录中,请稍等...</div>-->
+		<script type="text/javascript">
+			getLogin();
+
+			function getLogin() {
+				//		微博登录
+				var getdatauri = decodeURIComponent(window.location.href);
+				var getGarameter = getdatauri.split("?");
+				for (var i = 0, len = getGarameter.length; i < len; i++) {
+					if (getGarameter[i].indexOf("key") != -1) {
+						var go_url = "http://comicool.cn/third-party-login/index.php?" + getGarameter[i];
+						break;
+					}
+				}
+				$.ajax({
+					type: 'get',
+					dataType: 'jsonp',
+					url: go_url,
+					jsonpCallback: 'callback',
+					success: function(res) {
+						console.log(res);
+						if (res.code == 0) {
+							var userInfo = res.data;
+							if (userInfo.icon == '') {
+								userInfo.icon = 'http://cdn.icomicool.cn/images/image_people.png';
+							}
+							var fromType = getQueryString('fromType'),
+								fromPage = getQueryString('fromPage');
+							switch (fromType) {
+								case 'h5':
+									Comi.Utils.LocalStorage.add('comiUserData', JSON.stringify(userInfo));
+									if (fromPage) {
+										window.parent.location.href = fromPage;
+									} else {
+										window.location.href ='http://'+window.location.host;
+									}
+									break;
+								case 'pc':
+									if (userInfo.usertype == 1) {
+										Comi.Login.setComiUser(userInfo);
+										window.location.href = 'http://' + window.location.host;
+									} else {
+										window.parent.Comi.Login.setComiUser(userInfo);
+									}
+									break;
+							}
+							$(document).ready(
+								function() {
+									var parentPage = $(window.parent.document.body);
+									parentPage.find("#temp_login").remove();
+								}
+							);
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>土豪来袭，可米酷漫画火热征稿中|原创漫画_漫画app</title>
+<meta name="keywords" content="漫画投稿,漫画app,原创漫画" />
+<meta name="description" content="可米酷漫画投稿:坐着画画，躺着收钱，土豪可米酷来袭，原创漫画火热征稿中" />
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<style type="text/css">
+body { background-color: #fffef1;}
+.pagebox { margin: auto; width: 700px;}
+.page-head { position: relative;}
+.page-head a { position: absolute; bottom: 0; left: 46px; width: 605px; height: 170px; display: block;}
+.imglist li.li3 { position: relative;}
+.imglist li.li3 a.contribute-btn { position: absolute; bottom: 0; left: 46px; display: block; width: 414px; height: 52px;}
+</style>
+</head>
+<body>
+    <div class="pagebox contribute">
+    	<div class="page-head">
+            <img src="images/top.jpg" alt="漫画投稿,漫画app" /><a target="_blank" href="http://post.comicool.cn/" title="欢迎进入作品投稿系统"></a>
+        </div>
+        <div>
+            <ul class="imglist">
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var list = [
+    'http://cdn.icomicool.cn/act/contribute/images/1.jpg',
+    'http://cdn.icomicool.cn/act/contribute/images/2.jpg',
+    'http://cdn.icomicool.cn/act/contribute/images/3.jpg',
+    'http://cdn.icomicool.cn/act/contribute/images/4.jpg',
+    'http://cdn.icomicool.cn/act/contribute/images/5.jpg',
+];
+
+loadpic (list, function(){
+    $('.imglist li').addClass('li3').eq(2).append('<a target="_blank" href="http://post.comicool.cn/" class="contribute-btn" title="作品投稿地址"></a>');
+});
+
+// 图片递归加载
+function loadpic(list,callback){
+    if( $.isArray(list) && list.length ){
+        var item = list.shift(), image = new Image(), $imgHtml = $('<li></li>');
+        // loadpic(list);
+        image.src = item;
+        image.alt = '漫画投稿,漫画app';
+        image.onload = function(){
+             $('.imglist').append($imgHtml);
+             $imgHtml.append($(this));
+             loadpic(list,callback);
+        };
+    }else{
+        $.isFunction(callback) && callback(list);
+    }
+}
+
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+var s = document.getElementsByTagName("script")[0]; 
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

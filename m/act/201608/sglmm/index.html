@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box img {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<img src="http://cdn.icomicool.cn/m/act/201608/sglmm/sglmm_bg2.jpg" />
+		</div>
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/tpl/dist/act-global.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			function link() {
+				var host = window.location.href;
+				if (host.indexOf('banner_list') != -1) {
+					window.location.href = 'http://cmcoo.cn/ad_sglmm2';
+				} else {
+					window.location.href = 'http://cmcoo.cn/ad_sglmm1';
+				}
+			}
+			window.onload = function() {
+				link();
+				$('#box img').on('click', function() {
+					link();
+				})
+			}
+			
+		</script>
+	</body>
+
+</html>

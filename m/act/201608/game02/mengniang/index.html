@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>萌娘契约</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			body {
+				background: #000;
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#box img {
+				width: 100%;
+			}
+			
+			@media screen and (min-width: 1025px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px!important;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box">
+			<img id="btn" src="http://cdn.icomicool.cn/m/act/201608/game02/mengniang/bg.jpg" />
+		</div>
+		<script type="text/javascript">
+			function link() {
+				var host = window.location.href;
+				if (host.indexOf('banner_list') != -1) {
+					//					banner
+					window.location.href = 'http://cmcoo.cn/ad_mnqy_dl__banner';
+				} else {
+					//					闪屏
+					window.location.href = 'http://cmcoo.cn/ad_mnqy_dl__splash';
+				}
+			}
+			window.onload = function() {
+				link();
+				var btn = document.getElementById('btn');
+				btn.addEventListener('click', function() {
+					link();
+				})
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>cnzz统计</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<style type="text/css">
+			#share,
+			#play,
+			#down,
+			#read,
+			#open,
+			#skip {
+				border: 0;
+				color: #fff;
+				padding: 10px 20px;
+				width: 100px;
+				text-align: center;
+				margin: 10px auto;
+				cursor: pointer;
+				display: block;
+				text-decoration: none
+			}
+			
+			#share {
+				background: red;
+			}
+			
+			#play {
+				background: #2af;
+			}
+			
+			#down {
+				background: #f60;
+			}
+			
+			#read {
+				background: #0ACB15;
+			}
+			
+			#open {
+				background: #2B2B2B;
+			}
+			
+			#skip {
+				background: #8732bd;
+			}
+			
+			.gray {
+				background: #ccc;
+			}
+			
+			h3 {
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h3>CNZZ统计(友盟)</h3>
+		<div id="box">
+			<div id="share" data-btn='share' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"share"]);">
+				分享 <span>0</span>
+			</div>
+			<a href='javascript:;' id="play" data-btn='play' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"play"]);">
+			播放 <span>0</span>
+		</a>
+			<article id="down" data-btn='down' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"down"]);">
+				下载 <span>0</span>
+			</article>
+			<li id="read" data-btn='read' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"read"]);">
+				阅读 <span>0</span>
+			</li>
+			<p id="open" data-btn='open' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"open"]);">
+				打开 <span>0</span>
+			</p>
+			<ul id="skip" data-btn='skip' onclick="_czc.push(﻿[" _trackEvent ","nav ","click ",,,"skip"]);">
+				跳转 <span>0</span>
+			</ul>
+		</div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				var num = [960, 961, 962, 963, 964, 965];
+				var list = ['share', 'play', 'down', 'read', 'open', 'skip'];
+				$.ajax({
+					url: 'http://comicool.cn/simple_vote.php',
+					dataType: "jsonp",
+					data: {},
+					jsonpCallback: "jsonp_match",
+					success: function(data) {
+						for (var i = 0, len = list.length; i < len; i++) {
+							var index = num[i],
+								texts = '#' + list[i] + ' span';
+							$(texts).html(data.results[index]);
+						}
+					}
+				});
+				var theClick = $('#box').children();
+				theClick.on('click', function() {
+					var _this = $(this);
+					var text = $.trim($(this).html());
+					_this.off('click');
+					_this.css('background', 'gray');
+					var btn = this.dataset.btn;
+					for (var i = 0, len = list.length; i < len; i++) {
+						if (btn == list[i]) {
+							var index = num[i],
+								texts = '#' + list[i] + ' span',
+								oldHtml = $(texts).html();
+							$(texts).html(parseInt(oldHtml) + 1);
+							$.get("http://comicool.cn/simple_vote.php?sel=" + index);
+						}
+					}
+				})
+			})
+		</script>
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259789341'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1259789341' type='text/javascript'%3E%3C/script%3E"));</script>
+	</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>二次元界的抢钱节!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网" />
+		<meta name="description" content="快来领取红包哟,www.comicool.cn" />
+		<meta name="generator" content="Comicool" />
+		<meta name="author" content="Comicool Team and Comicool UI Team" />
+		<meta name="copyright" content="2014-2015 Comicool Inc." />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript" src="http://cdn.icomicool.cn/app/app-common/js/zepto.min.js"></script>
+		<script src="http://cdn.icomicool.cn/thanksgiving/js/style.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+	</head>
+
+	<body class="draw_index">
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+    二次元界的抢钱节!
+        <p>二次元界的抢钱节!</p>
+        <img src="http://cdn.icomicool.cn/thanksgiving/images/360.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<div class="draw_top">
+			<div class="draw_index_explain">2015的最后狂欢，可米酷就是要送送送！ 邀请好友下载、签到完成任务，Q币、话费、酷币.... 先到先得，赶紧抢抢抢！
+			</div>
+			<div class="draw_invite"><a href="javascript:;" >立即邀请</a></div>
+
+			<div id="nvite">
+			</div>
+			<div id="draw_phone">
+				<!--<li><em>1.</em><img src='http://div.io/uploads/avatar/987_s.jpg'><s>撒旦飞洒</s><span>￥500</span></li>-->
+			</div>
+		</div>
+		<script>
+			$(function() {
+					var reward = "";
+					reward += "<dl><dt>--</dt><dd>邀请人数</dd></dl><dl><dt>--</dt><dd>我的奖励</dd></dl>"
+					var oTop = document.getElementById("nvite");
+					oTop.innerHTML = reward;
+				})
+				// 推广排名 
+			$.ajax({
+				url: 'http://proxy.icomico.com/invitetalent4h5',
+				type: 'GET',
+				data: {},
+				dataType: 'jsonp',
+				jsonpCallback: 'jsonp_invitetalent',
+				success: function(data) {
+					var html = "";
+					if (data.talents.length !== "" && data.talents.length !== 0) {
+						for (var i = 0; i < 5; i++) {
+							var num = data.talents[i];
+							num.icon = num.icon ? num.icon : 'http://cdn.icomicool.cn/images/image_people.png';
+							var money = (num.invitetimes * 1.5);
+							html += "<li><em>" + i + ".</em><img src='" + num.icon + "'><s>" + num.nickname + "</s><span>￥" + money + "</span></li>"
+						}
+					} else(
+						html += "暂时无数据"
+					)
+					var oTop = document.getElementById("draw_phone");
+					oTop.innerHTML = html
+				}
+			});
+			checkUser();
+
+			function checkUser() {
+				var ajaxData = {
+					'ccid': '',
+					'usertype': '',
+					'cctoken': '',
+					'deviceid': '',
+				}
+				if (isApp) { //如果是App环境
+					callAppFunction('getAccountInfo', {}, function(result) {
+						/**
+						 * 安卓未登录返回undefined，登录后返回json字符串
+						 * IOS未登录返回{}，登录后返回json对象
+						 */
+						var result = result && isAndroidApp ? JSON.parse(result) : result;
+						//如果result是对象且存在ccid属性（即已登录）
+						if (result instanceof Object && result.hasOwnProperty('ccid')) {
+							ajaxData = JSON.stringify(result);
+							loginHandler(ajaxData);
+						} else { //未登录
+							$('.h-login').show();
+							$(".draw_index_invite").on("click",function(){
+								callAppFunction('openLoginPage', {});
+							})
+							callAppFunction('setJSCallback', { //设置App里登录后的回调函数
+								'account_event': 'loginHandler'
+							});
+							$('.h-login span').on('click', function() {
+								callAppFunction('openLoginPage', {});
+							});
+							initPage(ajaxData);
+						}
+					});
+				} else {
+					var remainTimes = getCookie('remainTimes');
+					if (remainTimes == null) {
+						setCookie('remainTimes', 1, 30);
+					}
+					ajaxData.ccid = '1';
+					ajaxData = JSON.stringify(ajaxData);
+					loginHandler(ajaxData);
+				}
+			}
+
+			function loginHandler(appDataStr) {
+				var appDataObj = JSON.parse(appDataStr);
+
+				function initBaiduSharePanel() {
+					var _ = function(selector, parent) {
+							return (parent || document).querySelector(selector);
+						},
+						header = _('.header'),
+						trigger = _('.icon-share', header),
+						mask = _('#ShareBg'),
+						panel = _('.bdsharebuttonbox'),
+						cancelBtn = _('.share-clo', panel),
+						panelTitle = _('#ShareCon h2'),
+						panelImageCont = _('#ShareCon em'),
+						panelImage = new Image(),
+						hidePanel = function() {
+							mask.style.display = panel.style.display = 'none';
+						};
+					header.style.display = 'block';
+					panelTitle.innerHTML = this.title;
+					panelImage.src = this.imageUrl;
+					panelImageCont.appendChild(panelImage);
+					trigger.addEventListener('click', function() {
+						mask.style.display = panel.style.display = 'block';
+					});
+					mask.addEventListener('click', hidePanel);
+					cancelBtn.addEventListener('click', hidePanel);
+				}
+				setShareInfo({
+					title: '二次元界的抢钱节!',
+					describe: '二次元界的抢钱节!',
+					imageUrl: "http://cdn.icomicool.cn/thanksgiving/images/200.jpg",
+					pageUrl: 'http://promote.comicool.cn/thanksgiving/draw.html?ccid=' + appDataObj.ccid
+				}, {
+					use: 'baidu',
+					init: initBaiduSharePanel
+				});
+				$(".draw_index_invite").on("click", function() {
+					callAppFunction('popupSharePanel', {
+						"title": "二次元界的抢钱节",
+						"describe": "二次元界的抢钱节",
+						"imageurl": "http://cdn.icomicool.cn/thanksgiving/images/200.jpg",
+						"pageUrl": "http://promote.comicool.cn/thanksgiving/draw.html?ccid=" + appDataObj.ccid
+					});
+				})
+				if (appDataObj.ccid !== "1" || appDataObj.ccid !== 0 || appDataObj.ccid !== null) {
+					$.ajax({
+						url: 'http://proxy.icomico.com/inviterrecord4h5',
+						type: 'GET',
+						data: {
+							'cc_id': cc_id,
+						},
+						dataType: 'jsonp',
+						jsonpCallback: 'jsonp_inviterrecord',
+						success: function(data) {
+							var reward = "";
+							var people = data.invite_user_count;
+							reward += "<dl><dt>" + people + "</dt><dd>邀请人数</dd></dl><dl><dt>￥" + (people * 1.5) + "</dt><dd>我的奖励</dd></dl>"
+							var oTop = document.getElementById("nvite");
+							oTop.innerHTML = reward;
+						}
+					});
+				}
+			}
+		
+
+			function setCookie(name, value, days) {
+				var days = days || 7; //此 cookie 将被保存 7 天
+				var exp = new Date();
+				exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);
+				document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+			};
+
+			function getCookie(name) {
+				var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+				if (arr = document.cookie.match(reg)) {
+					return unescape(arr[2]);
+				} else {
+					return null;
+				}
+			};
+		</script>
+	</body>
+
+</html>

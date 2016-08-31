@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1458635655_7785976.css">
+    <style>
+        .phone-login-btn {
+            margin: 13px auto;
+            width: 80%;
+            height: 200px;;
+        }
+        .input-block {
+            border: 1px solid #919191;
+            border-radius: 3px;
+            height: 35px;
+            margin: 10px auto;
+        }
+        .input-block input {
+            border-style: hidden;
+            float: left;
+            margin: 6px;
+            font-size: 14px;
+        }
+        .input-block .icon-span {
+            margin-right: 8px;
+            font-size: 20px;
+            float: right;
+        }
+        .remeber-act {
+            float: left;
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .btn-default {
+            background-color: #E62C31;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .register-panel a {
+            color: #E62C31;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .login-main .third-login-btn {
+            padding: 25px 0 10px;
+            font-size: 0;
+        }
+
+        .login-main .third-login-btn span {
+            display: inline-block;
+            vertical-align: top;
+            *zoom: 1;
+            *display: inline;
+            height: 64px;
+            width: 63px;
+            margin: 0 8px;
+        }
+
+        .login-main .third-login-btn span .iconfont {
+            font-size: 35px;
+            color: #fff;
+            padding: 10px;
+            border-radius: 100%;
+        }
+
+        .icon-weixin {
+            background-color: #21C183;
+        }
+
+        .icon-qq4login {
+            background-color: #44B5FF;
+        }
+
+        .icon-weibo {
+            background-color: #FC7478;
+        }
+
+        .login-main .third-login-btn span a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .login-main .third-login-btn span img {
+            display: none;
+        }
+
+        .login-main .third-login-btn span:hover {
+            opacity: 0.8;
+            filter: alpha(opacity=80);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="dialoge-bg" style="display: block"></div><!-- 遮罩层 -->
+<div class="login-dialoge" style="display: block;">
+    <div class="login-main" style="top: 415.5px;"><a href="javascript:;" class="login-clo">×</a>
+        <h1><img src="http://comicool.cn/images/h-logo-img.png"></h1>
+        <h3><p>手机号码登录</p></h3>
+        <div class="phone-login-btn">
+            <div class="input-block"><input type="text" placeholder="手机号"><span class="icon-span"><i class="iconfont icon-user"></i></span></div>
+            <div class="input-block"><input type="password" placeholder="密码"><span class="icon-span"><i class="iconfont icon-pwd"></i></span></div>
+            <div class="remeber-act"><input type="checkbox"><span>记住登录状态</span></div>
+            <div class="btn-default btn-login clearfix">登录</div>
+            <div class="register-panel"><div class="fl"><a href="javascript:;" onclick="">忘记密码?</a></div><div class="fr"><a href="javascript:;" onclick="">新用户注册</a></div></div>
+        </div>
+        <h3><p>使用第三方登录</p></h3>
+        <div class="third-login-btn">
+            <span class="weixin-btn"><i class="iconfont icon-weixin"></i></span>
+            <span class="qq-btn" id="qqLoginBtn">
+                <a href="javascript:;" onclick="return window.open('https://graph.qq.com/oauth2.0/authorize?client_id=101217801&amp;response_type=token&amp;scope=all&amp;redirect_uri=http%3A%2F%2Fcomicool.cn%2Fqqlogin.html', 'oauth2Login_10801' ,'height=525,width=585, toolbar=no, menubar=no, scrollbars=no, status=no, location=yes, resizable=yes');">
+                    <i class="iconfont icon-qq4login"></i><img src="http://qzonestyle.gtimg.cn/qzone/vas/opensns/res/img/Connect_logo_7.png" alt="QQ登录" border="0">
+                </a>
+            </span>
+            <span class="weibo-btn" id="wbLoginBtn">
+                <div class="WB_loginButton WB_widgets">
+                    <a href="javascript:void(0);"><i class="iconfont icon-weibo"></i><img src="http://timg.sjs.sinajs.cn/t4/appstyle/widget/images/loginButton/loginButton_24.png"></a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

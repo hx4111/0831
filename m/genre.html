@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画-搜索_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画搜索,热门漫画,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,看漫画" />
+		<meta name="description" content="漫画搜索|热门漫画:可米酷原创漫画，搞笑贱逗萌，少女情窦记，校园恐怖耽美不会少，丰富漫画连载内容看不完哟。" />
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/config.js"></script>
+	</head>
+
+	<body class="body-search">
+		<header class="header header-white header-fixed">
+			<i class="l-icon icon-menu"></i>
+			<h1 class="c-text ellipsis">类别</h1>
+		</header>
+		<article class="main-panel offset-plus">
+			<section class="search-top clearfix">
+				<form action="genre.html" class="main-search">
+					<div class="input-wrap">
+						<i class="icon-search"></i>
+						<input type="text" placeholder="请输入关键字" name="keyword" id="main-input">
+					</div>
+					<button class="btn btn-red">搜索</button>
+				</form>
+			</section>
+			<section class="cate-block">
+				<ul class="list-unstyled clearfix">
+					<!-- <li class="bgcolor-red">
+				<a href="">
+					<img src="images/search/cate-cover.jpg" alt="">
+					<div class="cate-text">
+						<h2>热门作品</h2>
+					</div>
+				</a>
+			</li><li class="bgcolor-blue">
+				<a href="">
+					<img src="images/search/cate-cover.jpg" alt="">
+					<div class="cate-text">
+						<h2>每日更新</h2>
+					</div>
+				</a>
+			</li><li class="bgcolor-orange">
+				<a href="">
+					<img src="images/search/cate-cover.jpg" alt="">
+					<div class="cate-text">
+						<h2>人气排行</h2>
+					</div>
+				</a>
+			</li><li>
+				<a href="">
+					<img src="images/search/cate-cover.jpg" alt="">
+					<div class="cate-text">
+						<h2>爱情</h2>
+					</div>
+				</a>
+			</li> -->
+				</ul>
+			</section>
+			<section class="search-result">
+				<ul class="common-list search-list">
+					<!-- 			<li>
+				<div class="li-img">
+					<img src="images/update/update-cover.jpg" />
+				</div><div class="li-txt">
+					<h3>恋爱最简单</h3>
+					<p>关于虎与人的虐恋故事</p>
+					<div class="li-txtbot"><span><i class="icon-good"></i><b>239</b></span><em>五仁月饼</em></div>
+				</div>
+			</li> -->
+				</ul>
+				<div class="search-tip">
+					<div class="search-tip-img"></div>
+					<p></p>
+				</div>
+			</section>
+			<footer class="footer">
+
+				<nav class="ft-nav">
+					<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+					<a href="pro-intr.html">产品介绍</a>
+				</nav>
+				<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+			</footer>
+		</article>
+		<div class="menu"><!-- 菜单 --></div>
+		<script src="js/base.min.js"></script>
+		<script src="js/global.js"></script>
+		<script>
+			//TODO:空格做过滤，现在空格会变加号
+			var keyword = $.trim(getQueryString('keyword'));
+			var lastSearchTime = getCookie('lastSearchTime') || 0;
+			//没有关键词时调取分类
+			if (keyword == '' || keyword == null) {
+				getByAjax({
+					api: 'categorylist4h5',
+					jsonpCallback: 'jsonp_categorylist',
+					success: function(data) {
+						if (data.msg == 'success') {
+							var cateList = data.category_list;
+							var html = '';
+							for (var i = 0, len = cateList.length; i < len; i++) {
+								var cate = cateList[i];
+								var cover = cate.category_cover_url;
+								var url = CONFIG.listBase + 'listpagetype=category' + '&listpageid=' + cate.category_id + '&listpagetitle=' + cate.category_title;
+								var imgCutSize = '?imageView2/2/w/200';
+								html += '' + '<li class="bgcolor-red">' + '<a href="' + url + '">' + '<img src="' + cover + imgCutSize + '" alt="">' + '</a>' + '</li>';
+							}
+							$('.cate-block ul').html(html);
+						}
+					}
+				});
+			} else {
+				$('#main-input').val(keyword);
+				getByAjax({
+					api: 'searchinfo4h5',
+					data: {
+						keyword: keyword
+					},
+					jsonpCallback: 'jsonp_searchinfo',
+					beforeSend: function() {
+						var now = new Date().getTime();
+						if (now - lastSearchTime < 3000) {
+							$('.search-tip').show().find('p').html('您操作的太频繁啦~');
+							return false;
+						} else {
+							setCookie('lastSearchTime', now);
+							return true;
+						}
+					},
+					success: function(data) {
+						if (data.msg == 'success') {
+							var result = '';
+							if (data.comi_list == undefined || data.comi_list.length == 0) {
+								$('.search-tip').show().find('p').html('冇料到喔~');
+								return false;
+							}
+							for (var i = 0, len = data.comi_list.length; i < len; i++) {
+								var c = data.comi_list[i];
+								var cover = CONFIG.imgBase + c.comic_cover_url;
+								var title = c.comic_title;
+								var subtit = c.comic_desc_lite;
+								var author = c.comic_auth;
+								var url = CONFIG.detailBase + 'comic_id=' + c.comic_id;
+								var imgCutSize = '?imageView2/2/w/180';
+								result += '' + '<li>' + '<a href="' + url + '">' + '<div class="li-img">' + '<img src="' + cover + imgCutSize + '" />' + '</div>' + '<div class="li-txt">' + '<h3>' + title + '</h3>' + '<p>' + subtit + '</p>' + '<div class="li-txtbot">' + '<span>' + '<i class="icon-good"></i>' + '<b>' + 239 + '</b>' + '</span>' + '<em>' + author + '</em>' + '</div>' + '</div>' + '</a>' + '</li>'
+							}
+							$('.search-result ul').html(result);
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

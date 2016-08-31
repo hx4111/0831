@@ -1,0 +1,98 @@
+body {
+	width: 100%;
+	font-size: 14px;
+	background: #f4f4f4;
+	overflow-x: hidden;
+}
+.discuss_betting {
+	position: relative;
+	/*margin: .4rem .6rem .4rem .4rem;*/
+	padding-bottom: 2rem;
+}
+.talk_title_betting {
+	font-size: .8rem;
+	padding: .4rem 0 0 0;display: none;
+}
+.talk_title_betting span {
+	float: right;
+	font-size: .7rem;
+}
+.talk_title_betting span i {
+	font-size: .7rem;
+	margin-right: .2rem;
+}
+.talk_comment {
+	background: #fff;
+	padding: .5rem;
+	position: relative;
+	border-bottom: 1px #ccc dashed;
+}
+.post-photo {
+	width: 1.5rem;
+	height: 1.5rem;
+	float: left;
+	background: #f1f1f1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.talk_comment img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.talk_comment li {
+	clear: both;
+	line-height: 1.5rem;
+}
+.talk_comment li:nth-child(1) {
+	font-size: .5rem;
+}
+.talk_comment li:nth-child(1) h3 {
+	float: left;
+	margin-left: .5rem;
+	color: #212332;
+}
+.talk_comment li:nth-child(1) time {
+	color: #969799;
+	float: right;
+}
+.talk_comment li p {
+	font-size: .5rem;
+	padding: 0 1rem;
+	width: 78%;
+	color: #333;
+}
+.talk_comment small {
+	position: absolute;
+	right: .8rem;
+	top: 2.4rem;
+	font-size: .6rem;
+	color: #808080;
+}
+.talk_comment small i {
+	font-size: .8rem;
+	margin-right: .2rem;
+}
+.post-tip {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: #aaa;
+}
+.publish_betting {
+	position: fixed;
+	right:.6rem;
+	bottom:.6rem;
+	background: url(http://cdn.icomicool.cn/m/act/tsukkomi/images/icon_input_press.png) no-repeat;
+	height:2.5rem;
+	width: 2.5rem;
+	background-size:2.5rem;
+}
+.publish_betting i {
+	font-size: .6rem;
+}
+#imglist img {width: 100%;display: table;}
+.header-fixed {display: none !important;}

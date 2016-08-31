@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+Remove this if you use the .htaccess -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>悸动--我们的第一次</title>
+<meta name="keywords" content="可米酷漫画，可米酷大赏，可米酷app，comicool，lezhin" />
+<meta name="description" content="深圳可米酷科技有限公司创立于2014年10月，位于深圳市宝安区前海。我们有专业、高效的开发、设计、产品和运营团队，致力于Android、iOS手机阅读App开发。" />
+<meta name="author" content="TomGuan, JamJiang">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="HandheldFriendly" content="true" />
+<!-- <link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/lover/dist/style.css">
+<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/lover/dist/idangerous.swiper.css">
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/jquery-2.1.3.min.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/fastclick.min.js"></script>
+</head>
+<body>
+<div class="g-doc"></div>
+<img id="wx-sm-img" src="http://cdn.icomicool.cn/m/act/lover/images/weibg.jpg" style="position:absolute; z-index:1; left:-9999px; top:-9999px; display:block;" />
+<!-- ！！！坑爹的微信JS-SDK接口，网上各种技术文章暂时无法用，这里用另外的解决方案，将图片显示第一张放置顶层，经测试，这里不能隐藏掉，只好通过定位移掉，尺寸过于小也不行 -->
+<div id="musicPlay"></div>
+<div class="loading">
+	<img src="http://cdn.icomicool.cn/m/act/lover/images/loading.gif" />
+</div>
+<!-- <div class="loading2">
+	<img src="http://cdn.icomicool.cn/m/act/lover/images/loading.gif" />
+</div> -->
+<div class="m-swiper">
+	<div class="swiper-wrapper">
+		<div class="swiper-slide page1">
+			<div class="pointMove"><img src="http://cdn.icomicool.cn/m/act/lover/images/point.png"></div>
+			<div class="fir-logo">
+				<span><img src="http://cdn.icomicool.cn/m/act/lover/images/fir-logo.png" alt="可米酷漫画,comicool" /></span>
+			</div>
+			<div class="fir-tit">
+				<span><img src="http://cdn.icomicool.cn/m/act/lover/images/fir-txt1.png" alt="可米酷漫画,comicool" /></span>
+				<!-- 悸动标题 -->
+			</div>
+			<div class="fir-txt">
+				<span><img src="http://cdn.icomicool.cn/m/act/lover/images/fir-txt2.png" alt="可米酷漫画,comicool" /></span>
+				<!-- 悸动描述 -->
+			</div>
+		</div>
+		<div class="swiper-slide page2">
+			<div class="sec-nametit">
+				<img src="http://cdn.icomicool.cn/m/act/lover/images/sec-nametit.png" alt="可米酷漫画,comicool" />
+			</div>
+			<ul class="write-list">
+				<li class="fir-name">
+					<i><img src="http://cdn.icomicool.cn/m/act/lover/images/icon-male.png" alt="可米酷漫画,comicool" /></i>
+					<span><input type="text" name="boy_name" class="ipt-boy" maxlength="7" /></span>
+				</li>
+				<li class="sec-name">
+					<i><img src="http://cdn.icomicool.cn/m/act/lover/images/icon-female.png" alt="可米酷漫画,comicool" /></i>
+					<span><input type="text" name="girl_name" class="ipt-girl" maxlength="7" /></span>
+				</li>
+			</ul>
+			<div class="sec-lover">
+				<img src="http://cdn.icomicool.cn/m/act/lover/images/sec-lover.png" alt="可米酷漫画,comicool" />
+				<span class="left-name unit-boy">梅西</span>
+				<span class="right-name unit-girl">C罗</span>
+			</div>
+			<div class="sec-start">
+				<a href="javascript:;" class="start-btn">
+					<img src="http://cdn.icomicool.cn/m/act/lover/images/start-btn.png" alt="可米酷漫画,comicool" />
+				</a>
+			</div>
+		</div>
+		<div class="swiper-slide page3">
+			<div class="time">
+				<span><img src="http://cdn.icomicool.cn/m/act/lover/images/third-date.png" alt="可米酷漫画,comicool" /></span>
+				<div class="time-txt">
+					<em>2014</em>
+					<em>1</em>
+					<em>某</em>
+				</div>
+			</div>
+			<div class="third-txt">
+				<span><img src="http://cdn.icomicool.cn/m/act/lover/images/third-txt.png" alt="可米酷漫画,comicool" /></span>
+			</div>
+			<div class="templet">
+				<div class="tpl-tab">
+					<span>牵 手</span>
+					<span>约 会</span>
+					<span>亲 吻</span>
+					<span>拥 抱</span>
+					<span>啪 啪</span>
+				</div>
+				<div class="tpl-con">
+					<div class="templet-bg">
+						<img src="http://cdn.icomicool.cn/m/act/lover/images/tplbg.png" alt="可米酷漫画,comicool" />
+					</div>
+					<div class="tpl-list tpl-list1">
+						<a class="prev-point" href="javascipt:;"><img src="http://cdn.icomicool.cn/m/act/lover/images/prev-point.png" alt="可米酷漫画,comicool" /></a>
+						<a class="next-point" href="javascipt:;"><img src="http://cdn.icomicool.cn/m/act/lover/images/next-point.png" alt="可米酷漫画,comicool" /></a>
+						<div class="list-inner"></div>
+					</div>
+				</div>
+			</div>
+			<div class="add-btn">
+				<a href="javascript:;" class="lnk-more"><img src="http://cdn.icomicool.cn/m/act/lover/images/add-btn.png" alt="可米酷漫画,comicool" /></a>
+			</div>
+			<div class="finish-btn">
+				<a href="javascript:;" class="lnk-share"><img src="http://cdn.icomicool.cn/m/act/lover/images/share-btn.png" alt="可米酷漫画,comicool" /></a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="m-dialog m-datepicker">
+	<div class="dialogbg"></div>
+	<div class="dialog">
+		<div id="datepicker">
+			<div class="dp-wrapper"></div>
+			<div class="dp-button">
+				<a href="javascript:;" class="lnk-dpcancel">取消</a>
+				<a href="javascript:;" class="lnk-dpok">确定</a>
+			</div>
+		</div>		
+	</div>
+</div>
+<div class="tips">
+	<div class="inner">
+		<div><span><img src="http://cdn.icomicool.cn/m/act/lover/images/alarm3.png" alt="可米酷漫画,comicool" /></span>回忆的时候端正点嘛↖(^ω^)↗，横着拿可不行</div>
+	</div>
+</div>
+<div class="m-dialog sec-tip-noname">
+	<div class="dialogbg"></div>
+	<div class="noname-inner">
+		<h3>
+			<img src="http://cdn.icomicool.cn/m/act/lover/images/tip-notetxt.png" alt="可米酷漫画,comicool" />
+		</h3>
+		<p>
+			<a href="javascript:;"><img src="http://cdn.icomicool.cn/m/act/lover/images/sure-btn.png" alt="可米酷漫画,comicool" /></a>
+		</p>
+	</div>
+</div>
+<div class="error">
+	<a href="javascript:;" class="error-lnk">
+		<div class="con-error"><div class="error-img"><img src="http://cdn.icomicool.cn/m/act/lover/images/error.png"></div><p class="txt-error"></p><p>╮(╯▽╰)╭</p></div>
+	</a>
+</div>
+<audio preload="auto" controls="controls" loop="loop" id="audio">
+	<!-- 添加一个ID -->
+    <source src="http://cdn.icomicool.cn/m/act/lover/images/music.mp3" type="audio/mpeg" />
+	<!-- 您的浏览器不支持音频播放。 -->
+</audio>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/idangerous.swiper.min.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/jquery.swiper.datepicker.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/lover/dist/act2.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var MOBComico = {},
+    		ua = navigator.userAgent.toLowerCase();
+	    //获取设置的苹果安卓客户端ua信息
+	    MOBComico.android = (/andriod/i.test(ua)) ? true : false ;
+	    MOBComico.app = (/icomico/i.test(ua)) ? true : false ;
+
+		var music = document.getElementById("audio");//获取ID
+	    if (music.paused || music.ended) { //判读是否播放
+			$('#musicPlay').addClass('curr');
+	    } else {
+	        $('#musicPlay').removeClass('curr');
+	    }
+	    //点击播放音乐或者停止音乐，安卓可以即时播放，苹果需点击操作
+		$('#musicPlay').on('click',function(){
+			var music = document.getElementById("audio");//获取ID
+		    if (music.paused || music.ended) { //判读是否播放
+	            music.play(); //没有就播放
+	            $(this).removeClass('curr');
+	    } else {
+	    		music.pause();
+	    		$(this).addClass('curr');
+		    }
+		});
+
+		if( MOBComico.android || MOBComico.app ){
+	    	$('#audio,#musicPlay').remove();
+	    }else{
+	    	$('#musicPlay').trigger('click');
+	    }
+	}
+	//横竖屏切换提示
+	var $doc = $('.g-doc')
+	    isH = $doc.width() > $doc.height() ? true : false;
+    function pagesize(){
+    	if( $doc.width() > $doc.height() ){
+    		isH = true;
+    		if( document.activeElement.tagName === 'INPUT' ) return;
+    		$('.tips').show();
+    	}else{
+    		if( !isH) return;
+    		isH = false;
+    		$('.tips').hide();
+    		$('.m-swiper').height( $doc.height());
+    		swiper && swiper.resizeFix();
+    	}
+    }
+    window.onresize = function(){
+    	pagesize();
+    };
+    pagesize();
+
+	//百度统计代码安装
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

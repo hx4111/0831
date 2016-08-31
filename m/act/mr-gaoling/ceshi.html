@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷漫画--从此漫画就这么看</title>
+<style type="text/css">
+html {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+body { font-size: 1.4rem; line-height: 1.42; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+* { margin: 0; padding: 0;}
+img { border:none; vertical-align:middle; width: 100%; max-width: 100%;}
+a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; }
+a:active { outline: 0; }
+a:active { color: #006699; }
+.mr-gaoling { width: 100%; padding-bottom: 3%; background: #363636;}
+#readLnk { background: rgba(0,0,0,.8); position: fixed; bottom: 0; left: 0; width: 100%; padding: 3% 0; text-align: center; z-index: 100; display: none;}
+#readLnk a { padding: 2% 5% 1.4%; display: inline-block; color: #fff; border-radius: 2rem; background: #FF1756; background-clip: padding-box; -webkit-background-clip: padding-box;}
+</style>
+</head>
+<body>
+    <article class="mr-gaoling">
+    	<div id="readLnk">
+    		<a href="javascript:;" class="lnk-read">马上阅读</a>
+    	</div>
+    	<div class="imgbox">
+	        <img src="images/mr1.jpg">
+	        <img src="images/mr2.jpg">
+	        <img src="images/mr3.jpg">
+	        <img src="images/mr4.jpg">
+	        <img src="images/mr5.jpg">
+	        <img src="images/mr6.jpg">
+        </div>
+    </article>
+</body>
+<script src="../../m-common/js/zepto.min.js"></script>
+<!-- <script src="../../../common/js/json2.js"></script> -->
+<script type="text/javascript">
+	$(function(){
+		//调用接口数据
+		var actMrJsonObj = {
+			'comic_id': 93
+		};
+		var actMrJsonStr = JSON.stringify(actMrJsonObj);
+		$('.lnk-read').on('click',function(evt){
+			// console.log('type',evt.type);
+			comicool.openFeedBackPage(actMrJsonStr);
+		});
+
+
+		setTimeout(function(){
+			$('#readLnk').show();
+			cssControl();
+		},400);
+		function cssControl(){
+			var _btnHeight = $('#readLnk').height();
+			$('.mr-gaoling').css('paddingBottom' , _btnHeight);
+		}
+		
+	});
+		
+</script>
+</html>

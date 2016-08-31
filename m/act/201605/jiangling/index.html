@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>降灵故事征集</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="可米酷漫画,可米酷漫画降灵故事征集,降灵故事征集" />
+		<meta name="description" content="降灵故事征集">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160518">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1463386207_0576153.css">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+			#praise span {
+				color: #F85450;
+			}
+			
+			#toast {
+				position: fixed;
+				bottom: 2rem;
+				left: 50%;
+				transform: translate3d(-50%, 0, 0);
+				-ms-transform: translate3d(-50%, 0, 0);
+				-moz-transform: translate3d(-50%, 0, 0);
+				-webkit-transform: translate3d(-50%, 0, 0);
+				-o-transform: translate3d(-50%, 0, 0);
+				border-radius: .3rem;
+				background: #000;
+				color: #fff;
+				padding: .5rem 1rem;
+				text-align: center;
+				opacity: .7;
+				-webkit-tap-highlight-color: transparent;
+				/*The good stuff */
+				-webkit-transition: opacity 0.5s ease-out;
+				/* Saf3.2+, Chrome */
+				-moz-transition: opacity 0.5s ease-out;
+				/* FF4+ */
+				-ms-transition: opacity 0.5s ease-out;
+				/* IE10? */
+				-o-transition: opacity 0.5s ease-out;
+				/* Opera 10.5+ */
+				transition: opacity 0.5s ease-out;
+				z-index: 9999;
+				font-size: .7rem;
+				background: #6B6A6A;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        降灵故事征集
+        <p>降灵故事征集</p>
+        <img src="http://cdn.icomicool.cn/m/act/201605/jiangling/images/jiangling_share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share iconfont"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/jiangling/images/index_01.jpg" alt="降灵故事征集" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/jiangling/images/index_02.jpg" alt="降灵故事征集" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/jiangling/images/index_03.jpg" alt="降灵故事征集" /></li>
+			<li data-ccid="10934"><img src="http://cdn.icomicool.cn/m/act/201605/jiangling/images/index_04.jpg" alt="降灵故事征集" /></li>
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}} {{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'> {{/if}} {{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script>
+			var shareJsonObj = {
+				'title': '降灵故事征集',
+				'describe': '降灵故事征集',
+				'imageUrl': 'http://cdn.icomicool.cn/m/act/201605/jiangling/images/jiangling_share.jpg',
+				'pageUrl': window.location.href
+			};
+			setShareInfo(shareJsonObj, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					shareBtn = _('#share-btn'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+			}
+			bindOpenComicEvents();
+
+			function bindOpenComicEvents() {
+				var readComic;
+				if (isAndroidApp) {
+					readComic = function(ccid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: ccid,
+							ep_id: 1
+						});
+					}
+				} else {
+					readComic = function(ccid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=1';
+					}
+				}
+				$("#imglist li").on('click', function(e) {
+					var ccid = this.dataset.ccid;
+					console.log(ccid)
+					if (ccid !== undefined && ccid !== "") {
+						readComic(ccid);
+					}
+				});
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

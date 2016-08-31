@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>想知道你是攻还是受吗?</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="想知道你是攻还是受吗?">
+		<!--<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<!--<script src="../../../../js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        想知道你是攻还是受吗?
+        <p>点进来，准到没朋友.</p>
+        <img src="http://cdn.icomicool.cn/m/act/201608/psychology/images/psychology_share.jpg">
+    </h1>
+		<div id="fruit">
+			<div>
+				<ul id="fruit_top">
+				</ul>
+				<ul id="fruit_top_right">
+					<li id="fruit_type"><span></span>的类型是:</li>
+					<li id="fruit_letters">
+						<!-- 类型 -->
+					</li>
+					<li id="fruit_conclusion">
+						<!-- 说明 -->
+					</li>
+				</ul>
+			</div>
+			<div id="introduce">
+				<!-- 描述 -->
+			</div>
+			<div id="opusDescribe">
+				<!-- 作品 -->
+			</div>
+			<div>
+				<li class="go get_into">进入故事感受</li>
+				<li class="restart">再测一次</li>
+
+				<li class="bear">
+					<span data-type='A'>A</span><span data-type='B'>B</span><span data-type='C'>C</span><br><span data-type='D'>D</span><span data-type='E'>E</span><span data-type='F'>F</span>
+					<h1>查看其它类型</h1></li>
+			</div>
+		</div>
+		<div class="footer">
+			<img class="icon-share" src="http://cdn.icomicool.cn/m/act/201608/psychology/images/share_img.jpg" />
+			<img class="logo_btn" src="images/logo.jpg" />
+		</div>
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/tpl/dist/act-global.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-share.min.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201608/psychology/js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201608/psychology/js/script.js?t=201608241028" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			setNewShareInfo({
+				title: '想知道你是攻还是受吗?',
+				describe: '点进来，准到没朋友.',
+				imageurl: 'http://cdn.icomicool.cn/m/act/201608/psychology/images/psychology_share.jpg',
+				page_url: 'http://m.comicool.cn/act/201608/psychology/index.html'
+			}, {
+				use: 'customize', //baidu or customize
+				init: '' // function or null
+			});
+			$(document).ready(function() {
+				var getLetters = getQueryString('letters') || 'A',
+					current = answer[getLetters],
+					bear = $('.bear span'),
+					username = getCookie('username') || '酷酱';
+				$('#fruit_type span').html(username);
+
+				$('#fruit_top').html('<img src="http://cdn.icomicool.cn/m/act/201608/psychology/images/' + current.img + '">');
+				$('#fruit_letters').html(current.letters);
+				$('#fruit_conclusion').html(current.conclusion);
+				$('#introduce').html(current.introduce);
+				$('#opusDescribe').html('<strong>你</strong>就是<strong>' + current.opus + '</strong>里的<strong>' + current.role + '</strong><p>' + current.opusDescribe + '</p>');
+				$('.get_into').attr('data-ccid', current.ccid);
+				$('.restart').on('click', function() {
+					window.location.href = 'index.html';
+				});
+				$('.bear span').on('click', function() {
+					var sText = $(this).html();
+					window.location.href = 'fruit.html?letters=' + sText;
+				})
+				for (var i = 0; i < bear.length; i++) {
+					var currentBear = bear.eq(i).html();
+					if (currentBear == getLetters) {
+						bear.eq(i).hide();
+						break;
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

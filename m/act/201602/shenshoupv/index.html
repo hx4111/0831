@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>神兽退散PV</title>
+		<style type="text/css">
+		body {width: 100%;margin: 0;padding: 0;background: #000;}
+			.play,video {width: 1000px;margin:100px auto;}
+		</style>
+	</head>
+	<body>
+		<div class="play"><video src="http://cdn.icomicool.cn/m/act/201602/shenshoupv/s.mp4" controls="controls" id="video">您的浏览器不支持 video 标签。</video></div>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+				var oVideo = $("#video");
+				var flag = true;
+				oVideo.on("click",function(){
+					if (flag) {
+						oVideo.get(0).play();
+						flag = false;
+					} else {
+						oVideo.get(0).pause();
+						flag = true;
+					}
+				})
+		</script>
+	</body>
+</html>

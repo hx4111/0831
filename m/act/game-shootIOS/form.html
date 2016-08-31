@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta content="email=no" name="format-detection">
+<meta name="HandheldFriendly" content="true" />
+<title>小米奖品任你射</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+<div class="loading">
+	<div class="loading-inner">
+		<div class="loading-con">
+			<img src="images/loading.png" />
+		</div>
+		<p>正在加载...</p>
+	</div>
+</div>
+<article class="container formbox">
+	<header class="form-top">
+		<div class="gift-img"><img src="images/giftbg.png" /></div>
+	</header>
+	<div class="gift-txt">
+		恭喜你！获得<b>xxxx</b>一个<br>
+		填写以下信息，我们将在活动结束后一周内将<br>
+		你的奖品寄出
+	</div>
+	<form action="" id="form-input">
+		<ul class="form-list">
+			<li class="form-name">
+				<div class="from-con">
+					<span>姓名</span>
+					<span><input type="text" class="input-name" placeholder="请输入你的名字" maxlength="10" /></span>
+				</div>
+				<p>*亲,输入信息不能为空哟</p>
+			</li>
+			<li class="form-tel">
+				<div class="from-con">
+					<span>电话</span>
+					<span><input type="number" class="input-tel" placeholder="请输入你的联系电话" maxlength="11" /></span>
+				</div>
+				<p>*亲,手机格式貌似有误哟</p>
+			</li>
+			<li class="form-address">
+				<div class="from-con">
+					<span>地址</span>
+					<span><input type="text" class="input-addr" placeholder="请输入文字信息" maxlength="100" /></span>
+				</div>
+				<p>*亲,输入信息不能为空哟</p>
+			</li>
+		</ul>
+		<div class="submit-btn"><button type="submit" class="btn-common btn-finish">完成</button></div>
+	</form>
+</article>
+
+<div class="form-succbg">
+	<div class="form-succ">
+		<div class="succ-img">
+			<img src="images/form-succ.png" />
+		</div>
+		<div class="succ-btn">
+			<a href="javascript:;" class="btn-common btn-form-succ">返回首页</a>
+		</div>
+	</div>
+</div>
+
+<div class="errorbox" style="display:none;">
+	<div class="error-con">
+		<div class="error-img"><img src="images/error.png" /></div>
+		<p>啊！~~加载中出现错误啦！</p>
+		<div class="error-btn">
+			<a href="javascript:;" class="btn-common btn-reload">重新加载</a>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	/*loadingShow();
+	setTimeout(function(){
+		loadingHide();
+	},1000);*/
+	
+	$('.succ-btn a').attr('href','index.html?refresh=' + (new Date()).valueOf());
+
+	//获取页面URL参数名
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    };
+
+    //读取射箭页面链接传过来的值
+    var giftid = parseInt(getQueryString('giftid')),
+		giftName = getQueryString('giftName'),
+		ccid = getQueryString('ccid');
+		var params = giftName.split('_');
+		if (params.length < 3) {
+			giftName = '';
+			giftid = -1;
+		}
+		giftName = params[0];
+		randNumber = params[1] - 5678;
+		giftid = giftid - randNumber - 1234;
+		if (giftid < 0 || giftid > 100 || giftName.length == 0 || params[2] != randNumber + 1111) {
+			errorShow('奖品信息无效！');
+			throw ('奖品信息无效！');
+		}
+
+	if(giftid >= 0){
+		$('.gift-img img').attr('src','images/gift' + giftid +'.png')
+		$('.gift-txt b').html(giftName);
+	}
+
+	function ajaxRequest(ccid,name,mobile,address){
+		url = encodeURI('http://proxy.icomico.com/activitycommit?ccid='+ccid+'&activityid=10&name='+name+'&phone='+mobile+'&address='+address+'&t='+(new Date()).valueOf());
+		var aj = $.ajax({    
+	        url : url,// 跳转到 action
+	        type : 'get',
+	        timeout : '10000',  
+	        cache : false,    
+	        dataType : "jsonp",
+	        jsonp: "callback",      //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+	        jsonpCallback:"jsonp_activitycommit",      //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+	        beforeSend : function(XMLHttpRequest){
+	           //ShowLoading();
+	           loadingShow();
+	       	},
+	        success : function(response , status , xhr) {
+	        	if (response.ret != 0) {
+	        		// 提示错误
+	        		errorShow('(' + response.ret + ',' + status + ')');
+	        		return false;
+	        	}
+	        	$('.form-succbg').show();		
+	        },
+	        complete: function(XMLHttpRequest, textStatus){
+	           //HideLoading();
+	           loadingHide();
+	        },
+	        error : function(XMLHttpRequest, textStatus, errorThrown){
+	        	errorShow('(' + XMLHttpRequest.status + ',' + XMLHttpRequest.readyState + ')');
+	        }    
+	    });
+	}
+
+	document.getElementById('form-input').onsubmit = function(){
+		//var tipTxt = {empty:'*亲,输入信息不能为空哟',format:'*亲,手机格式貌似有误哟'};
+		return validate(this);
+	}
+
+	function validate(frm){
+		var name = $('.input-name',frm).val(),
+			mobile = $('.input-tel',frm).val(),
+			address = $('.input-addr',frm).val(),
+			error = false;
+
+		if(name == ''){
+			$('.form-name p',frm).css({visibility:'visible'});
+			error = true;
+		}else{
+			$('.form-name p',frm).css({visibility:'hidden'});
+		}
+
+		//1[3-9]\d{9} 默认
+		//!/^(13[0-9]|14[0-9]|15[0-9]|18[0-9])\d{8}$/i.test(mobile)
+		if(!/^(1[3-9])\d{9}$/i.test(mobile)){
+			$('.form-tel p',frm).css({visibility:'visible'});
+			error = true;
+		} else if(mobile == ''){
+			$('.form-tel p',frm).css({visibility:'visible'});
+			error = true;
+		} else{
+			$('.form-tel p',frm).css({visibility:'hidden'});
+		}
+
+		if(address == ''){
+			$('.form-address p',frm).css({visibility:'visible'});
+			error = true;
+		}else{
+			$('.form-address p',frm).css({visibility:'hidden'});
+		}
+
+		if( error ){
+			
+		}else{
+			//ajaxRequest();
+			ajaxRequest(ccid,name,mobile,address);
+		}
+		return false;
+	}
+
+	/*//js过滤特殊字符
+	function stripscript(s) {
+	    var pattern = new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&mdash;—|{}【】‘；：”“'。，、？]")
+	        var rs = "";
+	    for (var i = 0; i < s.length; i++) {
+	        rs = rs + s.substr(i, 1).replace(pattern,'');
+	    }
+	    return rs;
+	}*/
+
+	$('.form-name .input-name').bind('input propertychange', function() {
+	    //$('.form-name p').html($(this).val().length + ' characters');
+	    var name = $('.input-name').val();
+	    if(name == ''){
+			$('.form-name p').css({visibility:'visible'});
+		}else{
+			$('.form-name p').css({visibility:'hidden'});
+		}
+	});
+
+	$('.form-address .input-addr').bind('input propertychange', function() {
+	    //$('.form-name p').html($(this).val().length + ' characters');
+	    var name = $('.input-addr').val();
+	    if(name == ''){
+			$('.form-address p').css({visibility:'visible'});
+		}else{
+			$('.form-address p').css({visibility:'hidden'});
+		}
+	});
+
+	$('.form-tel .input-tel').bind('input propertychange', function() {
+	    //$('.form-name p').html($(this).val().length + ' characters');
+	    var mobile = $('.input-tel').val();
+	    if(!/^(1[3-9])\d{9}$/i.test(mobile)){
+			$('.form-tel p').css({visibility:'visible'});
+		} else if(mobile == ''){
+			$('.form-tel p').css({visibility:'visible'});
+		} else{
+			$('.form-tel p').css({visibility:'hidden'});
+		}
+	});
+
+
+	function loadingShow(){
+		$('.loading').show();
+	}
+	function loadingHide(){
+		$('.loading').hide();
+	}
+	function errorShow(txt){
+		$('.errorbox').show();
+		$('.error-con p').html('啊！~~加载中出现错误啦！'+txt);
+
+		$('.error-btn a').attr('href',window.location.href);
+	}
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

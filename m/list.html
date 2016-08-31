@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画-列表_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫" />
+		<meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢" />
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/config.js"></script>
+	</head>
+
+	<body class="body-listbox">
+		<header class="header header-white header-fixed">
+			<i class="l-icon icon-angle-left"></i>
+			<h1 class="c-text ellipsis"><!-- 热门作品/.. --></h1>
+		</header>
+		<article class="main-panel offset-plus">
+			<section class="listbox">
+				<!-- <ul class="common-list listbox-list">
+			<li>
+				<div class="li-img">
+					<img src="images/update/update-cover.jpg" />
+				</div><div class="li-txt">
+					<h3>恋爱最简单</h3>
+					<p>关于虎与人的虐恋故事</p>
+					<div class="li-txtbot"><span><i class="icon-good"></i><b>239</b></span><em>五仁月饼</em></div>
+				</div>
+			</li>
+		</ul> -->
+				<div class="list-tip">
+					<div class="list-tip-img"></div>
+					<p>冇料到喔~</p>
+				</div>
+			</section>
+			<footer class="footer">
+
+				<nav class="ft-nav">
+					<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+					<a href="pro-intr.html">产品介绍</a>
+				</nav>
+				<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+			</footer>
+		</article>
+		<div class="menu"><!-- 菜单 --></div>
+		<script src="js/base.min.js"></script>
+		<script src="js/global.js"></script>
+		<script type="text/javascript">
+			var listpagetype = getQueryString('listpagetype'),
+				listpageid = getQueryString('listpageid'),
+				ordertype = getQueryString('ordertype'),
+				headerTitle = getQueryString('listpagetitle');
+				ordertype=ordertype?ordertype:'rating';
+			$('.header h1').html(headerTitle);
+			$(function() {
+				var pullPostLock = false,
+					place = 0,
+					lastPostId = 0;
+				getPostList(0, 10, 2,ordertype);
+				window.addEventListener('scroll', checkMeetPageBottom);
+				var windowHeight = document.documentElement.clientHeight;
+
+				function getPostList(content_id, page_size, page_direction,ordertype) {
+					if (pullPostLock) {
+						return;
+					}
+					pullPostLock = true;
+					getByAjax({
+						api: 'allcomic4h5',
+						data: {
+							'comic_id': content_id,
+							'page_size': page_size,
+							'page_direction': 2,
+							'list_type': listpagetype,
+							'order_type': ordertype,
+							'req_id': listpageid,
+							'req_param': '1'
+						},
+						jsonpCallback: 'jsonp_allcomic',
+						success: function(data) {
+							pushDiv.add(data);
+						}
+					});
+				}
+				var pushDiv = {
+					add: function(data) {
+						pullPostLock = false;
+						console.log(data);
+						var listHtml = '';
+						if (data.content_list == null) {
+							$('.list-tip').show();
+							return false;
+						}
+						for (i = 0, len = data.content_list.length; i < len; i++) {
+							var listData = data.content_list,
+								cover = CONFIG.imgBase + listData[i].content_poster,
+								imgAlt = CONFIG.imgAlt,
+								detailUrl = CONFIG.detailBase,
+								title = listData[i].content_title,
+								desc = listData[i].content_desc_lite2,
+								author = listData[i].content_subtitle,
+								comic_id = listData[i].content_action,
+								imgCutSize = '?imageView2/2/w/180';
+							lastPostId = listData[listData.length - 1].content_action;
+							place++;
+							listHtml += '<li><a href="' + detailUrl + 'comic_id=' + comic_id + '"><div class="li-img">' + '<img src="' + cover + imgCutSize + '" alt="' + imgAlt + '" /></div><div class="li-txt">' + '<h3>' + title + '</h3><em>' + author + '</em><p>' + desc + '</p><div class="li-txtbot">'
+								//+					'<span><i class="icon-good"></i><b>239</b></span>'
+								+ '</div></div></a><small>' + place + '</small></li>';
+						}
+						listHtml = '<ul class="common-list listbox-list">' + listHtml + '</ul>'
+						$('.listbox').append(listHtml);
+					}
+				}
+
+				function checkMeetPageBottom(e) {
+					var threshold = document.documentElement.scrollHeight - windowHeight - 99;
+					var curScrollTop = document.body.scrollTop;
+					if (curScrollTop >= threshold) {
+						getPostList(lastPostId, 10, 2,ordertype);
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

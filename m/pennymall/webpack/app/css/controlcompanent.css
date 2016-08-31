@@ -1,0 +1,50 @@
+.ctrl-box {
+  position: fixed;
+  right: 0rem;
+  bottom: 5rem;
+  color: #008CEE;
+  background-color: #333;
+  border-radius: 5px;
+  opacity: .7;
+}
+.ctrl-box .ctrl-comps {
+  display: inline-block;
+  padding-left: .3rem;
+  z-index: 1;
+}
+.ctrl-box .ctrl-comps .ctrl-comp {
+  clear: both;
+  color: #fff;
+  margin-right: .7rem;
+}
+.ctrl-box .ctrl-comps .ctrl-comp .iconfont {
+  font-size: 1.2rem;
+}
+.ctrl-box .ctrl-comps .ctrl-praise .is-praised {
+  color: #e33036;
+}
+.ctrl-box .ctrl-btn {
+  display: inline-block;
+  z-index: 2;
+}
+.ctrl-box .ctrl-btn .icon-right,
+.ctrl-box .ctrl-btn .icon-left {
+  font-size: 1.2rem;
+  border-radius: 100%;
+  margin-right: .3rem;
+  margin-left: .3rem;
+}
+.ctrl-box .comps-animation-enter {
+  width: 0rem;
+}
+.ctrl-box .comps-animation-enter.comps-animation-enter-active {
+  width: 5rem;
+  transition: width 500ms ease-in;
+}
+.ctrl-box .comps-animation-leave {
+  width: 5rem;
+}
+.ctrl-box .comps-animation-leave.comps-animation-leave-active {
+  width: 0rem;
+  transition: width 300ms ease-in;
+}

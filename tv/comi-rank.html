@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画列表页|漫画网_二次元</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫"/>
+    <meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zepto.js"></script>
+    <script src="js/config.js"></script>
+    <style>
+        .list-container li {
+            display: inline-block;
+            color: #fff;
+            margin-top: 10px;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            -webkit-transition: all 0.5s;
+            width: 17%;
+        }
+
+        .container h1{
+            color: #fff;
+            text-align: left;
+            padding-left: 50px;
+        }
+
+        li .item-img {
+            width: 95%;
+        }
+
+        li .item-img img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .item-title {
+            font-size: 16px;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        .focus-block {
+            -webkit-transform: scale(1.2);
+        }
+
+        .focus-block .item-img {
+            background-color: #E37908;
+            border-radius: 5px;
+        }
+        
+        .rank-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #F75E03;
+        }
+        
+        @media screen and (device-width: 960px) {
+            li .item-img {
+                width: 95%;
+            }
+        }
+
+    </style>
+</head>
+<body class="main-container">
+    <div class="header">
+        <div class="logo fl"></div>
+        <div class="header-list fr"></div>
+    </div>
+    <div class="contaier">
+        <ul class="list-container">
+
+        </ul>
+    </div>
+<script src="js/common-tv.js"></script>
+<script type="text/javascript">
+    generatHeader('rank');
+    var escUrl = 'index.html';
+    escPressEvent(escUrl);
+
+    delCookie('listpagetype');
+    delCookie('listpageid');
+    var ajaxData = {
+        'comic_id': 0,
+        'page_size': 100,
+        'page_direction': 2, 
+        'list_type': 'all',
+        'order_type': 'rating',
+    };
+
+    var sevenCover = 'http://cdn.icomico.com/10565_8_acover_cab62c312bb07ee6.jpg';  //seven 横封面做特殊处理
+    getByAjax({
+        api: 'allcomic4h5',
+        jsonpCallback: 'jsonp_allcomic',
+        data: ajaxData,
+        success: function (data) {
+            console.log(data);
+            if (data.content_list && data.content_list.length > 0) {
+                var listHtml = '<div class="rank-list">';
+                var listTitle = '总榜单';
+                var comiList = data.content_list;
+
+                listHtml += '<div class="rank-title">' + listTitle + '</div>';
+                for (var j = 0,listLen = comiList.length; j < listLen; j++) {
+                    var listData = comiList[j];
+                    var cover = CONFIG.imgBase + listData.content_poster;
+                    var imgAlt = CONFIG.imgAlt;
+                    var title = listData.content_title;
+                    var desc = listData.content_desc_lite2;
+                    var author = listData.content_subtitle;
+                    var comic_id = listData.content_action;
+                    var imgCutSize = '?imageView2/1/w/213/h/142/q/100';
+
+                    if (comic_id == 10565) {  //seven 横封面做特殊处理
+                        cover = sevenCover;
+                    }
+
+                    listHtml += '<li class="keyevent-item" data-a="/content/detail.html?comic_id=' + comic_id + '">'
+                            + '<div class="item-img">'
+                            + '<img src="' + CONFIG.placeholder +  '" data-src="' + cover + imgCutSize + '" alt="' + imgAlt + '" />'
+                            + '<p class="item-title ellipsis">&nbsp;' + title + '</p>'
+                            + '</div>'
+                            + '</li>';
+                }
+                listHtml += '</div><div class="rank-list">';
+                
+                setCookie('his', 'rank', 30);
+
+                $('.list-container').append(listHtml);
+                $('.body-list').css({'height': 'auto'});
+
+                var keyConfigObj = {
+                    'rowCnt': [0, 5],
+                    'eventArray': [$('.header-item'), $('.keyevent-item')],
+                    'firstFoucs': {x:1, y:0},
+                    'esckeyCallback': function(){window.location.href = 'index.html';}
+                }
+
+                new KeyPressEvent(keyConfigObj);
+            }
+        }
+    });
+</script>
+</body>
+</html>

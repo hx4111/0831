@@ -1,0 +1,41 @@
+body, p, ul, li {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: #91d5f8;
+}
+.wrap {
+    position: relative;
+    width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+.wrap img {
+    vertical-align: middle;
+    line-height: 1;
+}
+.links a {
+    position: absolute;
+    z-index: 9;
+}
+.links .post {
+    left: 230px;
+    top: 2637px;
+    width: 533px;
+    height: 69px;
+}
+.links .wb1, .links .wb2, .links .wb3 {
+    left: 520px;
+    width: 200px;
+    height: 50px;
+}
+.links .wb1 {
+    top: 5500px;
+}
+.links .wb2 {
+    top: 5955px;
+}
+.links .wb3 {
+    top: 6372px;
+}

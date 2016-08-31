@@ -1,0 +1,71 @@
+html,body,ul,li,img { list-style-type: none;margin:0;padding: 0;}
+html,body { font-size: 20px; width: 100%; height: 100%;}
+body {
+	background: url("../images/bg.png") no-repeat #442451;
+	font-size: .6rem;
+	background-size: 100%;
+	/*font-size: 22px;*/
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+}
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
+.clearfix{*zoom:1;}
+#brand {
+	margin:16rem 0 5rem; text-align: center;
+}
+#brand li { float: left; position: relative; margin:4rem 3rem 3rem 1rem; display: inline-block; width:1rem;top: 0;left: 0;}
+#brand img { position: absolute;top:0;width:4rem;left: 0;}
+.disabled {
+	display: none;
+}
+.on {
+	transform:translate(0,-10px);
+    -webkit-transform:translate(0,-10px);
+    -moz-transform:translate(0,-10px);
+    -o-transform:translate(0,-10px);
+    -ms-transform:translate(0,-10px);
+transform:scale(1.5);
+    -webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    -o-transform:scale(1.5);
+    -ms-transform:scale(1.5);
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+#brand a { outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+.topbar { height: 6rem; position: fixed; left: 0px; top: 0px; width: 100%; background: -webkit-linear-gradient(rgba(0,0,0, .5) 0%, transparent 100%); display: none; z-index: 30;}
+.topbar a { position:absolute; display:block; width:4rem; height:4rem;}
+.topbar a img { width: 85%}
+.topbar a.icon-home { left:2em; top:1rem; text-align: left;}
+.topbar a.icon-share { right:2rem; top:1rem; text-align: right;}
+
+.sharebox {display: none; position: fixed;z-index: 999;top: 0;bottom: 0;left: 0;right: 0;background: rgba(0,0,0, .6); z-index: 50;}
+.share-table { display: table; width: 100%; height: 100%;}
+.share-table-cell { display:table-cell; vertical-align: middle; }
+.share-inner { height: 16rem; width: 35rem; background: #f0f0f0; margin: auto; border-radius: .4rem; position: relative; text-align: center;}
+.share-inner p { font-size: 1.7rem;}
+a.share-clo {z-index:999;font-size: 3.6rem; font-family: Arial; position: absolute; right: .4rem; top: .8rem; width: 2.5rem; height: 1.5rem; line-height: 1.5rem; overflow: hidden; color: #333;}
+
+.bdsharebuttonbox { padding: 4rem 0 3rem;transform:scale(2.5);
+    -webkit-transform:scale(2.5);
+    -moz-transform:scale(2.5);
+    -o-transform:scale(2.5);
+    -ms-transform:scale(2.5);}
+.bdshare-button-style0-32 a, .bdshare-button-style0-32 .bds_more {
+  float: none !important; display: inline-block !important; margin: 0 4px !important; vertical-align: top !important;
+}
+.bdshare_dialog_box,.bd_weixin_popup {transform:scale(2.5);
+    -webkit-transform:scale(2.5);
+    -moz-transform:scale(2.5);
+    -o-transform:scale(2.5);
+    -ms-transform:scale(2.5);}

@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html style="font-size: 20px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>宅向动漫答题季</title>
+		<meta charset="utf-8">
+		<meta name="keywords" content="二次元漫画,漫画App,在线漫画阅读,在线漫画,恐怖漫画,漫画网,可米酷,可米酷漫画" />
+		<meta name="description" content="二次元考试季,试试看你真的属于(zhai)次(fu)元(ji)吗?">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160309">
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1463140673_198058.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script type="text/javascript">
+			(function() {
+
+				window.onload = function() {
+					//				var html = document.documentElement;
+					//				var currentWidth = html.clientWidth;
+					//				if (currentWidth > 700) {
+					//					var boxClientHeight = $('#box').height() + 'px';
+					//					$("#bg").addClass('colour1').attr('style', 'height:' + boxClientHeight);
+					//				}
+				}
+
+				var calcFontSize = function() {
+					var html = document.documentElement;
+					var defaultWidth = 320;
+					var defaultFontSize = 20;
+
+					return function() {
+						var currentWidth = html.clientWidth;
+						var currentFontSize = currentWidth / defaultWidth * defaultFontSize;
+						if (currentWidth > 1200) {
+							html.style.fontSize = '20px';
+						} else {
+							html.style.fontSize = currentFontSize + 'px';
+						}
+					}
+				}();
+
+				calcFontSize();
+				window.addEventListener('resize', calcFontSize);
+			})();
+
+			document.addEventListener('DOMContentLoaded', function() {
+				this.documentElement.classList.add('loaded');
+			});
+		</script>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        宅向动漫答题季
+        <p>试试看你真的属于(zhai)次(fu)元(ji)吗?</p>
+        <img src="http://cdn.icomicool.cn/m/act/201607/answer/images/answer_share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share iconfont"></i>
+		</header>
+		<div id="box" class="clearfix">
+			<div id="readBtn" class="go"></div>
+			<img id="frame" src="http://cdn.icomicool.cn/m/act/201607/answer/images/frame.png">
+			<ul id="question" class="clearfix">
+				<!-- 读取内容 -->
+			</ul>
+		</div>
+		<div id="message">
+			<!--骚等,0秒后进入下一题-->
+		</div>
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<!--<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/init.mix.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="http://m.comicool.cn/m-common/js/app.js"></script>-->
+		<script src="http://m.comicool.cn/tpl/dist/act-global.min.js" type="text/javascript"></script>
+		<script src="js/style.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var integral = 0,
+				html = "",
+				askID = [20, 21, 22, 23, 24],
+				uri = 'http://shop.comicool.cn/api/v1/score/activity/';
+			if (!CONFIG.isApp || CONFIG.isPPTV) {
+				if (CONFIG.isLogin) {
+					var userinfo = JSON.parse(Comi.Utils.LocalStorage.get('comiUserData'));
+				} else {
+					window.location.href = 'http://m.comicool.cn/act/201607/answer/index.html';
+				}
+			}
+			var exam = {
+				// 问题随机
+				randomsort: function(a, b) {
+					return Math.random() > .5 ? -1 : 1;
+				},
+				// 显示问题
+				selectT: function(i, obj, userinfo) {
+					$("#message").html("");
+					var selectContent = "",
+						serial = ["A", "B", "C", "D", "E"],
+						res = obj[i],
+						showSubject = obj[i].select.sort(exam.randomsort),
+						colour = obj.colour,
+						uccid = userinfo.ccid;
+					if (res.ccid) {
+						selectContent += '<img id="pictures" src="' + res.img + '"><h2>' + (i + 1) + "/" + obj.length + "、 " + res.question + '</h2>';
+						$('#readBtn').attr('data-ccid', res.ccid).html('<img src="http://cdn.icomicool.cn/m/act/201607/answer/images/read_btn.png" alt="立即阅读">');
+						bindOpenComicEvents();
+					} else {
+						selectContent += '<img id="pictures" src="' + res.img + '"><h2>' + (i + 1) + "/" + obj.length + "、 " + res.question + '</h2>';
+						$('#readBtn').html('');
+					}
+
+					for (var x = 0, len = showSubject.length; x < len; x++) {
+						selectContent += '<li><label><input type="radio" name="radio" value="' + showSubject[x] + '" class="regular-radio big-radio" /><span for="radio-1-1"></span>' + serial[x] + '、' + showSubject[x] + '</label><em></em></li>';
+					}
+					$("#question").html(selectContent);
+
+					$("#question input").on("click", function() {
+						var currentID = askID[i];
+						//													console.log(res.answer);
+						if ($(this).val() == res.answer) {
+							$(this).parent().parent().attr("style", "background:#21c22d;color:#fff;");
+							$(this).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201607/answer/images/right.png'> <small>+5分</small>");
+							integral += 20;
+							$.ajax({
+								type: "get",
+								data: {
+									cc_id: userinfo.ccid,
+									usertype: userinfo.usertype,
+									cctoken: userinfo.cctoken,
+									device_id: CONFIG.deviceID
+								},
+								url: uri + 'extra/' + currentID,
+								success: function(res) {
+									if (res.code == 0) {
+										//										console.log('答对了一题');
+									}
+								}
+							})
+
+						} else {
+							$(this).parent().parent().attr("style", "background:red;color: #fff;");
+							$(this).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201607/answer/images/error.png'>");
+							var oInput = $("#question input");
+							for (var z = 0, len = oInput.length; z < len; z++) {
+								if (oInput.eq(z).val() == res.answer) {
+									oInput.eq(z).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201607/answer/images/right2.png'>");
+									break;
+								}
+							}
+						}
+						//							console.log('i:'+i+'====integral:' + integral + ';===currentID:' + currentID);
+						setTimeout(function() {
+							exam.selectT(i, obj, userinfo)
+						}, 1000);
+						if (i < 4) {
+							i++;
+							$("#message").html("骚等, 马上进入下一题");
+						} else {
+							$("#message").html("骚等, 马上计算您的成绩");
+							setTimeout(function() {
+								window.location.href = "result.html?share=end&key=" + integral
+							}, 1000);
+						}
+						$("#question input").off("click");
+						$("#question input").attr("disabled", "disabled");
+					})
+				},
+				countdown: function(i, mes) {
+					var x = 1,
+						intervalid;
+					intervalid = setInterval(countdownStart, 1000);
+
+					function countdownStart() {
+						if (x == 0) {
+							$("#message").html("");
+							clearInterval(intervalid);
+						} else {
+							$("#message").html("骚等, " + x + mes);
+							x--;
+						}
+					}
+				},
+				// 获取系统时间并补零
+				getNowFormatDate: function() {
+					var day = new Date();
+					var Year = 0;
+					var Month = 0;
+					var Day = 0;
+					var CurrentDate = "";
+					//初始化时间 
+					//Year       = day.getYear();//有火狐下2008年显示108的bug 
+					Year = day.getFullYear(); //ie火狐下都可以 
+					Month = day.getMonth() + 1;
+					Day = day.getDate();
+					CurrentDate += Year;
+					if (Month >= 10) {
+						CurrentDate += Month;
+					} else {
+						CurrentDate += "0" + Month;
+					}
+					if (Day >= 10) {
+						CurrentDate += Day;
+					} else {
+						CurrentDate += "0" + Day;
+					}
+
+					return CurrentDate;
+				},
+			};
+
+			//	初始化
+			var box = data[1],
+				defaultData = box.content.sort(exam.randomsort);
+
+			if (CONFIG.isApp && !CONFIG.isPPTV) {
+				setByUserLoginStatus({
+					isLogin: loginCallback,
+					unLogin: unloginCallback
+				});
+			} else {
+				getInfo(userinfo)
+			}
+
+			//未登录回调
+			function unloginCallback() {
+				jumpLoginPage();
+				//设置App里登录后的回调函数
+				callAppFunction('setJSCallback', {
+					'account_event': 'loginHandler'
+				});
+				window.loginHandler = function(obj) {
+					setByUserLoginStatus({
+						isLogin: loginCallback
+					});
+				}
+
+				function jumpLoginPage() {
+					callAppFunction('openLoginPage', {});
+				}
+			}
+
+			function loginCallback(userinfo) {
+				if (userinfo) {
+					CONFIG.deviceID = userinfo.device_id;
+					getInfo(userinfo)
+				} else {
+					window.location.href = 'http://m.comicool.cn/act/201607/answer/index.html';
+				}
+			}
+
+			function getInfo(userinfo) {
+				//				活动时间展示
+				for (index in data) {
+					var getDataTime = data[index].timing,
+						nowTime = exam.getNowFormatDate();
+					if (parseInt(nowTime) == getDataTime) {
+						var box = data[index];
+						var quData = box.content.sort(exam.randomsort);
+						exam.selectT(0, quData, userinfo);
+					}
+				}
+			}
+
+			setShareInfo({
+				title: '宅向动漫答题季',
+				describe: '答题',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201607/answer/images/answer_share.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+						$('#tip').hide();
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+					trigger.addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'block';
+						document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+						header.style.display = 'none';
+					});
+					document.getElementById('ShareBg').addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'none';
+						header.style.display = 'block';
+					})
+				} else {
+					trigger.addEventListener('click', function() {
+						mask.style.display = panel.style.display = 'block';
+					});
+					mask.addEventListener('click', hidePanel);
+					cancelBtn.addEventListener('click', hidePanel);
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<!--<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/coffee.js" type="text/javascript" charset="utf-8"></script>-->
+		<!--<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/99_main.js" type="text/javascript" charset="utf-8"></script>-->
+	</body>
+
+</html>

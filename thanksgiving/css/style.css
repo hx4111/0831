@@ -1,0 +1,282 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+/*html,body {width: 100%;height: 100%;overflow-x: hidden;}*/
+
+li {
+	list-style: none;
+}
+
+a,
+input,
+button {
+	outline: none;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+;
+.clearfix {
+	overflow: hidden;
+	_zoom: 1;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.draw_in button {
+	background: url(../images/icon.png) no-repeat;
+	background-size: 20rem;
+}
+
+
+/*.share_tip {background: url(../images/draw_tip_bg.png) no-repeat;background-size: 100%;}*/
+
+#ShareBg {
+	background: #000;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	display: none;
+}
+
+.share_tip {
+	background: url(../images/draw_tip_bg.png) no-repeat;
+	background-size: 100%;
+	text-align: center;
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	display: none;
+}
+
+
+/* 领取 */
+
+.draw {
+	background: url("../images/draw_bg.png") #c74242 no-repeat;
+	height: 100%;
+	background-size: 100%;
+}
+
+.draw_in {
+	padding-top: 15rem;
+	text-align: center;
+}
+
+.draw_in input {
+	border: #930000 .2rem solid;
+	border-radius: .5rem;
+	padding: .5rem;
+}
+
+.draw_in button {
+	width: 4rem;
+	height: 2rem;
+	border: none;
+	text-indent: -9999rem;
+	margin-left: .3rem;
+}
+
+.draw_explain {
+	border: 2px #fff dashed;
+	color: #fff;
+	font-size: .6rem;
+	line-height: 1rem;
+	width: 80%;
+	margin: .8rem auto;
+	padding: .8rem;
+}
+
+.draw_explain h2 {
+	font-weight: normal;
+}
+
+.draw_explain p {
+	margin-top: .2rem;
+}
+
+.draw_in #draw_phone {
+	width: auto;
+	margin: 2.58rem auto 0;
+}
+
+
+/* 领取成功 */
+
+.draw_success {
+	background: url("../images/draw_success_bg.png") no-repeat;
+	background-size: 100%;
+	font-size: .8rem;
+	overflow-x: hidden;
+}
+
+#people {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+	display: table;
+}
+
+.draw_top {
+	margin-top: 7.6rem;
+	width: 100%;
+	color: #AB2020;
+}
+
+#draw_phone img {
+	width: 2rem;
+	height: 2rem;
+	-webkit-border-radius: 100%;
+	border: 2px #ab2020 solid;
+	vertical-align: middle;
+	margin: 0 .5rem;
+}
+
+#draw_phone {
+	width: 85%;
+	margin: 3rem auto;
+}
+
+#draw_phone li {
+	line-height: 2.88rem;
+}
+
+#draw_phone li span {
+	float: right;
+	margin-right: .5rem;
+}
+
+#draw_phone em {
+	font-style: normal;
+	font-weight: bold;
+}
+
+#draw_phone s {
+	text-decoration: none;
+}
+
+.install_comi {
+	margin-top: 5rem;
+	width: 100%;
+	text-indent: -9999rem;
+}
+
+.install_comi a {
+	height: 6rem;
+	text-align: center;
+	width: 100%;
+	display: table;
+}
+
+
+/* 领取首页 */
+
+.draw_index {
+	background: url("../images/draw_index_bg.png") #c74242 no-repeat;
+	background-size: 100%;
+	font-size: .8rem;
+	overflow-x: hidden;
+}
+
+.draw_index_explain {
+	border: 1px #fff dashed;
+	padding: .5rem;
+	width: 82%;
+	color: #fff;
+	line-height: 1.2rem;
+	margin: 0 auto;
+}
+
+.draw_index .draw_top {
+	margin: 0 auto;
+	position: absolute;
+	top: 15.6rem;
+}
+
+.draw_invite a {
+	height: 2.8rem;width: 100%;display: block;text-indent: -9999rem;
+}
+
+#nvite {
+	margin: 6rem auto 5rem;
+	width: 90%;
+	text-align: center;
+	display: table;
+	line-height: 1.8rem;
+	font-size: 1rem;
+}
+
+#nvite dl {
+	float: left;
+	width: 50%;
+	color: #333;
+}
+
+#nvite dl:nth-child(2) {
+	color: #c74242;
+}
+
+
+/* 欢迎回来 */
+
+.draw_back {
+	background: url("../images/draw_back_bg.png") #c74242 no-repeat;
+	background-size: 100%;
+	font-size: .8rem;
+	overflow-x: hidden;
+}
+
+.draw_back .draw_top {
+	margin: 0 auto;
+	margin-top: 16.5rem;
+}
+
+.draw_back #draw_phone {
+	margin: 16.58rem auto 0;
+}
+
+.draw_back .install_comi {
+	margin: 0;
+}
+
+
+/* 已经领取 */
+
+.draw_already {
+	background: url("../images/draw_already_bg.png") #c74242 no-repeat;
+	background-size: 100%;
+}
+
+.draw_already #people {
+	color: #fff;
+}
+
+.draw_already .draw_top {
+	margin: 0 auto;
+	margin-top: 13.2rem;
+}
+
+.draw_already #draw_phone {
+	margin: 2.58rem auto 0;
+}
+
+
+/*.draw_in #draw_phone {width: 100%;}*/

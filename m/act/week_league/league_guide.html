@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>参赛指南</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="css/league_guide.css">
+<script>
+    (function () {
+        var caclFontSize = function () {
+            var screenWidth = document.documentElement.offsetWidth;
+            var baseWidth = 320;
+            var htmlFontSize = (screenWidth / baseWidth) * 20;
+            document.documentElement.style.fontSize = htmlFontSize + 'px';
+        };
+
+        caclFontSize();
+        window.addEventListener('resize', caclFontSize);
+    })();
+</script>
+</head>
+<body>
+    <div class="wrap" id="container">
+        <div class="links">
+            <a class="post" target="_blank" href="http://post.comicool.com" title="投稿系统"></a>
+            <a class="wb1" target="_blank" href="http://weibo.com/cmjokers" title="@CMJ骆驼哥"></a>
+            <a class="wb2" target="_blank" href="http://weibo.com/u/1322633151" title="@张-晓雨"></a>
+            <a class="wb3" target="_blank" href="http://weibo.com/feizimu" title="@婓子木"></a>
+        </div>
+        <!-- loadingImagesByOrder -->
+    </div>
+    <script>
+        //按顺序加载图片
+        loadingImagesByOrder([
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_01.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_02.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_04.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_05.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_06.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_07.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_08.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_09.png',
+            'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/league_10.png'
+        ], document.getElementById('container'));
+
+        (function () {
+            var ua=navigator.userAgent.toLowerCase(),
+                isMobile = ua.indexOf('mobile')>0,
+                isWeixin = (/micromessenger/.test(ua)) ? true : false,
+                isQQ = (/qq\//.test(ua)) ? true : false,
+                isIOS = ua.indexOf('(ip')>0 && isMobile,
+                isWeibo = (/Weibo/i.test(ua)) ? true : false,
+                isApp = (/icomico/i.test(ua)) ? true : false,
+                isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+                isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+                
+            function callAppFunction (func, args, callback) {
+                var argsString = JSON.stringify(args);
+                if (isAndroidApp) {
+                    if (!comicool) {
+                        return false;
+                    }
+                    var result = eval("comicool." + func + "('" + argsString + "');");
+                    if (callback) {
+                        callback(result);
+                    }
+                } else if (isIOSApp) {
+                    function handleCallback(func, args) {
+                        if (func != "setJSCallback") {
+                            return;
+                        }
+                        for (eventName in args) {
+                            window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+                                var appDataStr = JSON.stringify(data);
+                                eval(args[eventName] + "('" + appDataStr + "');");
+                            });
+                        }
+                    }
+
+                    if (window.WebViewJavascriptBridge) {
+                        window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+                        handleCallback(func, args);
+                    } else {
+                        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                            window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+                            handleCallback(func, args);
+                        }, false);
+                    }
+                } else {
+                    return false;
+                }
+                return true;
+            }
+
+            if (isApp) {
+                callAppFunction('showShareBtn', {
+                    'title': '参赛指南',
+                    'describe' : '参赛指南',
+                    'imageurl' : 'http://cdn.icomicool.cn/m/act/week_league/images/league_guide/share-img.jpg'
+                });
+            }
+        })();
+
+        function loadingImagesByOrder(srcArr, container) {
+            if (srcArr instanceof Array && srcArr.length) {
+                var callee = arguments.callee,
+                    src = srcArr.shift(),
+                    image = new Image();
+
+                image.src = src;
+                image.onload = function () {
+                    callee.apply(this, [srcArr, container]);
+                };
+                container.appendChild(image);
+            }
+        }
+    </script>
+</body>
+</html>

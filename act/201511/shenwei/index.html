@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>专访第十六期周赛冠军沈威</title>
+<meta name="keywords" content="漫画投稿,漫画app,原创漫画" />
+<meta name="description" content="专访第十六期周赛冠军沈威" />
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="pagebox contribute">
+        <div>
+            <ul class="imglist">
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var list = [
+    'images/1_01.png',
+    'images/1_02.png',
+    'images/1_03.png',
+    'images/1_04.png',
+    'images/1_05.png',
+    'images/1_06.png',
+    'images/1_07.png',
+];
+
+loadpic (list, function(){
+	$('.imglist li').eq(5).append('<a target="_blank" class="weibo" href="http://weibo.com/u/5689092837" title="沈威官方微博"></a><a target="_blank" class="zp" href="http://www.comicool.cn/content/detail.html?comic_id=10171" title="策动咨询师"></a>');
+    $('.imglist li').last().append('<a target="_blank" href="http://www.comicool.cn/act/201510/contribute/index.html" title="点击投稿"></a>');
+});
+
+// 图片递归加载
+function loadpic(list,callback){
+    if( $.isArray(list) && list.length ){
+        var item = list.shift(), image = new Image(), $imgHtml = $('<li></li>');
+        // loadpic(list);
+        image.src = item;
+        image.alt = '漫画投稿,漫画app';
+        image.onload = function(){
+             $('.imglist').append($imgHtml);
+             $imgHtml.append($(this));
+             loadpic(list,callback);
+        };
+    }else{
+        $.isFunction(callback) && callback(list);
+    }
+}
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>第一届可米酷杯校园漫画大赛圆满结束</title>
+<meta name="keywords" content="第一届可米酷杯校园漫画大赛圆满结束,漫画app,原创漫画" />
+<meta name="description" content="第一届可米酷杯校园漫画大赛圆满结束" />
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+<style>
+*{margin: 0;padding: 0;}
+html {background: url(http://cdn.icomicool.cn/act/201512/summit/images/bg.png) #efb5ad top center no-repeat;}
+body {width: 805px;margin: 0 auto}
+.imglist {margin-top: 394px;}
+img {border: 0;display: table;}
+	ol,
+ul {
+	list-style: none;
+}
+</style>
+</head>
+<body>
+    <div class="pagebox contribute">
+        <div>
+            <ul class="imglist">
+            </ul>
+        </div>
+    </div>
+
+</body>
+<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var list = [
+    'http://cdn.icomicool.cn/act/201512/summit/images/1_02.jpg',
+    'http://cdn.icomicool.cn/act/201512/summit/images/1_03.jpg',
+    'http://cdn.icomicool.cn/act/201512/summit/images/1_04.jpg',
+    'http://cdn.icomicool.cn/act/201512/summit/images/1_05.jpg',
+    'http://cdn.icomicool.cn/act/201512/summit/images/1_06.jpg',
+];
+
+loadpic (list);
+
+// 图片递归加载
+function loadpic(list,callback){
+    if( $.isArray(list) && list.length ){
+        var item = list.shift(), image = new Image(), $imgHtml = $('<li></li>');
+        // loadpic(list);
+        image.src = item;
+        image.alt = '第一届可米酷杯校园漫画大赛圆满结束,漫画app';
+        image.onload = function(){
+             $('.imglist').append($imgHtml);
+             $imgHtml.append($(this));
+             loadpic(list,callback);
+        };
+    }else{
+        $.isFunction(callback) && callback(list);
+    }
+}
+</script>
+</html>

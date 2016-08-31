@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画阅读页|漫画连载_在线漫画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画阅读页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载"/>
+    <meta name="description" content="漫画阅读页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/zepto.js"></script>
+    <script src="../js/config.js"></script>
+    <style>
+        .body-reader {
+            background: #050215 no-repeat;
+        }
+
+        .reader-box {
+            width: 100%;
+            text-align: center;
+        }
+
+        .c-text {
+            text-align: center;
+            font-size: 32px;
+            color: #fff;
+            width: 50%;
+        }
+
+        .reader-box img {
+            width: 90%;
+            display: table;
+            border: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-fanye {
+            color: #fff;
+            text-align: center;
+        }
+
+        .scrollTip {
+            position: fixed;
+            width: 30%;
+            bottom: 2rem;
+            right: .5rem;
+        }
+
+        .scrollTip img {
+            width: 100%;
+        }
+
+        .enter-container {
+            display: none;
+            width: 50%;
+            top: 30%;
+            left: 25%;
+            text-align: center;
+            margin: 0 auto;
+            position: fixed;
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            background-color: #000;
+            opacity: 0.7;
+            .line-height: 1.2;
+        }
+
+        .enter-table {
+            border: 0px;
+            border-collapse: collapse;
+            width: 100%;
+            border: 0;
+            padding: .3rem;
+            margin-bottom: .5rem;
+        }
+
+        .enter-table td {
+            padding: .4rem;
+        }
+
+        .td-l {
+            text-align: left;
+        }
+
+        .td-r {
+            text-align: right;
+        }
+
+        .curr-line {
+            background-color: #0555A5;
+        }
+
+        .disable-tr {
+            color: #565656;
+        }
+
+        .enter-tip {
+            font-size: .8rem;
+        }
+    </style>
+</head>
+
+<body class="body-reader">
+<div class="enter-container">
+    <table class="enter-table">
+        <tr class="curr-line">
+            <td class="td-l">滚动设置</td>
+            <td class="td-r">< 开启 ></td>
+        </tr>
+        <tr>
+            <td class="td-l">滚动速度</td>
+            <td class="td-r" id="speedTd"><&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;></td>
+        </tr>
+    </table>
+    <p class="enter-tip">点击确认按钮关闭</p>
+</div>
+<div class="scrollTip"><img src="../images/reader-tip.png" alt="reader-tip"></div>
+<section class="reader-box">
+    <div class="c-text"></div>
+</section>
+<footer id="footer-tip">
+    <div class="footer-fanye">
+        左右按键翻页
+    </div>
+</footer>
+<script src="../js/common-tv.js"></script>
+<script type="text/javascript">
+    var autoScrollTimer;
+    var isScrollTimer = true;
+    var perScrollHeight = 1.2;
+    var perScrollTime = 20;
+    var enterTdIndex1 = getCookie('enterTdIndex1') ? getCookie('enterTdIndex1') : 1;
+    $('#speedTd').html('<&nbsp;&nbsp;&nbsp;' + enterTdIndex1 + '&nbsp;&nbsp;&nbsp;>');
+    var enterTrIndex = 0, enterTdIndex0 = 0;
+    setTimeout(function(){
+        $('.scrollTip').remove();
+        autoScrollTimer = window.setInterval(function(){
+            $(window).scrollTop($(window).scrollTop() + (isScrollTimer ? perScrollHeight*enterTdIndex1 : 0));
+        }, perScrollTime);
+    }, 3000)
+    
+    var comiPressBind, showPressBind; 
+    var keyConfig, 
+        showPressConfig = 
+        {
+            upkeyCallback: function() {
+                enterTrIndex -= 1;
+                if (enterTrIndex < 0) {
+                    enterTrIndex += 2;
+                }
+                $('.enter-container tr').removeClass('curr-line');
+                $('.enter-container tr').eq(enterTrIndex).addClass('curr-line');
+            },
+            downkeyCallback: function() {
+                enterTrIndex = (enterTrIndex + 1) % 2;
+                $('.enter-container tr').removeClass('curr-line');
+                $('.enter-container tr').eq(enterTrIndex).addClass('curr-line');
+            },
+            leftkeyCallback: function() {
+                if (enterTrIndex == 0) {
+                    if (enterTdIndex0 == 0) {
+                        enterTdIndex0 = 1;
+                        $('.curr-line').find('.td-r').html('< 关闭 >');
+                        isScrollTimer = false;
+                        $('.enter-container tr').eq(1).addClass('disable-tr');
+                    } else {
+                        enterTdIndex0 = 0;
+                        $('.curr-line').find('.td-r').html('< 开启 >');
+                        isScrollTimer = true;
+                        $('.enter-container tr').eq(1).removeClass('disable-tr');
+                    }
+                } else {
+                    if (!isScrollTimer) {
+                        return ;
+                    } else {
+                        enterTdIndex1 -= 1;
+                        if (enterTdIndex1 <= 0) {
+                            enterTdIndex1 = 5;
+                        }
+                        $('.curr-line').find('.td-r').html('<&nbsp;&nbsp;&nbsp;' + enterTdIndex1 + '&nbsp;&nbsp;&nbsp;> ');
+                    }
+                }
+            },
+            rightkeyCallback: function() {
+                if (enterTrIndex == 0) {
+                    if (enterTdIndex0 == 0) {
+                        enterTdIndex0 = 1;
+                        $('.curr-line').find('.td-r').html('< 关闭 >');
+                        isScrollTimer = false;
+                        $('.enter-container tr').eq(1).addClass('disable-tr');
+                    } else {
+                        enterTdIndex0 = 0;
+                        $('.curr-line').find('.td-r').html('< 开启 >');
+                        isScrollTimer = true;
+                        $('.enter-container tr').eq(1).removeClass('disable-tr');
+                    }
+                } else {
+                    if (!isScrollTimer) {
+                        return ;
+                    } else {
+                        enterTdIndex1 += 1;
+                        if (enterTdIndex1 > 5) {
+                            enterTdIndex1 = 1;
+                        }
+                        $('.curr-line').find('.td-r').html('<&nbsp;&nbsp;&nbsp;' + enterTdIndex1 + '&nbsp;&nbsp;&nbsp;>');
+                    }
+                }
+            },
+            enterkeyCallback: function() {
+                setCookie('enterTdIndex1', enterTdIndex1, 30);
+                $('.enter-container').hide();
+                showPressBind.destroy();
+                comiPressBind = new KeyPressEvent(keyConfigObj);
+            }
+        };
+
+    var comic_id = getQueryString('comic_id');
+    var escUrl = CONFIG.detailBase + 'comic_id=' + comic_id;
+    escPressEvent(escUrl);
+    var ep_id = +getQueryString('ep_id');
+    var commentInfo;
+    //记录最近阅读
+    setCookie(comic_id, ep_id);
+    //单话数据调取
+    getByAjax({
+        api: 'epinfo4h5',
+        data: {
+            comic_id: comic_id,
+            ep_id: ep_id
+        },
+        jsonpCallback: "jsonp_epinfo", //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        success: function (data) {
+            var baseUrl = CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=';
+            var fyLeft = '<a href="' + baseUrl + (ep_id - 1) + '">上一话</a>';
+            // var fyCurr = '<span>' + ep_id + '</span>';
+            var fyRight = '<a href="' + baseUrl + (ep_id + 1) + '">下一话</a>';
+            //修改标题信息
+            $('title').html('[' + data.comic_title + '] ' + data.extend_info.ep_title + '-可米酷漫画');
+            if (ep_id == 1) {
+                fyLeft = '<a class="curr">上一话<i class="icon-arrow-left"></i></a>';
+            }
+            if (ep_id == data.ep_num) {
+                fyRight = '<a class="curr"><i class="icon-arrow-right"></i>下一话</a>';
+            }
+            var indexPage = '<a href="' + CONFIG.detailBase + 'comic_id=' + comic_id + '">目录</a>';
+            $('.c-text').html(data.extend_info.ep_title);
+//            $('.footer-fanye').html(fyLeft + indexPage + fyRight);
+            loadpic(data.frame_list);
+            $('body').css('height', 'auto');
+
+            keyConfigObj = {
+                'defaultScroll': true,
+                'leftkeyCallback': function () {
+                    if (ep_id == 1) {
+                        return false;
+                    }
+                    window.location.href = baseUrl + (ep_id - 1);
+                },
+                'rightkeyCallback': function () {
+                    if (ep_id == data.ep_num) {
+                        return false;
+                    }
+                    window.location.href = baseUrl + (ep_id + 1);
+                },
+                'enterkeyCallback': function () {
+                    comiPressBind.destroy();
+                    //1.dom show
+                    $('.enter-container').show();
+                    //2.bind new key press event 
+                    showPressBind = new KeyPressEvent(showPressConfig);
+                }
+            };
+
+            comiPressBind = new KeyPressEvent(keyConfigObj);
+        }
+    });
+    // 图片递归加载
+    function loadpic(list, callback) {
+        if ($.isArray(list) && list.length) {
+            var item = list.shift(),
+            image = new Image();
+            image.alt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+            // loadpic(list);
+            image.src = 'http://cdn.icomico.com/' + item.frame_url + '?imageView2/2/w/640/q/100';
+            image.onload = function () {
+                $('.reader-box').append($(this));
+                loadpic(list, callback);
+            };
+        } else { 
+            $.isFunction(callback) && callback(list);
+        }
+    }
+</script>
+</body>
+
+</html>

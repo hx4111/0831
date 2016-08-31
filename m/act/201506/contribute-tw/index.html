@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>土豪來襲，可米酷漫畫火熱征稿中</title>
+<meta name="keywords" content="可米酷漫畫,可米酷大賞,可米酷app,comicool,lezhin,手機漫畫,漫畫app,原創漫畫,二次元,漫畫連載" />
+<meta name="description" content="可米酷漫畫，國內首款手機彩色條漫閱讀軟件，帶來長長的二次元超爽閱感！原創漫畫每日更新，觀看輕松流暢，漫畫收藏快捷方便，閱讀體驗絕佳，可米酷app，只為手機而生，現可米酷大賞活動正在火爆進行中。" />
+
+<style type="text/css">
+html {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+body { font-size: 1.4rem; line-height: 1.42; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+* { margin: 0; padding: 0;}
+img { border:none; vertical-align:middle; width: 100%;}
+a { outline: 0; text-decoration: none; -webkit-tap-highlight-color: rgba(0,0,0,0); color: #0088cc; }
+a:active { color: #006699; opacity: .8;}
+body { background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+.pagebox { width: 100%; background: #fffef1;}
+
+footer { position: fixed; bottom: 0; left: 0; width: 100%;}
+#open-tip { position: relative; background: rgba(0,0,0,.8); display: none;}
+.open-btnbox { position:absolute; z-index: 250; right: 0; top: 0; width: 30%; height: 100%;}
+.open-table { display: table; width: 100%; height: 100%;}
+.open-table span { display: table-cell; vertical-align: middle; font-size: 0; width: 70%; text-align: center}
+.open-table span:last-child { width: 30%;}
+.open-table a { color: #fff; display: inline-block; width: 100%;}
+.open-table a.open-btn { padding: 6% 0 5%; width: 85%; background: #e62c32; color: #fff; border-radius: 6px; font-size: 1.2rem; background-clip: padding-box; -webkit-background-clip: padding-box;}
+.open-table a.open-clo {  padding:3% 0; font-size: 2.4rem; line-height: 1.5; font-family: Arial; margin-top: -2px;}
+
+.imglist li { position: relative;}
+.imglist li a.emali-btn { position: absolute; left: 0; top: 0; width: 100%; height: 100%;}
+</style>
+</head>
+<body>
+    <article class="pagebox may-news">
+    	<header class="page-head">
+            <img src="http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/top.jpg" alt="可米酷漫畫,comicool" />
+        </header>
+        <section>
+            <ul class="imglist">
+            </ul>
+        </section>
+
+        <footer id="footer">
+            <div id="open-tip">
+                <img src="images/open-tip.png" />
+                <div class="open-btnbox">
+                    <div class="open-table">
+                        <span><a class="open-btn" href="javascript:;">立即打開</a></span>
+                        <span><a class="open-clo" href="javascript:;">×</a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </article>
+</body>
+<script src="http://cdn.icomicool.cn/m/m-common/js/zepto.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	//客户端分享按钮，页面传 调用接口数据
+    var ua = navigator.userAgent.toLowerCase();
+    //获取设置的苹果安卓客户端ua信息
+    var isApp = (/icomico/i.test(ua)) ? true : false ;
+
+	if( isApp ){
+        //app里执行
+    } else {
+    	$('#open-tip').show();
+        var _btnHeight = $('#open-tip').height();
+        $('.pagebox').css('paddingBottom', _btnHeight);
+        $('.open-btn, #open-tip img').on('click',function(){
+            window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+        });
+        $('.open-clo').on('click',function(){
+            $(this).parents('#open-tip').hide();
+            $('.pagebox').css('paddingBottom', 0);
+        });
+    }
+
+    var list = [
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/1.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/2.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/3.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/4.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/5.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/email.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/6.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/7.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/8.jpg',
+        'http://cdn.icomicool.cn/m/act/201506/contribute-tw/images/9.jpg'
+    ];
+
+    loadpic (list, function(){
+        $('.imglist li').eq(5).append('<a href="http://post.comicool.cn/index.php" class="emali-btn"></a>');
+    });
+
+    // 图片递归加载
+    function loadpic(list,callback){
+        if( $.isArray(list) && list.length ){
+            var item = list.shift(), image = new Image(), $imgHtml = $('<li></li>');
+            // loadpic(list);
+            //alert(list + ' , ' + item);
+            image.src = item;
+            image.alt = '可米酷漫畫,comicool,手機漫畫,原創漫畫,漫畫app';
+            image.onload = function(){
+                 $('.imglist').append($imgHtml);
+                 $imgHtml.append($(this));
+                 loadpic(list,callback);
+            };
+        }else{
+            $.isFunction(callback) && callback(list);
+        }
+    }
+
+});
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

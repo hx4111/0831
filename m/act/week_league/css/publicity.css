@@ -1,0 +1,214 @@
+html {
+	font-size: 20px;
+}
+body, p, ul, li, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 1.5;
+	background: #ffe2be url(../images/publicity/publicity_bg.jpg) no-repeat;
+	-webkit-background-size: 100% auto;
+	        background-size: 100% auto;
+}
+.period-num {
+	position: absolute;
+	left: 3.8rem;
+	top: 5.1rem;
+	width: 2.9rem;
+	height: 1.55rem;
+	text-align: center;
+	line-height: 1.55rem;
+	color: #fff;
+	font-size: 1.5rem;
+}
+.period-date {
+	position: absolute;
+	left: 3.2rem;
+	top: 8.15rem;
+	width: 4.35rem;
+	height: .95rem;
+	font-size: .6rem;
+	text-align: center;
+	line-height: .95rem;
+	color: #fff;
+}
+.rank-list {
+	margin-top: 12rem;
+	padding: 0 1rem;
+}
+.rank-list li {
+	height: 5.5rem;
+	padding: .6rem 0;
+	margin-bottom: 1rem;
+	box-sizing: border-box;
+}
+.rank-list li a {
+	display: block;
+	color: #ff4c4c;
+	overflow: hidden;
+}
+.rank-list li h3 {
+	margin-bottom: .1rem;
+	font-size: .7rem;
+}
+.rank-list li p {
+	font-size: .55rem;
+}
+.rank-list li h3, .rank-list li p {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.rank-list .comic-thumb {
+	position: relative;
+	float: left;
+	width: 7.35rem;
+	height: 4.45rem;
+	border-radius: .3rem;
+	overflow: hidden;
+	background: #fff;
+}
+.rank-list .comic-info {
+	float: right;
+	width: 6.6rem;
+	padding-left: .5rem;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.rank-list li .summary {
+	height: 2.4rem;
+	margin-right: -.5rem;
+}
+.rank-list li .rating {
+	margin-top: .8rem;
+	padding-left: .8rem;	
+	font-size: .7rem;
+	color: #fff;
+	text-align: center;
+}
+.rank-list .comic-thumb img {
+	width: 100%;
+	height: 100%;
+}
+.rank-list .comic-thumb em {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: .8rem;
+	height: .8rem;
+	border-radius: .3rem 0 0 0;
+	line-height: .8rem;
+	text-align: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: .8rem;
+	background: #fff100;
+	color: #ff4c4c;
+}
+.rank-list li:first-child {
+	height: 10.65rem;
+}
+.rank-list li:first-child .comic-thumb {
+	float: none;
+	width: auto;
+	height: 7.3rem;
+}
+.rank-list li:first-child .comic-thumb em {
+	background: #e62c32;
+	color: #fff;
+	width: 1.2rem;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	font-size: 1rem;
+}
+.rank-list li:first-child .comic-info {
+	float: none;
+	width: 100%;
+	padding: 0;
+	margin-top: .35rem;
+}
+.rank-list li:first-child .summary {
+	float: left;
+	width: 8rem;
+	padding-right: .5rem;
+	margin: 0;
+}
+.rank-list li:first-child .rating {
+	float: right;
+	width: 5.4rem;
+	margin-right: .1rem;
+	padding: 0;
+}
+.remark-list {
+	padding-top: 5rem;
+	margin: 0 .5rem;
+}
+.remark-list li {
+	padding-bottom: 2rem;
+	overflow: hidden;
+}
+.remark-list li:last-child {
+	padding-bottom: 1rem;
+}
+.remark-list .judge-photo {
+	float: left;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 2px solid #fff;
+	box-sizing: border-box;
+}
+.remark-list .judge-photo img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.remark-list .remark-right {
+	float: left;
+	width: 11.5rem;
+	padding-left: 1rem;
+	font-size: .6rem;
+	color: #ff4c4c;
+	box-sizing: border-box;
+}
+.remark-list .remark-right a {
+	color: #ff4c4c;
+}
+.remark-list h4 {
+	padding-left: .5em;
+	font-size: .8rem;
+}
+.remark-shape {
+	position: relative;
+	padding: .5rem;
+	background: #fff;
+	border-radius: .3rem;
+}
+.remark-shape:before {
+	content: "";
+	position: absolute;
+	right: 100%;
+	top: .5em;
+	border: .5rem solid transparent;
+	border-right-color: #fff;
+}
+.remark-comic {
+	text-align: right;
+}
+.publicity-statement {
+	padding: .5rem;
+	margin-bottom: 1rem;
+}
+.publicity-statement img {
+	width: 100%;
+}

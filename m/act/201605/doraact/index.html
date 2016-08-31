@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>哆啦A梦的许愿棒</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="keywords" content="可米酷漫画,哆啦A梦的许愿棒" />
+        <meta name="description" content="哆啦A梦的许愿棒,可米酱帮你圆梦">
+        <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+        <script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+        <!-- <script src="http://cdn.icomicool.cn/m/js/vconsole.min.js" type="text/javascript" charset="utf-8"></script> -->
+        <style type="text/css">
+            li {
+                position: relative;
+            }
+
+            li .wait-btn {
+                position: absolute;
+                bottom: 4rem;
+                left: 1rem;
+                width: 80%;
+            }
+
+            .wait-btn img {
+                width: 100%;
+            }
+
+            .priase-cnt {
+                text-align: center;
+            }
+
+            .game-btn {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                width: 6rem;
+                height: 2rem;
+            }
+
+            #toast {
+                position: fixed;
+                bottom: 2rem;
+                left: 50%;
+                transform: translate3d(-50%, 0, 0);
+                -ms-transform: translate3d(-50%, 0, 0);
+                -moz-transform: translate3d(-50%, 0, 0);
+                -webkit-transform: translate3d(-50%, 0, 0);
+                -o-transform: translate3d(-50%, 0, 0);
+                border-radius: .3rem;
+                background: #000;
+                color: #fff;
+                padding: .5rem 1rem;
+                text-align: center;
+                opacity: .7;
+                -webkit-tap-highlight-color: transparent;
+                /*The good stuff */
+                -webkit-transition: opacity 0.5s ease-out;
+                /* Saf3.2+, Chrome */
+                -moz-transition: opacity 0.5s ease-out;
+                /* FF4+ */
+                -ms-transition: opacity 0.5s ease-out;
+                /* IE10? */
+                -o-transition: opacity 0.5s ease-out;
+                /* Opera 10.5+ */
+                transition: opacity 0.5s ease-out;
+                z-index: 9999;
+                font-size: .7rem;
+                background: #6B6A6A;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- 一般化分享 -->
+        <h1 class="thumbnails" style="display:none">
+        哆啦A梦的许愿棒
+        <p>哆啦A梦的许愿棒/p>
+        <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/doraact_share.jpg">
+    </h1>
+        <header class="header header-fixed header-shadow">
+            <a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+            <i class="r-icon icon-share iconfont"></i>
+        </header>
+        <!-- 主要内容：开始 -->
+        <ul class="img-list">
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_01.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_02.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_03.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_04.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_05.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_06.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li><img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_07.jpg" alt="哆啦A梦的许愿棒"></li>
+            <li id="day_1" class="go" data-ccid="11353">
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_08.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_2" class="go" data-ccid="11341">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_09.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_3" class="go" data-ccid="11167">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_10.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_4" class="go" data-ccid="11369">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_11.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_5" class="go" data-ccid="11051">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_12.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_6" class="go" data-ccid="11358">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_13.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_7" class="go" data-ccid="11112">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_14.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_8" class="go" data-ccid="11300">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_15.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_9" class="go" data-ccid="11297">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_16.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_10" class="go" data-ccid="11404">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_17.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_11" class="go" data-ccid="11247">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_18.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_12" class="go" data-ccid="11186">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_19.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_13" class="go" data-ccid="693">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_20.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <li id="day_14" class="go" data-ccid="10565">
+                <div class="wait-btn"><img src="images/wait.png" alt="敬请期待"></div>
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/index_21.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+            <div class="priase-cnt">2333</div>
+            <li id="praise-btn">
+                <img src="http://cdn.icomicool.cn/m/act/201605/doraact/images/praise-btn.jpg" alt="哆啦A梦的许愿棒">
+            </li>
+        </ul>
+        <div id="post-and-Ctrl"></div>
+        <!-- 主要内容：结束 -->
+        <!-- 百度分享面板 -->
+        <div id="ShareBg"></div>
+        <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+            <div id="ShareCon">
+                <em></em>
+                <h2></h2>
+            </div>
+            <div>
+                <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+                <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+                <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+                <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+            </div>
+            <div class="share-clo">取消</div>
+        </div>
+        <script src="http://www.comicool.cn/m/tpl/dist/act-global.min.js" type="text/javascript"></script>
+        <script>
+        ReactDOM.render(React.createElement(PostAndCtrl, {postType: "topic2025"}), document.getElementById('post-and-Ctrl'));
+            var shareJsonObj = {
+                    'title' : '哆啦A梦的许愿棒',
+                    'describe' : '哆啦A梦的许愿棒',
+                    'imageUrl' : 'http://cdn.icomicool.cn/m/act/201605/doraact/images/doraact_share.jpg',
+                    'pageUrl': window.location.href
+                };
+            setShareInfo(shareJsonObj, {
+                use: 'baidu',
+                init: initBaiduSharePanel
+            });
+
+            function initBaiduSharePanel() {
+                var _ = function(selector, parent) {
+                        return (parent || document).querySelector(selector);
+                    },
+                    header = _('.header'),
+                    trigger = _('.icon-share', header),
+                    mask = _('#ShareBg'),
+                    shareBtn = _('#share-btn'),
+                    panel = _('.bdsharebuttonbox'),
+                    cancelBtn = _('.share-clo', panel),
+                    panelTitle = _('#ShareCon h2'),
+                    panelImageCont = _('#ShareCon em'),
+                    panelImage = new Image(),
+                    hidePanel = function() {
+                        mask.style.display = panel.style.display = 'none';
+                    };
+                header.style.display = 'block';
+                panelTitle.innerHTML = this.title;
+                panelImage.src = this.imageUrl;
+                panelImageCont.appendChild(panelImage);
+                trigger.addEventListener('click', function() {
+                    mask.style.display = panel.style.display = 'block';
+                });
+                mask.addEventListener('click', hidePanel);
+                cancelBtn.addEventListener('click', hidePanel);
+            }
+            window.onload = function() {
+                $("#share-btn").on("click", function() {
+                    if (CONFIG.isApp) {
+                        callAppFunction('popupSharePanel',{
+                                "title": '哆啦A梦的许愿棒',
+                                "describe": '哆啦A梦的许愿棒',
+                                "imageurl": 'http://cdn.icomicool.cn/m/act/201605/doraact/images/doraact_share.jpg',
+                                "page_url": window.location.href,
+                                "weibo_describe": "哆啦A梦的许愿棒"
+                            });
+                    } else {
+                        $("#ShareBg,.bdsharebuttonbox").show();
+                    }
+                });
+
+                $.ajax({
+                    url: 'http://comicool.cn/simple_vote.php',
+                    dataType: "jsonp",
+                    data: {},
+                    jsonpCallback: "jsonp_match",
+                    success: function(data) {
+                        var praise = data.results[48];
+                        $(".priase-cnt").html(praise);
+                    }
+                })
+
+                showWaitBtn();
+                bindOpenComicEvents();
+                $('.game-btn').on('click', function(e){
+                    e.stopPropagation();
+                    window.location.href = 'http://seven1.ebiaoji.com/seven/h5/3';
+                })
+
+                var doraactPraise = getCookie('doraact-praise');
+                if (doraactPraise) {
+                    $('#praise-btn img').attr('src', 'http://cdn.icomicool.cn/m/act/201605/doraact/images/praised-btn.jpg')
+                }
+            }
+
+            function bindOpenComicEvents() {
+                var readComic;
+                if (CONFIG.isApp) {
+                    readComic = function(ccid) {
+                        callAppFunction('openEpisodeReaderPage', {
+                            comic_id: ccid,
+                            ep_id: 1
+                        });
+                    }
+                } else {
+                    readComic = function(ccid) {
+                        window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=1';
+                    }
+                }
+                $(".go").on('click', function(e) {
+                    var ccid = this.dataset.ccid;
+                    if (ccid !== undefined && ccid !== "") {
+                        readComic(ccid);
+                    }
+                });
+
+                $("#praise-btn").on("click", function() {
+                    if (getCookie('doraact-praise') == "true") {
+                        drawToast("你已经点过赞了");
+                    } else {
+                        var num = $(".priase-cnt").html();
+                        $(".priase-cnt").html(parseInt(num) + 1);
+                        $(this).find('img').attr("src", "http://cdn.icomicool.cn/m/act/201605/doraact/images/praised-btn.jpg");
+                        $.get("http://comicool.cn/simple_vote.php?sel=48");
+                        setCookie("doraact-praise", "true", 30)
+                    }
+                })
+            }
+            
+            function showWaitBtn() {
+                var dateBegin = new Date('2016-06-02').getTime();
+                var nowDate = new Date().getTime();
+                var between = (nowDate-dateBegin)/(24*60*60*1000) + 1;
+                between = between > 14 ? 14 : between;
+
+                for (var i = 1; i <= between; i++ ) {
+                    $('#day_' + i).find('.wait-btn').remove();
+                    $('#day_' + i).find('img').attr('src', 'http://cdn.icomicool.cn/m/act/201605/doraact/images/day_' + (i < 10 ? ('0'+i) : i) + '.jpg');
+                    if (i == 14) {
+                        var html = $('<div class="game-btn"></div>');
+                        $('#day_14').append(html);
+                    } 
+                }
+            }
+
+            function hideToast() {
+                var alert = document.getElementById("toast");
+                alert.style.opacity = 0;
+                clearInterval(intervalCounter);
+            }
+
+            function drawToast(message) {
+                var alert = document.getElementById("toast");
+                if (alert == null) {
+                    var toastHTML = '<div id="toast">' + message + '</div>';
+                    document.body.insertAdjacentHTML('beforeEnd', toastHTML);
+                } else {
+                    alert.remove();
+                    drawToast(message);
+                }
+                intervalCounter = setInterval("hideToast()", 1000);
+            }
+
+        </script>
+        <!-- 百度统计 -->
+        <script>
+            var _hmt = _hmt || [];
+            (function() {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    </body>
+
+</html>

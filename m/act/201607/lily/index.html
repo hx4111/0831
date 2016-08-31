@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>可米酷百合漫画推荐</title>
+	<meta name="keywords" content="可米酷,百合漫画,那种甜,南山,朝颜,LIAR">
+	<meta name="description" content="可米酷百合漫画推荐,她与她徒留芬芳">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://www.comicool.cn/m/tpl/css/style.min.css?_=1468223173180">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://cdn.icomicool.cn/m/js/md5.min.js"></script>
+	<style>
+		.img-list {
+			width: 100%;
+		}
+
+		.img-list li {
+			position: relative;
+		}
+
+		.music-block {
+			position: absolute;
+			top: 3%;
+			left: 29%;
+		}
+
+		.music-block img {
+			border-radius: 100%;
+			width: 50%;
+		}
+
+		.music-block .active {
+			-webkit-animation: rotate 3s infinite linear;
+			animation: rotate 3s infinite linear;
+		}
+
+		.music-block .animated {
+			-webkit-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+
+		#index-music {
+			display: none;
+		}
+
+		@-webkit-keyframes rotate {
+			form {
+				-webkit-transform: rotate(0deg);
+			}
+
+			to {
+				-webkit-transform: rotate(360deg);
+			}
+		};
+
+		@keyframes rotate {
+			form {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.ctrl-read {
+			position: absolute;
+			left: 5%;
+			width: 90%;
+			height: 5rem;
+		}
+
+		.ctrl-read1 {
+			bottom: 2%;
+		}
+
+		.ctrl-read2 {
+			top: 30%;
+		}
+
+		.ctrl-read3 {
+			top: 10%;
+		}
+
+		.ctrl-read4 {
+			top: 2%;
+		}
+
+		.ctrl-praise {
+			position: absolute;
+			bottom: 17%;
+			width: 100%;
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		.ctrl-praise img {
+			width: 50%;
+			margin: 0 auto;
+		}
+
+		.praise-cnt {
+			position: absolute;
+			bottom: 4%;
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<header class="header header-fixed header-shadow">
+		<a href="http://m.comicool.cn"><i class="l-icon iconfont icon-home"></i></a>
+		<i class="r-icon iconfont icon-share"></i>
+	</header>
+	<ul class="img-list">
+	<!-- http://cdn.icomicool.cn/m/act/201607/lily/ -->
+		<li><img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_01.jpg" alt="百合漫画推荐"></li>
+		<li><img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_02.jpg" alt="百合漫画推荐"></li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_03.jpg" alt="百合漫画推荐">
+			<div class="music-block">
+				<img class="active" src="http://cdn.icomicool.cn/m/act/201607/lily/images/music.png" alt="百合漫画推荐">
+			</div>
+			<audio id="index-music" autoplay="autoplay">
+				<source src="http://cdn.icomicool.cn/m/act/201607/lily/images/index.mp3" type="audio/mpeg"/>
+			</audio>
+			<div class="ctrl-read ctrl-read1 go" data-ccid="10999" id="bd-comi-read-01"></div>
+		</li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_04.jpg" alt="百合漫画推荐">
+			<div class="ctrl-read ctrl-read2 go" data-ccid="11251" id="bd-comi-read-02"></div>
+		</li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_05.jpg" alt="百合漫画推荐">
+			<div class="ctrl-read ctrl-read3 go" data-ccid="11329" id="bd-comi-read-03"></div>
+		</li>
+		<li>
+
+			<img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_06.jpg" alt="百合漫画推荐">
+			<div class="ctrl-read ctrl-read4 go" data-ccid="11376" id="bd-comi-read-04"></div>
+			<div class="ctrl-praise">
+				<img class="praise" src="http://cdn.icomicool.cn/m/act/201607/lily/images/praise.png" alt="百合漫画推荐">
+			</div>
+			<div class="praise-cnt">2333</div>
+		</li>
+		<li>
+			<img src="http://cdn.icomicool.cn/m/act/201607/lily/images/index_07.jpg" alt="百合漫画推荐">
+		</li>
+	</ul>
+	<div id="post-and-Ctrl"></div>
+	<!-- 百度分享面板 -->
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js?_=1468223173180" type="text/javascript"></script>
+<script>
+
+	var playing = true;
+	window.onload = function() {
+		$('#index-music')[0].play();	
+		init();
+	}
+
+	$('.music-block').on('click', function() {
+		playing = !playing;
+
+		if (playing) {
+			$(this).find('img').removeClass('animated').addClass('active');
+			$('#index-music')[0].play();
+		} else {
+			$(this).find('img').removeClass('active').addClass('animated');
+			$('#index-music')[0].pause();
+		}
+	})
+
+	function init() {
+		PraiseFun.getPraiseCnt(function(data) {
+			$('.praise-cnt').html(data.up);
+			var isPraise = getCookie('lily-praise');
+			if (isPraise) {
+				$('.praise').attr('src', 'http://cdn.icomicool.cn/m/act/201607/lily/images/praised.png').addClass('praised');
+			}
+		});
+
+		$('.ctrl-praise').on('click', function() {
+			if ($('.praised') && $('.praised').length > 0) {
+				new TipBox({str: '您已经点过赞了!', type: 'toastBox', width: 250});
+			} else {
+				PraiseFun.doPraise(function() {
+					setCookie('lily-praise', true);
+					var praiseCnt = Number($('.praise-cnt').html());
+					$('.praise-cnt').html(praiseCnt + 1);
+					$('.praise').attr('src', 'http://cdn.icomicool.cn/m/act/201607/lily/images/praised.png').addClass('praised');
+				})
+			}
+		})
+	}
+
+	var PraiseFun = {
+		getPraiseId: function() {
+			return '84'; 
+		},
+
+		getSign: function() {
+			return hex_md5('id:' + this.getPraiseId());
+		},
+
+		getPraiseCnt: function(callback) {
+			$.ajax({
+				url: 'http://www.comicool.cn/api/vote.php',
+				dataType: 'jsonp',
+				data: {
+					api: 'getVote',
+					sign: this.getSign(),
+					id: this.getPraiseId(),
+				},
+				jsonpCallback: 'jsonp_match',
+				success: function(data) {
+					console.info(data);
+					if (data.results.ret == 0) {
+						callback(data.results.data);
+					}
+				}
+			})
+		},
+
+		doPraise: function(callback) {
+			$.ajax({
+				url: 'http://www.comicool.cn/api/vote.php',
+				dataType: 'jsonp',
+				data: {
+					api: 'handleVote',
+					sign: this.getSign(),
+					id: this.getPraiseId(),
+				},
+				jsonpCallback: 'jsonp_match',
+				success: function(data) {
+					console.info(data);
+					if (data.results.ret == 0) {
+						callback();
+					}
+				}
+			})
+		}
+	}
+
+	ReactDOM.render(React.createElement(PostAndCtrl, {postType: "topic2051"}), document.getElementById('post-and-Ctrl'));
+	
+	var shareJsonObj = {
+        'title' : '可米酷百合漫画推荐',
+        'describe' : '她们有着同一样的性别，她们为爱燃烧。',
+        'imageUrl' : 'http://cdn.icomicool.cn/m/act/201607/lily/images/lily-share.jpg',
+        'pageUrl': window.location.href
+    };
+    setShareInfo(shareJsonObj, {
+        use: 'baidu',
+        init: initBaiduSharePanel
+    });
+
+    function initBaiduSharePanel() {
+        var _ = function(selector, parent) {
+                return (parent || document).querySelector(selector);
+            },
+            header = _('.header'),
+            trigger = _('.icon-share', header),
+            mask = _('#ShareBg'),
+            shareBtn = _('#share-btn'),
+            panelTitle = _('#ShareCon h2'),
+            panel = _('.bdsharebuttonbox'),
+            cancelBtn = _('.share-clo', panel),
+            panelImageCont = _('#ShareCon em'),
+            panelImage = new Image(),
+            hidePanel = function() {
+                mask.style.display = panel.style.display = 'none';
+            };
+        header.style.display = 'block';
+        panelTitle.innerHTML = this.title;
+        panelImage.src = this.imageUrl;
+        panelImageCont.appendChild(panelImage);
+        if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+			trigger.addEventListener('click', function() {
+				document.getElementById('ShareBg').style.display = 'block';
+				document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+				header.style.display = 'none';
+			});
+			document.getElementById('ShareBg').addEventListener('click', function(){
+				document.getElementById('ShareBg').style.display = 'none';
+				header.style.display = 'block';
+			})
+		} else {
+			trigger.addEventListener('click', function() {
+				mask.style.display = panel.style.display = 'block';
+			});
+			mask.addEventListener('click', hidePanel);
+			cancelBtn.addEventListener('click', hidePanel);
+		}
+    }
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

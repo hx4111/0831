@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可米酱的百宝囊</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name = "format-detection" content = "telephone=no">
+	<meta name="keywords" content="可米酷,可米酱的百宝囊">
+	<meta name="description" content="可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧">
+	<link rel="stylesheet" href="css/main.css?_=14673650105">
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1466492243_479392.css">
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/Tip.js"></script>
+	<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+
+	<!-- <script type="text/javascript" src="js4app/js4app.js"></script> -->
+	<!-- <script type="text/javascript" src="http://cdn.icomicool.cn/m/js/vconsole.min.js"></script> -->
+</head>
+<body>
+	<!-- 一般化分享 -->
+	<h1 class="thumbnails" style="display:none">
+    	可米酱的百宝囊
+        <p>可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧</p>
+        <img src="http://promote.comicool.cn/ygshare/images/yg_share.jpg">
+    </h1>
+	<div class="header-fixed" id="header-slider">
+		<ul class="period-list">
+		</ul>
+	</div>
+	<div class="header-img">
+		<img src="images/header_02.jpg" alt="可米酱的百宝囊">
+		<div class="act-time">
+			<div class="act-time-inner">活动时间: 2016.07.23--2016.07.29</div>
+		</div>
+		<div class="user-container">
+			<div class="login-pannel unlogin-handle">请您登录</div>
+			<div class="userinfo-container">
+				<div class="userinfo-name">昵称:<span class="nickname">无码</span></div>
+				<div class="userinfo-kubi">酷币余额:<span class="kubi-cnt"></span></div>
+			</div>
+		</div>
+		<div class="timmer-pannel">
+			<div class="timmer-pannel-inner">
+				所有宝藏刷新时间<span class="timer-time">23:59:59</span>
+			</div>
+		</div>
+	</div>
+	<div class="first-container">
+		<!-- 
+		<section id="first-banner-slider" class="first-banner-slider">
+		    <div class="hd">
+		        <ul class="list-unstyled">
+		            <li class="">1</li>
+		            <li class="on">2</li>
+		            <li class="">3</li>
+		        </ul>
+		    </div>
+		    <div class="bd">
+		        <div class="tempWrap">
+		            <ul class="list-unstyled" >
+		 				<li><img src="images/1.jpg" alt="大额精美商品,只需100酷币就有机会抢得"></li>
+		 				<li><img src="images/1.jpg" alt="大额精美商品,只需100酷币就有机会抢得"></li>
+		 				<li><img src="images/1.jpg" alt="大额精美商品,只需100酷币就有机会抢得"></li>
+		            </ul>
+		        </div>
+		    </div>
+		</section>
+		<div class="first-goods-pannel">
+			<div class="first-pannel">
+				<div class="sell-cnt"></div>
+			</div>
+			<div class="first-pannel-text">
+				<div class="text-left">
+					<p class="sold-cnt">11</p>
+					<p>已售份数</p>
+				</div>
+				<div class="text-right">
+					<p class="all-cnt">289</p>
+					<p>剩余份数</p>
+				</div>
+			</div>
+		</div>
+		<div class="first-buy-btn unlogin-handle">
+			<img src="images/first-buy-btn.png" alt="点击抢购">
+		</div>
+		<div class="first-buy-cnt">您已夺取<span class="myBuyCnt">12</span>份</div>-->
+	</div>
+	<div class="share-container">分享赚酷币</div>
+	<div class="first-buy-container">
+		<div class="first-surplus-pannel">当前剩余份数</div>
+		<div class="surplus-font"><span class="first-surplus"></span>份</div>
+		<div class="input-pannel">
+			<div class="input-icon"><i class="iconfont icon-reduce"></i></div>
+			<div><input type="number" name="first-buy-cnt" id="first-buy-cnt" value="1" /></div>
+			<div class="input-icon"><i class="iconfont icon-plus"></i></div>
+		</div>
+		<div class="btn-pannel">
+			<button class="cancel-btn">取消</button>
+			<button class="buy-btn">确认</button>
+		</div>
+	</div>
+	<!-- <li class="hr"></li> -->
+	<div class="nav-container" id="nav-tabs">
+		<nav class="nav-list hd">
+			<ul class="list-unstyled nav-inner">
+				<li id="goodsTab">探宝商品</li>
+				<li id="myOrderTab">我的订单</li>
+				<li id="prizeResTab">开奖结果</li>
+				<li id="ruleTab">活动规则</li>
+			</ul>
+		</nav>
+		<div class="nav-content bd" id="nav-content-bd">
+			<div class="nav-item">
+				<ul class="goods-list clearfix">
+					<!-- <li class="goods-detail">
+						<div class="goods-left">
+							<img src="images/1.jpg" alt="商品图片">
+							<div class="goods-pannel">
+								<div class="sell-cnt"></div>
+							</div>
+							<div class="goods-pannel-text">
+								<div class="text-left">
+									<p class="sold-cnt">11</p>
+									<p>已售份数</p>
+								</div>
+								<div class="text-right">
+									<p class="all-cnt">289</p>
+									<p>剩余份数</p>
+								</div>
+							</div>
+						</div>
+						<div class="goods-right">
+							<p class="goods-name">手办商品</p>
+							<p class="goods-value">价值: ￥300元</p>
+							<div class="go-btn">
+								<img src="images/go-btn.png" alt="立即购买">
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+			<div class="nav-item">
+				 <ul class="record-list">
+					<!-- <li class="record-item">
+						<div class="record-header">
+							<span class="record-title">精品手办</span>
+							<span class="record-statu zhong"><i class="iconfont icon-prize"></i>中奖 </span>
+						</div>
+						<div class="record-footer">
+							<div class="record-left">
+								已购买<span class="myBuyCnt">1</span>份&nbsp;&nbsp;&nbsp;
+								<span class="zhong-btn">填写收货地址</span>
+							</div>
+							<div class="record-right">
+								2016-06-05 14:23
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+			<div class="nav-item">
+				<ul class="prize-list">
+					<!-- <li class="record-item">
+						<div class="record-header">
+							<span class="record-title">精品手办</span>
+							<span class="record-statu"><i class="icon-font icon-prize"></i>未中奖</span>
+						</div>
+						<div class="record-footer">
+							<div class="record-left">
+								已购买<span class="myBuyCnt">1</span>份&nbsp;&nbsp;&nbsp;
+								消耗<span class="kubiCnt">200</span>酷币
+							</div>
+							<div class="record-right">
+								2016-06-05 14:23
+							</div>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+			<div class="nav-item">
+				<div class="rules-container">
+					<p>详细规则:</p>
+					<p>1.用户可消耗酷币参加本次活动，每购买1份或1次需100酷币。出价只能为100的整数倍，出价记录可点击"我的出价记录"查询。</p>
+					<p>2.同一件商品可以一次购买多份或多次购买。</p>
+					<p>3.当一件商品所有份额全部售出后系统自动选出本次商品获奖者。</p>
+					<p>4.活动仅支持酷币,建议您完成每日任务获得更多的酷币。</p>
+					<p>5.出价时，需要支付相应数量的酷币，截至当前期宝藏刷新时间，商品未售出则会全额返还购买消耗的酷币。</p>
+					<p>6.本次活动最终解释权在法律允许范围内归可米酷漫画所有。</p>
+					<p>7.所有奖品将在活动结束后5个工作内寄出，请用户一定要填写正确的收货地址以避免奖励取消。</p>
+					<p>8.官方客服QQ：2107690292</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="go-post">
+		<img src="images/go-post.png" alt="前往评论区">
+	</div>
+	<div class="rule-btn-fixed">
+		购买攻略
+	</div>
+	<div class="pennymall-strategy">
+		<div class="rules-container">
+			<div class="close-btn">
+				<i class="iconfont icon-close"></i>
+			</div>
+			<p>购买攻略:</p>
+			<br />
+			<p>1.什么是份额？</p>
+			<p>将一件商品按照酷币的对应价值均分成一定数量的等份，类似于切蛋糕的性质。每个等份对应100酷币。</p>
+			<br />
+			<p>2.我要怎么购买？</p>
+			<p>每件商品旁都会有“立即购买”的按钮，可米亲们点击该按钮按照步骤即可参与购买。商品的份额可以重复、多次购买。如可以一次购买10份或者购买1份10次。</p>
+			<br />
+			<p>3.怎么获得商品？</p>
+			<p>当一件商品的所有份额全部售出后，系统会自动选出该件商品的所有者。重要提示：因份额可以多次购买，且在同一件商品中购买份额越多，获得概率越大，所以请注意已售出和剩余的份额比例。</p>
+		</div>
+	</div>
+	<div class="add-address-container">
+		<i class="iconfont icon-close"></i>
+		<table>
+			<tbody>
+				<tr>
+					<td class="tdLeft">收货人</td>
+					<td class="tdRight"><input type="text" name="username" id="username"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">联系电话</td>
+					<td class="tdRight"><input type="number" name="phoneNum" id="phoneNum"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">QQ</td>
+					<td class="tdRight"><input type="number" name="userqq" id="userqq"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">收货地址</td>
+					<td class="tdRight">
+						<textarea id="new-address" rows="3"></textarea>
+						<!-- <select name="userAddress" id="userAddress">
+							<option value="0" selected="selected" id="default-option">暂无收货地址，请添加</option>
+						</select>
+						<span class="addNewAddress"><i class="iconfont icon-plus"></i></span> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="submit-btn-outer">
+			<input type="hidden" name="order_id" id="order_id">
+			<input type="hidden" name="s_id" id="s_id">
+			<button class="submit-address-btn">提交</button>
+		</div>
+	</div>
+	<div class="pageCover"></div>
+	<div class="loading"></div>
+	<script type="text/javascript" src="js/main.js?_=1467367634480"></script>
+	<script type="text/javascript">
+		callAppFunction('setJSCallback', {'page_resume_event': 'resumePage'});
+		window.resumePage = function() {
+			var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;
+			GetInfo.getGoodsList(periodIndex, 1).then(function(data) { // 获取商品列表，不显示loading
+                Render.renderGoodsList(data);
+            });
+		}
+
+		window.onload = function() {
+			loginFun();
+	        commonInit();
+
+	        //购买攻略点击
+		    $('.rule-btn-fixed').on('touchend', function() {
+		    	showMask();
+		    	$('.pennymall-strategy').show();
+		    })
+
+		    $('.pennymall-strategy .close-btn').on('click', function() {
+		    	$('.pennymall-strategy').hide();
+		    	hideMask();
+		    })
+
+		    //分享赚酷币点击
+		    $('.share-container').on('click', function() {
+				if (CONFIG.isLogin) {
+		    		var shareData = {
+		    			'title' : '可米酱的百宝囊',
+			            'describe' : '可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧',
+			            'imageurl' : 'http://promote.comicool.cn/ygshare/images/yg_share.jpg',
+			            'page_url': 'http://promote.comicool.cn/ygshare/index.php?ccid=' + CONFIG.p_userinfo.ccid
+		    		};
+					callAppFunction('popupSharePanel', shareData);	
+				}
+			})
+
+			//前往评论区
+			$('.go-post').on('click', function() {
+				if (CONFIG.isApp) {
+					callAppFunction('openNewBrowser', {
+						url: CONFIG.postPage, 
+						title: '可米酱的百宝囊--讨论区'
+					})
+				} else {
+					window.open(CONFIG.postPage);
+				}
+			})
+		}
+
+		function loginFun() {
+
+		    if (CONFIG.isApp) {
+		        setByUserLoginStatus({isLogin: loginCallback, unLogin: unloginCallback});
+		    } else {
+		        $(document).on('click', '.unlogin-handle', function() {
+		            /*if (CONFIG.isWeixin) {
+		                new TipBox({str: '点击右上角使用默认浏览器打开,下载最新App'});
+		                return;
+		            } else {*/
+		                new TipBox({
+		                    str: '下载可米酷App就送酷币，立即参与夺宝！', 
+		                    btnText: ['取消', '确认'], 
+		                    btnCallback: function() {
+		                        if (this.innerText == '确认') {
+		                            window.location.href = 'http://m.app.comicool.cn/smart_open/main.php?ch=prom6';
+		                        } else {
+		                            return;
+		                        }
+		                    }
+		                })
+		            // } 
+		        })
+		    }
+
+		    //未登录回调
+		    function unloginCallback() {
+		        //设置App里登录后的回调函数
+		        callAppFunction('setJSCallback', {
+		            'account_event': 'loginHandler'
+		        });
+		        $(document).on('click', '.unlogin-handle', jumpLoginPage);
+		        window.loginHandler = function (obj) {
+		            $(document).off('click', '.unlogin-handle', jumpLoginPage);
+		            setByUserLoginStatus({isLogin: loginCallback});
+		            commonInit();
+		        }
+
+		        function jumpLoginPage() {
+		            callAppFunction('openLoginPage', {});
+		        }
+		    }
+
+		    //已登录回调
+		    function loginCallback(userinfo) {
+		        //  全局化用户信息
+		        CONFIG.isLogin = true;
+		        CONFIG.p_userinfo = {};
+		        $.extend(CONFIG.p_userinfo, userinfo);
+		        GetInfo.getKubi();
+
+		        // index.html
+		        $('.login-pannel').hide();
+		        $('.nickname').html(CONFIG.p_userinfo.nickname);
+		        $('.userinfo-container').show();
+		    }
+		}
+
+		function commonInit() {
+
+		    //  初始化信息 全局化期次信息 异步调用结束后初始化
+		    GetInfo.getPeriodInfo().then(function(data) {
+		    	Render.renderPeriod(); // 渲染期数
+		        Render.renderTimmer(data.end_time); // 设置倒计时
+
+		        GetInfo.getGoodsList().then(function(data) { // 获取商品列表
+		            Render.renderGoodsList(data);
+		            if(CONFIG.isLogin) {
+		            	// 进入详情按钮
+					    $(document).on('click', '.goods-detail', function() {
+					        var goodId = $(this).data('gid');
+					        var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;
+					        if (periodIndex != CONFIG.periodInfo.current_p) {
+				            	new TipBox({str: '商品已售罄'});
+				            	return false;
+				            }
+					        if(goodId) {
+					        	GetInfo.getSingleGood({goodId: goodId, periodId: periodIndex}).then(function(singleData) {
+					        		if (singleData.sold_out) {
+					        			new TipBox({str: '商品已售罄'});
+				            			return false;
+					        		} else {
+					        			callAppFunction('openNewBrowser', {url: CONFIG.pennymallDetail+'gid='+goodId, title: '探宝--' + singleData.title})
+					        		}
+					        	})
+					        }
+					    })
+
+					    // 大额商品购买按钮
+						$(document).on('click', '.first-buy-btn', function() {
+							var goodId = $(this).data('gid');
+					        var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;
+					    	if (periodIndex != CONFIG.periodInfo.current_p) {
+				            	new TipBox({str: '商品已售罄'});
+				            	return false;
+				            }
+				            GetInfo.getSingleGood({goodId: goodId, periodId: periodIndex}).then(function(singleData) {
+				        		if (singleData.sold_out) {
+				        			new TipBox({str: '商品已售罄'});
+			            			return false;
+				        		} else {
+				        			showMask();
+					       			$('.first-buy-container').show();
+				        		}
+				        	})
+						})
+
+						bindEvent();
+		            }
+
+		            TouchSlide({
+		                slideCell: "#nav-tabs",
+		                defaultIndex: 0,
+		                endFun: function(i) { //高度自适应
+		                    var bd = document.getElementById("nav-content-bd");
+		                    bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+		                    if (i > 0) bd.parentNode.style.transition = "200ms"; ///添加动画效果
+		                    var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;  
+
+		                    //tab切换时请求
+		                    switch(i) {
+		                        case 0: 
+		                            GetInfo.getGoodsList(periodIndex, 1).then(function(data) { // 获取商品列表
+		                                Render.renderGoodsList(data);
+		                            }); 
+		                            break;
+		                        case 1: 
+		                            GetInfo.getRecordInfo(periodIndex, 1).then(function(data) { // 获取获奖信息
+		                                Render.renderRecord(data);
+		                            });
+		                            break;
+		                        case 2: 
+		                            GetInfo.getPeizeRes(periodIndex, 1).then(function(data) { // 获取中奖结果
+		                                Render.renderPeizeRes(data);
+		                            })
+		                            break;
+		                    }
+
+		                    $('.record-list').css('width', $('#nav-tabs .nav-item').css('width'));
+		                }
+		            });
+		        }); 
+
+		        GetInfo.getRecordInfo().then(function(data) { // 获取获奖信息
+		            Render.renderRecord(data);
+		        });
+
+		        GetInfo.getPeizeRes().then(function(data) { // 获取中奖结果
+		            Render.renderPeizeRes(data);
+		        });
+
+		    });
+		}
+
+		//绑定事件处理
+		function bindEvent() {
+
+		    //填写收货地址事件绑定
+	        $(document).on('touchend', '.zhong-btn', function(){
+	            var order_id = $(this).data('oid');
+	            var sid = $(this).data('sid');
+	            /*if (CONFIG.isLogin) {
+	                callAppFunction('openNewBrowser', {url: CONFIG.addressPage+'oid='+order_id+'&ccid='+CONFIG.p_userinfo.ccid+'&sid='+sid, title: '填写收货地址'});
+	            }*/
+	            $('#order_id').val(order_id);
+	            $('#s_id').val(sid);
+	            showMask();
+	            $('.add-address-container').show();
+	        })
+	        $('.add-address-container .icon-close').on('touchend', function() {
+	            $('.add-address-container').hide();
+	        	hideMask();
+	        })
+	        $('.submit-address-btn').on('touchend', function() {
+	        	var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;  
+	        	var order_id = $('#order_id').val();
+	            var sid = $('#s_id').val();
+	        	var username = $('#username').val();
+				var phoneNum = $('#phoneNum').val();
+				var userqq = $('#userqq').val();
+				var address = $('#new-address').val();
+				if (username && phoneNum && userqq && address) {
+					var info = '姓名: ' + username + ', 电话: ' + phoneNum + ', QQ: ' + userqq + ', 地址: ' + address;
+					jsonp({
+						url: 'order/address',
+						callback: 'addressCallbak',
+						data: {
+							sid: sid,
+							order_id: order_id,
+							address: info
+						},
+			            success: function(data) {
+			                if (data.code == 0) {
+			                	new TipBox({str: '收货信息提交完成！'});
+			                }
+			            },
+			            complete: function() {
+			            	$('.add-address-container').hide();
+	        				hideMask();
+	        				GetInfo.getRecordInfo(periodIndex).then(function(data) { // 获取获奖信息
+                                Render.renderRecord(data);
+                            });
+			            }
+					})
+
+				} else {
+					new TipBox({str: '收货信息不完善！'});
+					return;
+				}
+	        })
+
+		    //加减按钮
+		    $('.icon-plus').on('touchend', function() {
+		        var val = Number($('#first-buy-cnt').val());
+		        var surplusCnt = Number($('.first-surplus').html());
+		        val ++;
+		        if(val > surplusCnt) {
+		            val = surplusCnt;
+		        }
+		        $('#first-buy-cnt').val(val);
+		    })
+		    $('.icon-reduce').on('touchend', function() {
+		        var val = Number($('#first-buy-cnt').val());
+		        val --;
+		        if(val < 1) {
+		            val = 1;
+		        }
+		        $('#first-buy-cnt').val(val);
+		    })
+		    $('#first-buy-cnt').on('change', function() {
+		    	var surplusCnt = Number($('.first-surplus').html());
+		        var val = Number($('#first-buy-cnt').val());
+		        val = val > surplusCnt ? surplusCnt : val;
+		        val = val < 0 ? 1 : val;
+		        $('#first-buy-cnt').val(val);
+		    })
+
+		    if (CONFIG.isLogin) {
+			    $('.cancel-btn').on('click', function() {
+			        $('.first-buy-container').hide();
+			        hideMask();
+			    })
+			    $('.buy-btn').on('touchend', function() {
+			        var goodId = $('.first-buy-btn').data('gid');
+			        var periodIndex = CONFIG.slideIndex ? CONFIG.slideIndex : CONFIG.periodInfo.current_p;
+			        GetInfo.getSingleGood({goodId: goodId, periodId: periodIndex}).then(function(singleData) {
+			            var goodsInfo = singleData;
+			            $('.first-surplus').html(Number(goodsInfo.yabao.total - goodsInfo.yabao.sold));
+			            var buyCnt = Number($('#first-buy-cnt').val());
+			            if(!/^[0-9]*[1-9][0-9]*$/.test(buyCnt)) {
+			            	new TipBox({str: '请输入正整数'});
+			            	return false;
+			            }
+			            if(buyCnt > Number(goodsInfo.yabao.total - goodsInfo.yabao.sold)) {
+			                $('.first-buy-container').hide();
+			                hideMask();
+			                new TipBox({str: '商品剩余份额不足'});
+			                return ;
+			            } 
+			            var buyMoney = buyCnt * Number(goodsInfo.pre_kubi);
+			            if(buyMoney > CONFIG.userMoney) {
+			                $('.first-buy-container').hide();
+			                hideMask();
+			                new TipBox({ str: '酷币余额不足'});
+			                return;
+			            }
+			            $('.first-buy-container').hide();
+			            hideMask();
+			            new TipBox({
+			                str: '需花费' + buyMoney + '酷币', 
+			                btnText: ['取消', '确认'], 
+			                btnCallback: function() {
+			                    if(this.innerText == '取消') {
+			                        return false;
+			                    } else {
+			                        if (CONFIG.lockBuy) {
+			                            return false;
+			                        }
+
+			                        GetInfo.buyGood({goodId: goodId, buyCnt: buyCnt}).then(function(data) {
+			                        	if (data.yb_count) {
+			                        		new TipBox({str: '购买成功'});
+			                        		GetInfo.getGoodsList().then(function(data) { // 获取商品列表
+									            Render.renderGoodsList(data);
+									        });
+			                        	}
+			                        })
+			                    }
+			                }
+			            })
+			        })
+			    })
+
+		    }
+		    
+		}
+
+		var shareJsonObj = {
+            'title' : '可米酱的百宝囊',
+            'describe' : '可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧',
+            'imageUrl' : 'http://promote.comicool.cn/ygshare/images/yg_share.jpg',
+            'pageUrl': window.location.href
+        };
+        
+	    setShareInfo(shareJsonObj);
+
+	</script>
+</body>
+</html>

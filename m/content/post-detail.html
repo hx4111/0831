@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画详情页|漫画连载_在线漫画_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载" />
+		<meta name="description" content="漫画详情页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧" />
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1462946201_2207859.css"/>
+		<script src="../js/config.js"></script>
+		<style>
+			.post-detail-reply {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+			}
+			.post-detail-container {
+				margin-top: 2rem;
+                margin-bottom: 2rem;
+			}
+			.comment-input-fixed {
+				position: fixed;
+				bottom: 0;
+				width: 97%;
+				margin: 0 auto;
+				padding: .2rem;
+				background: #fff;
+			}
+			.comment-input-fixed .comment-input {
+				margin: 0 auto;
+			}
+			.post-container {
+				margin-top: .2rem;
+			}
+            .comment-foot {
+                margin: .5rem auto;
+                text-align: center;
+            }
+            .icon-praised {
+                color: #EF2B35;
+            }
+            .comment-list {
+                padding-bottom: .5rem;
+            }
+            .comment-imgs {
+                width: 100%;
+            }
+		</style>
+	</head>
+
+	<body class="body-detail">
+		<header class="header header-white header-fixed">
+			<div class="c-text">帖子详情</div>
+		</header>
+        <article>
+			<section>
+				<div class="post-detail-container">
+					<ul class="comment-list">
+						
+					</ul>
+					<div class="comment-foot"></div>
+				</div>
+				<div class="comment-input-fixed">
+					<div class="comment-input">
+						<i class="icon-chat"></i>
+						<span>我来说两句</span>
+					</div>
+				</div>
+			</section>
+		</article>
+		<div class="mask"></div>
+		<div class="top-dialog" id="comment-dialog">
+			<div class="post-container">
+				<textarea class="top-dialog-input" id="comment-content" rows="5" placeholder="我来说一句"></textarea>
+			</div>
+			<div class="top-dialog-control">
+				<a class="btn-red" id="comment-send">发布</a>
+				<span class="text-counter">0/250</span>
+			</div>
+		</div>
+        <script src="../js/base.min.js"></script>
+        <script src="../js/global.js"></script>
+	    <script type="text/javascript">
+        var comic_id = getQueryString('comic_id');
+        var post_id  = getQueryString('post_id'); 
+        var replyPageSize = 5;
+        var replyArrayList = new Array();
+        var getCommentLock = false;
+
+        getByAjax({ //单贴详情
+            api: 'getsinglepost4h5',
+            data: {"post_id": post_id},
+            jsonpCallback: 'jsonp_getsinglepost',
+            success: function(data) {
+                console.info(data);
+                var postInfo = data.post_info;
+                var userInfo = data.user_info;
+                generatorPost(postInfo, userInfo);
+                getReplyList(true, 0, replyPageSize);
+            }
+        })
+        // 帖子详情
+
+        function getReplyList(isFirst, beginID, pageSize) {
+            var $commentList = $('.comment-list')
+            var tip = {
+                floor: ['快来抢个沙发吧', '快来抢个板凳吧', '快来抢个地板吧'],
+                end: '没有更多了',
+                more: '加载更多',
+                loading: '加载中...',
+                error: '加载失败'
+            }
+            var replyListAjaxData = {
+                "post_id": post_id,
+                "reply_id": beginID || 0,
+                "page_size": pageSize,
+            };
+            getByAjax({ //回复列表
+                api: 'getreplylist4h5',
+                jsonpCallback: 'jsonp_getreplylist',
+                data: replyListAjaxData,
+                beforeSend: function() {
+                    getCommentLock = true;
+                },
+                success: function(data) {
+                    getCommentLock = false;
+                    var contentArr = data.reply_list;
+                    var userArr = data.user_list;
+                    var total = 0,lastBeginID = 0;
+                    if (contentArr && contentArr.length) {
+                        total = contentArr.length;
+                        lastBeginID = contentArr[contentArr.length-1].reply_id;
+                    }
+                    renderComment(1, {'contentArr': contentArr, 'userArr': userArr});
+                    $footer = $('.comment-foot');
+                    if (isFirst) {
+                        if (total < 3) {
+                            $footer.html('<p>' + tip.floor[total] + '<p>');
+                        } else if (total < pageSize) {
+                            $footer.html('<p>' + tip.end + '<p>');
+                        } else {
+                            $footer.html('<a class="comment-more" data-begin="' + lastBeginID +'">' + tip.more + '</a>');
+                        }
+                    } else if (contentArr && contentArr.length > 0){
+                        if (contentArr.length == pageSize) {
+                            $footer.html('<a class="comment-more" data-begin="' + lastBeginID +'">' + tip.more + '</a>');
+                        } else {
+                            $footer.html('<p>' + tip.end + '<p>');
+                        }
+                    } else {
+                        $footer.html('<p>' + tip.end + '<p>');
+                    }
+                    bindEvents();
+                },
+            })
+        }
+
+        function bindEvents() {
+            var user = Comi.Utils.getUserInfo();
+            var $panel = $('.comment-list');
+            var $footer = $('.comment-foot');
+            var $mask = $('.mask');
+            var $dialog = $('#comment-dialog');
+            var $input = $('#comment-content');
+            var $counter = $dialog.find('.text-counter');
+            var limitLength = +$counter.html().split('/')[1];
+            var pullLimitTime = 10000;
+            var defaultTip = '我来说两句';
+
+            $panel.on('touchstart touchmove', function(e) {
+                var top = document.body.scrollTop;
+                if (e.type == 'touchstart') {
+                    listenPos = ($panel.height() - $(window).height() * 2);
+                } else {
+                    if (top > listenPos && !getCommentLock) {
+                        var beginID = $('.reply-item').eq($('.reply-item').length-1).data('rid');
+                        getReplyList(false, beginID, replyPageSize);
+                    }
+                }
+            });
+
+            $('.comment-list li').on('click', function() {
+                var nickname = $(this).find('strong').html();
+                var comment_id = $(this).data('rid');
+                var post_id = $(this).data('cid');
+                var ref_index = 0;
+                if (post_id) {
+                    nickname = '楼主';
+                } else {
+                    ref_index = $(this).find('.comment-index').html().match(/\d+/);
+                }
+                $input.attr('placeholder', '回复 ' + nickname + ':').data('ref_id', comment_id).data('ref_index', ref_index).data('ref_nickname', nickname);
+                $input.one('blur', function() {
+                    if ($(this).val() == '') {
+                        $(this).data('ref_id', 0).data('ref_index', 0).data('ref_nickname', '');
+                    }
+                });
+                showCommentDialog();
+            });
+
+            $('.icon-praise').on('click', function(e) {
+                e.stopPropagation();
+                if (!CONFIG.isLogin) { //由于数据原因，当前点赞需要先登录
+                    window.location.href = CONFIG.rootUrl + '/login.html';
+                }
+                var $btn = $(this);
+                var $li = $(this).parents('li');
+                var reply_id = $li.data('rid');
+                var isPraised = Number($btn.next('span').data('praised')) == 1 ? true : false;
+                var ajaxData = {
+                    "praise_type": "posts",
+                    "post_id": post_id,
+                    "praise": isPraised ? 2 : 1,
+                };
+                if (reply_id) {
+                    ajaxData.praise_type = 'reply';
+                    ajaxData.reply_id = reply_id;
+                }
+                priasePostComment(ajaxData, $btn);
+            });
+
+            $(document).on('touchend', '.comment-input', function() {
+                var nickname = '楼主';
+                $input.attr('placeholder', '回复 ' + nickname + ':').data('ref_id', 0);
+                $input.one('blur', function() {
+                    if ($(this).val() == '') {
+                        $(this).data('ref_id', 0);
+                    }
+                });
+                showCommentDialog();
+            });
+
+            $input.on('input propertychange', function(e) {
+                var value = $.trim($(this).val());
+                if (value.length <= limitLength) {
+                    $counter.html(value.length + '/' + limitLength);
+                } else {
+                    value = value.substr(0, limitLength);
+                    $input.val(value);
+                    $counter.html('<span style="color:red">只能说这么多啦！</span>');
+                }
+            });
+
+            function showCommentDialog() {
+                if (CONFIG.isLogin) {
+                    $mask.show();
+                    $dialog.show();
+                    $input.attr('placeholder', defaultTip).data('reply', '').focus();
+                    setTimeout(function() {
+                        $mask.one('click', hideCommentDialog);
+                    }, 300);
+                } else {
+                    window.location.href = CONFIG.rootUrl + '/login.html';
+                }
+            }
+
+            function hideCommentDialog() {
+                $dialog.hide();
+                $mask.hide();
+                $input.val('');
+            }
+            var isSendLock = false;
+            //发布评论
+            var $launch = $('#comment-send');
+            $launch.on('click', function() {
+                var comment_text = $.trim($input.val());
+                var btnText;
+                
+                if (comment_text.length == 0) {
+                    $counter.html('<span style="color:red">你的评论框空空如也~</span>');
+                } else {
+                    if (!CONFIG.isLogin) {
+                        window.location.href = CONFIG.rootUrl + '/login.html';
+                    } else if (isSendLock) {
+                        return false;
+                    }
+                    var user = Comi.Utils.getUserInfo();
+                    var refid = $input.data('ref_id') || 0;
+                    var refIndex = $input.data('ref_index') || 0;
+                    var refNickname = $input.data('ref_nickname') || '';
+                    getByAjax({
+                        api: 'replycommit4h5',
+                        jsonpCallback: 'jsonp_replycommit',
+                        data: {
+                            'operate_type': 1,
+                            'post_id': post_id,
+                            'ref_id': refid,
+                            'ccid': user.ccid,
+                            'reply_txt': comment_text,
+                        },
+                        beforeSend: function() {
+                            $launch.addClass('btn-disabled').html(function(i, v) {
+                                btnText = v;
+                                return v + '中..';
+                            });
+                            isSendLock = true;
+                            return true;
+                        },
+                        success: function(data) {
+                            var comment_reply = data.reply_info;
+                            var replyIndex = $('.comment-list').find('.reply-item').length + 1;
+                            comment_reply.index = replyIndex;
+                            comment_reply.refIndex = refIndex;
+                            comment_reply.refNickname = refNickname;
+
+                            if (!$('.comment-foot').find('a').length) { //当没有更多时，append到最后，否则不显示
+                                renderComment(2, {
+                                    comment: comment_reply,
+                                    user: {
+                                        'ccid': user.ccid,
+                                        'icon': user.icon,
+                                        'nickname': user.nickname,
+                                    }
+                                });
+                            }
+
+                            hideCommentDialog();
+                        },
+                        error: function() {
+                            $counter.html('好像有点不对劲，再试试吧').css('color', '#f00');
+                        },
+                        complete: function() {
+                            isSendLock = false;
+                            $launch.html(btnText).removeClass('btn-disabled');
+                        }
+                    })
+                }
+            });
+        }
+
+        function generatorPost(postObj, userObj) {
+            var isPraised = Number(postObj.praise) == 1 ? true : false;
+            var userIcon = userObj.icon;
+            var postText = '',postTitle = '', postImg = '';
+            if (userIcon.length == 0) {
+                if (userObj.avatar.length != 0) {
+                    userIcon == CONFIG.iconBase + userObj.avatar + '.jpg'; 
+                } else {
+                    userIcon = CONFIG.errorImg;
+                }
+            }
+            if (postObj.post_rich && postObj.post_rich.length > 0){
+                for (var i = 0, len = postObj.post_rich.length; i < len; i++) {
+                    var postRichItem = postObj.post_rich[i];
+                    if (postRichItem.content_type == 'text') {
+                        postText = postRichItem.text;
+                        postTitle = postObj.post_title;
+                    } else {
+                        postImg += '<img class="comment-imgs" src="' + CONFIG.postImgBase + postRichItem.img_url + '"><br>';
+                    }
+                }
+            } else {
+                postText = postObj.post_title;
+            }
+            var postTime = convertTime(postObj.update_time);
+            
+            var $postDetail = $('' 
+                                + '<li class="post-li" data-cid="' + postObj.post_id + '">' 
+                                +   '<div class="comment-top">' 
+                                +       '<div class="comment-photo">' 
+                                +           '<img src="' + userIcon + '">' 
+                                +       '</div>' 
+                                +       '<div class="comment-extra">' 
+                                +           '<strong>' + userObj.nickname + '</strong>' 
+                                +           '<em class="praise-em"><i class="iconfont icon-praise"></i><span data-praised=' + (isPraised ? 1 :2) + '>' + postObj.praise_count + '</span></em>' 
+                                +       '</div>' 
+                                +   '</div>' 
+                                +   '<div class="comment-master">' 
+                                +       '<p class="comment-title">' + postTitle + '</p>'
+                                +       '<p>' + postText + '</p>' + postImg
+                                +   '</div>'
+                                +   '<div class="comment-footer">'
+                                +   '   <span class="comment-time">' + postTime + '</span>'
+                                +   '</div>'
+                                + '</li>');
+            $('.comment-list').append($postDetail);
+            if (isPraised) {
+                $('.post-li .icon-praise').addClass('icon-praised');
+            }
+        }
+
+        function priasePostComment(praiseData, praiseObj) {
+            if (!CONFIG.isLogin) {
+                window.location.href = CONFIG.rootUrl + '/login.html';
+            }
+            var user = Comi.Utils.getUserInfo();
+            $btn = praiseObj;
+            if (user != null) {
+                var ccid = user.ccid;
+                praiseData.ccid = ccid;
+                praiseData.cctoken = user.cctoken;
+                praiseData.usertype = user.usertype;
+            }
+            var isPraised = praiseData.praise == 2 ? true:false;
+            getByAjax({
+                api: 'newpraise4h5',
+                jsonpCallback: 'jsonp_newpraise',
+                data: praiseData,
+                success: function(data) {
+                    if (!isPraised) {
+                        $btn.next('span').data('praised', 1);
+                        $btn.next('span').html(function(i, v) {
+                            return +(v) + 1;
+                        })
+                    } else {
+                        $btn.next('span').data('praised', 2);
+                        $btn.next('span').html(function(i, v) {
+                            return +(v) - 1;
+                        })
+                    }
+
+                    $btn.toggleClass('icon-praised');
+                }
+            });
+        }
+
+        //帖子
+        function renderComment(renderType, renderData) {
+            var contentArr = renderData.contentArr;
+            var userArr = renderData.userArr;
+            if (renderType == 1) {//拉取帖子和回复
+                if (contentArr) {
+                    for (var i = 0, len = contentArr.length; i < len; i++) {
+                        var contentItem = contentArr[i];
+                        var userItem = '';
+                        var contactData = {'contentItem': contentItem, 'userItem': userItem};
+                        for (var j = 0, len2 = userArr.length;  j < len2; j++) {
+                            if(userArr[j].ccid == contentItem.ccid) {
+                                userItem = userArr[j];
+                                contactData.userItem = userItem;
+                                replyArrayList.push(contactData);
+                                break;
+                            }
+                        }
+                        
+                        if (contentItem.ref_id) {
+                            for (var reArrLen = replyArrayList.length, x = reArrLen-1; x >= 0; x--) {
+                                if (contentItem.ref_id == replyArrayList[x].contentItem.reply_id) {
+                                    contentItem.refIndex = (x+1) + '楼';
+                                    contentItem.refNickname = replyArrayList[x].userItem.nickname;
+                                    break;
+                                }
+                            }
+                        }
+                        contentItem.index = replyArrayList.length;
+                        generatorReply(contentItem, userItem);
+                        
+                    }
+                }
+            }else { // 发布回复
+                generatorReply(renderData.comment, renderData.user);
+            }
+
+            function generatorReply(reply, user) {
+                var isPraised = Number(reply.praise) == 1 ? true : false;
+                var convertReplyTime = convertTime(reply.time);
+                
+                var userIcon = user.icon;
+                if (userIcon.length == 0) {
+                    if (user.avatar.length != 0) {
+                        userIcon = CONFIG.iconBase + user.avatar + '.jpg'; 
+                    } else {
+                        userIcon = CONFIG.errorImg;
+                    }
+                }
+                var replyItem = ''
+                    +'<li class="reply-item clearfix" data-rid="' + reply.reply_id + '">'
+                    +'    <div class="comment-top">'
+                    +'        <div class="comment-photo">'
+                    +'            <img src="' + userIcon + '" data-src="' + userIcon + '">'
+                    +'        </div>'
+                    +'        <div class="comment-extra">'
+                    +'            <strong>' + user.nickname + '</strong>';
+                if (reply.ref_id) {
+                    replyItem += '<span class="reply-ref-index">回复' + reply.refIndex + '</span>'
+                    +'            <span>&nbsp;' + reply.refNickname + '</span>'
+                }
+                replyItem +=''
+                    +'            <em class="praise-em"><i class="iconfont icon-praise"></i><span data-praised=' + (isPraised ? 1 :2) + '>' + reply.praise_count + '</span></em>'
+                    +'        </div>'
+                    +'    </div>'
+                    +'    <div class="comment-master">'
+                    +'        <p>' + reply.reply_txt + '</p>'
+                    +'    </div>'
+                    +'    <div class="comment-footer">'
+                    +'        <span class="fl comment-time">' + convertReplyTime + '</span>'
+                    +'        <span class="fr comment-index">' + reply.index + '楼</span>'
+                    +'    </div>'
+                    +'</li>';
+                var $replyItem = $(replyItem);
+                var $hand = $replyItem.find('.icon-praise');
+
+                if (isPraised) {
+                    $hand.addClass('icon-praised');
+                }
+                $('.comment-list').append($replyItem);
+            }
+        }
+
+        function convertTime(timestamp) {
+            var D = new Date(timestamp * 1000);
+            var nowTimestamp = parseInt(new Date().getTime() / 1000);
+            var secondsAgo = nowTimestamp - timestamp;
+            var minutesAgo = parseInt(secondsAgo / 60);
+            var hoursAgo = parseInt(minutesAgo / 60);
+            var daysAgo = parseInt(hoursAgo / 24);
+            var monthsAgo = parseInt(daysAgo / 30);
+
+            //console.log(minutesAgo, hoursAgo, daysAgo);
+            if (secondsAgo >= 0 && monthsAgo < 1) {
+                if (daysAgo) {
+                    return daysAgo + '天前';
+                } else if (hoursAgo) {
+                    return hoursAgo + '小时前';
+                } else if (minutesAgo) {
+                    return minutesAgo + '分钟前';
+                } else {
+                    return '刚刚';
+                }
+            } else {
+                var year = D.getFullYear();
+                var month = D.getMonth() + 1;
+                var date = D.getDate();
+                var hour = D.getHours();
+                var minute = D.getMinutes();
+                
+                month = month > 9 ? month : '0' + month;
+                date = date > 9 ? date : '0' + date;
+                hour = hour > 9 ? hour : '0' + hour;
+                minute = minute > 9 ? minute : '0' + minute;
+
+                return year + '-' + month + '-' + date + '&nbsp' + hour + ':' + minute;
+            }
+        }
+
+		</script>
+	</body>
+</html>

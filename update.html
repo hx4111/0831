@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>可米酷今日更新|看漫画_二次元-周周更天天看_条漫™</title>
+		<meta name="keywords" content="今日更新,漫画大全,二次元,看漫画,作品周更,少女漫画,搞笑漫画" />
+		<meta name="description" content="今日更新|看漫画:可米酷漫画大全，周周更，天天看，简约而不简单" />
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/common-pc.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+		<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+	</head>
+
+	<body class="update-bg">
+		<div class="top"><!--可米酷漫画头部--></div>
+			<article class="mainbox update-box" data-errorimg>
+				<nav class="crumbs">
+					<b>我的位置：</b><a href="index.html" title="可米酷首页">首页</a><em>&gt;</em><span>今日更新</span>
+				</nav>
+				<section class="update-inner cl loader loading" id="daily-all">
+				</section>
+
+				<!-- 切换begin -->
+
+				<!--<div id="content">
+					<article class="author_details" style="display:block;">
+						<ul>我们在大草原的湖边，等候鸟飞回来。我们 在大草原的湖边，等候鸟飞回来。
+						</ul>
+					</article>
+					<!-- 详情end -->
+				<!--<article class="author_episode">
+						dddd
+					</article>
+					<article class="author_episode">
+						ccc
+					</article>
+				</div>-->
+				<!-- 切换begin -->
+
+			</article>
+<div class="footers"><!--底部引入--></div>
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript">
+			 //今日更新页面
+			$('#daily-all').getByAjax({
+				api: 'timeline4web',
+				jsonpCallback: 'jsonp_timeline',
+				success: function(data) {
+					console.log(data)
+					var arr = data.timeline_list;
+					var html = '';
+					var daily = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+					var now_weekid = data.now_weekid;
+					var imgCutSize = '?imageView2/1/w/213/h/142/q/100';
+					if (now_weekid > 7 || now_weekid < 1) {
+						now_weekid = new Date().getDay();
+					}
+					html += '<nav class="update_menu">';
+					for (var i = 0, len = arr.length - 1; i < len; i++) {
+						if (now_weekid - 1 == i) {
+							html += '<li class="current">' + daily[i] + '<i></i></li>';
+						} else {
+							html += '<li>' + daily[i] + '</li>';
+						}
+					}
+					for (var i = 0, len = arr.length - 1; i < len; i++) {
+						html += '</nav><article class="cl">';
+						for (var j = 0, len2 = arr[i].comi_list.length; j < len2; j++) {
+							html += '' + '<li><a href="' + CONFIG.detailBase + 'comic_id=' + arr[i].comi_list[j].comic_id + '" title="' + arr[i].comi_list[j].comic_title + '">' + '<div class="li-img">' + '<img src="' + CONFIG.placeholder + '" data-src="' + CONFIG.imgBase + arr[i].comi_list[j].comic_cover_url + imgCutSize + '"/>' + '</div>' + '<h3 class="ellipsis">' + arr[i].comi_list[j].comic_title + '</h3>' + '<div class="li-author">' + arr[i].comi_list[j].comic_auth + '</div>' + '<p>' + arr[i].comi_list[j].comic_desc_lite + '</p>' + '</a></li>';
+						}
+						html += '</article>';
+					}
+					$('#daily-all').html(html);
+					$('#daily-all article').eq(now_weekid - 1).show().css("display","block");
+				}
+			});
+			 //今日更新TAB
+			$(document).on('click', '.update_menu li', function() {
+				var $li = $('#daily-all li');
+				var $ul = $('#daily-all article');
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass('current');
+				$this.addClass('current');
+				$('#daily-all article').hide();
+				$ul.eq($t).show().css("display","block");
+			})
+		</script>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+	</body>
+
+</html>

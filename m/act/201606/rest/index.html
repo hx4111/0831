@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>休赛公告</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="休赛公告">
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1463140673_198058.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style type="text/css">
+			.imglist img {display: table;width: 100%;}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        休赛公告
+        <p>休赛公告</p>
+        <img src="http://cdn.icomicool.cn/m/act/201606/rest/images/rest_share.jpg">
+    </h1>
+		<div class="loading-spinner"></div>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share iconfont"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+<div class="imglist">
+	<img src="http://cdn.icomicool.cn/m/act/201606/rest/images/index_01.jpg" alt="休赛公告">
+	<img src="http://cdn.icomicool.cn/m/act/201606/rest/images/index_02.jpg" alt="休赛公告">
+</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			setShareInfo({
+				title: '休赛公告',
+				describe: '休赛公告',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201606/rest/images/rest_share.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isApp || isWeixin || isQQ || isWeibo) {
+					header.style.display = 'none';
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

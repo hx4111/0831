@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>猎龙人-可米酷漫画</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .wrap {
+            max-width: 640px;
+            margin: auto;
+        }
+        .wrap img {
+            display: block;
+            width: 100%;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var images = [
+                'images/lielongren_01.jpg',
+                'images/lielongren_02.jpg',
+                'images/lielongren_03.jpg',
+                'images/lielongren_04.jpg',
+                'images/lielongren_05.jpg',
+                'images/lielongren_06.jpg',
+                'images/lielongren_07.jpg',
+                'images/lielongren_08.jpg',
+                'images/lielongren_09.jpg'
+            ];
+            var container = document.getElementById('img-container');
+
+            loadImages(images, container);
+        };
+
+        function loadImages(arr, cont) {
+            if (arr instanceof Array && arr.length) {
+                var src = arr.shift();
+                var img = new Image();
+                var fn = arguments.callee;
+
+                img.src = src;
+                img.alt = '可米酷漫画';
+                img.onload = function () {
+                    cont.appendChild(img);
+                    fn(arr, cont);
+                };
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap" id="img-container"></div>
+</body>
+</html>

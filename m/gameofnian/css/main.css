@@ -1,0 +1,216 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+@media screen and (min-width:640px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+			}
+@media screen and (min-width:640px) {
+				#userTip {
+					width: 640px !important;
+					margin: 0 auto;
+				}
+			}
+.box {
+	font-size: .75rem;
+	color: #662f0e;
+}
+
+.top {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_01.jpg) no-repeat;
+	background-size: 100%;
+	height: 35.82rem;
+}
+
+#content {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_02.jpg) repeat-y;
+	background-size: 100%;
+	padding: 2rem;
+}
+
+#content p {
+	line-height: 1.6rem;
+}
+
+.spread {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_04.jpg) no-repeat;
+	background-size: 100%;
+	height: 9.43rem;
+}
+
+.spread span {
+	display: table;
+	width: 80%;
+	text-align: center;
+	padding-top: 8.5rem;
+	margin: 0 auto;
+	font-weight: bold;
+    font-size: 1rem;
+}
+
+.archives {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_05.jpg) no-repeat;
+	background-size: 100%;
+	height: 13rem;
+}
+
+.archives ul {
+	padding: 5rem 2rem;
+	font-size: .8rem;
+}
+
+.archives ul li {
+	line-height: 2rem;
+}
+
+.icon {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_06.jpg) no-repeat;
+	background-size: 100%;
+	height: 15.2rem;
+}
+
+.rule {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_07.jpg) no-repeat;
+	background-size: 100%;
+	height: 41.4rem;
+	padding: 1.5rem;
+	font-size: .7rem;
+}
+
+.rule ul {
+	transform: skew(-2deg);
+	-ms-transform: skew(-2deg);
+	/* IE 9 */
+	-moz-transform: skew(-2deg);
+	/* Firefox */
+	-webkit-transform: skew(-2deg);
+	/* Safari 和 Chrome */
+	-o-transform: skew(-2deg);
+	/* Opera */
+}
+
+.down {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_10.jpg) #100808 no-repeat;
+	background-size: 100%;
+	height: 10rem;
+	padding-top: 20rem;
+	text-align: center;
+}
+
+.down input {
+	width: 85%;
+	padding: .8rem;
+	border-radius: .8rem;
+	outline: none;
+	border: none;
+	font-size: .8rem;
+}
+
+.down span {
+	background: -webkit-linear-gradient(top, #ffde00, #ffb000);
+	display: table;
+	width: 80%;
+	padding: .3rem;
+	border-radius: 1rem;
+	margin: 0 auto;
+}
+
+.down button {
+	background: -webkit-linear-gradient(top, #ffde00, #ffb000);
+	color: #5e2f12;
+	padding: 1rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: 1rem;
+	margin-top: 1rem;
+	width: 80%;
+	font-weight: bold;
+	outline: none;
+}
+
+#userTip {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/userBg.jpg) no-repeat;
+	background-size: 100%;
+	height: 28rem;
+	color: #fed71d;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: none;
+	z-index: 9999;
+}
+
+#userTip p {
+	padding: 2.7rem 2rem;
+	font-size: .8rem;
+}
+
+#scrollBox2 {
+	height: 14rem;
+	padding: 2rem;
+	margin-top: 3.5rem;
+}
+
+#convert {
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/page1_08.jpg) no-repeat;
+	background-size: 100%;
+	height: 23.94rem;
+	width: 100%;
+	line-height: 1.8rem;
+	overflow: hidden;
+}
+
+
+/* convert */
+
+.convert_footer {
+	padding-top: 20rem;
+	text-align: center;
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/convert_footer_bg.jpg) #100808 no-repeat;
+	background-size: 100%;
+	height: 10rem;
+}
+
+.convert_footer button {
+	background: -webkit-linear-gradient(top, #ffde00, #ffb000);
+	color: #5e2f12;
+	padding: 1rem;
+	font-size: 1rem;
+	border: none;
+	border-radius: 1rem;
+	margin-top: 3rem;
+	width: 80%;
+	font-weight: bold;
+	outline: none;
+}
+
+/* adventure */ 
+.adventure {
+	padding-top: 20rem;
+	text-align: center;
+	background: url(http://cdn.icomicool.cn/m/gameofnian/images/adventure_footer_bg.jpg) #100808 no-repeat;
+	background-size: 100%;
+	height: 10rem;
+}
+.adventure button {
+	background:url(http://cdn.icomicool.cn/m/gameofnian/images/adventure_btn.jpg) no-repeat;
+	background-size: 100%;
+	color: #5e2f12;
+	padding: 1rem;
+	text-indent: -999rem;
+	overflow: hidden;
+	font-size: 1rem;
+	border: none;
+	margin-top: 3rem;
+	width:50%;
+	font-weight: bold;
+	outline: none;
+}

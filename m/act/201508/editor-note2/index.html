@@ -1,0 +1,541 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷漫画-第二期编辑部物语</title>
+<meta name="keywords" content="可米酷漫画,编辑部物语,条漫,原创漫画,漫画app" />
+<meta name="description" content="第二期编辑部物语：三人行必有吐槽，看穿了一切的家兔发来冷笑。" />
+<script src="http://m.comicool.cn/act/act-common/config.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        可米酷漫画-第二期编辑部物语
+        <!-- <p>周周有大赛，投稿即获奖</p> -->
+        <img src="http://cdn.icomicool.cn/m/act/201508/editor-note2/images/share-img2.jpg" alt="编辑部物语" />
+    </h1>
+    <div class="autio-area" style="display:none">
+        <audio src="images/1.mp3" preload="auto" id="radio-first"></audio>
+        <audio src="images/2.mp3" preload="auto" id="radio-second"></audio>
+        <audio src="images/3.mp3" preload="auto" id="radio-third"></audio>
+    </div>
+
+    <header class="topbar cl">
+        <a class="icon-home" href="http://m.comicool.cn/"><img src="http://m.comicool.cn/act/act-common/icon-home.png"></a>
+        <a class="icon-share"><img src="http://m.comicool.cn/act/act-common/icon-share.png"></a>
+    </header>
+    <article class="pagebox editor-note2">
+        <div class="page-t">
+            <img src="images/top.jpg" alt="编辑部物语" />
+        </div>
+		<section class="page-con">
+            <ul class="page-list1">
+                <!-- 生成图片内容 -->
+            </ul>
+            <ul class="page-list2">
+                <!-- 生成图片内容 -->
+            </ul>
+        </section>
+    </article>
+    <div class="sharebox">
+        <div class="share-table">
+            <div class="share-table-cell">
+                <div class="share-inner">
+                    <a href="javascript:;" class="share-clo">×</a>
+                    <div class="bdsharebuttonbox" data-tag="share_1">
+                      <a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_count" data-cmd="count"></a>
+                    </div>
+                    <p>带我分享带我飞︿(￣︶￣)︿</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tipbox">
+        <img src="http://cdn.icomicool.cn/m/act/act-common/tip.png" alt="漫画网,二次元,可米酷漫画" />
+    </div>
+
+    <footer class="footer-box">
+        <div id="readLnk">
+            <a href="javascript:;" class="lnk-read">马上阅读</a>
+        </div>
+        <div class="float-fix">
+            <div class="float-img">
+                <img src="http://cdn.icomicool.cn/m/act/act-common/float-tip.png" alt="漫画网,二次元,可米酷漫画" />
+            </div>
+            <span class="open-btn">立即打开</span>
+            <span class="float-clo">×</span>
+        </div>
+    </footer>
+
+    <div class="ajaxtip-box">
+        <div class="ajaxtip-table">
+            <div class="ajaxtip-table-cell">
+                <div class="ajaxtip-inner">
+                    <a href="javascript:;" class="ajaxtip-clo">×</a>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<!-- <script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js"></script> -->
+<script type="text/javascript">
+/*window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);*/
+
+//设置cookies 
+function setCookie(name,value,day){
+    var Days = day || 7;
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape(value) + ";expires=" + exp.toGMTString() + ';path=/;domain=comicool.cn';
+    return value;
+};
+
+//读取cookies 
+function getCookie(name){ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg)){
+        return unescape(arr[2]);
+    }
+    else{
+        return null; 
+    }
+};
+
+var retry = true;
+var ua=navigator.userAgent.toLowerCase(),
+    isMobile = ua.indexOf('mobile')>0,
+    isWeixin = (/micromessenger/.test(ua)) ? true : false,
+    isQQ = (/qq\//.test(ua)) ? true : false,
+    isIOS = ua.indexOf('(ip')>0 && isMobile,
+    isWeibo = (/Weibo/i.test(ua)) ? true : false,
+    isApp = (/icomico/i.test(ua)) ? true : false,
+    isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+    isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+var shareImgUrlStr = 'http://cdn.icomicool.cn/m/act/201508/editor-note2/images/share-img.jpg';
+var shareTextInfo = {
+    title: '一色哈尼来袭！家兔出没！',
+    describe: '三人行必有吐槽，看穿了一切的家兔发来冷笑。',
+    imageUrl: shareImgUrlStr,
+    pageUrl: 'http://m.comicool.cn/act/201508/editor-note2/index.html'
+}
+if (isIOSApp) {
+    shareTextInfo.imageUrl = shareImgUrlStr + encodeURIComponent('?imageMogr2/thumbnail/240x');
+}
+
+var list1 = [
+	'images/1.jpg',
+    'images/2.jpg',
+    'images/3.jpg'
+];
+
+var list2 = [
+    'images/4.jpg',
+    'images/5.jpg',
+    'images/6.jpg',
+    'images/7.jpg',
+    'images/8.jpg',
+    'images/9.jpg',
+    'images/10.jpg',
+    'images/11.jpg',
+    'images/12.jpg',
+    'images/13.jpg',
+    'images/14.jpg',
+    'images/15.jpg',
+    'images/16.jpg',
+    'images/17.jpg',
+    'images/18.jpg',
+    'images/19.jpg',
+    'images/20.jpg',
+    'images/21.jpg'
+]
+
+$('title').html(shareTextInfo.title);
+
+(function(){
+    if (!isApp) {
+        //底部状态条，打开app
+        $('.footer-box').show();
+        var floatHeight = $('.footer-box').height();
+        $('.pagebox').css('padding-bottom', floatHeight +'px');
+
+        $('.float-clo').on('click', function(){
+            $('.float-fix').hide();
+            $('.pagebox').css('padding-bottom', 0);
+        });
+
+        $('.float-img, .open-btn').on('click', function(){
+             window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+        });
+
+        //微信\QQ\微博下无顶部状态条
+        if (isWeixin || isQQ || isWeibo) {
+            /*$('.icon-share').on('click', function () {
+                $('.tipbox').show();
+            });
+            $('.tipbox').on('click', function () {
+                $(this).hide();
+            });*/
+        } else {
+            $('.topbar').show();
+            $('.icon-share').on('click', function () {
+                $('.sharebox').show();
+            });
+            $('a.share-clo').on('click', function () {
+                $('.sharebox').hide();
+            });
+        }
+    }
+})();
+
+loadpic(list1, '.page-list1', function(){
+    var radioListHtml = '<ul class="radio-list">'
+                      +     '<li class="li-one curr">'
+                      +          '<i class="li-icon"><img src="images/icon1.png"></i>'
+                      +          '<div class="li-chat"><span></span></div>'
+                      +          '<em class="li-time">4"</em>'
+                      +     '</li>'
+                      +     '<li class="li-two curr">'
+                      +          '<i class="li-icon"><img src="images/icon2.png"></i>'
+                      +          '<div class="li-chat"><span></span></div>'
+                      +          '<em class="li-time">2"</em>'
+                      +     '</li>'
+                      +     '<li class="li-one curr">'
+                      +          '<i class="li-icon"><img src="images/icon1.png"></i>'
+                      +          '<div class="li-chat"><span></span></div>'
+                      +          '<em class="li-time">2"</em>'
+                      +     '</li>'
+                      + '</ul>';
+        radioListHtml = '<div class="radio-box">' + radioListHtml + '</div>'
+    $('.page-list1 li').eq(2).append(radioListHtml);
+
+    var mRadio1 = document.getElementById("radio-first"),
+        mRadio2 = document.getElementById("radio-second"),
+        mRadio3 = document.getElementById("radio-third");
+    var mArr = [mRadio1, mRadio2, mRadio3];
+
+    function isMusicOpen(music, elem){
+        if (music.paused || music.ended) { //判读是否播放
+            music.play(); //没有就播放
+        }
+        music.onended = function () {
+            elem.removeClass('curr');
+        }
+    }
+
+    $('.radio-list li').each(function (i){
+        $(this).find('.li-chat').on('click', function(){
+            var span = $(this).find('span');
+            span.addClass('curr');
+            isMusicOpen(mArr[i], span);
+            $(this).parents('li').removeClass('curr');
+        })
+    });
+
+});
+
+loadpic(list2, '.page-list2', function(){
+    var formListHtml = '';
+    var formData = [
+        {
+            title: '1.您的性别？',
+            list: ['A．看到B和C你觉得姑娘我还有别的选项吗？', 'B．我只想做个安静的美男子', 'C．其他'],
+            maxLength: 1
+        },
+        {
+            title: '2．您的年龄？',
+            list: ['A．努力在对得起18岁以下的青春~', 'B．在18~26岁里~具体你猜猜看？', 'C．26~34岁里~要不你再猜猜看？', 'D．34岁以上的成熟稳重，嗯不猜。'],
+            maxLength: 1
+        },
+        {
+            title: '3. 您目前从事的职业？',
+            list: ['A. 面朝黑板背也朝黑板的学生党', 'B. 自食其力的社会人士'],
+            maxLength: 1
+        },
+        {
+            title: '4. 最感兴趣的漫画类型是（最多可选三项）？',
+            list: ['A．要热血要激情要少年漫！', 'B．少女漫大忠粉！', 'C．~想轻轻松松地看轻轻松松的漫画~', 'D．本人胆大，缺惊欠吓，惊悚灵异', 'E．没吃药的神经漫……', 'F．我不是挑我只是想看看别的'],
+            maxLength: 3
+        },
+        {
+            title: '5.最希望看到什么题材的漫画出现在APP（最多可选三项）？',
+            list: ['A．历史题材是瑰宝！', 'B．一大波进击的拟人来袭~', 'C．给我点正能量吧励志漫！', 'D．想被卷进作者大大的脑洞~', 'E．亲民接地气的生活题材！', 'F．快采访我！（请在此处填写）'],
+            maxLength: 3
+        }
+    ];
+
+    var formDataLen = formData.length;
+    var isPosted = getCookie('is_posted');
+
+    for (var i = 0; i < formDataLen; i++) {
+        var fData = formData[i];
+        var fMax = fData.maxLength;
+        var fTitle = fData.title;
+        var fList = fData.list;
+
+        fList = $.map(fList, function(item, index) {
+            return '<div class="form-con">'
+                    +           '<i></i>'
+                    +           '<span>' + item + '</span>'
+                    +       '</div>';
+        }).join('');
+        formListHtml += '<li data-max="' + fMax + '">'
+                     +       '<h3>' + fTitle + '</h3>'
+                     +       fList
+                     +       '<input type="hidden" name="answer' + (i + 1) + '" />'
+                     +  '</li>';
+    }
+
+    formListHtml = '<div class="form-box"><form id="survey"><ul class="form-list">' + formListHtml + '</ul>' + '<p class="form-tip"></p><div class="form-btn"><a id="submit-btn">提交</a></div></form><p class="add-qq-group"><a href="http://shang.qq.com/wpa/qunwpa?idkey=52d0c692d2dce3623c03e89c75fab304cdd3f24d1ea53717dc1250d73c3b213e">一键添加交流群</a></p></div>';
+    var bottomBtnHtml = '<div class="bottom-btn"><a class="lnk-read"><img src="images/bottom-lnk.jpg"></a></div>'
+    $('.page-list2 li').eq($('.page-list2 li').length - 1).append(formListHtml + bottomBtnHtml);
+
+    $('.form-list li').each(function (i){
+        var $li = $(this);
+        var $div = $li.find('.form-con');
+
+        $div.on('click', function () {
+            var radio = $(this).find('i');
+
+            if (i < 3) {
+                radio.toggleClass('curr');
+                $(this).siblings().find('.curr').removeClass('curr');
+            } else {
+                var isOverflow = $li.find('.curr').length >= 3 ? true : false;
+
+                if (isOverflow && !radio.hasClass('curr')) {
+                    return false;
+                }
+                radio.toggleClass('curr');
+            }
+        });
+    });
+
+    $('.form-list li').eq($('.form-list2 li').length - 1).find('.form-con').eq(5).find('span').html('F. <input class="span-input" maxlength="50" type="text" placeholder="快采访我！（请在此处填写）">');
+    $('.span-input').on('click', function (e) {
+        var relatedRadio = $(this).parents('.form-con').find('i');
+        if (relatedRadio.hasClass('curr')) {
+            e.stopPropagation();
+        }
+    });
+
+    if (isPosted) {
+        $('#submit-btn').addClass('disabled').html('已提交');
+    }
+
+    $('#submit-btn').on('click', function() {
+        //如果按钮变灰，则不点击
+        if ($('#submit-btn').hasClass('disabled')) {
+            return false;
+        }
+
+        var $form = $('#survey');
+        var $tip = $('.form-tip');
+        var check = {};
+        var formData = function () {
+            $form.find('li').each(function (i) {
+                var $input = $(this).find('input[type=hidden]');
+                var $radio = $(this).find('.curr');
+                var order = i + 1;
+
+                if ($(this).find('.curr').length === 0) {
+                    check.error = true;
+                    check.msg = '第' + order + '道题还没填写！';
+                    return false;
+                }
+
+                $input.val(function () {
+                    var ret = [];
+
+                    $radio.each(function (i) {
+                        var $answerCont = $(this).next();
+                        var $inputCont = $answerCont.find('input');
+                        var choice = $answerCont.text().slice(0, 1);
+
+                        if ($inputCont.length) {
+                            var value = $inputCont.val();
+                            if (!value) {
+                                check.error = true;
+                                check.msg = '第' + order + '道题' + choice + '项不能为空';
+                                return false;
+                            } else {
+                                ret.push(choice + ':' + value);
+                            }
+                        } else {
+                            ret.push(choice);
+                        }
+                    });
+
+                    return ret.toString();
+                });
+            });
+
+            if (check.error) {
+                $tip.html(check.msg);
+                return null;
+            } else {
+                $tip.empty();
+                return $form.serialize();
+            }
+        }();
+
+        if (formData) {
+            $.ajax({
+                type: 'POST',
+                url: 'answer.php',
+                data: formData,
+                beforeSend: function () {
+                   $('#submit-btn').addClass('disabled').html('提交中..');
+                },
+                success: function () {
+                   ajaxTipFn('亲，您已提交成功，支持可米酷棒棒哒<br />＼( ^▽^ )／');
+                   $('#submit-btn').html('提交完毕');
+                   setCookie('is_posted', '1', 7);
+                },
+                error: function () {
+                    ajaxTipFn('网络不太顺畅⊙﹏⊙，<br />亲再提交一次吧~');
+                    $('#submit-btn').removeClass('disabled').html('提交');
+                }
+            });
+
+            function ajaxTipFn(txt) {
+                $('.ajaxtip-box').show();
+                $('.ajaxtip-box p').html(txt);
+                $('.ajaxtip-box a.ajaxtip-clo').on('click', function (){
+                    $(this).parents('.ajaxtip-box').hide();
+                });
+            }
+        }
+    });
+
+    $('.lnk-read').on('click',function(){
+        //调用接口数据
+        var actJsonObj = {
+            'comic_id': 76
+        };
+        var actJsonStr = JSON.stringify(actJsonObj);
+
+        if (isApp) {
+            try {
+                comicool.openComicDetailsPage(actJsonStr);
+            } catch (e) {
+                window.location.href="http://comicool/openComicDetailsPage?comic_id=" + actJsonObj.comic_id;
+            }
+        }else{
+            window.location.href = "http://m.comicool.cn/content/detail.html?comic_id=" + actJsonObj.comic_id;
+        }
+    });
+});
+// 图片递归加载
+function loadpic(list, ele, callback){
+    if( $.isArray(list) && list.length ){
+        var item = list.shift();
+        var image = new Image();
+        var $imgHtml = $('<li></li>');
+            image.src = item;
+            image.alt = '第二期编辑部物语';
+        image.onload = function(){
+             $(ele).append($imgHtml);
+             $imgHtml.append($(this));
+             loadpic(list, ele, callback);
+        };
+    }else{
+        $.isFunction(callback) && callback(list);
+    }
+}
+
+window.onload = function() {
+    //app分享与微信分享
+    if (isApp) {
+        var appShareObj = {
+            'title' : shareTextInfo.title,
+            'describe' : shareTextInfo.describe,
+            'imageurl' : shareTextInfo.imageUrl,
+            'page_url' : shareTextInfo.pageUrl
+        };
+        var appShareStr = JSON.stringify(appShareObj);
+
+        try {
+            comicool.showShareBtn(appShareStr);
+        } catch (e) {
+            window.location.href= 'http://comicool/showShareBtn?title=' + appShareObj.title + '&describe=' + appShareObj.describe + '&imageurl=' + appShareObj.imageurl + '&page_url=' + encodeURIComponent(appShareObj.page_url);
+        }
+        //callAppFunction("showShareBtn", appShareObj);
+    };
+    
+    if (isWeixin) {
+        shareTextInfo.imageUrl = 'http://cdn.icomicool.cn/m/act/201508/editor-note2/images/share-img2.jpg';
+        var wxUrl = 'http://comicool.cn/webapi/wxauth.php?url=' + encodeURIComponent(location.origin + location.pathname + location.search);
+
+        $.ajax({
+            url: wxUrl,
+            type: 'GET',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'jsonp_wxapi',
+            success: function(data) {
+                //alert(data);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.appId, // 必填，公众号的唯一标识
+                    timestamp: data.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                    signature: data.signature,// 必填，签名，见附录1
+                    jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                });
+
+                wx.ready(function() {
+                    var wxShareObj = {
+                        title: shareTextInfo.title, // 分享标题
+                        desc: shareTextInfo.describe, // 分享描述
+                        link: shareTextInfo.pageUrl, // 分享链接
+                        imgUrl: shareTextInfo.imageUrl
+                    };
+
+                    wx.onMenuShareAppMessage(wxShareObj);
+                    wx.onMenuShareTimeline(wxShareObj);
+                    wx.onMenuShareQQ(wxShareObj);
+                });
+            }
+        });
+    }
+
+}   //window.onload 结束
+
+window._bd_share_config = {
+common: {
+    bdText : shareTextInfo.title, 
+    bdDesc : shareTextInfo.describe, 
+    bdUrl : shareTextInfo.pageUrl,   
+    bdPic : shareTextInfo.imageUrl
+  },
+  share: [{
+    "bdSize" : 32
+  }]
+};
+
+//以下为js加载部分
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+var s = document.getElementsByTagName("script")[0]; 
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

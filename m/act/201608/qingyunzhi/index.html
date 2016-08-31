@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>可米酱邀请你参加《青云志》亲亲握手会</title>
+		<meta name="keywords" content="可米酱邀请你参加《青云志》亲亲握手会">
+		<meta name="description" content="可米酱邀请你参加《青云志》亲亲握手会">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://m.comicool.cn/tpl/css/style.css">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			a,
+			button {
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				outline: none;
+			}
+			
+			.img-list {
+				background: #d6e2ff;
+			}
+			
+			.img-list li {
+				position: relative;
+			}
+			
+			.img-list .explain {
+				margin: 1.5rem auto 0;
+			}
+			
+			.img-list .explain p {
+				color: #5e8fff;
+				font-weight: bold;
+				margin: 0 1rem;
+			}
+			
+			#praise {
+				position: relative;
+				width: 100%;
+				overflow: hidden;
+				text-align: center;
+			}
+			
+			#praise img {
+				width: 50%;
+				margin: 0 auto;
+			}
+			
+			.praise-cnt {
+				font-size: 1.3rem;
+				color: #ff6464;
+			}
+			/* tab */
+			
+			#tab {
+				display: -webkit-box;
+				display: -moz-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+			}
+			
+			#tab li {
+				display: inline-block;
+				color: #fff;
+				/*padding: .2rem 1rem;*/
+				border-radius: .5rem .5rem 0 0;
+				-webkit-box-flex: 3;
+				-moz-box-flex: 1;
+				-webkit-flex: 1;
+				-ms-flex: 1;
+				flex: 1;
+				text-align: center;
+				margin: 0 5px;
+			}
+			
+			#tabBox section {
+				display: none;
+				text-align: center;
+				padding: 20px 0;
+			}
+			
+			#tabBox section:nth-child(1),
+			#tab li:nth-child(1) {
+				background: #ffa054;
+			}
+			
+			#tabBox section:nth-child(2),
+			#tab li:nth-child(2) {
+				background: #ffb9b9;
+			}
+			
+			#tabBox section:nth-child(3),
+			#tab li:nth-child(3) {
+				background: #72a4ff;
+			}
+			
+			#tabBox section:nth-child(4),
+			#tab li:nth-child(4) {
+				background: #652d00;
+			}
+			
+			#tabBox section li {
+				width: 42%;
+				display: inline-block;
+			}
+			
+			#tabBox section li img {
+				border: 2px #fff solid;
+			}
+			
+			#tabBox section li:nth-child(1) {
+				margin-right: 13px;
+			}
+			
+			#tabBox .subscribe-btn {
+				padding: .5rem 1rem;
+				background: #e31b0c;
+				color: #fff;
+				display: block;
+				border: none;
+				margin: 4px auto;
+				border-radius: 10px;
+			}
+			
+			#tabBox .subscribed {
+				background: #ccc;
+				color: #5D5D5D;
+			}
+			
+			#tabBox section li div {
+				background: #fff;
+				border-radius: 5px;
+				font-size: 1rem;
+				padding: 10px 0;
+				margin: 10px 0;
+			}
+			
+			.huan {
+				padding: 0 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<ul class="img-list">
+			<li><img src="images/index_01.jpg" alt="可米酱邀请你参加《青云志》亲亲握手会" /></li>
+			<li><img src="images/index_02.jpg" alt="可米酱邀请你参加《青云志》亲亲握手会" /></li>
+			<li id="comment"><img src="images/index_03.jpg" alt="可米酱邀请你参加《青云志》亲亲握手会" /></li>
+		</ul>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js?_=20160817" type="text/javascript"></script>
+		<script src="http://m.comicool.cn/tpl/dist/act-share.min.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+			window.onload = function() {
+				$('#comment').on('click', function() {
+					if (CONFIG.isApp && !CONFIG.isPPTV) {
+						callAppFunction('openPostDetail', {
+							"post_id": 4155123
+						});
+					} else {
+						new TipBox({
+							str: '需要下载APP才能评论哦!',
+							btnText: ['取消', '确认'],
+							btnCallback: function() {
+								var uri = 'http://m.app.comicool.cn/smart_open/main.php';
+								if (this.innerText == '确认') {
+									window.location.href = uri;
+								} else {
+									return;
+								}
+							}
+						})
+					}
+				})
+			}
+
+			setNewShareInfo({
+				title: '可米酱邀请你参加《青云志》亲亲握手会',
+				imageurl: 'http://cdn.icomicool.cn/m/act/201608/qingyunzhi/images/qingyunzhi08_share.jpg',
+				page_url: window.location.href
+			}, {
+				use: 'customize', //baidu or customize
+				init: '' // function or null
+			});
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

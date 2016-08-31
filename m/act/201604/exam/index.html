@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html style="font-size: 20px;">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>二次元考试季</title>
+		<meta charset="utf-8">
+		<meta name="keywords" content="二次元漫画,漫画App,在线漫画阅读,在线漫画,恐怖漫画,漫画网,可米酷,可米酷漫画" />
+		<meta name="description" content="二次元考试季,试试看你真的属于(zhai)次(fu)元(ji)吗?">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" type="text/css" href="css/endpic.css">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160309">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>		
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!--<script type="text/javascript" src="js/offline.js"></script>-->
+	</head>
+
+	<body class="s-bg-ddd pc no-3d" style="-webkit-user-select: none;">
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        二次元考试季
+        <p>试试看你真的属于(zhai)次(fu)元(ji)吗?</p>
+        <img src="http://cdn.icomicool.cn/m/act/201604/exam/images/result/examShare.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<section class="u-arrow">
+			<p class="css_sprite01"></p>
+		</section>
+		<section class="p-ct transformNode-2d" style="height: 907px;">
+			<div class="translate-back" style="height: 907px;">
+				<div class="m-page m-fengye" data-page-type="info_pic3" data-statics="info_pic3" style="height:70%;">
+					<div class="page-con lazy-finish" data-position="50% 50%" data-size="cover" style="background-image: url(http://cdn.icomicool.cn/m/act/201604/exam/images/index_01.jpg);"></div>
+				</div>
+				<div class="m-page m-bigTxt f-hide" data-page-type="bigTxt" data-statics="info_list" style="height:70%;">
+					<ul id="question">
+						<!-- 读取内容 -->
+					</ul>
+					<ul id="message">
+						<!--骚等,0秒后进入下一题-->
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section class="u-pageLoading">
+			<img src="http://cdn.icomicool.cn/m/act/201604/exam/images/load.gif" alt="loading">
+		</section>
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+				<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/init.mix.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/style.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var integral = 0,
+				html = "";
+			//			选好问题后下一步
+			window.onload = function() {
+				var i = 0;
+				exam.selectT(i, data);
+			}
+			var exam = {
+				// 问题随机
+				randomsort: function(a, b) {
+					return Math.random() > .5 ? -1 : 1;
+				},
+				// 显示问题
+				selectT: function(i, data) {
+					console.log(data)
+					$("#message").html("");
+					var selectContent = "",
+						serial = ["A", "B", "C", "D", "E"],
+						res = data[i];
+					selectContent += '<img id="pictures" src="' + res.img + '"><h2>' + (i + 1) + "/" + data.length + "、 " + res.question + '</h2>';
+					var res = res.select.sort(exam.randomsort);
+					console.log(res)
+					for (var j = 0, len = res.length; j < len; j++) {
+						selectContent += '<li><label><input type="radio" name="radio" value="' + res[j] + '" class="regular-radio big-radio" /><span for="radio-1-1"></span>' + serial[j] + '、' + res[j] + '</label><em></em></li>';
+					}
+					$("#question").html(selectContent);
+					$("#question input").on("click", function() {
+						//							console.log($(this).val());
+						if ($(this).val() == data[i].answer) {
+							$(this).parent().parent().attr("style", "background:#21c22d;color:#fff;");
+							$(this).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201604/exam/images/right.png'>");
+							integral += 10;
+							//								console.log(integral);
+						} else {
+							$(this).parent().parent().attr("style", "background:red;color: #fff;");
+							$(this).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201604/exam/images/error.png'>");
+							var oInput = $("#question input");
+							for (var z = 0, len = oInput.length; z < len; z++) {
+								if (oInput.eq(z).val() == data[i].answer) {
+									oInput.eq(z).parent().parent().append("<img src='http://cdn.icomicool.cn/m/act/201604/exam/images/right2.png'>");
+									break;
+								}
+							}
+						}
+						setTimeout(function() {
+							exam.selectT(i, data)
+						}, 1000);
+						if (i < 9) {
+							i++;
+							$("#message").html("骚等, 马上进入下一题");
+						} else {
+							$("#message").html("骚等, 马上计算您的成绩");
+							setTimeout(function() {
+								window.location.href = "result.html?share=end&key=" + integral
+							}, 1000);
+						}
+						//							if (i < 9) {
+						//							i++;
+						//							exam.countdown(i," 秒后进入下一题");
+						//							exam.selectT(i, data);
+						//							setTimeout(function() {exam.selectT(i, data)}, 2000);
+						//							}else{
+						//							exam.countdown(i,"秒计算你的成绩");
+						//							setTimeout(function() {window.location.href="result.html?share=end&key="+integral}, 2000);
+						//							window.location.href="result.html?share=end&key="+integral;
+						//							};
+						$("#question input").off("click");
+						$("#question input").attr("disabled", "disabled");
+					})
+				},
+				countdown: function(i, mes) {
+					var x = 1,
+						intervalid;
+					intervalid = setInterval(countdownStart, 1000);
+
+					function countdownStart() {
+						if (x == 0) {
+							$("#message").html("");
+							clearInterval(intervalid);
+						} else {
+							$("#message").html("骚等, " + x + mes);
+							x--;
+						}
+					}
+				}
+			};
+			var data = data.sort(exam.randomsort);
+							console.log(data);
+			setShareInfo({
+				title: '二次元考试季',
+				describe: '试试看你真的属于(zhai)次(fu)元(ji)吗?',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201604/exam/images/result/examShare.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/coffee.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://cdn.icomicool.cn/m/act/201604/exam/js/99_main.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

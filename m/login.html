@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画登录</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="可米酷漫画,漫画登录,第三方登录" />
+		<meta name="description" content="可米酷漫画登录,登录后会有意想不到的玩法噢" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="可米酷漫画">
+		<meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+		<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+		<meta HTTP-EQUIV="Expires" CONTENT="0">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://cdn.icomicool.cn/m/images/icon.png" />
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463386207_0576153.css" />
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<script src="http://cdn.icomicool.cn/gcommon/js/md5.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="http://cdn.icomicool.cn/m/js/vconsole.min.js"></script>-->
+	</head>
+
+	<body class="login-page">
+		<header class="header header-fixed header-white">
+			<i class="l-icon icon-angle-left"></i>
+			<p class="c-text">使用协议</p>
+		</header>
+		<a href="javascript:history.go(-1);" class="login-cancel">取消</a>
+		<div class="tbl">
+			<div class="tbl-cell">
+				<div class="login-logo">
+					<i class="icon-logo logo"></i>
+					<h1>可米酷漫画</h1>
+					<strong class="slogan">从此漫画就这么看</strong>
+				</div>
+				<div class="mlogin">
+					<input id="loginUsername" placeholder="手机号" type="number" />
+					<input id="loginPassword" placeholder="密码" type="password" />
+					<button id="phoneLogin" class="button">立即登录
+						  <div class="load-state btn">
+            <div class="ball"></div>
+            <div class="ball"></div>
+            <div class="ball"></div>
+          </div>
+				</button>
+				</div>
+				<div class="login-btns">
+					<h3><p>使用第三方登录</p></h3>
+					<li class="qq-btn" data-btn="qq">
+						<i class="iconfont icon-qq4login"></i>
+						<!--QQ 账号登录-->
+					</li>
+					<li class="weibo-btn" data-btn="wb">
+						<i class="iconfont icon-weibo"></i>
+						<!--微博账号登录-->
+					</li>
+					<!--<li class="weixin-btn" data-btn="wx">
+						<i class="iconfont icon-weixin"></i>微信账号登录
+					</li>-->
+					<li class="pptv-btn" data-btn="pptv">
+						<i class="iconfont icon-pptv"></i>
+						<!--PPTV账号登录-->
+					</li>
+				</div>
+				<p class="login-legal">登录后意味着你同意可米酷漫画的<a href="app-v1/legacy.html">《使用协议》</a></p>
+			</div>
+		</div>
+		<!--<div class="login-tip">
+			<div class="tbl">
+				<div class="tbl-cell">
+					<div class="login-tip-inner">
+						提示：请使用系统自带浏览器登录，其他浏览器暂不支持。
+						<a class="tip-ok">我知道了</a>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<div class="legal-iframe-wrap">
+			<!-- <iframe src="app-v1/legacy.html" frameborder="0" class="legal-iframe"></iframe> -->
+		</div>
+
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/global.js"></script>
+		<script>
+			(function() {
+				$('#phoneLogin').on('click', function() {
+					var t = $(this);
+					ComiPhone.login(t);
+				})
+			})();
+			$(".login-btns li").on('click', function() {
+				var btn = this.dataset.btn,
+					host = 'http://' + window.location.host + '/gcommon/login.html',
+					fromPage = document.referrer,
+					iframeUri = "http://comicool.cn/third-party-login/index.php?autologin=" + btn + "&callback_type=jsonp&fromType=h5&device_id=" + CONFIG.deviceID + "&referer=" + host + encodeURIComponent("?fromPage=" + fromPage + "&fromType=h5");
+				window.location.href = iframeUri;
+			});
+			Comi.Login = {
+				signIn: function(user) {
+					var loginBackUrl = document.referrer,
+						referrer = getQueryString('referrer');
+					loginBackUrl = referrer ? referrer : loginBackUrl;
+					var pageUrl = window.location.href;
+					Comi.Utils.LocalStorage.add('comiUserData', JSON.stringify(user));
+					console.info('signIn..');
+					if (!loginBackUrl || loginBackUrl == pageUrl) {
+						window.location.href = CONFIG.rootUrl;
+					} else {
+						window.location.href = loginBackUrl;
+					}
+				},
+				signOut: function(user) {
+					var usertype = user && user.usertype;
+					Comi.Utils.LocalStorage.del('comiUserData');
+				},
+				setComiUser: function(userInfo) {
+					delete userInfo.token;
+					this.signIn(userInfo, true);
+					var uri = 'http://' + window.location.host;
+				},
+				getComiUser: function() {
+					var userData = Comi.Utils.LocalStorage.get('comiUserData');
+					if (userData != null) {
+						return JSON.parse(userData);
+					} else {
+						return null;
+					}
+				},
+				//		getDeviceID: function() {
+				//			var deviceID = Comi.Utils.LocalStorage.get('deviceID') || Comi.Utils.LocalStorage.add('deviceID', createDeviceID());
+				//			return deviceID;
+				//		}
+				getDeviceID: function() {
+					var deviceID = Comi.Utils.LocalStorage.get('deviceID');
+					if (!deviceID) {
+						deviceID = createDeviceID();
+						Comi.Utils.LocalStorage.add('deviceID', deviceID, 9999);
+					}
+					return deviceID;
+				}
+			};
+			(function() {
+				var userData = Comi.Login.getComiUser();
+				if (userData && userData.outDated) {
+					Comi.Login.signOut(userData);
+				}
+				if (isWeixin || isQQ) {
+					$('.login-btns').hide();
+//					$('.login-tip').show();
+//					$('.tip-ok').click(function() {
+//						$('.login-tip').hide();
+//					});
+//					$('.login-btn').click(function() {
+//						$('.login-tip').show();
+//					});
+				} else {
+					if (userData && userData.outDated) {
+						Comi.Login.signOut(userData);
+					} else {}
+				}
+			})();
+			var ComiPhone = {
+				waiting: function(t, message) {
+					t.parent().find('.load-state').addClass('waiting');
+					t.attr('disabled', 'disabled');
+				},
+				hideToast: function() {
+					setTimeout(function() {
+						toast.style.opacity = 0;
+					}, 3000)
+				},
+				drawToast: function(t, message) {
+					t.removeAttr('disabled');
+					t.parent().find('.load-state').removeClass('waiting');
+					if (message) {
+						var toast = $("#toast");
+						if (toast) {
+							toast.remove();
+							$('body').append('<div id="toast" style="opacity:1">' + message + '</div>')
+						} else {
+							$('body').append('<div id="toast" style="opacity:1">' + message + '</div>')
+						}
+					}
+					this.hideToast();
+				},
+				login: function(t) {
+					var _this = this,
+						username = $('#loginUsername').val(),
+						mpassword = $('#loginPassword').val();
+					_this.waiting(t);
+					if (!username) {
+						_this.drawToast(t, '请输入手机号');
+						return;
+					}
+					if (!mpassword) {
+						_this.drawToast(t, '请输入密码');
+						return;
+					}
+					getByAjax({
+						api: 'userlogin4h5',
+						data: {
+							"usertype": 4,
+							"userid": username,
+							"ccpwd": hex_md5(mpassword)
+						},
+						jsonpCallback: 'jsonp_userlogin',
+						success: function(userInfo) {
+							//							console.log(userInfo);
+							switch (userInfo.ret) {
+								case 0:
+									_this.drawToast(t, '登录成功');
+									Comi.Login.setComiUser(userInfo);
+									break;
+								default:
+									_this.drawToast(t, '账号或密码错误，请重新输入');
+									break;
+							}
+						}
+					})
+				}
+			}
+
+			function createLegalProp() {
+				var $wrap = $('.legal-iframe-wrap');
+				var $legalProp;
+				return function() {
+					if ($legalProp) {
+						$wrap.show();
+					} else {
+						$legalProp = $('<iframe class="legal-iframe" src="app-v1/legacy.html"></iframe>');
+						$wrap.show().append($legalProp);
+						$('.icon-angle-left').click(function() {
+							$wrap.hide();
+							$('.header').hide();
+						});
+					}
+					$('.header').show();
+				}
+			}
+			var legalProp = createLegalProp();
+			$('.login-legal a').click(function(e) {
+				e.preventDefault();
+				legalProp();
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画列表页|漫画网_二次元</title>
+    <meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫"/>
+    <meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/zepto.js"></script>
+    <script src="js/config.js"></script>
+    <style>
+        .container-table {
+            color: #fff;
+            font-size: 1.2rem;
+            width: 80%;
+            margin-top: 8%;
+            margin-bottom: 2%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    
+        .container-table tr {
+            margin-bottom: .7rem;
+            width: 100%;
+        }
+
+        .container-table td {
+            padding: .5rem;
+        }
+
+        .td-left {
+            width: 50%;             
+            text-align: left;
+        }
+
+        .td-right {
+            width: 50%;
+            text-align: left;
+        }
+
+        .checkUpdate {
+            color: #fff;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #fff;
+            width: 10%;
+            font-size: 1rem;
+            padding: .6rem 2rem;
+            margin: 0 auto;
+        }
+
+        .update-tip {
+            display: none;
+            width: 30%;
+            position: fixed;
+            top: 20%;
+            left: 33%;
+            text-align: center;
+            background-color: #000;
+            opacity: 0.7;
+            color: #fff;
+            padding: .5rem;
+            border-radius: 5px;
+        }
+
+        @media screen and (device-width: 960px) {
+            .update-tip {
+                font-size: 1rem;
+            }
+
+            .container-table {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="main-container">
+    <div class="header">
+        <div class="logo fl"></div>
+        <div class="header-list fr"></div>
+    </div>
+    <div class="contaier">
+        <table class="container-table">
+            <tr>
+                <td class="td-left">官方网址:&nbsp;&nbsp;&nbsp;&nbsp;http://www.comicool.cn</td>
+                <td class="td-right">官方QQ群:&nbsp;&nbsp;&nbsp;&nbsp;428807479</td>
+            </tr>
+            <tr>
+                <td class="td-left">官方微博:&nbsp;&nbsp;&nbsp;&nbsp;可米酷漫画</td>
+                <td class="td-right">官方QQ:&nbsp;&nbsp;&nbsp;&nbsp;2107690291</td>
+            </tr>
+            <tr>
+                <td class="td-left">官方微信:&nbsp;&nbsp;&nbsp;&nbsp;可米酷漫画</td>
+                <td class="td-right">版本号:&nbsp;&nbsp;&nbsp;&nbsp;<span class="version-code"></span></td>
+            </tr>
+        </table>
+        <div class="checkUpdate">
+            检查更新
+        </div>
+    </div>
+    <div class="update-tip"></div>
+<script src="js/common-tv.js"></script>
+<script type="text/javascript">
+    generatHeader('about');
+
+    callAppFunction('getAppVersionName', {}, function(res) {
+        $('.version-code').html(res);
+    });
+
+    window.updateEvent = function(obj) {
+        $('.update-tip').html('');
+        var res = JSON.parse(obj);
+        var updateRes = res.have_update;
+        // alert(updateRes);
+        if (!updateRes && (updateRes != 'true')) {
+            $('.update-tip').html('已经是最新版啦！');
+            setTimeout(function() {
+                $('.update-tip').hide();
+            }, 3000);
+        }
+    }
+    window.escPressFunc = function() {
+        window.location.href = 'index.html';
+    }
+    callAppFunction('setJSCallback', {'app_update_event': 'updateEvent', 'back_press_event' : 'escPressFunc'});
+    var keyConfigObj = {
+        'enterkeyCallback': function(){
+            // 检查更新函数
+            $('.update-tip').html('正在检查更新').show();
+            callAppFunction('checkAppUpdate', {});
+        }
+    }
+    new KeyPressEvent(keyConfigObj);
+</script>
+</body>
+</html>

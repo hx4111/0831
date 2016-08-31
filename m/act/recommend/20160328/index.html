@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>《家有萌萌哒》小编推荐</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="《家有萌萌哒》小编推荐">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160328">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+	   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+	</head>
+
+	<body>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<!-- <i class="r-icon icon-share"></i> -->
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_01.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_02.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_03.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_04.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_05.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_06.jpg" alt="《家有萌萌哒》小编推荐"></li>
+			<li class="go" data-cid="693"><img src="http://cdn.icomicool.cn/m/act/recommend/20160328/images/index_07.jpg" alt="《家有萌萌哒》小编推荐"></li>
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			(function bindOpenComicEvents() {
+				var readComic;
+				if (isApp) {
+					readComic = function(cid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: cid,
+							ep_id: 1
+						});
+					}
+				} else {
+					readComic = function(cid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id='+cid+'&ep_id=1';
+					}
+				}
+				$(".go").on('click', function(e) {
+					var cid = this.dataset.cid;
+					if (cid !== "undefined" && cid !== "") {
+						readComic(cid);
+					}
+				})
+			})();
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

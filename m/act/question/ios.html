@@ -1,0 +1,157 @@
+<html>
+
+	<head>
+		<title>帮助与反馈</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1457426414_4315856.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://cdn.icomicool.cn/m/m-common/js/fastclick.min.js"></script>
+		<script type="text/javascript">
+			if ('addEventListener' in document) {
+				document.addEventListener('DOMContentLoaded', function() {
+					FastClick.attach(document.body);
+				}, false);
+			}
+			var lastFaqClick = null; //上次点击的faq
+			window.onload = function() {
+					//				获取红点消息数量
+					callAppFunction('getEaseOfflineMsgCount', {}, function(result) {
+						info(result);
+						callAppFunction('setJSCallback', {
+							'ease_offline_msg_event': 'easeOfflineHandler'
+						});
+					});
+
+					function info(messages) {
+						var messages = function() {
+							if (isIOSApp) {
+								if (messages instanceof String) {
+									return messages ? JSON.parse(messages) : {};
+								} else {
+									return messages;
+								}
+							}
+						}();
+						var count = document.getElementById("count");
+						if (messages.count > 0 && messages.count < 99) {
+							count.innerHTML = messages.count;
+							count.style.display = "inline-block";
+						} else if (messages.count > 99) {
+							count.innerHTML = "99+";
+							count.style.display = "inline-block";
+						} else {
+							count.style.display = "none";
+						}
+					}
+					window.easeOfflineHandler = function() {
+						info(result);
+					}
+					var faq = document.getElementById("faq");
+					var other = document.getElementById("other");
+					other.addEventListener("click", function() {
+						count.style.display = "none";
+						callAppFunction('openFeedBackPage', {});
+					})
+					for (var i in questionList) {
+						var liNode = document.createElement("li");
+						liNode.innerHTML = "<dl><dt><span>" + questionList[i].question + "</span><i class='iconfont icon-quanjia'></i></dt><dd>" + questionList[i].reply + "</dd>";
+						faq.appendChild(liNode);
+					}
+					var dls = faq.getElementsByTagName("dl");
+					for (var i = 0, dl; dl = dls[i]; i++) {
+						var dt = dl.getElementsByTagName("dt")[0]; //取得标题
+						dt.id = "faq_dt_" + i;
+						dt.addEventListener("click", function() {
+							this.getElementsByTagName("i")[0].className = "iconfont icon-quanjian";
+							var p = this.parentNode; //取得父节点
+							if (lastFaqClick != null && lastFaqClick.id != this.id) {
+								lastFaqClick.getElementsByTagName("i")[0].className = "iconfont icon-quanjia";
+								var dds = lastFaqClick.parentNode.getElementsByTagName("dd");
+								for (var i = 0, dd; dd = dds[i]; i++)
+									dd.style.display = 'none';
+							}
+							lastFaqClick = this;
+							var dds = p.getElementsByTagName("dd"); //取得该父节点所有的子节点，也就是所有的答案
+							var tmpDisplay = 'none';
+							if (gs(dds[0], 'display') == 'none')
+								tmpDisplay = 'block';
+							for (var i = 0; i < dds.length; i++) {
+								dds[i].style.display = tmpDisplay;
+							}
+							if (this.nextElementSibling.getAttribute("style") == "display: none;") {
+								this.getElementsByTagName("i")[0].className = "iconfont icon-quanjia";
+							}
+						})
+					}
+				}
+				/**
+				 *取得元素的真实css属性
+				 */
+			function gs(d, a) {
+				if (d.currentStyle) {
+					var curVal = d.currentStyle[a]
+				} else {
+					var curVal = document.defaultView.getComputedStyle(d, null)[a]
+				}
+				return curVal;
+			}
+
+			function callAppFunction(func, args, callback) {
+				var argsString = JSON.stringify(args);
+				if (isAndroidApp) {
+					if (!comicool) {
+						return false;
+					}
+					var result = eval("comicool." + func + "('" + argsString + "');");
+					if (callback) {
+						callback(result);
+					}
+				} else if (isIOSApp) {
+					function handleCallback(func, args) {
+						if (func != "setJSCallback") {
+							return;
+						}
+						for (eventName in args) {
+							window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+								var appDataStr = JSON.stringify(data);
+								eval(args[eventName] + "('" + appDataStr + "');");
+							});
+						}
+					}
+					if (window.WebViewJavascriptBridge) {
+						window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+						handleCallback(func, args);
+					} else {
+						document.addEventListener('WebViewJavascriptBridgeReady', function() {
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						}, false);
+					}
+				} else {
+					return false;
+				}
+				return true;
+			}
+		</script>
+		<script src="js/ios.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="faqList">
+			<h1><i class="iconfont icon-wenti"></i>常见问题</h1>
+
+			<ul id="faq">
+			</ul>
+		</div>
+		<div id="other">
+			<i class="iconfont icon-kefu"></i>
+			<li>其他问题?</li>
+			<li id="count">0</li>
+		</div>
+
+	</body>
+
+</html>

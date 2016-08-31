@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>周更列表大变身</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="可米酷漫画,可米酷漫画周更列表,周更漫画" />
+		<meta name="description" content="周更列表大变身">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160518">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1463386207_0576153.css">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+			#praise span {
+				color: #F85450;
+			}
+			
+			#toast {
+				position: fixed;
+				bottom: 2rem;
+				left: 50%;
+				transform: translate3d(-50%, 0, 0);
+				-ms-transform: translate3d(-50%, 0, 0);
+				-moz-transform: translate3d(-50%, 0, 0);
+				-webkit-transform: translate3d(-50%, 0, 0);
+				-o-transform: translate3d(-50%, 0, 0);
+				border-radius: .3rem;
+				background: #000;
+				color: #fff;
+				padding: .5rem 1rem;
+				text-align: center;
+				opacity: .7;
+				-webkit-tap-highlight-color: transparent;
+				/*The good stuff */
+				-webkit-transition: opacity 0.5s ease-out;
+				/* Saf3.2+, Chrome */
+				-moz-transition: opacity 0.5s ease-out;
+				/* FF4+ */
+				-ms-transition: opacity 0.5s ease-out;
+				/* IE10? */
+				-o-transition: opacity 0.5s ease-out;
+				/* Opera 10.5+ */
+				transition: opacity 0.5s ease-out;
+				z-index: 9999;
+				font-size: .7rem;
+				background: #6B6A6A;
+			}
+			/* 周更列表定位 */
+			
+			.tabulation {
+				position: relative;
+			}
+			
+			.tabulation span {
+				position: absolute;
+				opacity: .5;
+				/*background: red;*/
+				text-indent: -9999px;
+				width: 50px;
+			}
+			
+			.tab_mei {
+				width: 60px;
+				height: 145px;
+				top: 24%;
+				right: 1%;
+			}
+			
+			.tab_ling {
+				top: 47.5%;
+				right: 1%;
+				width: 60px;
+				height: 140px;
+			}
+			
+			.tab_shi {
+				top: 25%;
+				right: 15%;
+				height: 100px;
+			}
+			
+			.tab_chong {
+				top: 18%;
+				right: 30%;
+				height: 194px;
+			}
+			
+			.tab_wang {
+				top: 25%;
+				left: 43%;
+				height: 160px;
+			}
+			
+			.tab_yu {
+				height: 140px;
+				left: 29.2%;
+				top: 28%;
+			}
+			
+			.tab_yan {
+				left: 29.2%;
+				top: 51%;
+				height: 65px;
+			}
+			
+			.tab_na {
+				top: 61.7%;
+				left: 29.2%;
+				height: 88px;
+			}
+			
+			.tab_ji {
+				top: 26%;
+				left: 15.5%;
+				height: 250px;
+			}
+			/* 周更列表定位在IPAD */
+			
+			@media screen and (min-width: 700px) {
+				.tabulation span {
+					width: 70px;
+				}
+				.tab_mei {
+					height: 270px;
+					top: 25%;
+					right: 3%;
+				}
+				.tab_ling {
+					top: 47.5%;
+					right: 3%;
+					width: 60px;
+					height: 260px;
+				}
+				.tab_shi {
+					top: 25%;
+					right: 17%;
+					height: 192px;
+				}
+				.tab_chong {
+					top: 18%;
+					right: 31.5%;
+					height: 364px;
+				}
+				.tab_wang {
+					top: 25%;
+					left: 45%;
+					height: 300px;
+				}
+				.tab_yu {
+					height: 240px;
+					left: 31.2%;
+					top: 30%;
+				}
+				.tab_yan {
+					left: 31.2%;
+					top: 51%;
+					height: 116px;
+				}
+				.tab_na {
+					top: 61.7%;
+					left: 31.2%;
+					height: 148px;
+				}
+				.tab_ji {
+					top: 26%;
+					left: 17.5%;
+					height: 462px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        周更列表大变身
+        <p>周更列表大变身</p>
+        <img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/zhougeng_share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share iconfont"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_01.jpg" alt="周更列表大变身" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_02.jpg" alt="周更列表大变身" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_03.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="707"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_04.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="10964"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_05.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="11247"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_06.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="693"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_07.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="11088"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_08.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="10213"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_09.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="10115"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_10.jpg" alt="周更列表大变身" /></li>
+			<li data-ccid="10743"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_11.jpg" alt="周更列表大变身" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_12.jpg" alt="周更列表大变身" /></li>
+			<li class="tabulation"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_13.jpg" width="320" alt="周更列表大变身" />
+				<span class="tab_mei" data-ccid="11297">梅泽尔传说</span>
+				<span class="tab_ling" data-ccid="11286">灵魂代理人</span>
+				<span class="tab_shi" data-ccid="11341">十王墓</span>
+				<span class="tab_chong" data-ccid="11339">重生只为遇见你</span>
+				<span class="tab_wang" data-ccid="11308">汪星喵星蓝星</span>
+				<span class="tab_yu" data-ccid="11300">雨后的盛夏</span>
+				<span class="tab_yan" data-ccid="11329">朝颜</span>
+				<span class="tab_na" data-ccid="10999">那种甜</span>
+				<span class="tab_ji" data-ccid="11353">机电院的大老爷们儿</span>
+			</li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_14.jpg" alt="周更列表大变身" /></li>
+			<li id="share-btn"><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_15.jpg" alt="周更列表大变身" /></li>
+			<li id="praise"><span>0</span><img src="http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_16.jpg" alt="周更列表大变身" /></li>
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}} {{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'> {{/if}} {{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script>
+			var shareJsonObj = {
+				'title': '周更列表大变身',
+				'describe': '周更列表大变身',
+				'imageUrl': 'http://cdn.icomicool.cn/m/act/201605/zhougeng/images/zhougeng_share.jpg',
+				'pageUrl': window.location.href
+			};
+			setShareInfo(shareJsonObj, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					shareBtn = _('#share-btn'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+					trigger.addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'block';
+						document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+						header.style.display = 'none';
+					});
+					document.getElementById('ShareBg').addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'none';
+						header.style.display = 'block';
+					})
+				} else {
+					trigger.addEventListener('click', function() {
+						mask.style.display = panel.style.display = 'block';
+					});
+					mask.addEventListener('click', hidePanel);
+					cancelBtn.addEventListener('click', hidePanel);
+				}
+			}
+			window.onload = function() {
+				$("#share-btn img").on("click", function() {
+					if (isApp) {
+						callAppFunction('popupSharePanel', {
+							"title": '周更列表大变身',
+							"describe": '周更列表大变身',
+							"imageurl": 'http://cdn.icomicool.cn/m/act/201605/zhougeng/images/zhougeng_share.jpg',
+							"page_url": window.location.href,
+							"weibo_describe": "周更列表大变身"
+						});
+					} else {
+						$("#ShareBg,.bdsharebuttonbox").show();
+					}
+				});
+			}
+			$.ajax({
+				url: 'http://comicool.cn/simple_vote.php',
+				dataType: "jsonp",
+				data: {},
+				jsonpCallback: "jsonp_match",
+				success: function(data) {
+					var praise = data.results[44];
+					$("#praise span").html(praise);
+					bindOpenComicEvents();
+				}
+			})
+
+			function bindOpenComicEvents() {
+				var readComic;
+				if (isApp) {
+					readComic = function(ccid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: ccid,
+							ep_id: 1
+						});
+					}
+				} else {
+					readComic = function(ccid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=1';
+					}
+				}
+				$("#imglist li,#imglist span").on('click', function(e) {
+					var ccid = this.dataset.ccid;
+					if (ccid !== undefined && ccid !== "") {
+						readComic(ccid);
+					}
+				});
+			}
+			if (!getCookie('flag_forty_four')) {
+				var flag_forty_four = false;
+			} else {
+				$("#praise img").attr("src", "http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_166.jpg");
+			}
+			//				下面的按钮点赞
+			$("#praise").on("click", function() {
+					//					clearCookie("flag_forty_four")
+					if (getCookie('flag_forty_four') == "true") {
+						drawToast("您已经点过赞了!");
+					} else {
+						var num = $("#praise span").html();
+						$("#praise span").html(parseInt(num) + 1);
+						$("#praise img").attr("src", "http://cdn.icomicool.cn/m/act/201605/zhougeng/images/index_166.jpg");
+						$.get("http://comicool.cn/simple_vote.php?sel=44");
+						setCookie("flag_forty_four", "true", 30)
+					}
+				})
+				//取得cookie    
+			function getCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';'); //把cookie分割成组    
+				for (var i = 0; i < ca.length; i++) {
+					var c = ca[i]; //取得字符串    
+					while (c.charAt(0) == ' ') { //判断一下字符串有没有前导空格    
+						c = c.substring(1, c.length); //有的话，从第二位开始取    
+					}
+					if (c.indexOf(nameEQ) == 0) { //如果含有我们要的name    
+						return unescape(c.substring(nameEQ.length, c.length)); //解码并截取我们要值    
+					}
+				}
+				return false;
+			}
+			//清除cookie    
+			function clearCookie(name) {
+				setCookie(name, "", -1);
+			}
+			//设置cookie    
+			function setCookie(name, value, seconds) {
+				seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。    
+				var expires = "";
+				if (seconds != 0) { //设置cookie生存时间    
+					var date = new Date();
+					date.setTime(date.getTime() + (seconds * 1000 * 360 * 24 * 365));
+					expires = "; expires=" + date.toGMTString();
+				}
+				document.cookie = name + "=" + escape(value) + expires + "; path=/"; //转码并赋值    
+			}
+
+			function hideToast() {
+				var alert = document.getElementById("toast");
+				alert.style.opacity = 0;
+				clearInterval(intervalCounter);
+			}
+
+			function drawToast(message) {
+				var alert = document.getElementById("toast");
+				if (alert == null) {
+					var toastHTML = '<div id="toast">' + message + '</div>';
+					document.body.insertAdjacentHTML('beforeEnd', toastHTML);
+				} else {
+					alert.remove();
+					drawToast(message);
+				}
+				intervalCounter = setInterval("hideToast()", 1000);
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,141 @@
+?cc_id=xxx&user_type=xxxx&cctoken=xxxx&deviceid=xxx
+
+api/v1/yungou/act/1/periodicl/current
+
+{
+	"code": 0,
+	"message": "",
+	"data": {
+		"total_p": 50,
+		"current_p": 6,
+		"end_time": 1465457239
+	}
+}
+
+
+api/v1/yungou/act/1/periodicl/1
+
+{
+    "code": 0,
+    "message": "",
+    "data": [
+        {
+            "status": 1,
+            "title": "测试商品",
+            "good_id": 1,
+            "act_good_id": 3,
+            "cover_1": "http://cdn.icomico.com/11051_ccover_cc8af8c151e5a5f6.jpg?imageView2/1/w/213/h/142/q/100",
+            "cover_2": "",
+            "cover_3": "",
+            "rmb_price": 50,
+            "pre_kubi": 100,
+            "up_limit": 100,
+            "is_board": 0,
+            "yb_nums": 0,
+            "yb_sold": 0,
+            "yb_count": 0
+        },
+    ]
+}
+
+
+api/v1/yungou/act/2/buy/good/3/1?cc_id=33919
+
+{
+    "code": 0,
+    "message": "",
+    "data": {
+        "yb_count": "2"
+    }
+}
+
+
+api/v1/yungou/act/2/record/periodicl/1?cc_id=33919
+
+{
+    "code": 0,
+    "message": "",
+    "data": [
+        {
+            "title": "测试商品",
+            "good_id": 3,
+            "time": {
+                "date": "2016-06-07 08:32:06.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "quantity": 1,
+            "no": 1,
+            "result": false
+        },
+        {
+            "title": "测试商品",
+            "good_id": 3,
+            "time": {
+                "date": "2016-06-07 08:32:10.000000",
+                "timezone_type": 3,
+                "timezone": "UTC"
+            },
+            "quantity": 1,
+            "no": 1,
+            "result": false
+        }
+    ]
+}
+
+
+api/v1/yungou/act/2/results/periodicl/1?cc_id=33919
+
+{
+    "code": 0,
+    "message": "",
+    "data": [
+		{
+			"pid": "",
+			"good_id": "",
+			"title": "",
+			"winners": [
+				{
+					"cc_id": "",
+					"nickname": "",
+				}
+			]
+		}, 
+    ]
+}
+
+
+api/v1/user?cc_id=33919
+
+{
+	"code": 0,
+	"message": "",
+	"data": {
+		"cc_id": "33919",
+		"username": "%E5%90%B4%E9%85%8C",
+		"icon": "http://q.qlogo.cn/qqapp/101217801/3BCC20C823F61DC592A288AD1810536E/40",
+		"sex": "",
+		"email_addr": ""
+	}
+}
+
+
+api/v1/user/kubi?cc_id=33919
+
+{
+	"code": 0,
+	"message": "",
+	"data": {
+		"cc_id": "33919",
+		"kubi": 0
+	}
+}
+
+  `province` varchar(32) DEFAULT '' COMMENT '省',
+  `city` varchar(32) DEFAULT '' COMMENT '市',
+  `district` varchar(32) DEFAULT '' COMMENT '区',
+  `address` varchar(255) DEFAULT '' COMMENT '地址',
+  `phone_num` varchar(16) DEFAULT '' COMMENT '手机',
+  `name` varchar(16) DEFAULT '' COMMENT '姓名',
+  `qq` varchar(16) DEFAULT '' COMMENT 'QQ',
+  `email` varchar(64) COMMENT '邮件',

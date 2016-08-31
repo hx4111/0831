@@ -1,0 +1,9 @@
+{
+    "require": {
+        "monolog/monolog": "^1.19",
+        "catfan/Medoo": "^1.0",
+        "josegonzalez/dotenv": "dev-master",
+        "predis/predis": "^1.1",
+        "guzzlehttp/guzzle": "~6.0"
+    }
+}

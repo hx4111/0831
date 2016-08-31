@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>年兽</title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+	    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        年兽
+        <p>年兽活动测试—></p>
+        <img src="http://cdn.icomicool.cn/m/act/201506/rank/images/hot-share-img2.jpg" alt="漫画网,二次元,看漫画" />
+    </h1>
+	<div id="onMenuShareTimeline">
+		分享
+	</div>
+		<script>
+			var shareTextInfo = {
+				title: '猫咪甜品屋之烘培教室',
+				describe: '喵~~~小伙伴们，想要变成厉害的甜点小能手吗？喵喵来教你怎么简单制作糕点哟~~',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201508/new-707/images/share-img.jpg',
+				pageUrl: 'http://m.comicool.cn/act/201508/new-707/index.html'
+			}
+			var wxUrl = 'http://comicool.cn/webapi/wxauth.php?url=' + encodeURIComponent(location.origin + location.pathname + location.search);
+			
+//		--------------------
+	$.ajax({
+				url: wxUrl,
+				type: 'GET',
+				dataType: 'jsonp',
+				jsonp: 'callback',
+				jsonpCallback: 'jsonp_wxapi',
+				success: function(data) {
+					console.log(JSON.stringify(data))
+						//alert(data);
+					wx.config({
+						debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						appId: data.appId, // 必填，公众号的唯一标识
+						timestamp: data.timestamp, // 必填，生成签名的时间戳
+						nonceStr: data.nonceStr, // 必填，生成签名的随机串
+						signature: data.signature, // 必填，签名，见附录1
+						jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+					});
+					wx.ready(function() {
+document.querySelector('#onMenuShareTimeline').onclick = function () {
+    wx.onMenuShareTimeline({
+      title: 'test',
+      link: 'http://www.comicool.cn',
+      imgUrl: 'http://cdn.icomicool.cn/m/act/201508/new-707/images/share-img.jpg',
+      trigger: function (res) {
+        alert('33');
+      },
+      success: function (res) {
+        alert('1');
+      },
+      cancel: function (res) {
+        alert('2');
+      },
+      fail: function (res) {
+        alert(JSON.stringify(res));
+      }
+    });
+    alert('444');
+  };
+					});
+					
+
+				}
+			});
+		</script>
+	</body>
+
+</html>

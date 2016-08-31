@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+<meta charset="utf-8"/>
+<title>可米酷漫画活动专题,带你遨游带你飞_条漫™</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="可米酷活动,可米酷大赏,砍价活动,新作预告,实时排行榜,月度排行榜,周赛,漫画app" />
+<meta name="description" content="可米酷漫画活动|漫画app:可米酷大赏,砍价活动,新作预告,实时排行榜,月度排行榜,周赛已经上演,精彩不容错过噢" />
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+</head>
+<body>
+<header class="header header-white header-fixed">
+	<a class="l-icon icon-angle-left" href="index.html"></a>
+	<h1 class="c-text">可米活动</h1>
+</header>
+<article class="main-panel offset-plus">
+	<section class="activity-box">
+		<!-- <ul class="list-unstyled activity-list">
+			<li>
+				<div class="li-img">
+					<img src="images/activity/cover.jpg" alt="">
+				</div>
+				<h3>点赞分享就能约</h3>
+				<p class="text-gray ellipsis">活动的简介活动的简介活动的简介活动的简介活动</p>
+				<small class="text-silver">时间：2015年5月20日-2015年5月28日</small>
+			</li>
+		</ul> -->
+	</section>
+	<footer class="footer">
+		
+		<nav class="ft-nav">
+			<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+			<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+			<a href="pro-intr.html">产品介绍</a>
+		</nav>
+		<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+	</footer>
+</article>
+<script src="js/base.min.js"></script>
+<script src="js/global.js"></script>
+<script type="text/javascript">
+
+	getByAjax({
+		api: 'eventlistinfo4h5',
+		jsonpCallback: 'jsonp_eventlistinfo',
+		success: function(data) {
+			if (data.msg == 'success'){
+				//console.log(data);
+				var activityData = data.event_list;
+				activityListHandle($('.activity-box'), activityData);
+			}
+			//新书上架
+			// var newBooksData = data.area_list[6];
+			// fillVerticalComic($('#h-newbooks'), newBooksData);
+		}
+	});
+
+	function activityListHandle($box, data) {
+		var outerHTML = innerHTML = '';
+		var isPPTV = /pptv/g.test(getCookie('_ch'));
+		for (var i = 0, len = data.length; i < len; i++) {
+			var c = data[i];
+			if (isPPTV && c.event_id < 353) {
+				break;
+			}
+			var title = c.event_title;
+			var desc = c.event_desc;
+			var date = c.event_show_date;
+			var url = c.event_url;
+			var cover = c.event_poster;
+			var imgCutSize = '?imageView2/2/w/540';
+			//console.log(url,c.comic_id)
+
+			innerHTML += ''
+					  +	 '<li>'
+					  +		'<div class="li-img">'
+					  +			'<a href="' + url + '">'
+					  +				'<img src="' + cover + imgCutSize + '" alt="' + CONFIG.imgAlt + ' /">'
+					  +  		'</a>'
+					  +		'</div>'
+					  +		'<h3>' + title + '</h3>'
+					  +		'<p class="text-gray ellipsis">' + desc + '</p>'
+					  +		'<small class="text-silver">时间：' + date + '</small>'
+					  +	 '</li>'
+		}
+		outerHTML = '<ul class="list-unstyled activity-list">' + innerHTML + '</ul>'
+
+		$box.html(outerHTML);
+	}
+</script>
+</body>
+</html>

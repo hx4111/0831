@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>个人中心_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载" />
+		<meta name="description" content="漫画详情页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧" />
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1445499379_3591268.css" />
+		<link rel="stylesheet" href="../css/style.css">
+		<script src="../js/config.js"></script>
+		<style>
+			.header-shadow:before {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				content: "\20";
+				background: #000;
+				filter: alpha(opacity=30);
+				-moz-opacity: 0.3;
+				opacity: 0.3;
+			}
+			
+			li,
+			ul,
+			a,
+			h2,
+			h3 {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+		</style>
+	</head>
+
+	<body class="body-detail">
+		<header class="header header-fixed header-shadow">
+			<i id="icon-back" class="icon-fanhui iconfont l-icon"></i>
+			<!--<span class="r_concern"><i class="icon-jia iconfont"></i>加关注</span>-->
+		</header>
+		<article class="main-panel">
+			<div class="detail-cover">
+				<!-- 		<img src="images/detail/cover.jpg" alt=""> -->
+			</div>
+			<section class="detail-box">
+
+				<div class="detail-head">
+					<div class="author_center_head">
+						<em><img src=""></em>
+						<h2></h2>
+						<h3></h3>
+						<p></p>
+					</div>
+				</div>
+				<div id="detail-tab">
+					<nav class="detail-nav hd">
+						<ul class="detail-nav-inner list-unstyled">
+							<li>个人信息</li>
+							<!--<li id="abc">剧集</li>-->
+						</ul>
+					</nav>
+					<div class="detail-content">
+
+						<div>
+							<div class="author_center_present author_center_info clearfix">
+							</div>
+							<div class="author_center_present author_center_weibo">
+							</div>
+							<div class="center_opus clearfix">
+								<h2>漫画作品</h2>
+
+							</div>
+							<!-- detail-brief  结束 -->
+						</div>
+					</div>
+					<!-- detail-content  结束 -->
+				</div>
+				<!-- detail-tab  结束 -->
+			</section>
+		</article>
+		<script src="../js/base.min.js"></script>
+		<script src="../js/TouchSlide.1.1.js"></script>
+		<script src="../js/global.js"></script>
+		<script type="text/javascript">
+			var comic_id = getQueryString('comic_id');
+			var author_id = getQueryString('author_id');
+			var recentReadId = getCookie(comic_id);
+			var praiseInfo, comicInfo, commentInfo;
+			var getCommentLock = false;
+			var defaultIndex = getQueryString('tab') || 1;
+			$('#icon-back').on('click', function() {
+				window.location.href = '../index.html';
+			});
+			//			获取作者主页
+			getByAjax({
+				api: 'author4h5',
+				type: 'GET',
+				data: {
+					'comic_id': comic_id,
+					'author_id': author_id,
+				},
+				jsonpCallback: "jsonp_author",
+				success: function(data) {
+					console.log(data)
+					var zlist = "",
+						authorInfo = data.author_base_info,
+						icon = authorInfo.author_icon,
+						avatar=authorInfo.avatar,
+						intro = authorInfo.author_intro,
+						name = authorInfo.author_name,
+						follow_count = authorInfo.follow_count,
+						follower_count = authorInfo.follower_count,
+						cover = data.background,
+						otherInfo=data.author_other_info;
+					if (otherInfo !== null) {
+						for (var i = 0, len = otherInfo.length; i < len; i++) {
+							if (otherInfo[i].usage == "weibo") {
+								var author_weibo = otherInfo[i].desc;
+								var author_weiboName = author_weibo.split("|http://");
+								$('.author_center_weibo').html('<li><span>微博:</span><div><a href="http://' + author_weiboName[1] + '" target="_blank">@' + author_weiboName[0] + '</a></div></li>');
+								continue;
+							} else if (otherInfo[i].title == "标签") {
+								zlist += '' + '<li class="clearfix"><span>' + otherInfo[i].title + '</span><div><span>' + otherInfo[i].desc.replace(/[\ |、|,|，]/g, "</span><span>") + '</div></li>';
+							} else {
+								zlist += '' + '<li class="clearfix"><span>' + otherInfo[i].title + '</span><div>' + otherInfo[i].desc + '</div></li>';
+							}
+						}
+					};
+					if (icon){
+						var authorIcon=icon;
+					}else if(avatar){
+						var authorIcon=avatar;
+					}else{
+						var authorIcon=CONFIG.defaultAvatar;
+					}
+					console.log($('.author_center_head em').html('<img src="'+authorIcon+'">'))
+					$(".author_center_info").html(zlist);
+					$(".author_center_head h3").html('关注  <span>' + follow_count + '</span> | 粉丝 <span>' + follower_count + '</span>');
+					$(".author_center_head p").html(intro);
+					$('.author_center_head h2').html(name);
+					var AuthorOpusList = "";
+					if (data.comi_list) {
+						for (var i = 0, len = data.comi_list.length; i < len; i++) {
+							AuthorOpusList += '<div class="clearfix"><ul class="center_opus_img clearfix"><small>' + data.comi_list[i].category.split(/[#|]/)[1] + '</small>' + '<a href="' + CONFIG.detailBase + 'comic_id=' + comic_id + '">' + '<img src="' + CONFIG.imgBase + data.comi_list[i].comic_cover_url + '"></a>' +
+								'<li>' + data.comi_list[i].update_txt + '</li></ul><ul class="center_opus_zp"><h3>' + '<a href="' + CONFIG.detailBase + 'comic_id=' + comic_id + '">' + data.comi_list[i].comic_title + '</h3><p>简介：' + data.comi_list[i].comic_desc + '</p></a><li><i class="icon-xin iconfont"></i>' + data.comi_list[i].comic_praise_count +
+								'</li></ul></div>';
+						}
+					}
+					$(".center_opus").append(AuthorOpusList);
+				}
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="http://cdn.icomicool.cn/m/js/TouchSlide.1.1.js"></script>
+	<script src="http://comicool.cn/m/js/vconsole.min.js"></script>
+	<!-- <script src="http://192.168.10.64:8001/target/target-script-min.js#anonymous"></script> -->
+</head>
+<body>
+	<header class="header header-fixed header-shadow">
+		<a href="http://m.comicool.cn"><i class="l-icon iconfont icon-home"></i></a>
+		<i class="r-icon iconfont icon-share"></i>
+	</header>
+	<div id="header-comp"></div>
+<script src="dest/js/bundle.js" type="text/javascript"></script>
+<script>
+	TouchSlide({
+		slideCell: "#nav-tabs",
+		defaultIndex: 0,
+		endFun: function(i) { //高度自适应
+			var bd = document.getElementById("nav-content-bd");
+			bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+			if (i > 0) bd.parentNode.style.transition = "200ms"; ///添加动画效果
+		}
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+@charset "utf-8";
+/* CSS reset */
+html,body { font-size: 20px; width: 100%; height: 100%;}
+body { color: #333; line-height: 1.5; font-size: .6rem;}
+body, div, p, h1, h2, h3, article, section, header, footer, aside, nav, dialog, ul, ol, li, input, button {
+	margin: 0; padding: 0;
+}
+ul,ol { list-style: none; }
+h1,h2,h3 { font-size: .7rem; font-weight: normal;}
+i,em { font-style: normal;}
+img { border:0; vertical-align:middle; width: 100%;}
+li, i, a, img { outline: 0; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+a { text-decoration: none; color: #333;}
+a:active { color: #333; opacity: .9;}
+.cl:after { display: block; content: ''; clear: both; height: 0; visibility: hidden;}
+
+/*CSS 通用样式*/
+.pa { position: absolute;}
+.pf { position: fixed; left: 0; top: 0; bottom: 0; right: 0; width: 100%; height: 100%;}
+.pr { position: relative;}
+.border-box { -webkit-box-sizing:border-box; box-sizing:border-box;}
+.bg-set { background-repeat: no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+
+/*CSS 活动样式*/
+body { background:#f74d2a url(../images/page-bg.png) center repeat; -webkit-background-size:1.1rem auto; background-size:1.1rem auto;}
+.header { z-index: 350; width: 100%; height: 4.6rem; padding-top: .65rem; text-align: center; background-image: url(../images/header-top.png);}
+.header span { display: inline-block; vertical-align: top; width: 5.75rem; height: 1.95rem; padding:0 .6rem 0 2rem; line-height: 1.7rem; font-size: .7rem; margin: 0 .75rem; color: #632115; font-weight: bold; text-overflow:ellipsis; overflow: hidden; white-space: nowrap; background: url(../images/header-icon.png) no-repeat; -webkit-background-size:200% 100%; background-size:200% 100%;}
+.header span.top-coin { background-position: 0 0;}
+.header span.top-time { background-position: 100% 0;}
+
+/*倒计时*/
+.countdown { z-index: 500; background: rgba(0,0,0,.4);}
+.countdown .count-num { top: 28%;}
+.countdown .count-num span { display: block; margin: auto; width: 2.05rem; height: 2.9rem; background: url(../images/countdown.png) no-repeat; -webkit-background-size:400% 100%; background-size:400% 100%;}
+/*.countdown .cut-bg { left: 0; bottom: 6.75rem; width: 100%; z-index: 50; display: none;}
+.countdown .cut-bg span { display: block; margin: auto; width: 8.25rem; height: 7.75rem; background: rgba(255,255,255,.2);}*/
+
+/*红包整体*/
+.redbox { width: 100%; height: 14.35rem; left: 0; bottom: 0; background-image: url(../images/red-bg-top.png); z-index: 400; text-align: center;}
+.red-bot { width: 100%; height: 100%; z-index: 200;}
+.red-bot:before, .red-bot:after { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-repeat: no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+.red-bot:before { background-image: url(../images/red-bg-bot.png);}
+.red-bot:after { background-image: url(../images/red-bg-hand.png);}
+.red-obj { left: 0; top: 0; width: 100%;}
+.red-obj span { display: block; margin: -.4rem auto 0; width: 8.75rem;}
+.red-num { left: 0; top:0; width: 100%; font-size: 2rem; color: #fff100;}
+.red-num span { display: block; margin-top: -4rem; opacity: 0;}
+.red-btn { left: 0; top:3.1rem; width: 100%; z-index: 220;}
+.red-btn-inner { width: 6.5rem; margin: auto;}
+.red-btn span { display: block; margin: auto; width: 1.25rem;}
+.red-btn p { font-size: .8rem; color: #fff; padding: .1rem 0;}
+
+/*底部红包背景*/
+.footer { left: 0; bottom: 0; width: 100%; height: 10rem;}
+.footer i { position: absolute; width: 6.6rem; height: 4.1rem; background: url(../images/footer-red.png) no-repeat; -webkit-background-size:100% auto; background-size:100% auto; -webkit-transform-origin:center bottom; transform-origin:center bottom; }
+.footer i:nth-child(1) { left: -2.5rem; bottom: .1rem; z-index: 80; -webkit-transform: rotate(7deg); transform: rotate(7deg);}
+.footer i:nth-child(2) { left: .6rem; bottom: 3.8rem; z-index: 60; -webkit-transform: rotate(5deg); transform: rotate(5deg);}
+.footer i:nth-child(3) { width: 9.05rem; height: 5.65rem; bottom: .25rem; left: .5rem; z-index: 100; -webkit-transform: rotate(-5deg); transform: rotate(-5deg);}
+.footer i:nth-child(4) { right: .9rem; bottom: 5.5rem; z-index: 40; -webkit-transform: rotate(20deg); transform: rotate(20deg);}
+.footer i:nth-child(5) { right: -1.3rem; bottom: 2.6rem; z-index: 60; -webkit-transform: rotate(-9deg); transform: rotate(-9deg);}
+.footer i:nth-child(6) { right: .85rem; bottom: 1rem; z-index: 80; -webkit-transform: rotate(7deg); transform: rotate(7deg);}
+.footer i:nth-child(7) { right: -4.5rem; bottom: -.8rem; z-index: 100; -webkit-transform: rotate(7deg); transform: rotate(7deg);}
+
+/*金币掉落*/
+.drop-coin { left: 0; top: -100%; width: 100%; height: 100%; z-index: 70;}
+.drop-coin2 { top: -200%;}
+.drop-coin3 { top: -300%;}
+.drop-coin i { position: absolute; width: 3.65rem; height: 3.6rem; background: url(../images/drop-coin.png) no-repeat; -webkit-background-size:200% 100%; background-size:200% 100%;}
+.drop-coin i.sm { width: 2.7rem; height: 2.65rem;}
+.drop-coin i:nth-child(1) { left: .1rem; bottom: -.5rem; z-index: 300;}
+.drop-coin i:nth-child(2) { left: -2.8rem; bottom: 4.4rem; z-index: 120;}
+.drop-coin i:nth-child(3) { left: 1.3rem; bottom: 5.2rem; z-index: 90; -webkit-transform: rotateZ(-40deg); transform: rotateZ(-40deg);}
+.drop-coin i:nth-child(4) { left: -1.5rem; bottom: 17rem; z-index: 50; -webkit-transform: rotateZ(40deg); transform: rotateZ(40deg);}
+.drop-coin i:nth-child(5) { right: .5rem; bottom: -.4rem; z-index: 120; background-position: 100% 0;}
+.drop-coin i:nth-child(6) { right: -1.3rem; bottom: 2.1rem; z-index: 70; -webkit-transform: rotateZ(-40deg); transform: rotateZ(-40deg);}
+.drop-coin i:nth-child(7) { right: 1.8rem; bottom: 5.5rem; z-index: 50; -webkit-transform: rotateZ(-160deg); transform: rotateZ(-160deg);}
+.drop-coin i:nth-child(8) { right: 2rem; bottom: 10rem; z-index: 30; background-position: 100% 0;}
+.drop-coin i:nth-child(9) { left: 4.2rem; bottom: 3.4rem; z-index: 120;}
+.drop-coin i:nth-child(10) { left: 7rem; bottom: 7.2rem; z-index: 90; -webkit-transform: rotateZ(-40deg); transform: rotateZ(-40deg);}
+
+/*
+*****动画部分*****
+*****引导图标：上下移动显隐藏效果*****
+*/
+.red-btn-inner { -webkit-animation:pointMove 1s linear infinite; animation:pointMove 1s linear infinite;}
+@-webkit-keyframes pointMove {
+  0% { -webkit-transform:translate3d(0,-2px,0);}
+ 50% { -webkit-transform:translate3d(0,8px,0); opacity:0.4;}
+100% { -webkit-transform:translate3d(0,-2px,0);}
+}
+keyframes pointMove  {
+  0% { -webkit-transform:translate3d(0,-2px,0); transform:translate3d(0,-2px,0);}
+ 50% { -webkit-transform:translate3d(0,8px,0); transform:translate3d(0,8px,0);opacity:0.4;}
+100% { -webkit-transform:translate3d(0,-2px,0); transform:translate3d(0,-2px,0);}
+}
+
+/*
+*****第一步：倒计时效果*****
+*/
+body.animate-countdown .countdown span {-webkit-animation: countdown 3s step-end forwards;
+animation: countdown 3s step-end forwards;}
+@-webkit-keyframes countdown{
+    0% {background-position: 0 0;}
+    33.33% {background-position: 33.33% 0;}
+    66.66% {background-position: 66.66% 0;}
+    100% {background-position: 100% 0;}
+}
+@keyframes countdown{
+    0% {background-position: 0 0;}
+    33.33% {background-position: 33.33% 0;}
+    66.66% {background-position: 66.66% 0;}
+    100% {background-position: 100% 0;}
+}
+
+/*
+*****第二步：红包抖动效果*****
+*/
+body.animate-shake .redbox {-webkit-animation: shaking .5s ease-in-out .5s 2 forwards;
+animation: shaking .5s ease-in-out .5s 2 forwards;}
+@-webkit-keyframes shaking{
+    0%{ -webkit-transform:translate3d(0,0,0);}
+    15%{ -webkit-transform:translate3d(-6px,0,0) rotateZ(-4deg);}
+    30%{ -webkit-transform:translate3d(5px,0,0) rotateZ(3deg);}
+    45%{ -webkit-transform:translate3d(-4px,0,0) rotateZ(-2deg);}
+    60%{ -webkit-transform:translate3d(3px,0,0) rotateZ(1deg);}
+    75%{ -webkit-transform:translate3d(-2px,0,0) rotateZ(-1deg);}
+    100%{ -webkit-transform:translate3d(0,0,0);}
+}
+@keyframes shaking{
+    0%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+    15%{ -webkit-transform:translate3d(-6px,0,0) rotateZ(-4deg); transform:translate3d(-6px,0,0) rotateZ(-4deg);}
+    30%{ -webkit-transform:translate3d(5px,0,0) rotateZ(3deg); transform:translate3d(5px,0,0) rotateZ(3deg);}
+    45%{ -webkit-transform:translate3d(-4px,0,0) rotateZ(-2deg); transform:translate3d(-4px,0,0) rotateZ(-2deg);}
+    60%{ -webkit-transform:translate3d(3px,0,0) rotateZ(1deg); transform:translate3d(3px,0,0) rotateZ(1deg);}
+    75%{ -webkit-transform:translate3d(-2px,0,0) rotateZ(-1deg); transform:translate3d(-2px,0,0) rotateZ(-1deg);}
+    100%{ -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+}
+
+/*
+*****第三步：金币掉落效果*****
+*/
+body.animate-drop .drop-coin { -webkit-animation:dropping 3s ease-in-out 1 forwards; animation:dropping 3s ease-in-out 1 forwards;}
+@-webkit-keyframes dropping {
+  0% { -webkit-transform:translate3d(0,0,0);}
+100% { -webkit-transform:translate3d(0,400%,0);}
+}
+keyframes dropping {
+  0% { -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+100% { -webkit-transform:translate3d(0,400%,0); transform:translate3d(0,400%,0);}
+}
+ body.animate-drop .drop-coin i { -webkit-animation:drop-rotate 3s linear 1 forwards; animation:drop-rotate 3s linear 1 forwards;}
+@-webkit-keyframes drop-rotate {
+  0% { -webkit-transform:rotateZ(0);}
+100% { -webkit-transform:rotateZ(720deg);}
+}
+keyframes drop-rotate {
+  0% { -webkit-transform:rotateZ(0); transform:rotateZ(0);}
+100% { -webkit-transform:rotateZ(720deg); transform:rotateZ(720deg);}
+}
+
+/*
+*****第四步：单个红包飞出效果*****
+*/
+body.animate-shoot .red-obj span {-webkit-animation:shooting 2s ease-in-out .5s 1 forwards; animation:shooting 2s ease-in-out .5s 1 forwards;}
+@-webkit-keyframes shooting {
+  0% { -webkit-transform:translate3d(0,0,0);}
+  5% { -webkit-transform:translate3d(0,10px,0);}
+  10% { -webkit-transform:translate3d(0,-10px,0);}
+  15% { -webkit-transform:translate3d(0,6px,0);}
+  20% { -webkit-transform:translate3d(0,-6px,0);}
+  25% { -webkit-transform:translate3d(0,0,0);}
+  35% { -webkit-transform:translate3d(0,0,0); opacity: 1;}
+  60% { opacity: 1;}
+ 100% { -webkit-transform:translate3d(0,-150%,0); opacity: 0;}
+}
+@keyframes shooting {
+  0% { -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+  5% { -webkit-transform:translate3d(0,8px,0); transform:translate3d(0,8px,0);}
+  10% { -webkit-transform:translate3d(0,-8px,0); transform:translate3d(0,-8px,0);}
+  15% { -webkit-transform:translate3d(0,6px,0); transform:translate3d(0,6px,0);}
+  20% { -webkit-transform:translate3d(0,-6px,0); transform:translate3d(0,-6px,0);}
+  25% { -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0);}
+  35% { -webkit-transform:translate3d(0,0,0); transform:translate3d(0,0,0); opacity: 1;}
+  50% { opacity: 1;}
+ 100% { -webkit-transform:translate3d(0,-150%,0); transform:translate3d(0,-150%,0); opacity: 0;}
+}
+
+/*
+*****第五步：红包money数字显示效果*****
+*/
+body.animate-num .red-num span {-webkit-animation: numSmToBig 1s ease-in-out forwards;
+animation: numSmToBig 1s ease-in-out forwards;}
+@-webkit-keyframes numSmToBig{
+  0%{-webkit-transform:scale3d(0.3,0.3,1); opacity: 0;}
+  55%{-webkit-transform:scale3d(1.3,1.3,1);}
+  70%{-webkit-transform:scale3d(0.8,0.8,1); opacity: 1;}
+  85%{-webkit-transform:scale3d(1.3,1.3,1);}
+  100%{-webkit-transform:translate3d(1,1,1); opacity: 1;}
+}
+ @keyframes numSmToBig{
+  0%{-webkit-transform:scale3d(0.3,0.3,1); transform:scale3d(0.3,0.3,1); opacity: 0;}
+  55%{-webkit-transform:scale3d(1.3,1.3,1); transform:scale3d(1.3,1.3,1);}
+  70%{-webkit-transform:scale3d(0.8,0.8,1); transform:scale3d(0.8,0.8,1); opacity: 1;}
+  85%{-webkit-transform:scale3d(1.3,1.3,1); transform:scale3d(1.3,1.3,1);}
+  100%{-webkit-transform:translate3d(1,1,1); transform:translate3d(1,1,1); opacity: 1;}
+}
+

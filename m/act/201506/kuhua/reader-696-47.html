@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>[一条狗] 第45话-可米酷漫画</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="js/config.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+    <article class="share-page share-read">
+        <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+        <h1 class="share-info" style="display:none">
+            [一条狗] 第45话-可米酷漫画
+            <p>[一条狗] 第45话-可米酷漫画</p>
+            <img src="http://cdn.icomico.com/696_47_acover_7ee957e03c961fc8.jpg?imageView2/2/w/480" alt="可米酷漫画,comicool" />
+        </h1>
+
+        <div class="tips hide">
+            <img src="http://cdn.icomicool.cn/m/content/images/tip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+        </div>
+        <header class="sr-head cl">
+            <div class="sr-head-con">
+                <a href="http://m.comicool.com/content/detail.html?comic_id=696&ft=1&ch=kh" class="back-btn">目录</a>
+                <a href="javascript:;" class="share-btn"></a>
+                <span>[一条狗] 第45话</span>
+            </div>
+            <div class="sr-contip sr-bottomtip">
+                <img src="http://cdn.icomicool.cn/m/content/images/toptip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+                <div class="toptip-btn">
+                    <div class="toptip-btn-inner">
+                        <span><a class="openLnk" href="javascript:;">立即打开</a></span>
+                        <span><a href="javascript:;" class="clo">×</a></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section class="sr-con" id="sr-con">
+            
+        </section>
+        <footer class="sr-foot">
+            <div class="sr-foot-inner">
+                <a href="http://m.comicool.com/content/reader.html?comic_id=696&ep_id=46&ch=kh" class="prev-btn"><img src="images/point-prev.png" /></a>
+                <a href="http://m.comicool.com/content/reader.html?comic_id=696&ep_id=48&ch=kh" class="next-btn"><img src="images/point-next.png" /></a>
+            </div>
+            <div class="sr-foot-img">
+                <img src="http://cdn.icomicool.cn/m/act/201506/kuhua/images/footer-img.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+            </div>
+        </footer>
+    </article>
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://cdn.icomicool.cn/m/m-common/js/hammer.min.js"></script>
+<script>
+//JS开始
+$(function(){
+
+    //设置各平台oa
+    var ua=navigator.userAgent.toLowerCase(),
+        isIOS = false,
+        isMobile = ua.indexOf('mobile')>0,
+        isWeixin = (/micromessenger/.test(ua)) ? true : false,
+        isQQ = (/qq\//.test(ua)) ? true : false,
+        isIOS = ua.indexOf('(ip')>0 && isMobile,
+        isWeibo = (/Weibo/i.test(ua)) ? true : false,
+        isAndr = ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
+
+    var imgList = [
+        "http://cdn.icomico.com/696_47_1_wb08dac9e1a70cdee.jpg?imageMogr2/thumbnail/480x",
+        "http://cdn.icomico.com/696_47_2_wb69fd9ebb4ee3ac8.jpg?imageMogr2/thumbnail/480x",
+        "http://cdn.icomico.com/696_47_3_w80cfe76cc3c84805.jpg?imageMogr2/thumbnail/480x"
+    ];
+
+    function tipsCtr(){
+        var _boxHeight = $('.share-page').css( 'minHeight', $(window).height()+'px' );
+        var _headHeight = $('.sr-head').height(),
+            _footerHeight = $('.sr-foot').height(),
+            viewHeight = $(window).height();
+        $('.sr-con').css({'minHeight' : viewHeight+'px'});
+    };
+
+    function cssCtr(){  //点击前的初始化样式，点击后的执行变化
+        setTimeout(function(){
+            tipsCtr();
+            $('a.clo').on('click',function(){
+                //点击关闭按钮执行的一系列效果变化
+                $(this).parents('.sr-bottomtip').hide();
+                $('.sr-foot').css('padding-bottom', 0);
+                tipsCtr();
+            });
+        },200);
+    };
+
+    // 图片递归加载
+    function loadpic(list,callback){
+        if( $.isArray(list) && list.length ){
+            var item = list.shift(),
+                image = new Image();
+                image.alt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+            // loadpic(list);
+            image.src = item;
+            image.onload = function(){
+                 $('.sr-con').append($(this));
+               loadpic(list,callback);
+            };
+        }else{
+            $.isFunction(callback) && callback(list);
+        }
+    }
+    
+    //获取页面URL参数名
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    };
+
+    //打开阅读元素操作调用  
+    $('.openLnk, .sr-bottomtip img, .sr-foot-img img').on('click',function(){
+        if (isTipsShow()) {
+            $(this).parents('.sr-bottomtip').hide();
+        } else {
+            openApp();
+        }
+    });
+
+    //设置页面判断打开客户端
+    function openApp() {
+        // 如果需要测试已安装App的打开，需要使用comicool.cn的固定地址
+        window.location.href = 'http://m.app.comicool.cn/smart_open/main.php'
+        //window.location.href = combinUrl("m.app.", "/smart_open/main.php?ch=kh");
+    }
+    //设置微信等判断出现提示内容
+    function isTipsShow(){
+        if (isIOS && isWeibo) {
+            $('.tips').removeClass('hide');
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    loadpic(imgList);
+    cssCtr();
+
+});
+
+function touchCssHide(){
+    var $top = $('.sr-head'),
+        //$ttip = $('.sr-toptip'),
+        $btip = $('.sr-bottomtip'),     
+        $bot = $('.sr-foot'),
+        th = $top.height(),
+        fh = $bot.height();
+}
+function touchCssShow(){
+    var $top = $('.sr-head'),
+        //$ttip = $('.sr-toptip'),
+        $btip = $('.sr-bottomtip'),     
+        $bot = $('.sr-foot'),
+        th = $top.height(),
+        fh = $bot.height();
+}
+
+//生成deviceID
+function createDeviceID() {
+  var timeStampToHex = 'a1' + new Date().getTime().toString(16).slice(-10);
+
+  function hex4() {
+    return ("0000" + Math.floor(Math.random() * 0x10000).toString(16)).slice(-4);
+  }
+
+  function hex8() {
+    return ("00000000" + Math.floor(Math.random() * 0x100000000).toString(16)).slice(-8);
+  }
+
+  return timeStampToHex + hex8() + hex8() +hex4();
+}
+
+//设置cookies 
+function setCookie(name,value,day){
+    var Days = 7 || day;        //此 cookie 将被保存 7 天
+    var exp = new Date(); 
+    exp.setTime(exp.getTime() + Days*24*60*60*1000); 
+    document.cookie = name + "="+ escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+    return value;
+};
+
+//读取cookies 
+function getCookie(name){ 
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    if(arr=document.cookie.match(reg)){
+        return unescape(arr[2]);
+    }
+    else{
+        return null; 
+    }
+};
+
+window.onload = function(){
+    var deviceID = 'a1';
+    try {
+       //设置全局CONFIG的deviceid
+       deviceID = getCookie('deviceID') || setCookie('deviceID', createDeviceID(), 9999); 
+    } catch(e) {
+        console.log('error');
+    }
+    $.ajax({
+        url: 'http://proxy.icomico.com/eventreport4h5',  //http://121.201.7.97/
+        data: {
+            comic_id: 696,
+            ep_id: 47,
+            device_id: deviceID
+        },
+        type: 'get',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        jsonpCallback: 'jsonp_eventreport'
+    });
+
+    var hammertime = new Hammer(document.getElementById("sr-con"));
+    //为该dom元素指定触屏移动事件
+    hammertime.on('tap press', function (ev) {
+        var headShow = $('.sr-head')[0];
+        if( headShow.style.display=='block' || headShow.clientHeight !== 0 ){
+        $('.sr-head').hide().css({'overflow':'hidden','height':0});
+            touchCssHide();
+        }else{
+            $('.sr-head').show().css({'overflow':'visible','height':'auto'});
+            touchCssShow();
+        }
+    });
+    hammertime.on('pan pinch', function (ev) {
+        $('.sr-head').hide().css({'overflow':'hidden','height':0});
+        touchCssHide();
+    });
+}
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+
+</script>
+</html>

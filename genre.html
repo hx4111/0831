@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>可米酷漫画分类|在线漫画_彩色漫画_搞笑漫画_条漫™</title>
+		<meta name="keywords" content="漫画分类,在线漫画,彩色漫画,搞笑漫画,少女漫画,萌宠漫画,热血漫画,悬疑漫画" />
+		<meta name="description" content="漫画分类|在线漫画:这里有最齐全最热心最二次元的漫画分类，可米酷漫画一直陪伴你~" />
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/common-pc.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+		<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+	</head>
+
+	<body class="body-genre">
+		<div class="top">
+			<!--可米酷漫画头部-->
+		</div>
+		<div class="genre-nav">
+			<div class="genre-nav-inner">
+				<div class="genre-tab">
+				</div>
+				<div class="genre-tab-more">
+					<em class="more-border-left"></em>
+					<span>更多</span>
+					<div class="genre-tab-drop">
+					</div>
+				</div>
+			</div>
+		</div>
+		<article class="mainbox genre-box cl" data-errorimg>
+			<nav class="crumbs">
+				<b>我的位置：</b><a href="index.html" title="可米酷首页">首页</a><em>&gt;</em><span>漫画分类</span>
+			</nav>
+			<section class="genre-sec loader loading">
+				<h2><span class="tab-color1"></span></h2>
+				<ul class="genre-list cl">
+					<!-- <li>
+							<a href="javascript:;">
+								<div class="li-img">
+									<img src="http://cdn.icomico.com/670_ccover_07967112c9c9ba0b.jpg?imageView2/2/w/360" data-src="http://cdn.icomico.com/670_ccover_07967112c9c9ba0b.jpg?imageView2/2/w/360" />
+								</div>
+								<h3 class="li-title">神兽退散</h3>
+								<div class="li-author">五仁月饼</div>
+								<p class="li-desc">为了获得</p>
+							</a>
+						</li> -->
+				</ul>
+				<div class="genre-foot">
+					<a class="comment-more">加载更多</a>
+				</div>
+			</section>
+
+		</article>
+		<div class="footers">
+			<!--底部引入-->
+		</div>
+		<!-- 页尾 end -->
+		<div class="goto-top">
+			<a href="javascript:;" class="link-gotop">
+				<!-- 返回顶部 -->
+			</a>
+		</div>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript">
+			var cateData = [];
+			(function() {
+				$('.genre-nav').getByAjax({
+					api: 'categorylist4h5',
+					data: {
+						"update_time": 0
+					},
+					jsonpCallback: 'jsonp_categorylist',
+					success: function(data) {
+						console.info(data);
+						if (data.category_list && data.category_list.length > 0) {
+							cateData = data.category_list.sort(function(a, b) {
+								return a.category_order - b.category_order
+							});
+							renderGenreTab();
+							var currId = getCateID();
+							pageRender(currId);
+						}
+					}
+				});
+			})()
+
+			function renderGenreTab() {
+				var genreTabHtml = '';
+				var genreTabDropHtml = '';
+				for (var i = 0; i < cateData.length; i++) {
+					var genreTabItem = cateData[i];
+					cateData[i].currClassName = 'tab-color' + (i % 5 + 1);
+					cateData[i].genreMoreHtml = '加载更多';
+					var addHtml = '<a class="tab-color' + (i % 5 + 1) + '" href="javascript:;" title="' + genreTabItem.category_title + '">' + genreTabItem.category_title + '</a>';
+					if (i < 9) {
+						genreTabHtml += addHtml;
+					} else {
+						genreTabDropHtml += addHtml;
+					}
+				}
+				$('.genre-tab').html(genreTabHtml);
+				$('.genre-tab-drop').html(genreTabDropHtml);
+			}
+
+			function getCateID() {
+				var categoryID = getQueryString('category_id');
+				var specID = null;
+				if (categoryID) {
+					$.each(cateData, function(index, item) {
+						if (item.category_id === +categoryID) {
+							specID = index;
+							return false;
+						}
+					});
+				}
+//				console.log("categoryID:"+categoryID+";specID:"+specID);
+				if(specID !=null && specID !=undefined){
+				return specID;
+				}else{
+				return 0;
+				}
+			}
+
+			function pageRender(specID) {
+				console.log(specID)
+				var listpageid = cateData[specID].category_id;
+				var listpagetitle = cateData[specID].category_title;
+				var currClassName = cateData[specID].category_color;
+				genreAjax(listpageid, currClassName, listpagetitle);
+				if (specID) {
+					$('.genre-tab a,.genre-tab-drop a').eq(specID).addClass('bg on');
+				} else {
+					$('.genre-tab a').eq(0).addClass('bg on');
+				}
+				$('.genre-tab-more').hover(function() {
+					$(this).addClass('curr');
+				}, function() {
+					$(this).removeClass('curr');
+				});
+				$('.genre-tab a, .genre-tab-drop a').on('click', function() {
+					var _index = $(this).index();
+					var currClassName = $(this).attr('class');
+					//当前态继续点击不请求
+					if ($(this).hasClass('on')) {
+						return false;
+					}
+					//清除上一个点击的当前态样式
+					if ($(this).parent().hasClass('genre-tab-drop')) {
+						_index += 9;
+						$('.genre-tab a').removeClass('bg on');
+					} else {
+						$('.genre-tab-drop a').removeClass('bg on');
+					}
+					//alert(currClassName);
+					$(this).addClass('bg on').siblings().removeClass('bg on');
+					listpageid = cateData[_index].category_id;
+					listpagetitle = cateData[_index].category_title;
+					$('.genre-list').html('');
+					$('.genre-sec h2 span').html('');
+					$('.comment-more').html(cateData[_index].genreMoreHtml);
+					footerPosAjust();
+					genreAjax(listpageid, currClassName, listpagetitle);
+				});
+				$('.comment-more').on('click', function() {
+					genreAjax(listpageid, currClassName, listpagetitle, true);
+				})
+			}
+
+			function getCateItem(cateid) {
+				for (var i = 0; i < cateData.length; i++) {
+					if (cateData[i].category_id == cateid) {
+						return cateData[i];
+					}
+				}
+			}
+
+			function genreAjax(listpageid, currClassName, listpagetitle, isMore) {
+				var listHtml = '';
+				var cateItem = getCateItem(listpageid);
+				var cacheData = cateItem.cacheData;
+				var beginid = cateItem.beginid ? cateItem.beginid : 0;
+				if (!isMore) {
+					if (cacheData) {
+						dataHandler(cacheData, true);
+						footerPosAjust();
+						return false;
+					}
+				}
+				$('.genre-sec').getByAjax({
+					api: 'allcomic4h5',
+					data: {
+						'comic_id': beginid,
+						'page_size': 48,
+						'page_direction': 2,
+						'list_type': 'category',
+						'order_type': 'rating',
+						'req_id': listpageid,
+						'req_param': '1'
+					},
+					jsonpCallback: 'jsonp_allcomic',
+					success: function(data) {
+						if (data.content_list && data.content_list.length > 0) {
+							dataHandler(data.content_list);
+							if (cacheData) {
+								cateItem.cacheData = cateItem.cacheData.concat(data.content_list);
+							} else {
+								cateItem.cacheData = data.content_list;
+							}
+							cateItem.genreMoreHtml = '加载更多';
+						} else {
+							cateItem.genreMoreHtml = '没有更多了！';
+							$('.comment-more').html(cateItem.genreMoreHtml);
+						}
+					}
+				});
+
+				function dataHandler(data, isCache) {
+					for (var i = 0, len = data.length; i < len; i++) {
+						var listData = data[i];
+						var cover = CONFIG.imgBase + listData.content_poster;
+						var detailUrl = CONFIG.detailBase;
+						var title = listData.content_title;
+						var desc = listData.content_desc_lite2;
+						var author = listData.content_subtitle;
+						var comic_id = listData.content_action;
+						var imgCutSize = '?imageView2/1/w/213/h/142/q/100';
+						if (isCache) {
+							var imgLine = '<img src="' + cover + imgCutSize + '" alt="' + title + '" />';
+						} else {
+							var imgLine = '<img src="' + CONFIG.placeholder + '" data-src="' + cover + imgCutSize + '" alt="' + title + '" />';
+						}
+						listHtml += '<li>' + '<a target="_blank" href="' + detailUrl + 'comic_id=' + comic_id + '" title="' + title + '">' + '<div class="li-img">' + imgLine + '</div>' + '<h3 class="li-title">' + title + '</h3>' + '<div class="li-author">' + author + '</div>' + '<p class="li-desc">' + desc + '</p>' + '</a>' + '</li>';
+					};
+					cateItem.beginid = data[data.length - 1].content_action;
+					$('.genre-list').append(listHtml);
+					$('.genre-sec h2 span').attr('class', currClassName).html(listpagetitle);
+				}
+			}
+		</script>
+	</body>
+
+</html>

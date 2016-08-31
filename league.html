@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>可米酷周赛|作品投稿_看漫画_条漫™</title>
+		<meta name="keywords" content="可米酷周赛,作品投稿,在线漫画,看漫画,二次元,可米酷漫画" />
+		<meta name="description" content="可米酷周赛|作品投稿:周赛来袭，投稿就有奖，画师养成计划正式开始。" />
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/common-pc.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+		<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+	</head>
+
+	<body class="body-finished">
+		<div class="top">
+			<!--可米酷漫画头部-->
+		</div>
+		<article class="mainbox league-box cl">
+			<nav class="crumbs">
+				<b>我的位置：</b><a href="index.html" title="可米酷首页">首页</a><em>&gt;</em><span>周赛</span>
+			</nav>
+			<section class="league-sec">
+				<div class="league-top">
+					<div class="league-banner" id="league-banner">
+						<div class="ctrl">
+							<a href="javascript:;" class="prev"></a>
+							<a href="javascript:;" class="next"></a>
+						</div>
+						<div class="bd">
+							<ul class="league-banner-list">
+								<!-- <li><img src="images/league/banner1.jpg" /></li>
+							<li><img src="images/league/banner1.jpg" /></li> -->
+							</ul>
+						</div>
+					</div>
+					<div class="league-news">
+						<i><img src="images/league/icon-news.png" /></i><em></em>
+					</div>
+				</div>
+
+				<div class="league-con">
+					<h2>实时战况</h2>
+					<!-- <ul class="league-list">
+					<li>
+						<i class="icon-rank1"></i>
+						<div class="li-img">
+							<a href="javascript:;"><img src="images/league/li-img.jpg" /></a>
+						</div>
+						<div class="li-txt">
+							<h3><a href="javascript:;">标题标题标题1</a></h3>
+							<div class="li-author">
+								<i class="li-author-img">
+									<img src="images/league/icon-default.jpg" />
+								</i>
+								<span>五仁月饼</span>
+							</div>
+							<div class="li-extra">
+								<em class="li-btn">邀请好友</em>
+								<span class="li-praise">
+									588人赞过
+								</span>
+							</div>
+						</div>
+					</li>
+				</ul> -->
+				</div>
+
+				<div class="league-bot">
+					<a class="league-join" href="http://www.comicool.cn/act/201507/week-game/past.html" title="周赛往期作品" target="_blank">
+						<img src="images/league/join.jpg" 　alt="周赛往期作品" />
+					</a>
+				
+					<!-- <div class="league-comment read-comment">
+						<div class="comment-head">
+							留言<span>(0)</span>
+						</div>
+						<ul class="comment-list">
+							<li class="cl">
+							<div class="comment-left">
+								<img src="../images/reader/photo.jpg" alt="">
+							</div>
+							<div class="comment-right">
+								<div class="comment-nickname">假如哎呦天翼</div>
+								<p class="comment-text">一看就觉得肯定是小说改编的,看完再介绍还真是一看就觉得肯定是小说改编的,看完再介绍还真是...</p>
+								<div class="comment-bottom">
+									<span class="comment-time">两分钟前</span>
+									<div class="comment-action">
+										<a class="comment-reply">回复</a>
+										<span class="comment-praise">5</span>
+									</div>
+								</div>
+							</div>
+						</li>
+						</ul>
+						<div class="comment-foot">
+							<a class="comment-more">加载更多</a>
+							<p>没有更多了</p>
+						</div>
+					</div> -->
+				</div>
+			</section>
+			<aside class="side-right">
+				<!-- <div class="ad-img ad-img1">
+				<img src="http://cdn.icomicool.cn/images/ad/2.jpg" />
+			</div>
+			<div class="ad-img ad-img2">
+				<img src="http://cdn.icomicool.cn/images/ad/3.jpg" />
+			</div> -->
+				<section class="rank-box cl">
+					<h2>官网作品排行榜</h2>
+					<div id="rank-drop-box" class="drop-box">
+						<div class="drop-inner">
+							<div class="drop-t">
+								<span>全部</span>
+								<i></i>
+							</div>
+							<div class="drop-b">
+								<!-- <p><span data-ajax='http://www.baidu.com'>全部111</span></p>
+							<p><span data-ajax=''>全部222</span></p> -->
+							</div>
+						</div>
+					</div>
+					<div class="rank-con scroll-container loader loading">
+						<ul class="rank-list scroll-content">
+							<!--<li>
+							<i class="good">1</i>
+							<div class="li-img">
+								<a href="javascript:;"><img src="http://cdn.icomicool.cn/images/update/1.jpg" /></a>
+							</div>
+							<div class="rank-txt">
+								<h3><a href="javascript:;">神兽退散神兽退散神兽退散</a></h3>
+								<p class="li-author">五仁月饼</p>
+							</div>
+						</li> -->
+						</ul>
+					</div>
+				</section>
+				<!-- <div class="ad-img ad-img3">
+				<img src="http://cdn.icomicool.cn/images/ad/4.jpg" />
+			</div>
+			<div class="ad-img ad-img4">
+				<img src="http://cdn.icomicool.cn/images/ad/5.jpg" />
+			</div>
+			<div class="ad-img ad-img5">
+				<img src="http://cdn.icomicool.cn/images/ad/6.jpg" />
+			</div> -->
+			</aside>
+
+		</article>
+
+		<div class="footers">
+			<!--底部引入-->
+		</div>
+		<div class="league-share">
+			<div class="share-table">
+				<div class="share-table-cell">
+					<div class="share-inner">
+						<a href="javascript:;" class="share-clo">×</a>
+						<div class="bdsharebuttonbox bdshare-button-style0-32" data-tag="share_1" data-bd-bind="1437213563309">
+							<a class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+							<a class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+							<a class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+							<a class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+							<a class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+							<a class="bds_more" data-cmd="more">更多</a>
+						</div>
+						<p>分享出去拉拉票才会赢哦！</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.2.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript">
+			var comic_id = 0;
+			var commentPanel = null;
+			var getLeague_id = getQueryString('league_id');
+			//完结作品
+			$.ajax({
+				url: 'http://proxy.icomico.com/league4web', //测试：http://121.201.7.97/ 正式：http://proxy.icomico.com/
+				type: 'GET',
+				data: {
+					'device_id': CONFIG.deviceID,
+					'vote_support': 1
+				},
+				timeout: 8000,
+				dataType: 'jsonp',
+				jsonpCallback: 'jsonp_league',
+				beforeSend: function() {
+					$('.league-sec').addClass('loader').addClass('loading');
+				},
+				success: function(data) {
+					console.log(data);
+					if (data.msg == 'success') {
+						var listInfo = data.ep_list; //单话信息
+						var listArr = data.ep_ext_list; //点赞数
+						var dataListHtml = '';
+						var bannerListHtml = '';
+						var bannerArr = data.pc_banner_list;
+						var imgAlt = '漫画周赛,投稿作品';
+						comic_id = data.league_id;
+						commentPanel = new CommentPanel('.comment-list');
+						//小处理，分享出去的时候判断league_id，跳转结果页;
+						if (getLeague_id && getLeague_id != data.league_id) {
+							var jumpUrl = 'http://www.comicool.cn/act/201507/week-game/';
+							if (getLeague_id > 1000000 && getLeague_id < data.league_id) {
+								jumpUrl += 'awards-pub.html?league_order=' + (getLeague_id - 1000000);
+							} else {
+								jumpUrl += 'notice.html';
+							}
+							window.location.href = jumpUrl;
+							return false;
+						}
+						$('.league-top, .league-con, .league-bot').show();
+						$('.league-sec').removeClass('loader');
+						//头部数据
+						(function() {
+							try {
+								for (var k = 0, len = bannerArr.length; k < len; k++) {
+									var banItem = bannerArr[k];
+									var banCover = banItem.banner_cover;
+									var banLnk = banItem.banner_action;
+									bannerListHtml += '<li>' + '<a href="' + banLnk + '" target="_blank">' + '<img src="' + banCover + '?imageView2/1/w/676/h/263/q/100" alt="' + imgAlt + '" />' + '</a>' + '</li>';
+								}
+							} catch (e) {
+								//TODO handle the exception
+							}
+							$('.league-banner-list').html(bannerListHtml);
+							$(".league-banner").slide({
+								mainCell: ".bd ul",
+								autoPlay: true,
+								autoPage: "<li></li>",
+								delayTime: 500,
+								interTime: 4000,
+								trigger: 'click',
+								effect: 'leftLoop'
+							});
+							var localDateVal = new Date().valueOf();
+							var getDateVal = new Date(data.league_info.end_time).valueOf() * 1000;
+							//var getDateVal = new Date(Date.parse('2015-07-14 10:58:55')).valueOf();
+							var diffVal = getDateVal - localDateVal;
+							var timeTxt = '';
+							if (diffVal <= 0) {
+								$('.league-news em').text('周赛活动已经开始');
+							} else {
+								var time = parseInt(diffVal / 1000);
+								console.log(localDateVal + ',' + getDateVal + ',' + time);
+
+								function formatDate() {
+									var days = Math.floor(time / 1440 / 60);
+									var hours = Math.floor((time - days * 1440 * 60) / 3600);
+									var minutes = Math.floor((time - days * 1440 * 60 - hours * 3600) / 60);
+									var seconds = (time - days * 1440 * 60 - hours * 3600 - minutes * 60);
+									if (days > 0) {
+										timeTxt = days + "天" + hours + "时" + minutes + "分" + seconds + "秒";
+									} else if (days <= 0 && hours > 0) {
+										timeTxt = hours + "时" + minutes + "分" + seconds + "秒";
+									} else if (days <= 0 && hours <= 0 && minutes > 0) {
+										timeTxt = minutes + "分" + seconds + "秒";
+									} else if (days <= 0 && hours <= 0 && minutes <= 0 && seconds > 0) {
+										timeTxt = seconds + "秒";
+									}
+									if (time <= 0) {
+										$('.league-news em').text('周赛活动已经开始');
+										return false;
+									}
+									$('.league-news em').text('距离颁奖时间还有' + timeTxt);
+									setTimeout(function() {
+										time = time - 1;
+										formatDate();
+									}, 1000);
+								}
+								formatDate();
+							}
+						})();
+
+						function getItemInfo(comic_id) {
+							for (var j = 0, len = listInfo.length; j < len; j++) {
+								var obj = listInfo[j];
+								if (obj.comic_id == comic_id) {
+									return obj;
+								}
+							}
+						}
+						
+						try{
+							listArr = listArr.sort(function(item1, item2) {
+							return item2.vote_count - item1.vote_count;
+						});
+						}catch(e){
+							//TODO handle the exception
+						}
+						try{
+							for (var i = 0, len = listArr.length; i < len; i++) {
+							var imgCutSize = '?imageView2/1/w/213/h/142/q/100';
+							var item = listArr[i];
+							var itemInfo = getItemInfo(item.comic_id);
+							var vote_count = item.vote_count;
+							var imgUrl = 'http://cdn.icomico.com/' + itemInfo.ep_poster + imgCutSize;
+							var title = itemInfo.ep_title;
+							var author = itemInfo.author_name;
+							var authorIcon = itemInfo.author_icon;
+							var desc = itemInfo.desc;
+							var hrefUrl = CONFIG.readerBase + 'comic_id=' + itemInfo.comic_id + '&ep_id=' + itemInfo.ep_id + '&mode=league';
+							//console.log(praiseNum, itemInfo);
+							if (i < 3) {
+								dataListHtml += '<li>' + '<i class="icon-rank' + (i + 1) + '"></i>' + '<div class="li-img">' + '<a href="' + hrefUrl + '" target="_blank" title="' + title + '"><img src="' + imgUrl + '" alt="' + imgAlt + '" /></a>' + '</div>' + '<div class="li-txt">' + '<h3><a href="' + hrefUrl + '" target="_blank">' + title + '</a></h3>' + '<div class="li-author">' + '<i class="li-author-img">' + '<img src="' + authorIcon + '" />' + '</i>' + '<span>' + author + '</span>' + '</div>' + '<div class="li-extra">' + '<em class="li-btn">邀请好友</em>' + '<span class="li-praise">' + '已获得' + vote_count + '票' + '</span>' + '</div>' + '</div>' + '</li>'
+							} else {
+								dataListHtml += '<li>' + '<i>' + (i + 1) + '</i>' + '<div class="li-img">' + '<a href="' + hrefUrl + '" target="_blank" title="' + title + '"><img src="' + imgUrl + '" alt="' + imgAlt + '" /></a>' + '</div>' + '<div class="li-txt">' + '<h3><a href="' + hrefUrl + '" target="_blank">' + title + '</a></h3>' + '<div class="li-author">' + '<i class="li-author-img">' + '<img src="' + authorIcon + '" />' + '</i>' + '<span>' + author + '</span>' + '</div>' + '<div class="li-extra">' + '<em class="li-btn">邀请好友</em>' + '<span class="li-praise">' + '已获得' + vote_count + '票' + '</span>' + '</div>' + '</div>' + '</li>'
+							}
+						}
+						}catch(e){
+							//TODO handle the exception
+						}
+						$('.league-con').append('<ul class="league-list">' + dataListHtml + '</ul>');
+						$('.li-author-img img').each(function(i) {
+							this.onerror = function() {
+								$(this).attr('src', 'images/league/icon-default.jpg');
+							}
+						});
+					} // data.msg == 'success'
+				},
+				complete: function() {
+					$('.league-sec').removeClass('loading');
+				},
+				error: function() {
+					$('.league-top, .league-con, .league-bot').hide();
+					$('.league-sec').addClass('loader').addClass('loading-error');
+				}
+			});
+			$.fn.praise = function(count) {
+					var user = Comi.Login.check();
+					var isPraised = 0;
+					var $btn = $(this);
+
+					function init() {
+						$btn.html(count);
+						if (user) {
+							var ccid = user.userid;
+							//获取用户点赞过的单话数据
+							$().getByAjax({
+								api: 'syncextinfo4web',
+								data: {
+									'operate': 2,
+									'ccid': ccid
+								},
+								jsonpCallback: 'jsonp_syncextinfo',
+								success: function(data) {
+									var praisedArr = data.ep_ext_list;
+									if (praisedArr && praisedArr.length) {
+										$.each(praisedArr, function(i, t) {
+											if (t.comic_id == comic_id) {
+												isPraised = 1;
+												return false;
+											}
+										});
+									}
+									setPraiseStatus(isPraised, ccid);
+								}
+							});
+						} else {
+							isPraised = +(getCookie(comic_id + 'praised') || 0);
+							setPraiseStatus(isPraised, null);
+						}
+					}
+
+					function setPraiseStatus(isPraised, ccid) {
+						var status = isPraised;
+						if (status == 1) {
+							$btn.addClass('btn-hearted');
+						}
+						$btn.data('praised', status).click(function(e) {
+							var btnData = +$btn.data('praised');
+							var ajaxData = {
+								'operate': 1,
+								'action': btnData + 1,
+								'comic_id': comic_id
+							}
+							if (ccid != null) {
+								ajaxData.ccid = ccid;
+							}
+							e.stopPropagation();
+							$().getByAjax({
+								api: 'syncextinfo4web',
+								data: ajaxData,
+								jsonpCallback: 'jsonp_syncextinfo',
+								success: function(data) {
+									var isPraised = +!btnData;
+									if (isPraised == '1') {
+										$btn.html(function(i, v) {
+											return +(v) + 1;
+										});
+										!ccid && setCookie(comic_id + 'praised', isPraised);
+									} else {
+										$btn.html(function(i, v) {
+											return +(v) - 1;
+										});
+										!ccid && delCookie(comic_id + 'praised');
+									}
+									$btn.toggleClass('btn-hearted').data('praised', isPraised);
+								}
+							});
+						});
+					}
+					init();
+				}
+				//评论输入框
+			function CommentEditor(config) {
+				var that = this;
+				var opts = $.extend({
+					limitLength: 100,
+					btnText: '发布',
+					cancelable: false,
+					placeholder: '我来说两句',
+					refid: 0,
+					insertAfter: '.comment-head',
+					commentList: []
+				}, config);
+				var isSendLock = false;
+				var $panel, $counter, $input, $launch, $close;
+				if (opts.refid) {
+					opts.placeholder = '回复&nbsp;' + opts.placeholder + ':';
+				}
+
+				function render() {
+					$panel = $('' + '<div class="comment-write-panel">' + '<textarea class="comment-input">' + opts.placeholder + '</textarea>' + '<div class="comment-tool cl">' + '<div class="comment-tool-l">' + '<span class="comment-counter">还可以输入' + opts.limitLength + '字</span>' + '</div>' + '<div class="comment-tool-r">' + '<a class="comment-send">' + opts.btnText + '</a>' + '</div>' + '</div>' + '</div>');
+					$(opts.insertAfter).after($panel);
+					// $panel.slideDown();
+					$counter = $panel.find('.comment-counter');
+					$input = $panel.find('textarea').css('color', '#aeaeae');
+					$launch = $panel.find('.comment-send');
+					if (opts.cancelable) {
+						$close = $('<a class="comment-cancel">取消</a>');
+						$launch.after($close);
+					}
+					bindEvents();
+				}
+
+				function bindEvents() {
+					var inputDefValue = $input[0].defaultValue;
+					var limit = opts.limitLength;
+					//输入框事件
+					$input.on('focus blur keydown input propertychange', function(e) {
+						var val = $(this).val();
+						if (e.type == 'focus' && val == inputDefValue) {
+							$(this).val('');
+						} else if (e.type == 'blur' && val == '') {
+							$(this).val(inputDefValue).css('color', '#aeaeae');
+						} else if (e.type == 'keydown') {
+							var kc = e.keyCode;
+							if (kc == 13) {
+								$input.blur();
+								$launch.trigger('click');
+							} else if (kc == 27) {
+								$input.blur();
+								$close && $close.trigger('click');
+							}
+						} else {
+							var len = val.length;
+							$(this).css('color', '#333');
+							if (len <= limit) {
+								$counter.html('还可以输入' + (limit - len) + '字').css('color', '');
+							} else {
+								$(this).val(val.slice(0, limit));
+								$counter.html('已经放不下啦，只能说' + limit + '字！').css('color', '#f00');
+							}
+						}
+					});
+					//发布评论
+					$launch.click(function() {
+						var user = Comi.Login.check();
+						var comment_text = $.trim($input.val());
+						var btnText;
+						if (comment_text.length == 0 || comment_text == inputDefValue) {
+							$counter.html('你的评论框空空如也~').css('color', '#f00');
+						} else {
+							if (user == null) {
+								ComiLoginWindow.resetAnimation();
+								return false;
+							} else if (isSendLock) {
+								return false;
+							}
+							$().getByAjax({
+								api: 'commentcommit4web',
+								jsonpCallback: 'jsonp_commentcommit',
+								data: {
+									'ccid': user.ccid,
+									'cctoken': user.cctoken,
+									'usertype': user.usertype,
+									'nickname': user.nickname,
+									'icon': user.icon,
+									'comic_id': comic_id,
+									'comment_ref_id': opts.refid,
+									'comment_txt': comment_text,
+									'operate_type': 1
+								},
+								beforeSend: function() {
+									$launch.addClass('btn-disabled').html(function(i, v) {
+										btnText = v;
+										return v + '中..';
+									});
+									isSendLock = true;
+									return true;
+								},
+								success: function(data) {
+									var comment_id = data.comment_list[0].comment_id;
+									renderComment(2, {
+										comment: {
+											comment_id: comment_id,
+											comment_ref_id: opts.refid,
+											nickname: user.nickname,
+											icon: user.icon,
+											comment_txt: $input.val(),
+											comment_time: parseInt(new Date().getTime() / 1000),
+											comment_praise_count: 0
+										},
+										content: CommentEditor.comment_list
+									}, opts.launchTarget);
+									$input.val('').blur();
+									$counter.html('还可以输入' + opts.limitLength + '字');
+									$close && $close.trigger('click');
+									commentPanel.updateCount();
+								},
+								error: function() {
+									$counter.html('好像有点不对劲，再试试吧').css('color', '#f00');
+								},
+								complete: function() {
+									isSendLock = false;
+									$launch.html(btnText).removeClass('btn-disabled');
+								}
+							})
+						}
+					});
+					//隐藏评论面板
+					$close && $close.click(function() {
+						$panel.hide();
+					});
+				}
+				render();
+			}
+			//评论面板
+			function CommentPanel(container) {
+				var that = this;
+				var user = Comi.Login.check();
+				var $listContainer = $(container);
+				var $footer = $('.comment-foot');
+				var tip = {
+					floor: ['快来抢个沙发吧', '快来抢个板凳吧', '快来抢个地板吧'],
+					end: '没有更多了',
+					more: '加载更多',
+					loading: '加载中...',
+					error: '加载失败'
+				}
+				that.pullComment = function(isFirst, beginID, pageSize) {
+					var ajaxData = {
+						comic_id: comic_id,
+						comment_id: beginID || 0,
+						page_size: pageSize || 5,
+						page_direction: 2
+					}
+					if (user != null) {
+						ajaxData.ccid = user.ccid;
+					}
+					$listContainer.getByAjax({
+						api: 'getcomments4web',
+						data: ajaxData,
+						beforeSend: function() {
+							$footer.html('<p>' + tip.loading + '</p>');
+						},
+						jsonpCallback: 'jsonp_getcomments',
+						success: function(data) {
+							console.info(data);
+							var orderArr = data.comment_page_list;
+							var contentArr = data.comment_list;
+							var total = data.comment_count;
+							var lastBeginID;
+							if (orderArr == null) {
+								orderArr = contentArr = [];
+							}
+							lastBeginID = contentArr.length ? contentArr[0].comment_id : 0;
+							// CommentEditor.comment_id = orderArr.length ? orderArr[0].comment_id : 0;
+							CommentEditor.comment_list = contentArr;
+							renderComment(1, {
+								order: orderArr,
+								content: contentArr
+							}, $listContainer);
+							if (isFirst) {
+								that.updateCount(total);
+								if (total <= 3) {
+									$footer.html('<p>' + tip.floor[total] + '<p>');
+								} else if (total <= pageSize) {
+									$footer.html('<p>' + tip.end + '<p>');
+								} else {
+									$footer.html('<a class="comment-more" data-begin="' + lastBeginID + '">' + tip.more + '</a>');
+								}
+							} else {
+								if (orderArr.length == pageSize) {
+									$footer.html('<a class="comment-more" data-begin="' + lastBeginID + '">' + tip.more + '</a>');
+								} else {
+									$footer.html('<p>' + tip.end + '<p>');
+								}
+							}
+						},
+						error: function() {
+							$footer.html('<p>' + tip.error + '</p>');
+						}
+					});
+				}
+				that.updateCount = function(number) {
+					$('.comment-head span').html(function(i, v) {
+						if (typeof number != 'undefined') {
+							return '(' + number + ')';
+						} else {
+							var count = parseInt(v.substr(1));
+							return '(' + (++count) + ')';
+						}
+					});
+				}
+
+				function bindEvents() {
+					var user = Comi.Login.check();
+					$(document).on('click', '.comment-reply', function() {
+						var $li = $(this).parents('li');
+						var inputPlaceholder = $li.find('.comment-nickname').html();
+						var refid = $li.data('cid');
+						if ($li.data('init')) {
+							$li.find('.comment-write-panel').toggle();
+						} else {
+							var replyEditor = new CommentEditor({
+								'btnText': '提交',
+								'cancelable': true,
+								'insertAfter': $li.find('.comment-bottom'),
+								'placeholder': inputPlaceholder,
+								'refid': refid,
+								'launchTarget': $listContainer
+							});
+							$li.data('init', 1);
+						}
+						$li.find('textarea').focus();
+						$li.siblings().find('.comment-write-panel').hide();
+					});
+					$(document).on('click', '.comment-praise', function() {
+						var $btn = $(this);
+						var $li = $(this).parents('li');
+						var comment_id = $li.data('cid');
+						var isPraised = Number($btn.data('praised')) == 1 ? true : false;
+						var ajaxData = {
+							'comic_id': comic_id,
+							'comment_id': comment_id,
+							'comment_praise': isPraised ? 2 : 1,
+						};
+						if (user != null) {
+							var ccid = user.ccid;
+							ajaxData.ccid = ccid;
+						}
+						$().getByAjax({
+							api: 'commentpraise4web',
+							jsonpCallback: 'jsonp_commentpraise',
+							data: ajaxData,
+							success: function(data) {
+								if (!isPraised) {
+									$btn.html(function(i, v) {
+										return +(v) + 1;
+									}).data('praised', 1);
+									!ccid && setCookie(comic_id + 'praised', isPraised);
+								} else {
+									$btn.html(function(i, v) {
+										return +(v) - 1;
+									}).data('praised', 2);
+									!ccid && delCookie(comic_id + 'praised');
+								}
+								$btn.toggleClass('comment-praised');
+							}
+						});
+					})
+					$(document).on('click', '.comment-more', function() {
+						var beginID = $(this).data('begin');
+						that.pullComment(false, beginID, 20);
+					})
+				}
+
+				function init() {
+					var mainEditor = new CommentEditor({
+						'launchTarget': $listContainer
+					});
+					that.pullComment(true, 0, 5);
+					bindEvents();
+				}
+				init();
+			}
+			//评论
+			function renderComment(renderType, renderData, renderTarget) {
+				var content = renderData.content;
+				if (renderType == 1) { //拉取评论
+					var order = renderData.order;
+					for (var i = 0, len = order.length; i < len; i++) {
+						var orderInfo = order[i];
+						for (var j = 0, len2 = content.length; j < len2; j++) {
+							if (orderInfo.comment_id == content[j].comment_id) {
+								generator(content[j], 'bottom');
+								break;
+							}
+						}
+					}
+				} else { //发布评论
+					generator(renderData.comment, 'top');
+					renderData.content.push(renderData.comment);
+				}
+
+				function convertTime(timestamp) {
+					var D = new Date(timestamp * 1000);
+					var nowTimestamp = parseInt(new Date().getTime() / 1000);
+					var secondsAgo = nowTimestamp - timestamp;
+					var minutesAgo = parseInt(secondsAgo / 60);
+					var hoursAgo = parseInt(minutesAgo / 60);
+					var daysAgo = parseInt(hoursAgo / 24);
+					var monthsAgo = parseInt(daysAgo / 30);
+					console.log(minutesAgo, hoursAgo, daysAgo);
+					if (secondsAgo >= 0 && monthsAgo < 1) {
+						if (daysAgo) {
+							return daysAgo + '天前';
+						} else if (hoursAgo) {
+							return hoursAgo + '小时前';
+						} else if (minutesAgo) {
+							return minutesAgo + '分钟前';
+						} else {
+							return '刚刚';
+						}
+					} else {
+						var year = D.getFullYear();
+						var month = D.getMonth() + 1;
+						var date = D.getDate();
+						var hour = D.getHours();
+						var minute = D.getMinutes();
+						month = month > 9 ? month : '0' + month;
+						date = date > 9 ? date : '0' + date;
+						hour = hour > 9 ? hour : '0' + hour;
+						minute = minute > 9 ? minute : '0' + minute;
+						return year + '-' + month + '-' + date + '&nbsp' + hour + ':' + minute;
+					}
+				}
+
+				function generator(obj, direction) {
+					var isPraised = Number(obj.comment_praise) == 1 ? true : false;
+					var $li = $('' + '<li class="cl" data-cid="' + obj.comment_id + '">' + '<div class="comment-left">' + '<img data-src="' + obj.icon + '" alt="">' + '</div>' + '<div class="comment-right">' + '<div class="comment-nickname">' + obj.nickname + '</div>' + '<p class="comment-text">' + obj.comment_txt + '</p>' + '<div class="comment-bottom">' + '<span class="comment-time">' + convertTime(obj.comment_time) + '</span>' + '<div class="comment-action">' + '<a class="comment-reply">回复</a>' + '<span class="comment-praise" data-praised=' + (isPraised ? 1 : 2) + '>' + obj.comment_praise_count + '</span>' + '</div>' + '</div>' + '</div>' + '</li>');
+					var $hand = $li.find('.comment-praise');
+					if (isPraised) {
+						$hand.addClass('comment-praised');
+					}
+					if (direction == 'top') {
+						$(renderTarget).prepend($li);
+						$li.imgLoader();
+					} else {
+						$(renderTarget).append($li);
+					}
+					//构建楼中楼
+					buildFloor(obj, $li.find('.comment-nickname'));
+				}
+
+				function buildFloor(obj, insertNode, isNested) {
+					var ref_id = +obj.comment_ref_id;
+					if (ref_id) {
+						for (var i = 0, len = content.length; i < len; i++) {
+							var item = content[i];
+							if (ref_id == item.comment_id) {
+								var $floor = $('' + '<div class="floor" data-cid="' + item.comment_id + '">' + '<div class="floor-head cl">' + '<span class="floor-nickname">' + item.nickname + '</span>' + '</div>' + '<p class="floor-text">' + item.comment_txt + '</p>' + '</div>');
+								if (isNested) {
+									$(insertNode).prepend($floor);
+								} else {
+									$(insertNode).after($floor);
+								}
+								buildFloor(item, $floor, true);
+								break;
+							}
+						}
+					} else {
+						var floorNum = 1;
+						var $floor = $(insertNode);
+						while ($floor.hasClass('floor')) {
+							$floor.children().filter('.floor-head').append('<span class="floor-num">' + floorNum + '</span>');
+							floorNum++;
+							$floor = $floor.parent();
+						}
+					}
+				}
+			}
+			window._bd_share_config = {
+				/*common: {
+				    bdText : shareTextInfo.title, 
+				    bdDesc : shareTextInfo.describe, 
+				    bdUrl : shareTextInfo.pageUrl,   
+				    bdPic : shareTextInfo.imageUrl,
+				    onBeforeClick : function(cmd,config){
+				    	console.log(cmd, config);
+				    	config.bdText = ;
+				    }
+				},*/
+				share: [{
+					"bdSize": 32,
+					onBeforeClick: function(cmd, config) {
+						console.log(cmd, config);
+					}
+				}]
+			};
+			//console.log(window._bd_share_config.share[0]);
+			$(document).on('click', '.league-list li .li-btn', function() {
+				var changeConfig = window._bd_share_config.share[0];
+				var shareTit = '可米酷漫画周赛中的《' + $(this).parents('li').find('h3 > a').text() + '》棒棒哒，来点赞捧场呀！';
+				var shareDesc = '分享出去拉拉票才会赢哦！';
+				var shareImgUrl = $(this).parents('li').find('.li-img > a > img').attr('src');
+				var shareUrl = $(this).parents('li').find('.li-img > a').attr('href');
+				//alert(shareTit + ',' + shareImgUrl + ',' + shareUrl);
+				changeConfig.bdText = shareTit;
+				changeConfig.bdDesc = shareDesc;
+				changeConfig.bdUrl = shareUrl;
+				changeConfig.bdPic = shareImgUrl;
+				$('.league-share, .dialoge-bg').show();
+			});
+			$(document).on('click', '.league-share .share-clo', function() {
+				$('.league-share, .dialoge-bg').hide();
+			});
+			//以下为js加载部分
+			with(document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+		</script>
+	</body>
+
+</html>

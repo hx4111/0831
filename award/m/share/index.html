@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="HandheldFriendly" content="true" />
+<title>1,000,000现金诚邀最牛画师</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/award/m/share/file/style.css" />
+<script type="text/javascript">
+	try {
+	    if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+	        //此处不需写跳转地址，默认是手机页面
+	    } else {
+	        window.location.href = 'http://www.comicool.cn/act/millions-awards/index.html';
+	    }
+	} catch (e) {}
+
+	//百度统计代码安装
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+<style type="text/css">
+.tips { position: absolute; left: 0; height: 100%; width: 100%; z-index: 999; background: #333; display: none;}
+.inner { display: table; width: 100%; height: 100%;}
+.inner div { display: table-cell; width: 100%; height: 100%; text-align: center; font-size: 20px; color: #fff; vertical-align: middle; line-height: 1.5;}
+.inner span { display: inline-block; width: 6%; margin-right: 5px;}
+.inner span img { width: 100%;}
+#audio { position: absolute; z-index: 200; top: -9999px; left: -9999px;}
+#musicPlay { position: fixed; top: 10px; right: 10px; width: 30px; height: 28px; z-index: 500; background-image: url('http://cdn.icomicool.cn/award/m/share/file/sound.png'); background-position: -1px -5px; background-repeat: no-repeat; background-size: 111%;}
+#musicPlay.curr { background-position: -1px -33px;}
+
+
+.popbg { display: none; width: 100%; height: 100%; position: absolute; left: 0; top:0; background: rgba(0,0,0,.8); z-index: 600;}
+.pop { display: none; width: 100%; position: absolute; left: 0; top:0; background: rgba(0,0,0,.8); z-index: 701;}
+.pop a.pop-clo { display: block; position: absolute; right: 0; top: 0; z-index: 701; width: 13.28125%;}
+.pop a.pop-lnk { width: 55.9375%; height: 14.67181467%; display: block; position: absolute; left:7.96875%; bottom: 7.72200772%;} 
+.pop img { width: 100%;}
+</style>
+</head>
+<body>
+<img id="wx-sm-img" src="http://cdn.icomicool.cn/award/m/share/file/weibg.jpg" style="position:absolute; z-index:1; left:-9999px; top:-9999px; display:block;" />
+<!-- ！！！坑爹的微信JS-SDK接口，网上各种技术文章暂时无法用，这里用另外的解决方案，将图片显示第一张放置顶层，经测试，这里不能隐藏掉，只好通过定位移掉，尺寸过于小也不行 -->
+<audio autoplay preload="auto" controls="controls" loop="loop" id="audio">添加一个ID
+  <source src="http://cdn.icomicool.cn/award/m/share/file/music.mp3" type="audio/mpeg" />
+  <source src="http://cdn.icomicool.cn/award/m/share/file/music.ogg" type="audio/ogg"/>
+  您的浏览器不支持音频播放。
+</audio>
+<div id="musicPlay"></div>
+<div class="tips">
+	<div class="inner">
+		<div><span><img src="http://cdn.icomicool.cn/award/m/share/file/alarm.png" /></span>请在竖屏下浏览</div>
+	</div>
+</div>
+<div class="popbg"></div>
+<div class="pop">
+	<a class="pop-clo" href="javascript:;"><img src="http://cdn.icomicool.cn/award/m/share/file/clo.png" /></a>
+	<a class="pop-lnk" href="mailto:contest@comicool.cn"></a>
+	<img src="http://cdn.icomicool.cn/award/m/share/file/pop.png" />
+</div>
+<div id="iSlider">
+	
+</div>
+<script type="text/javascript" src="http://cdn.icomicool.cn/award/m/share/file/islider.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/award/m/share/file/zepto.min.js"></script>
+<script type="text/javascript">
+	var list = [{
+			'content' : '<div class="content page1"><div>'
+		},
+		{
+			'content' : '<div class="content page2"><div>'
+		},
+		{
+			'content' : '<div class="content page3"><div>'
+		},
+		{
+			'content' : '<div class="content page4"><div>'
+		},
+		{
+			'content' : '<div class="content page5"><div>'
+		},
+		{
+			'content' : '<div class="content page6"><div>'
+		}];
+		
+	var islider;
+	var init = function(){
+		$("#iSlider").html('');
+		islider = new iSlider({
+		    type: 'dom',
+		    dom: document.getElementById("iSlider"),
+		    data: list,
+		    duration: 1000,
+		    isVertical: true,
+		    animateType: '3d',
+		    onslide : function(idx){
+		    	// console.log(idx);
+		    },
+		    onslidechange : function(idx){
+				switch (idx)
+				{
+					case 0:
+					  pageOneEffect();
+					  break;
+					case 1:
+					 pageTwoEffect();
+					  break;
+					case 2:
+					  pageThreeEffect();
+					  break;
+					case 3:
+					  pageFourEffect();
+					  break;
+					case 4:
+					  pageFiveEffect();
+					  break;
+					case 5:
+					  pageSixEffect();
+					  break;
+				}
+		    }// onslidechange回调函数结束
+		});
+		pageOneEffect();
+	};
+	//init();
+
+	//第一页动画效果
+	function pageOneEffect(){
+		var order1 = '<div class="order1 guy1"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-guy1.png" /></div>',
+			order2 = '<div class="order2 say1"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-say1.png" /></div>',
+			order3 = '<div class="order3 guy2"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-guy2.png" /></div>',
+			order4 = '<div class="order4 say2"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-say2.png" /></div>',
+			order5 = '<div class="order5 star"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-star.png" /></div>',
+			order6 = '<div class="order6 tit"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-tit.png" /></div>',
+			order7 = '<div class="order7 planet"><img src="http://cdn.icomicool.cn/award/m/share/file/b1-planet.png" /></div>',
+			movelogo = '<div class="pointMove"><img src="http://cdn.icomicool.cn/award/m/share/file/point.png"></div>';
+		$('.page1').html('').append( order1 + order2 + order3 + order4 + order5 + order6 + order7 + movelogo );
+	}
+
+	//第二页动画效果
+	function pageTwoEffect(){
+		var order1 = '<div class="order1 logo"><div class="inner"><img src="http://cdn.icomicool.cn/award/m/share/file/b2-logo.png" /></div></div>',
+			order2 = '<div class="order2 crumbs"><img src="http://cdn.icomicool.cn/award/m/share/file/b2-crumbs.png" /></div>',
+			order3 = '<div class="order3 line-left"></div>',
+			order4 = '<div class="order4 line-right"></div>',
+			order5 = '<div class="order5 tit"><img src="http://cdn.icomicool.cn/award/m/share/file/b2-tit.png" /></div>',
+			order6 = '<div class="order6 shan"><img src="http://cdn.icomicool.cn/award/m/share/file/b2-shan.png" /></div>',
+			movelogo = '<div class="pointMove"><img src="http://cdn.icomicool.cn/award/m/share/file/point.png"></div>';
+		$('.page2').html('').append( order1 + order2 + order3 + order4 + order5 + order6 + movelogo );
+	}
+
+	//第三页动画效果
+	function pageThreeEffect(){
+		var order1 = '<div class="order1 head"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-head.png" /></div>',
+			order2 = '<div class="order2 eyes"><div class="eye1"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-eye.png" /></div><div class="eye2"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-eye.png" /></div></div>',
+			order3 = '<div class="order3 shan"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-shan.png" /></div>',
+			order4 = '<div class="order4 pao1"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-pao1.png" /></div>',
+			order5 = '<div class="order5 pao2"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-pao2.png" /></div>',
+			order6 = '<div class="order6 pao3"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-pao3.png" /></div>',
+			order7 = '<div class="order7 tit"><img src="http://cdn.icomicool.cn/award/m/share/file/b3-tit.png" /></div>',
+			movelogo = '<div class="pointMove"><img src="http://cdn.icomicool.cn/award/m/share/file/point.png"></div>';
+		$('.page3').html('').append( order1 + order2 + order3 + order4 + order5 + order6 + order7 + movelogo );
+		/*setTimeout(function(){
+			$('.page3').find('.pao1').removeClass('topUp').addClass('order4');
+		},3000);*/
+	}
+
+	//第四页动画效果
+	function pageFourEffect(){
+		var order1 = '<div class="order1 head"><img src="http://cdn.icomicool.cn/award/m/share/file/b4-head.png" /></div>',
+			order2 = '<div class="order2 foot"><img src="http://cdn.icomicool.cn/award/m/share/file/b4-foot.png" /></div>',
+			order3 = '<div class="order3 gold"><img src="http://cdn.icomicool.cn/award/m/share/file/b4-gold.png" /></div>',
+			order4 = '<div class="order4 crumbs"><img src="http://cdn.icomicool.cn/award/m/share/file/b4-crumbs.png" /></div>',
+			order5 = '<div class="order5 tit"><img src="http://cdn.icomicool.cn/award/m/share/file/b4-tit.png" /></div>',
+			movelogo = '<div class="pointMove"><img src="http://cdn.icomicool.cn/award/m/share/file/point.png"></div>';
+		$('.page4').html('').append( order1 + order2 + order3 + order4 + order5 + movelogo );
+	}
+
+	//第五页动画效果
+	function pageFiveEffect(){
+		var order1 = '<div class="order1 tit"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-tit.png" /></div>',
+			order2 = '<div class="order2 pao pao1"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-pao1.png" /></div>',
+			order3 = '<div class="order3 pao pao2"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-pao2.png" /></div>',
+			order4 = '<div class="order4 pao pao3"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-pao3.png" /></div>',
+			order5 = '<div class="order5 pao pao4"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-pao4.png" /></div>',
+			order6 = '<div class="order5 pao pao5"><img src="http://cdn.icomicool.cn/award/m/share/file/b5-pao5.png" /></div>',
+			movelogo = '<div class="pointMove"><img src="http://cdn.icomicool.cn/award/m/share/file/point.png"></div>';
+		$('.page5').html('').append( order1 + order2 + order3 + order4 + order5 + order6 + movelogo );
+	}
+
+	//第六页动画效果
+	function pageSixEffect(){
+		var order1 = '<div class="order1 logo"><div class="inner"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-logo.png" /></div></div>',
+			order2 = '<div class="order2 crumbs crumb1"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-crumb1.png" /></div>',
+			order3 = '<div class="order3 crumbs crumb2"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-crumb2.png" /></div>',
+			order4 = '<div class="order4 plane plane1"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-plane1.png" /></div>',
+			order5 = '<div class="order5 plane plane2"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-plane2.png" /></div>',
+			order6 = '<div class="order6 txt txt1"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-txt1.png" /></div>',
+			order7 = '<div class="order7 txt txt2"><a href="http://m.comicool.cn/down.php?ch=ds1"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-txt2.png" /></a></div>',
+			order8 = '<div class="order8 txt txt3"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-txt3.png" /></div>',
+			order9 = '<div class="order9 date"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-date.png" /></div>',
+			order10 = '<div class="order10 mail"><a href="javascript:;"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-mail.png" /></a></div>',
+			order11 = '<div class="order11 shan"><img src="http://cdn.icomicool.cn/award/m/share/file/b6-shan.png" /></div>';
+		$('.page6').html('').append( order1 + order2 + order3 + order4 + order5 + order6 + order7 + order8 + order9 + order10 + order11 );
+
+		//执行点击弹框效果
+		$('.mail a').on('click',function(){
+			$('.popbg, .pop').show();
+			//弹框位置设置
+			var _popHeight = $('.pop').height(),
+				_winHeight = $(window).height(),
+				_value = (_winHeight - _popHeight)/2;
+				console.log(_popHeight);
+				console.log(_winHeight);
+			$('.pop').css({'top' : _value + 'px'});
+		});
+		$('.pop a.pop-clo').on('click',function(){
+			$('.popbg, .pop').hide();
+		});
+	}
+	// pageOneEffect(); //第一屏动画默认执行
+	/*
+	pageTwoEffect();
+	pageThreeEffect();
+	pageFourEffect();
+	pageFiveEffect();
+	pageSixEffect();
+	*/
+
+	//判断手机横竖屏状态
+	function screenStatus(){
+		var _winWidth = $(window).width(),
+		_winHeight = $(window).height();
+		$('ul, ul li').css({'width':'100%', 'height':'100%'});
+		if ( _winWidth >= _winHeight) {
+			//console.log('横屏');
+			$('.tips').show();
+		} else {
+			//console.log('竖屏');
+			$('.tips').hide();
+			// islider.slideTo(0);
+			init();
+		}
+		//消除JS插件对这两个元素宽度100%的影响
+	}
+	window.onresize = function(){
+		screenStatus();
+		
+	}
+	window.onload = function(){
+		screenStatus();
+		var music = document.getElementById("audio");//获取ID
+	    if (music.paused || music.ended) { //判读是否播放
+			$('#musicPlay').addClass('curr');
+	    } else {
+	        $('#musicPlay').removeClass('curr');
+	    }
+	}
+
+	//点击播放音乐或者停止音乐，安卓可以即时播放，苹果需点击操作
+	$('#musicPlay').on('click',function(){
+		var music = document.getElementById("audio");//获取ID
+	    if (music.paused || music.ended) { //判读是否播放
+            music.play(); //没有就播放
+            $(this).removeClass('curr');
+    } else {
+    		music.pause();
+    		$(this).addClass('curr');
+	    }
+	});
+
+</script>
+
+</body>
+</html>
+ 
+
+

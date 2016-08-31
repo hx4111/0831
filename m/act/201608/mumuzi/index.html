@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>号外,木木子的乱入</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="可米酷漫画,号外,木木子的乱入" />
+		<meta name="description" content="号外,木木子的乱入">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160518">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1463386207_0576153.css">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        号外,木木子的乱入
+        <p>号外,木木子的乱入</p>
+        <img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/mumuzi_share.jpg">
+    </h1>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_01.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_02.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_03.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_04.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_05.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_06.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_07.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_08.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_09.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_10.jpg" alt="木木子的乱入"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_11.jpg" alt="木木子的乱入"></li>
+			<li class="go" data-ccid="11286"><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_12.jpg" alt="木木子的乱入"></li>
+			<li class="go" data-ccid="11022"><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_13.jpg" alt="木木子的乱入"></li>
+			<li class="go" data-ccid="11380"><img src="http://cdn.icomicool.cn/m/act/201605/mumuzi/images/index_14.jpg" alt="木木子的乱入"></li>
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+		bindOpenComicEvents();
+			function bindOpenComicEvents() {
+				var readComic;
+				if (isApp) {
+					readComic = function(ccid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: ccid,
+							ep_id: 1
+						});
+					}
+				} else {
+					readComic = function(ccid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=1';
+					}
+				}
+				$(".go").on('click', function(e) {
+					var ccid = this.dataset.ccid;
+					if (ccid !== undefined && ccid !== "") {
+						readComic(ccid);
+					}
+				});
+			}
+			
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

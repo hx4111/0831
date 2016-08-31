@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>如何成为推广达人？</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/global.js"></script>
+</head>
+<body class="tarento">
+	<div class="loading-page"></div>
+	<div class="header header-abs">
+		<i class="icon" id="back">返回</i>
+	</div>
+	<p class="tarento-intro">
+		活动期间以累计邀请好友下载并且激活人数为评比标准，排行榜展示前5名，推广前3名可获得额外奖励。
+	</p>
+	<p class="time">活动结束后公布推广达人获奖名单</p>
+	<ul class="tarento-awards">
+		<li>
+			<div class="cell">
+				获得<strong>500</strong>元的奖励
+				<p>并获得最佳推广达人称号</p>
+			</div>
+		</li>
+		<li>
+			<div class="cell">
+				获得<strong>200</strong>元的奖励
+			</div>
+		</li>
+		<li>
+			<div class="cell">
+				获得<strong>100</strong>元的奖励
+			</div>
+		</li>
+	</ul>
+	<a class="invite-btn index-btn"></a>
+	<script>
+		(function () {
+			var inviteBtn = $.one('.invite-btn');
+			var backIcon = $.one('#back');
+
+			backIcon.addEventListener('touchend', function () {
+				if (history.length > 1) {
+					history.back();
+				} else {
+					window.location.href = 'index.html';
+				}
+			}, false);
+
+			//如果是可米酷app
+			if (isApp) {
+				setByUserLoginStatus(
+					loginCallback,
+					function () {
+						inviteBtn.addEventListener('touchend', jumpLoginPage, false);
+						//设置App里登录后的回调函数
+						callAppFunction('setJSCallback', {
+						    'account_event': 'loginHandler'
+						});
+					}
+				);
+			} else {
+				inviteBtn.addEventListener('touchend', jumpDownload, false);
+			}
+
+			//登录面板跳回页面后的回调(安卓的坑：要放在全局空间里)
+			window.loginHandler = function(obj) {
+				setByUserLoginStatus(loginCallback);
+				inviteBtn.removeEventListener('touchend', jumpLoginPage);
+			}
+
+			function loginCallback(userInfo) {
+				var queryString = serialize(userInfo);
+				var shareJsonObj = {
+				    'title' : '可米酷一周年，安装赚红包',
+				    'describe' : '无节操有内涵的漫画君约你一起赚钱啦，点击即可拿红包，更多精彩请脑补~',
+				    'imageurl' : 'http://7xkjeb.com2.z0.glb.qiniucdn.com/comi_share_icon.jpg',
+				    'page_url': 'http://promote.comicool.cn/app/index.php?' + queryString
+				};
+				
+				inviteBtn.addEventListener('touchend', function () {
+					callAppFunction('popupSharePanel', shareJsonObj);
+				}, false);
+			}
+
+			function jumpLoginPage() {
+				callAppFunction('openLoginPage', {});
+			}
+		})();
+	</script>
+</body>
+</html>

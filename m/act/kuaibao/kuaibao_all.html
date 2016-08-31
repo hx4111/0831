@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>快报全集</title>
+		<style type="text/css">
+			@media screen and (min-width: 1025px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+				.header {
+					width: 640px !important;
+					margin: 0 auto;
+					right: 0;
+				}
+			}
+			
+			body {
+				background: url("images/top.jpg") #dbfeff no-repeat;
+				background-size: 100%;
+			}
+			
+			#checkin_all {
+				margin-top: 11rem;
+				text-align: center;
+			}
+			
+			#checkin_all ul {
+				margin: 0;
+				padding: 0;
+				box-direction: reverse
+			}
+			
+			#checkin_all h1 {
+				font-size: 1.2rem;
+				text-align: center;
+				color: #649293;
+			}
+			
+			#checkin_all a {
+				color: #333;
+				text-decoration: none;
+				border: 1px #ccc solid;
+				padding: .5rem 1rem;
+				display: inline-block;
+				width: 4rem;
+				text-align: center;
+				font-size: .8rem;
+			}
+			
+			#checkin_all a:nth-child(odd) {
+				margin: 0 .5rem .3rem 0;
+			}
+		</style>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+	</head>
+
+	<body>
+		<div id="checkin_all">
+			<h1>快报往期列表</h1>
+			<ul id="checkin_list">
+			</ul>
+		</div>
+		<script src="js/data.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var list = "";
+			var item = 0;
+			for (item in filling) {
+				item++;
+			}
+			if (filling[item - 1].timing && (parseInt(getNowFormatDate()) + 1) == filling[item - 1].timing) {
+				item = --item;
+			}
+			for (var i = (item - 1); i > 0; i--) {
+				list += '<a href="http://m.comicool.cn/act/kuaibao/index.html?cycle=' + i + '">第' + i + '期</a>';
+			}
+			document.getElementById("checkin_list").innerHTML = list;
+			// 获取系统时间并补零
+			function getNowFormatDate() {
+				var day = new Date();
+				var Year = 0;
+				var Month = 0;
+				var Day = 0;
+				var CurrentDate = "";
+				//初始化时间 
+				//Year       = day.getYear();//有火狐下2008年显示108的bug 
+				Year = day.getFullYear(); //ie火狐下都可以 
+				Month = day.getMonth() + 1;
+				Day = day.getDate();
+				CurrentDate += Year;
+				if (Month >= 10) {
+					CurrentDate += Month;
+				} else {
+					CurrentDate += "0" + Month;
+				}
+				if (Day >= 10) {
+					CurrentDate += Day;
+				} else {
+					CurrentDate += "0" + Day;
+				}
+				return CurrentDate;
+			};
+		</script>
+	</body>
+
+</html>

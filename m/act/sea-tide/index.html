@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>海潮，上海！上海！</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<style type="text/css">
+html {-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+body { font-size: 1.4rem; line-height: 1.42; color: #333333; background-color: white; height: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+* { margin: 0; padding: 0;}
+img { border:none; vertical-align:middle; width: 100%; max-width: 100%;}
+a { background: transparent; text-decoration: none; -webkit-tap-highlight-color: transparent; color: #0088cc; }
+a:active { outline: 0; }
+a:active { color: #006699; }
+body { background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px;}
+.pagebox { width: 100%; background: #000;}
+
+footer { position: fixed; bottom: 0; left: 0; width: 100%;}
+
+#readLnk { background: rgba(0,0,0,.8); padding: 3% 0; text-align: center; z-index: 100; display: none;}
+#readLnk a { padding: 2% 5% 1.4%; display: inline-block; color: #fff; border-radius: 2rem; background: #e62c32; background-clip: padding-box; -webkit-background-clip: padding-box;}
+#readLnk a:active { opacity: 0.8;}
+#open-tip { position: relative; background: rgba(111,111,111,.8); display: none;}
+.open-btnbox { position:absolute; z-index: 250; right: 0; top: 0; width: 30%; height: 100%;}
+.open-table { display: table; width: 100%; height: 100%;}
+.open-table span { display: table-cell; vertical-align: middle; font-size: 0; width: 70%; text-align: center}
+.open-table span:last-child { width: 30%;}
+.open-table a { color: #fff; display: inline-block; width: 100%;}
+.open-table a.open-btn { padding: 6% 0 5%; width: 85%; background: #e62c32; color: #fff; border-radius: 6px; font-size: 1.2rem; background-clip: padding-box; -webkit-background-clip: padding-box;}
+.open-table a.open-clo {  padding:3% 0; font-size: 2.4rem; line-height: 1.5; font-family: Arial; margin-top: -2px;}
+
+</style>
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        海潮，上海！上海！
+        <p>在都市的霓虹中，年轻的眼睛是否还能够保持曾经的纯真？繁华的世界，是否会迷失彼此的心灵——《海潮》，城市中悲欢离合，爱恨情仇，故事将从现代都市中人们的迷茫、成长与无奈中开始。</p>
+        <img src="http://cdn.icomicool.cn/m/act/sea-tide/images/share-img2.jpg" alt="可米酷漫画,comicool" />
+    </h1>
+
+    <article class="pagebox sea-tide">
+    	<div class="imgbox">
+	        <!-- <img src="http://cdn.icomicool.cn/m/act/sea-tide/images/mr1.jpg">图片信息
+	        -->
+        </div>
+
+        <footer id="footer">
+            <div id="readLnk">
+                <a href="javascript:;" class="lnk-read">马上阅读</a>
+            </div>
+            <div id="open-tip">
+                <img src="images/open-tip.png" />
+                <div class="open-btnbox">
+                    <div class="open-table">
+                        <span><a class="open-btn" href="javascript:;">立即打开</a></span>
+                        <span><a class="open-clo" href="javascript:;">×</a></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </article>
+</body>
+<script src="http://cdn.icomicool.cn/m/m-common/js/zepto.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    var ua=navigator.userAgent.toLowerCase(),
+        isMobile = ua.indexOf('mobile')>0,
+        isWeixin = (/micromessenger/.test(ua)) ? true : false,
+        isQQ = (/qq\//.test(ua)) ? true : false,
+        isIOS = ua.indexOf('(ip')>0 && isMobile,
+        isWeibo = (/Weibo/i.test(ua)) ? true : false,
+        isApp = (/icomico/i.test(ua)) ? true : false,
+        isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+        isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+    //客户端分享按钮，页面传 调用接口数据
+    var shareJsonObj = {
+        'title' : '海潮，上海！上海！',
+        'describe' : '在都市的霓虹中，年轻的眼睛是否还能够保持曾经的纯真？繁华的世界，是否会迷失彼此的心灵——《海潮》，城市中悲欢离合，爱恨情仇，故事将从现代都市中人们的迷茫、成长与无奈中开始。',
+        'imageurl' : 'http://cdn.icomicool.cn/m/act/sea-tide/images/share-img.jpg'
+    };
+    var shareJsonStr = JSON.stringify(shareJsonObj);
+    if( isApp ){
+        try {
+            comicool.showShareBtn(shareJsonStr);
+        } catch (e) {
+            window.location.href= 'http://comicool/showShareBtn?title=' + shareJsonObj.title + '&describe=' + shareJsonObj.describe + '&imageurl=' + shareJsonObj.imageurl;
+        }
+    } else {
+    	$('#open-tip').show();
+        var _btnHeight = $('#open-tip').height();
+        $('.pagebox').css('paddingBottom', _btnHeight);
+        $('.open-btn, #open-tip img').on('click',function(){
+            window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+        });
+        $('.open-clo').on('click',function(){
+            $(this).parents('#open-tip').hide();
+            $('.pagebox').css('paddingBottom', 0);
+        });
+    }
+
+	//设置加载图片路径，并执行
+	var imgs = [
+        'http://cdn.icomicool.cn/m/act/sea-tide/images/1-1.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/1-2.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/1-3.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/1-4.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/1-5.jpg',
+        'http://cdn.icomicool.cn/m/act/sea-tide/images/2-1.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/2-2.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/2-3.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/2-4.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/2-5.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/2-6.jpg',
+        'http://cdn.icomicool.cn/m/act/sea-tide/images/3-1.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/3-2.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/3-3.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/3-4.jpg',
+        'http://cdn.icomicool.cn/m/act/sea-tide/images/4-1.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/4-2.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/4-3.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/4-4.jpg',
+        'http://cdn.icomicool.cn/m/act/sea-tide/images/5-1.png', 'http://cdn.icomicool.cn/m/act/sea-tide/images/5-2.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/5-3.jpg', 'http://cdn.icomicool.cn/m/act/sea-tide/images/5-4.jpg'
+    ];
+	loadpic(imgs, function() {
+		pageControl();
+	});
+
+    // 图片递归加载
+    function loadpic(list, callback) {
+        if( $.isArray(list) && list.length ){
+            var item = list.shift(),
+                image = new Image();
+            // loadpic(list);
+            image.src = item;
+            image.alt = '可米酷漫画,comicool';
+            image.onload = function(){
+                 $('.imgbox').append($(this));
+               loadpic(list,callback);
+            };
+            image.onerror = function(){
+                 $('.imgbox').append($(this));
+               loadpic(list,callback);
+            };
+        }else{
+            $.isFunction(callback) && callback(list);
+        }
+    }
+
+    //控制阅读页
+    function pageControl() {
+        $('#readLnk').show();
+
+        $('.lnk-read').on('click',function(){
+            // console.log('type',evt.type);
+            //调用接口数据
+            var actJsonObj = {
+                'comic_id': 698
+            };
+            var actJsonStr = JSON.stringify(actJsonObj);
+
+            if( isApp ){
+                try {
+                    comicool.openComicDetailsPage(actJsonStr);
+                } catch (e) {
+                    window.location.href="http://comicool/openComicDetailsPage?comic_id=698";
+                }
+            }else{
+                window.location.href = 'http://m.comicool.cn/content/detail.html?comic_id=698';
+            }
+        });
+    }
+	
+});
+
+//百度统计代码安装
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</html>

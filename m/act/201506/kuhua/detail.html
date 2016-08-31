@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷漫画</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="js/config.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+    <article class="share-page share-detail">
+        <img id="wx-sm-img" src="" style="position:absolute; z-index:1; left:-9999px; top:-9999px; display:block;" />
+        <!-- ！！！坑爹的微信JS-SDK接口，网上各种技术文章暂时无法用，这里用另外的解决方案，将图片显示第一张放置顶层，经测试，这里不能隐藏掉，只好通过定位移掉，尺寸过于小也不行 -->
+        <div class="tips hide">
+            <img src="http://cdn.icomicool.cn/m/content/images/tip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+        </div>
+        <div class="share-toptip">
+            <img src="http://cdn.icomicool.cn/m/content/images/toptip.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+            <div class="toptip-btn">
+                <div class="toptip-btn-inner">
+                    <span><a class="openLnk" href="javascript:;">立即打开</a></span>
+                    <span><a href="javascript:;" class="clo">×</a></span>
+                </div>
+            </div>
+        </div>
+        <header class="share-head">
+            <a href="javascript:;" class="share-btn"><!-- 分享按钮 --></a>
+        	<img src="http://cdn.icomicool.cn/m/content/images/icon-share-bg.png" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+            <div class="head-inner">
+            	<div class="head-table">
+            		<div class="head-table-cell">
+            			<span>可米酷</span>
+            		</div>
+            	</div>
+            </div>
+        </header>
+        <section class="share-con">
+        	<div class="share-con-t">
+        		<!-- <span class="ct-img">
+        			<img src="http://cdn.icomicool.cn/m/content/images/h-bigimg.jpg" />
+        		</span>
+        		<div class="ct-txt">
+        			<h2>遗落未来遗落未来</h2>
+        			<h4>
+        				<span class="author">作者:胡仁斐</span><span class="update">每周一更新</span>
+        			</h4>
+        			<p>2030年代的最後一天。新見市彈藥處理小組的司堂先生</p>
+                    <a href="javascript:;" class="readLnk">开始阅读 &gt;</a>
+        		</div> -->
+        	</div>
+        	<ul class="share-con-list">
+            <!-- 详情列表 -->
+        		<!-- <li>
+        			<span class="li-img">
+	        			<img src="http://cdn.icomicool.cn/m/content/images/h-smallimg.jpg" />
+	        		</span>
+	        		<div class="li-txt">
+	        			<h3>第<em> 1 </em>话 <b>无家可归的狐神1</b></h3>
+	        			<h4>
+	        				2014.12.04 更新
+	        			</h4>
+	        		</div>
+	        		<a href="javascript:;" class="zan-btn">
+                        <span><img alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" src="http://cdn.icomicool.cn/m/content/images/icon-zan.png" /></span>223
+                    </a>
+        		</li> -->
+        	</ul>
+        </section>
+        <footer class="share-foot" style="display:none;">
+            <div class="share-foot-img">
+                <img src="images/footer-img.jpg" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />
+            </div>
+        </footer>
+    </article>
+	
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript" src="http://www.comicool.cn/common/common-v1.js"></script>
+<script>
+//JS开始
+$(function(){
+
+    //设置各平台oa
+    var ua=navigator.userAgent.toLowerCase(),
+        isIOS = false,
+        isMobile = ua.indexOf('mobile')>0,
+        isWeixin = (/micromessenger/.test(ua)) ? true : false,
+        isQQ = (/qq\//.test(ua)) ? true : false,
+        isIOS = ua.indexOf('(ip')>0 && isMobile,
+        isWeibo = (/Weibo/i.test(ua)) ? true : false,
+        isAndr = ua.indexOf('android') > -1 || ua.indexOf('linux') > -1;
+
+    var isAct = getQueryString('isAct');
+    if(isAct) {
+        $('.share-foot').show();
+    }
+
+    function tipsCtr(){
+        var _boxHeight = $('.share-page').css( 'minHeight', $(window).height()+'px' );
+        var _tipHeight = $('.share-toptip').height();
+        var _headHeight = $('.share-head img').height();
+        // $('.head-inner').css('lineHeight' , _headHeight+'px');
+
+        if($('.share-toptip').css('display') == 'none'){//提示栏隐藏状态
+            $('.share-head').css({'marginTop' : '0' , 'position' : 'fixed' });
+            $('.share-con').css('paddingTop' , _headHeight+'px');
+        }else{
+            //提示栏显示状态
+            $('.share-head').css({'marginTop' : _tipHeight ,'position' : 'relative'});
+            $('.share-con').css('paddingTop' , '0');
+        }
+    };
+
+    function cssCtr(){  //点击前的初始化样式，点击后的执行变化
+        setTimeout(function(){
+            tipsCtr();
+            $('a.clo').bind('click',function(){
+                //点击关闭按钮执行的一系列效果变化
+                $(this).parents('.share-toptip').hide();
+                tipsCtr();
+            });
+        },200);
+    };
+
+    $(window).resize(function(){
+        var zoom = 0,
+            viewWidth = $(window).width(),
+            viewHeight = $(window).height(),
+            clientRatio = viewWidth / viewHeight; //视口宽高比
+        if( clientRatio >  1 ){  //横屏
+            $('.share-toptip img , .share-head img').css({'width' : '50%'});
+            cssCtr();
+        } else {  //竖屏
+            $('.share-toptip img , .share-head img').css({'width' : '100%'});
+            cssCtr();
+        }
+    });
+    $(window).resize();
+
+    //详情页请求拉取数据
+    var aj = $.ajax( {    
+        url : 'http://proxy.icomico.com/comicdetail4web',// 跳转到 action
+        data : {
+            'comic_id' : getQueryString('comic_id')  //漫画id
+        },    
+        type : 'get',
+        timeout : '10000',  
+        cache : false,    
+        dataType : "jsonp",
+        jsonp: "callback",      //传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonpCallback:"jsonp_comicdetail",      //自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+        success : function(data) {
+            //接口没有数据时返回 重新请求
+            if( !data.ep_list){
+                losePreload('nul');
+                return false;
+            };
+            
+            console.log(data);
+            var headerhtml  = listHTML = '';
+            var comicSource = data.comic_info.comic_source || '';
+            var imgAlt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+            var imgUrl = 'http://cdn.icomico.com/';
+            var comic_id = getQueryString('comic_id');
+
+            //详情页漫画头部信息渲染
+            headerhtml += ''
+                       +  '<span class="ct-img">'
+                       +         '<img src="' + imgUrl + data.comic_info.comic_cover_url + '" alt="' + imgAlt + '" />'
+                       +  '</span>'
+                       +  '<div class="ct-txt">'
+                       +         '<h2>' + data.comic_info.comic_title + '</h2>'
+                       +         '<h4>'
+                       +             '<span class="author">作者:' + data.comic_info.comic_auth + '</span>'
+                       +             '<span class="update">每周' + data.comic_info.update_weekday + '更新</span>'
+                       +         '</h4>'
+                       +         '<p>' + data.comic_info.comic_desc + '</p>'
+                       +         '<div class="bottom-btn">'
+                       +             '<a href="javascript:;" class="readLnk">开始阅读 &gt;</a>'
+                       +         '</div>'
+                       +     '</div>'
+
+            $('.share-con-t').append(headerhtml);
+
+            //详情页漫画列表数据渲染
+            var len = data.ep_list.length;
+                data.ep_list.reverse();
+            if(!comicSource) {
+                for (var i = 0; i < len; i++){
+                    listHTML += ''
+                             +  '<li>'
+                             +       '<a href="reader.html?comic_id=' + comic_id + '&ep_id=' + data.ep_list[i].ep_id + '" class="li-lnk">'
+                             +           '<span class="li-img">'
+                             +               '<img src="' + imgUrl + data.ep_list[i].ep_poster + '" alt="' + imgAlt + '" />'
+                             +           '</span>'
+                             +           '<div class="li-txt">'
+                             +               '<h3>'
+                             +                   '<b>' + data.ep_list[i].ep_title + '</b>'
+                             +               '</h3>'
+                             +               '<h4>' + data.ep_list[i].update_date + '更新</h4>'
+                             +           '</div>'
+                             +           '<em class="zan-btn">'
+                             +               '<span>'
+                             +                   '<img src="http://cdn.icomicool.cn/m/content/images/icon-zan.png" alt="' + imgAlt + '" />'
+                             +               '</span>'
+                             +               '223'
+                             +           '</em>'
+                             +       '</a>'
+                             +   '</li>'
+                };
+                listHTML = '<ul class="share-con-list">' + listHTML + '</ul>';
+            } else {
+                for(var j = 0; j < len; j++) {
+                    listHTML += ''
+                             +   '<a href="reader.html?comic_id='+ comic_id + '&ep_id=' + data.ep_list[j].ep_id + '">'
+                             +       data.ep_list[j].ep_title
+                             +   '</a>'
+                }
+                listHTML = '<div class="detail-source">' + listHTML + '</div>';
+            }
+            $('.share-con').append(listHTML);
+
+            //详情页每周更新为0时的处理
+            var updateNumber = parseInt(data.comic_info.update_weekday);
+            if (updateNumber == 0) {
+                $('span.update').hide();
+            };
+
+            //读取cookies,打开阅读页
+            var ep_id = getCookie(comic_id);
+            var ep_id = parseInt(ep_id);
+            if (!ep_id || ep_id <= 0) {
+                ep_id=1;
+            }
+
+            if (comic_id == 678){
+                $('.bottom-btn a').attr('href','r678.html?comic_id=' + comic_id + '&ep_id=' + ep_id);
+            }else{
+                $('.bottom-btn a').attr('href','reader.html?comic_id=' + comic_id + '&ep_id=' + ep_id);
+            }
+
+            document.title = data.comic_info.comic_title + '-可米酷漫画';   //标题更换
+            $('#wx-sm-img').attr('src','http://cdn.icomico.com/' + data.comic_info.comic_cover_url + '?imageMogr2/thumbnail/480x');     //坑爹微信接口另外解决方案
+        },    
+        error : function() {
+              losePreload('excp');
+        }    
+    });
+
+    //获取页面URL参数名
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return decodeURI(r[2]); return null;
+    };
+
+    //读取cookies 
+    function getCookie(name){ 
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg)){
+            return unescape(arr[2]);
+        }
+        else{
+            return null; 
+        }
+    };
+    //删除cookies 
+    function delCookie(name){ 
+        var exp = new Date(); 
+        exp.setTime(exp.getTime() - 1); 
+        var cval=getCookie(name); 
+        if(cval!=null){
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString(); 
+        }
+    };
+
+    //打开阅读元素操作调用  
+    $('.openLnk, .share-toptip img').on('click',function(){
+        if (isTipsShow()) {
+            $(this).parents('.share-toptip').hide();
+            $('.share-head').css({'marginTop' : 0});
+        } else {
+            openApp();
+        }
+    });
+
+    //设置页面判断打开客户端
+    function openApp() {
+        // 如果需要测试已安装App的打开，需要使用comicool.cn的固定地址
+        //window.location.href = 'http://m.app.comicool.cn/smart_open/main.php'
+        window.location.href = combinUrl("m.app.", "/smart_open/main.php");
+    }
+    //设置微信等判断出现提示内容
+    function isTipsShow(){
+        if (isIOS && isWeibo) {
+            $('.tips').removeClass('hide');
+            return true;
+        } else {
+            return false;
+        }
+    }// end
+    
+    //协议延迟或者失败时
+    function losePreload(error){
+        $('.share-page').addClass('error').html('').append('<a href="javascript:;" class="error-lnk"></a>');
+        var message='三次元的网络不行呀';
+        if (error) {
+            message+='(' + error + ')';
+        }
+        $('.share-page a.error-lnk').append('<div class="error-con"><div class="error-img"><img alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" src="http://cdn.icomicool.cn/m/content/images/error.png"></div><p>' + message + '</p><p>╮(╯▽╰)╭</p></div>').on('click',function(){
+            $(this).attr('href', window.location.href);
+        });
+    }
+
+    //百度统计代码安装
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+
+});
+</script>
+
+</html>

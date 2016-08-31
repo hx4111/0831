@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>神兽大乱斗</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="神兽大乱斗">
+		<script src="http://cdn.icomicool.cn/m/m-common/js/zepto.min.js"></script>
+		<script src="js/zepto-touch.js"></script>
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css">
+		<link rel="stylesheet" href="//at.alicdn.com/t/font_1457940080_6055555.css">
+		<link rel="stylesheet" href="css/Tip.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<script src="js/Tip.js"></script>
+		<style type="text/css">
+			input,
+			textarea,
+			button,
+			a {
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			
+			body {
+				background: #174253;
+				-webkit-user-select: none;
+			}
+			
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.box img:nth-child(1) {
+				width: 100%;
+			}
+			
+			.user-login {
+				padding: 0 .5rem;
+				color: #ffd837;
+				line-height: 1.3rem;
+			}
+			
+			.user-login img {
+				width: 30%;
+			}
+			
+			.login {
+				/*background: url(images/index_07.jpg) no-repeat;*/
+				height: 2.5rem;
+				font-size: .5rem;
+				/*background-size: 100%;*/
+			}
+
+			.login img {
+				float: right;
+				margin-right: .5rem;
+			}
+			
+			.login h3 {
+				float: left;
+				font-size: .5rem;
+				max-width: 7rem;
+				overflow: hidden;
+				max-height: 2.5rem;
+				text-overflow: ellipsis;
+				width: 7rem;
+				white-space: nowrap;
+				text-decoration: underline;
+			}
+			
+			.user {
+				clear: both;
+				font-size: .5rem;
+				display: -moz-box;
+				display: -webkit-box;
+				display: box;
+			}
+			
+			.user li {
+				margin-right: .2rem;
+				padding: .2rem .3rem;
+				color: #f1aa00;
+				font-size: .5rem;
+				-moz-box-flex: 1;
+				-webkit-box-flex: 1;
+				box-flex: 1;
+			}
+			/*规则*/
+			
+			.rule {
+				background: url(images/index_08.jpg) right bottom no-repeat;
+				padding: 1rem .5rem 2rem;
+			}
+			
+			.rule ul {
+				/*background: #ffd7d7;*/
+				color: #ffd837;
+				font-size: .6rem;
+				border-radius: .2rem;
+				padding: .5rem .5rem 3.5rem;
+			}
+			/* tab切换 */
+			
+			.newTit {
+				width: 100%;
+				float: left;
+				color: #444;
+				font-size: 16px;
+				position: relative;
+				z-index: 200;
+				border-bottom: .2rem #ffc42e solid;
+			}
+			
+			.newTit li {
+				background: url(images/tabs.png) no-repeat;
+				background-size: 15.8rem;
+				height: 1.24rem;
+				float: left;
+				text-align: center;
+				cursor: pointer;
+				text-indent: -999rem;
+				width: 25%;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+			}
+			
+			.newTit li:nth-child(1) {
+				background-position: -.2rem -1.685rem;
+			}
+			
+			.newTit .active:nth-child(1) {
+				background-position: -.2rem 0;
+			}
+			
+			.newTit li:nth-child(2) {
+				background-position: -4rem -1.685rem;
+			}
+			
+			.newTit li.active:nth-child(2) {
+				background-position: -4rem 0;
+			}
+			
+			.newTit li:nth-child(3) {
+				background-position: -7.76rem -1.685rem
+			}
+			
+			.newTit li.active:nth-child(3) {
+				background-position: -7.76rem 0;
+			}
+			
+			.newTit li:nth-child(4) {
+				background-position: -11.35rem -1.685rem;
+			}
+			
+			.newTit li.active:nth-child(4) {
+				background-position: -11.35rem 0;
+			}
+			
+			.newCon {
+				/*height: 12rem;*/
+				float: left;
+				border-top: none;
+				width: 100%;
+			}
+			
+			.newConX {
+				width: 100%;
+				float: left;
+				display: none;
+				font-size: .5rem;
+			}
+			/*tabs-昨日排行*/
+			/* 获得的奖品 */
+			
+			#prize {
+				border-bottom: 1px #099 dotted;
+				text-align: right;
+				padding: 0 .8rem .4rem 0;
+				font-size: .8rem;
+				clear: both;
+			}
+			
+			#prize a {
+				color: #ffd837;
+			}
+			
+			.dynamic-block {
+				background: url("images/index_03.png") no-repeat;
+				background-size: 100%;
+				height: 8rem;
+				position: relative;
+			}
+			
+			.dynamic-block .finger-block {
+				position: absolute;
+				height: 6rem;
+				width: 6rem;
+				top: 1.3rem;
+				right: 0.5rem;
+			}
+			
+			.dynamic-block .icon-dou {
+				position: absolute;
+				font-size: 1rem;
+				height: 1rem;
+				width: 1rem;
+				top: 3.6rem;
+				left: 5.6rem;
+			}
+			
+			.my-award {
+				display: none;
+				position: fixed;
+				width: 80%;
+				height: 50%;
+				left: 5%;
+				top: 20%;
+				background: #fff;
+				color: #000;
+				padding: 1rem 0.5rem;
+				border-radius: .5rem;
+				z-index: 9999;
+				font-size: .8rem;
+			}
+			
+			.my-award .award-title {
+				text-align: center;
+			}
+			
+			.my-award .award-title button {
+				background: #ff5d57;
+				color: #fff;
+				text-align: center;
+				border: none;
+				padding: .1rem .5rem;
+				border-radius: .2rem;
+			}
+			
+			.my-award ul {
+				margin-top: .3rem;
+				text-align: center;
+				height: 10rem;
+				overflow-y: auto;
+				width: 100%;
+			}
+			
+			.my-award ul li {
+				margin: 0.2rem;
+			}
+			
+			.my-award ul span {
+				line-height: 10rem;
+			}
+			
+			.btn-default {
+				text-align: center;
+				color: #fff;
+				border-radius: .2rem;
+				background: #ff5d57;
+				cursor: pointer;
+				border-radius: .5rem;
+				padding: .3rem 1rem;
+				position: relative;
+				left: 50%;
+				bottom: 0;
+				-webkit-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				width: 30%;
+			}
+			/* 昨日排行 */
+			
+			#yesterday,
+			#today {
+				margin-bottom: 1rem;
+			}
+			
+			.title ul,
+			#yesterday ul,
+			#today ul {
+				display: -moz-box;
+				display: -webkit-box;
+				display: box;
+				text-align: center;
+			}
+			
+			.title img {
+				width: 100%;
+				bottom: -.5rem;
+				position: relative;
+			}
+			
+			#yesterday span, #today span {
+				text-align: center;
+				line-height: 5rem;
+				margin: 0 auto;
+				width: 100%;
+				color: #fff;
+				display: block;
+			}
+			
+			#yesterday li,
+			.title li,
+			#today li {
+				-moz-box-flex: 1;
+				-webkit-box-flex: 1;
+				box-flex: 1;
+				width: 100%;
+				padding: .3rem;
+			}
+			
+			.title li:nth-child(1),
+			#yesterday li:nth-child(1),
+			#today li:nth-child(1) {
+				background: #ff9f2e;
+			}
+			
+			.title li:nth-child(2),
+			#yesterday li:nth-child(2),
+			#today li:nth-child(2) {
+				background: #ffc42e;
+			}
+			
+			.title li:nth-child(3),
+			#yesterday li:nth-child(3),
+			#today li:nth-child(3) {
+				background: #ff9f2e;
+			}
+			/* 抽奖 */
+			
+			#draw {
+				position: relative;
+				overflow: hidden;
+				height: 15rem;
+				background: url(images/box.jpg) no-repeat;
+				background-size: 100%;
+			}
+			
+			#draw .xiang {
+				-webkit-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				transform: translate(-50%, -50%);
+				left: 50%;
+				position: relative;
+				height: 17rem;
+				top: 6rem;
+				overflow: hidden;
+			}
+			
+			#draw .xiang img {
+				width: 100%;
+				margin-top: 2rem;
+				position: relative;
+				z-index: 999;
+			}
+			
+			#draw button {
+				background: #ffde28;
+				padding: .5rem 1rem;
+				font-size: 1rem;
+				color: #f35a5a;
+				position: absolute;
+				-webkit-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				left: 50%;
+				border: none;
+				bottom: 1rem;
+				box-shadow: .1rem .1rem .1rem #f29c9c;
+				border-radius: .3rem;
+				z-index: 200;
+			}
+			
+			#draw span {
+				position: absolute;
+				bottom: 0;
+				color: #ffc42e;
+				-webkit-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				transform: translateX(-50%);
+				left: 50%;
+			}
+
+			/*#draw .bg {
+				position: absolute;
+				z-index: 1;
+				background: url(http://demo.sc.chinaz.com/Files/DownLoad/webjs1/201506/jiaoben3411/img/light.png) 0px 0px no-repeat;
+				background-size: 100% auto;
+				width:100%;
+				height: 100%;
+				max-height: 100%;
+			}*/
+			
+			#draw .bg.rotate {
+				animation: 9.5s linear 0s normal none infinite rotate;
+				-webkit-animation: 9.5s linear 0s normal none infinite rotate;
+			}
+			
+			@-webkit-keyframes rotate {
+				from {
+					-webkit-transform: rotate(0deg)
+				}
+				to {
+					-webkit-transform: rotate(360deg)
+				}
+			}
+			
+			@-moz-keyframes rotate {
+				from {
+					-moz-transform: rotate(0deg)
+				}
+				to {
+					-moz-transform: rotate(360deg)
+				}
+			}
+			
+			@-ms-keyframes rotate {
+				from {
+					-ms-transform: rotate(0deg)
+				}
+				to {
+					-ms-transform: rotate(360deg)
+				}
+			}
+			
+			@-o-keyframes rotate {
+				from {
+					-o-transform: rotate(0deg)
+				}
+				to {
+					-o-transform: rotate(360deg)
+				}
+			}
+			/* 奖励 */
+			
+			#award {
+				font-size: 1rem;
+				color: red;
+				text-shadow: .1rem .1rem .1rem #f29c9c;
+				text-align: center;
+				font-weight: bold;
+				overflow: hidden;
+				height: 7rem;
+				width: 100%;
+				background: url(images/index_09.png) no-repeat;
+				background-size: 100%;
+				padding-top:3rem ;
+			}
+			
+			.champion {
+				font-size: .7rem;
+				color: red;
+				text-shadow: .1rem .1rem .1rem #f29c9c;
+				text-align: center;
+				font-weight: bold;
+				overflow: hidden;
+				height: 1rem;
+				width: 100%;
+				background-size: 100%;
+			}
+			
+			.publish_betting {
+				z-index: 9999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+			神兽大乱斗
+			<p>神兽大乱斗</p>
+			<img src="http://cdn.icomicool.cn/m/act/dogz/images/share.jpg">
+    	</h1>
+		<div class="loading-spinner"></div>
+		<!--<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>-->
+		<!-- 主要内容：开始 -->
+		<div class="box">
+			<img src="images/index_01.jpg" />
+			<div class="login">
+				<ul id="user-login" class="user-login clearfix">
+					<h3 id="dogz-login">请您登陆</h3>
+					<img id="dogz-exchange" src="images/index_02.png" />
+				</ul>
+				<ul class="user">
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="dynamic-block">
+				<div id="finger-block" class="finger-block"></div>
+				<!--<i class="iconfont icon-dou"></i>-->
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" height="100%">
+					<circle cx="42%" cy="57.7%" r="22%" stroke="black" stroke-width="1 " fill="#fff" />
+					<circle id="svg-circle" cx="42%" cy="57.7%" r="0.1%" stroke="black" stroke-width="1 " fill="red" />
+				</svg>
+			</div>
+			<!-- tab -->
+			<div class="newTab">
+				<ul id="newTit" class="newTit">
+					<li class="active" id="dogz-yesterday">昨日排行</li>
+					<li id="dogz-today">今日排行</li>
+					<li id="dogz-draw">抽奖</li>
+					<li id="dogz-award">奖励</li>
+				</ul>
+				<div id="newCon" class="newCon">
+					<div style="display: block" class="newConX">
+						<!-- 昨日排行 -->
+						<div class="title">
+							<img src="images/today.png" alt="可米酷神兽大乱斗" />
+							<ul>
+								<li>为什么会有名次?</li>
+								<li>恩人=大变态?</li>
+								<li>青春痘总共涨大?</li>
+							</ul>
+						</div>
+						<div id="yesterday">
+							<span>暂无排行信息</span>
+						</div>
+					</div>
+					<div class="newConX">
+						<div class="title">
+							<!-- 今日排行 -->
+							<img src="images/today.png" alt="可米酷神兽大乱斗" />
+							<ul>
+								<li>为什么会有名次?</li>
+								<li>恩人=大变态?</li>
+								<li>青春痘总共涨大?</li>
+							</ul>
+						</div>
+						<div id="today">
+							<span>暂无排行信息</span>
+						</div>
+
+					</div>
+					<div class="newConX" id="draw">
+						<!-- 抽奖 -->
+						<button class="getPrize">点我抽奖</button>
+						<span class="drawSpan"></span>
+						<!--<div class="xiang">
+							<div class="bg rotate"></div>
+							<img src="images/box.jpg" />
+							<button class="getPrize">点我抽奖</button>
+							<span class="drawSpan"></span>
+
+						<!--<div class="xiang">
+							<div class="bg rotate"></div>
+							<img src="images/box.jpg" />
+							<button class="getPrize">点我抽奖</button>
+							<span class="drawSpan"></span>
+						</div>-->
+					</div>
+					<div class="newConX">
+						<div id="award">
+							<!-- 奖励 -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- tab end -->
+			<div id="prize">
+				<a href="javascript:void(0);">我获得的奖品</a>
+			</div>
+			<div class="rule">
+				<ul>
+					<h3>活动规则</h3>
+					<li>Ⅰ.活动时间内才能帮助一瓜。</li>
+					<li>Ⅱ.每日登陆会获得免费的2次机会，100酷币可兑换2次， 每日限制使用500酷币进行兑换。
+					</li>
+					<li>Ⅱ.排行榜每10分钟刷新，加油上榜获得高额奖励吧！。</li>
+					<li>Ⅳ.奖品在活动结束后1个工作日内发放。</li>
+					<li>Ⅴ.本次活动最终解释权归可米酷漫画所有。</li>
+				</ul>
+			</div>
+		</div>
+		<div class="my-award">
+			<div class="award-title">
+				我所获得的奖品
+				<button class="exchange">兑换</button>
+			</div>
+			<ul>
+			</ul>
+			<div class="btn-default btn-close">
+				关闭
+			</div>
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}}
+					{{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'>
+					{{/if}}
+					{{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/ui.js"></script>
+		<script>
+			window.onload = function() {
+				main();
+			}
+			var tit = document.getElementById('newTit').getElementsByTagName('li');
+			var con = document.getElementById('newCon').getElementsByClassName('newConX');
+			for (var i = 0, len = tit.length; i < len; i++) {
+				tit[i].index = i;
+				tit[i].onclick = function() {
+					for (var i = 0, len = tit.length; i < len; i++) {
+						tit[i].className = '';
+						con[i].style.display = 'none';
+					}
+					this.className = 'active';
+					con[this.index].style.display = 'block';
+				}
+			}
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = wxqq.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				wxqq.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isApp || isWeixin || isQQ || isWeibo) {
+					header.style.display = 'none';
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

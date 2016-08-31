@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no" />
+	<link rel="stylesheet" type="text/css" href="css/betting.css" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_1446605848_0024004.css" />
+	<title>签到-领酷币_条漫™</title>
+	<meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网" />
+	<meta name="description" content="可米酷漫画在线签到领酷币,www.comicool.cn" />
+	<meta name="generator" content="Comicool" />
+	<meta name="author" content="Comicool Team and Comicool UI Team" />
+	<meta name="copyright" content="2014-2015 Comicool Inc." />
+	<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+</head>
+<body>
+	<article class="checkin clearfix">
+		<!-- 已签：checkin_btn_ok -->
+		<div class="checkin_btn">签到</div>
+		<!-- 日历 -->
+		<div class="checkin_calendar">
+		</div>
+		<!-- 日历 end -->
+		<!-- 重磅推荐 -->
+		<div class="checkin_recommend clearfix">
+			<script type="text/template" id="tmpl-commend">
+				{{each comi_list as item index}}
+					{{if index < 6}}
+						<dl data-cid="{{item.comic_id}}">
+							<a href=""><dt><img src="http://cdn.icomico.com/{{item.comic_cover_url}}?imageView2/1/w/200/h/200"></dt>
+							<dd>{{item.comic_title}}</dd></a>
+						</dl>
+					{{/if}}
+				{{/each}}
+			</script>
+		</div>
+		<!-- 重磅推荐 end -->
+		<!-- 签到  -->
+		<div class="checkin_rule clearfix">
+			<h2>签到规则</h2>
+			<p>1.签到1天，获得10酷币</p>
+			<p>2.连续签到达3天，从第3天开始，坚持签到每日均可获得20酷币</p>
+			<p>3.连续签到达7天，从第7天开始，坚持签到每日均可获得30酷币</p>
+			<p>4.坚持签到，酷币多多，一旦断掉，就得从10酷币开始赚起啦</p>
+		</div>
+		<!-- 签到 end -->
+
+	</article>
+	<script src="http://www.comicool.cn/common/js/template.js"></script>
+	<script src="m-common/js/app.js"></script>
+	<script>
+		function $(selector, parent) {
+		    return (parent || document).querySelector(selector);
+		}
+
+		function $$(selector, parent) {
+		    return (parent || document).querySelectorAll(selector);
+		}
+
+		function jsonp(options) {
+		    var src = options.url;
+		    var data = typeof options.data === 'object' ? options.data : null;
+		    var qs = serialize(data);
+		    var script = document.createElement('script');
+		    var head = document.getElementsByTagName('head')[0];
+
+		    if (qs) {
+		        if (src.indexOf('?') > -1) {
+		            src += '&' + qs;
+		        } else {
+		            src += '?' + qs;
+		        }
+		    }
+
+		    window[options.callback] = options.success;
+		    script.src = src;
+		    head.appendChild(script);
+
+		    function serialize(data) {
+		        var arr = [];
+		        for (var n in data) {
+		            arr.push(n + '=' + data[n]);
+		        }
+		        return arr.join('&');
+		    }
+		}
+
+		function extendObj(obj, targetObj, spec) {
+		    obj = obj ? obj : {};
+		    targetObj = targetObj ? targetObj : {};
+
+		    for (var key in targetObj) {
+		        if (targetObj.hasOwnProperty(key)) {
+		            if (spec && spec.indexOf(key) < 0) {
+		                continue;
+		            }
+		            obj[key] = targetObj[key];
+		        }
+		    }
+		    return obj;
+		}
+
+		function Calendar(selector, days, classNames) {
+			var d = new Date();
+			var now = +d;
+			var millisecondOfOneDay = 1000 * 60 * 60 *24;
+			var container = $(selector);
+			var temp = document.createDocumentFragment();
+			var span = null;
+			var that = this;
+			var lastCheckDate = 0;
+			var durativeDays = 1;
+
+			for (var i = days; i > 0; i--) {
+				span = document.createElement('span');
+				d.setTime(now - millisecondOfOneDay * (i - 1));
+				span.innerHTML = d.getDate();
+				temp.appendChild(span);
+			}
+
+			temp.lastChild.className = 'checkin_date';
+			container.appendChild(temp);
+			span = container.children;
+
+			that.timestamp2date = function (unixTimestamp) {
+				return new Date(unixTimestamp * 1000).getDate();
+			};
+
+			that.update = function (obj) {
+				for (var i = 0, item; item = span[i++];) {
+					var durativeDays = obj[item.innerText];
+					console.log(obj)
+					if (durativeDays) {
+						if (durativeDays in classNames) {
+							item.className = classNames[durativeDays];
+						} else {
+							item.className = classNames[1];
+						}
+						
+					}
+				}
+			};
+
+			that.mark = function (data) {
+				var obj = {};
+				var arr = [];
+				if (data instanceof Array) {
+					data.forEach(function (item, index) {
+						arr.push({date: that.timestamp2date(item.timestamp), flag: item.flag});
+					});
+				} else if (data.type === 'date') {
+					arr.push({date: data.date, flag: data.flag});
+				} else if (data.type === 'timestamp') {
+					arr.push({date: that.timestamp2date(data.timestamp), flag: data.flag});
+				}
+
+                var lastFlag = "";
+				arr.forEach(function (item, index) {
+					if (item.flag == 'checkin_3days' && lastFlag != item.flag) {
+						durativeDays = '3';
+					} else if (item.flag == 'checkin_7days' && lastFlag != item.flag) {
+						durativeDays = '7';
+					} else {
+						durativeDays = '1';
+					}
+					obj[item.date] = durativeDays;
+                    lastFlag = item.flag;
+				});
+				that.update(obj);
+			};
+		}
+
+		(function () {
+			var calendar = new Calendar('.checkin_calendar', 15, {
+				'1': 'checkin_claw',
+				'3': 'checkin_tag_3',
+				'7': 'checkin_tag_7'
+			});
+			var userInfo = null;
+			var isLogin = false;
+			var isSetCalender = false;
+			var checkinRequestLock = false;
+			var initLogin = function (obj) {
+			    userInfo = obj;
+			    isLogin = true;
+			    
+			    $('.checkin_btn').removeEventListener('click', jumpLoginPage);
+			    $('.checkin_btn').addEventListener('click', requestCheckin);
+
+			    if(isAndroidApp && isSetCalender) {
+			        return false;
+			    }
+		    	getCheckHistory();
+			};
+			
+			setByUserLoginStatus({
+				isLogin: initLogin,
+				unLogin: function (obj) {
+					callAppFunction('setJSCallback', {
+					    'account_event': 'loginHandler'
+					});
+					window.loginHandler = function () {
+					    setByUserLoginStatus({
+					        isLogin: initLogin
+					    });
+					};
+				}
+			});
+
+			getCommendComics();
+			getCheckHistory();
+
+			$('.checkin_btn').addEventListener('click', jumpLoginPage);
+
+			function jumpLoginPage() {
+				callAppFunction('openLoginPage', {});
+			}
+
+			function getCheckHistory() {
+				var data = {record_count: 15,duty_type:"checkin"};
+
+				if (isLogin) {
+				    extendObj(data, userInfo, ['ccid', 'cctoken', 'usertype', 'os_type', 'device_id', 'channel']);
+				} else {
+					return;
+				}
+				
+//				alert(JSON.stringify(data))
+				jsonp({
+					url: 'http://proxy.icomico.com/dutyrecord4h5',
+					data: data,
+					callback: 'jsonp_dutyrecord4h5',
+					success: function (res) {
+						setCalendar(res);
+						isSetCalender = true;
+					}
+				});
+			}
+
+			function getCommendComics() {
+				jsonp({
+					url: 'http://proxy.icomico.com/timeline4h5',
+					callback: 'jsonp_timeline',
+					success: function (res) {
+						console.log(res);
+						var dayIndex = res.now_weekid - 1;
+						var obj = res.timeline_list[dayIndex];
+                        var comi_list = obj.comi_list;
+				        if (comi_list instanceof Array) {
+                            comi_list = comi_list.sort(function(item1, item2) {
+                                return item2.praise_count - item1.praise_count;
+                            });
+                            obj.comi_list = comi_list;
+                        }
+						$('#tmpl-commend').outerHTML = template('tmpl-commend', obj);
+						bindOpenComicEvents();
+					}
+				});
+			}
+
+			function bindOpenComicEvents() {
+				var readComic;
+				var comicList = $('.checkin_recommend');
+
+				if (isApp) {
+					readComic = function (cid) {
+						callAppFunction('openComicDetailsPage', {
+							comic_id: cid,
+						});
+					}
+				} else {
+					readComic = function (cid) {
+						window.location.href = 'http://m.comicool.cn/content/detail.html?comic_id=' + cid;
+					}
+				}
+				comicList.addEventListener('click', function (e) {
+					var elem = e.target;
+					var cid;
+
+					e.preventDefault();
+					while (elem != null) {
+						if (elem.tagName.toLowerCase() === 'dl') {
+							cid = elem.dataset.cid;
+
+							readComic(cid);
+							break;
+						} else {
+							elem = elem.parentNode;
+						}
+					}
+				});
+			}
+
+			function setCalendar(res) {
+				if (res.records) {
+					var lastCheckinTime = res.records[res.records.length - 1].done_time * 1000;
+					var checkinDate = new Date(lastCheckinTime);
+					var nowDate = new Date();
+					var timeArr = [];
+					res.records.forEach(function (item) {
+						if (item.duty_type === 'checkin') {
+							timeArr.push({timestamp: item.done_time, flag: item.done_flag});
+						}
+					});
+					calendar.mark(timeArr);
+
+					if (checkinDate.getDate() == nowDate.getDate() && checkinDate.getMonth() == nowDate.getMonth() && checkinDate.getFullYear() == nowDate.getFullYear()) {
+						disabledCheckin();
+					}
+				}
+			}
+
+			function requestCheckin() {
+				if (!checkinRequestLock) {
+					var data = {
+						duty_id: '2',
+						duty_type: 'checkin'
+					};
+					checkinRequestLock = true;
+					extendObj(data, userInfo);
+
+					jsonp({
+						// url: 'http://192.168.10.54:8888/report_duty4h5',
+						url: 'http://proxy.icomico.com/report_duty4h5',
+						data: data,
+						callback: 'jsonp_report_duty',
+						success: function (res) {
+							if (res.ret == 0) {
+								calendar.mark({
+									type: 'timestamp',
+									timestamp: Math.floor(new Date()/1000),
+									flag: res.done_flag
+								});
+								disabledCheckin();
+							} else {
+								alert(res.msg);
+							}
+							checkinRequestLock = false;
+						}
+					});
+				}
+			}
+
+			function disabledCheckin() {
+				$('.checkin_btn').removeEventListener('click', requestCheckin);
+				$('.checkin_btn').classList.add('checkin_btn_ok');
+			}
+		})();
+	</script>
+</body>
+</html>

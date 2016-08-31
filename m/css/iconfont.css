@@ -1,0 +1,119 @@
+@font-face {
+	font-family: 'comicool-font';
+	src:url('fonts/comicool-font.eot?-9jvo91');
+	src:url('fonts/comicool-font.eot?#iefix-9jvo91') format('embedded-opentype'),
+		url('fonts/comicool-font.ttf?-9jvo91') format('truetype'),
+		url('fonts/comicool-font.woff?-9jvo91') format('woff'),
+		url('fonts/comicool-font.svg?-9jvo91#comicool-font') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'comicool-font';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	vertical-align: middle;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-pen:before {
+	content: "\e61d";
+}
+.icon-league:before {
+	content: "\e61e";
+}
+.icon-setting:before {
+	content: "\e600";
+}
+.icon-praise:before {
+	content: "\e601";
+}
+.icon-exit:before {
+	content: "\e602";
+}
+.icon-comment:before {
+	content: "\e603";
+}
+.icon-arrow-right:before {
+	content: "\e604";
+}
+.icon-arrow-left:before {
+	content: "\e605";
+}
+.icon-angle-left:before {
+	content: "\e606";
+}
+.icon-angle-right:before {
+	content: "\e607";
+}
+.icon-category:before {
+	content: "\e608";
+}
+.icon-chat:before {
+	content: "\e609";
+}
+.icon-fresh:before {
+	content: "\e60a";
+}
+.icon-good:before {
+	content: "\e60b";
+}
+.icon-grade:before {
+	content: "\e60c";
+}
+.icon-home:before {
+	content: "\e60d";
+}
+.icon-menu:before {
+	content: "\e60e";
+}
+.icon-search:before {
+	content: "\e60f";
+}
+.icon-share:before {
+	content: "\e610";
+}
+.icon-angle-up:before {
+	content: "\e611";
+}
+.icon-angle-down:before {
+	content: "\e612";
+}
+.icon-logo:before {
+	content: "\e613";
+}
+.icon-notice:before {
+	content: "\e614";
+}
+.icon-star-empty:before {
+	content: "\e615";
+}
+.icon-star-half:before {
+	content: "\e616";
+}
+.icon-star-solid:before {
+	content: "\e617";
+}
+.icon-qq:before {
+	content: "\e618";
+}
+.icon-wechat:before {
+	content: "\e619";
+}
+.icon-weibo:before {
+	content: "\e61a";
+}
+.icon-moments:before {
+	content: "\e61b";
+}
+.icon-yes:before {
+	content: "\e61c";
+}

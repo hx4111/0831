@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画列表页|漫画网_二次元</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画列表,二次元,编辑推荐,人气排行,新书上架,漫画app,条漫"/>
+    <meta name="description" content="漫画列表:介么多漫画怎么看，别着急，各栏目漫画列表已上架，可别吝啬您的小手一戳功噢"/>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/zepto.js"></script>
+    <script src="../js/config.js"></script>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        #videoBox {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .loading-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #000;
+            opacity: 0.6;
+        }
+
+    </style>
+</head>
+<body>
+<div class="loader"></div>
+<video id="videoBox" class="playTv" src="" poster="" autoplay="autoplay" controls>
+    您的浏览器不支持 video 标签。
+</video>
+<script src="../js/common-tv.js"></script>
+<script type="text/javascript">
+    var comic_id = getQueryString('comic_id');
+    var video_id = getQueryString('video_id');
+    var Media = document.getElementById('videoBox');
+    function init() {
+        if (comic_id == 10565) {
+            if (video_id == 'seven01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/seven/seven01/output1.m3u8');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/seven01.jpg'});
+            } else if (video_id == 'seven02') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/seven/seven02/output.m3u8');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/seven02.jpg'});
+            } else if (video_id == 'seven03') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/seven/seven03/output.m3u8');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/seven03.jpg'});
+            }
+        } else if (comic_id == 10622) {
+            if (video_id == 'xunshi01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/xunshi/xunshi01/output.m3u8');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xunshi01.jpg'});
+            } else if (video_id == 'xunshi02') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/seven/seven01/output1.m3u8');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xunshi02.jpg'});
+            }
+        } else if (comic_id == 77) {
+            if (video_id == 'shenshou01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/shenshou/shenshou01.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/shenshou01.jpg'});
+            }
+        } else if (comic_id == 70) {
+            if (video_id == 'gll01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll01.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_lt.jpg'});
+            } else if (video_id == 'gll02') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll02.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_lt.jpg'});
+            } else if (video_id == 'gll03') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll03.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_lt.jpg'});
+            } else if (video_id == 'gll04') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll04.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_l.jpg'});
+            } else if (video_id == 'gll05') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll05.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_yy.jpg'});
+            } else if (video_id == 'gll06') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/guilaile/gll06.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/gll_yy.jpg'});
+            }
+        } else if (comic_id == 3701) {
+            if (video_id == 'tpz01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/tpz/tpz01.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/tpz_tv.jpg'});
+            } else if (video_id == 'tpz02') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/tpz/tpz02.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/tpz_02.jpg'});
+            } else if (video_id == 'tpz03') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/tpz/tpz03.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/tpz_03.jpg'});
+            } else if (video_id == 'tpz04') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/tpz/tpz04.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/tpz_04.jpg'});
+            }
+        } else if (comic_id == 10424) {
+            if (video_id == 'xlxy01') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/xlxy/xlxy01.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xlxy_01.jpg'});
+            } else if (video_id == 'xlxy02') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/xlxy/xlxy02.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xlxy_02.jpg'});
+            } else if (video_id == 'xlxy03') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/xlxy/xlxy03.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xlxy_03.jpg'});
+            } else if (video_id == 'xlxy04') {
+                $('#videoBox').attr('src', 'http://cdn.icomicool.cn/tv/mp4/xlxy/xlxy04.mp4');
+                $('#videoBox').attr({'poster': 'http://cdn.icomicool.cn/tv/images/xlxy_04.jpg'});
+            }
+        }
+
+        Media.addEventListener('waiting', function () {
+            console.log('waiting ');
+            $('.loader').addClass('loading-page');
+        });
+        Media.addEventListener('playing', function () {
+            console.log('playing ');
+            $('.loader').removeClass('loading-page');
+        });
+
+        Media.play();
+    }
+
+    init();
+
+    var keyeventConfig = {
+        'enterkeyCallback': function () {
+            var status = Media.paused;
+            if (status) {
+                Media.play();
+            } else {
+                Media.pause();
+            }
+        },
+        'leftkeyCallback': function () {
+            Media.currentTime -= 5;
+        },
+        'rightkeyCallback': function () {
+            Media.currentTime += 5;
+        },
+        'upkeyCallback': function () {
+            if(Media.volume + 0.1 < 1) {
+                Media.volume += 0.1;
+            }
+        },
+        'downkeyCallback': function () {
+            if(Media.volume - 0.1 > 0) {
+                Media.volume -= 0.1;
+            }
+        }
+    }
+    new KeyPressEvent(keyeventConfig);
+
+    var escUrl = CONFIG.rootUrl + '/comi-video/detail.html?comic_id=' + comic_id + '&video_id=' + video_id;
+    escPressEvent(escUrl);
+
+</script>
+</body>
+</html>

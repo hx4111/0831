@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>可米酷周年大回馈</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="看漫画还赚钱？拿了100元这种好事我只告诉你">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/global.js"></script>
+</head>
+<body class="home">
+	<div class="loading-page"></div>
+	<!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+	<h1 class="share-info" style="display:none">
+	    可米酷周年大回馈
+	    <p>看漫画还赚钱？拿了100元这种好事我只告诉你</p>
+	    <img src="images/480.jpg" alt="可米酷漫画,comicool" />
+	</h1>
+	<div class="focus-main">
+		<img class="response-v" src="images/focus.png">
+		<div class="red-bags"></div>
+	</div>
+	<div class="data-panel">
+		<div class="data-item">
+			<strong>已参加活动人数</strong>
+			<div class="number" id="total-people"></div>
+		</div>
+		<div class="data-item">
+			<strong>已发放的奖金金额</strong>
+			<div class="number" id="total-bonus"></div>
+		</div>
+	</div>
+	<div class="scroll-info">
+		<ul>
+			<!-- 记录滚动 -->
+		</ul>
+	</div>
+	<div class="goods-area clouds">
+		<ul class="goods-list">
+			<li><img src="images/goods/1.jpg" alt=""></li>
+			<li><img src="images/goods/2.jpg" alt=""></li>
+			<li><img src="images/goods/3.jpg" alt=""></li>
+			<li><img src="images/goods/4.jpg" alt=""></li>
+			<li><img src="images/goods/5.jpg" alt=""></li>
+			<li><img src="images/goods/6.jpg" alt=""></li>
+		</ul>
+		<i class="cloud"></i>
+		<i class="cloud"></i>
+	</div>
+	<div class="chongzhijun clouds">
+		<img class="response-h" src="images/chongzhijun.png">
+		<p class="cur-account">&nbsp;</p>
+		<a class="index-btn exchange-btn" title="立即兑换"></a>
+		<a href="exchange_guide.html">如何兑换奖品？</a>
+		<i class="cloud"></i>
+		<i class="cloud"></i>
+	</div>
+	<div class="top-tarento text-center">
+		<p class="title">推广达人Top5</p>
+		<ul class="top-list">
+			<!-- <li>
+				<span class="user-icon">
+					<img src="images/mock/photo.jpg">
+				</span>
+				<span class="user-nick">西红柿炒番茄</span>
+				<div class="user-invitetimes">
+					<i>1</i><i>3</i><i>0</i>人
+				</div>
+			</li> -->
+		</ul>
+		<p class="tip">邀请好友下载可米酷App成为推广达人，红包多多，奖品多多！</p>
+		<p class="cur-inviteinfo"></p>
+		<a class="index-btn invite-btn" title="立即邀请"></a>
+		<a href="tarento_guide.html">如何成为推广达人？</a>
+	</div>
+</body>
+<script>
+function imageErrorHandler(elem) {
+	elem.src = 'http://comicool.cn/images/league/icon-default.jpg';
+}
+
+(function () {
+	function Roller(selector) {
+		var view = document.querySelector(selector),
+			list = view.querySelector('ul'),
+			li = list.children,
+			scrollDis,
+			threshold,
+			curPos = 0,
+			interval = 3000,
+			timmer = null
+
+		var clone = function () {
+			var clonePart = document.createDocumentFragment();
+
+			for (var i = 0, node; node = li[i++];) {
+				clonePart.appendChild(node.cloneNode(true))
+			}
+			list.appendChild(clonePart);
+		};
+
+		var scroll = function () {
+			timmer = setInterval(function () {
+				curPos = curPos - scrollDis;
+
+				list.setAttribute('style', ''
+					+ 'transition: all .5s;'
+					+ '-webkit-transition: all .5s;'
+					+ 'top:' + curPos + 'px;'
+				);
+
+				if (curPos == threshold) {
+					setTimeout(function () {
+						curPos = 0;
+						list.setAttribute('style', 'top: 0;');
+					}, 500);
+				}
+			}, interval);
+		};
+
+		var init = function () {
+			if (li.length > 1) {
+				clone();
+				scroll();
+			}
+		};
+
+		setTimeout(function () {
+			scrollDis = li[0].offsetHeight;
+			threshold = -list.offsetHeight;
+			init();
+		}, 500);
+	}
+
+	function NumberPanel(selector, initialNum) {
+		var panel = document.querySelector(selector);
+		var lists = [];
+		var count, unitHeight, curNumString;
+
+		this.update = function(numString) {
+			curNumString = numString.toString();
+			var arr = curNumString.split('');
+			var offsetCount = arr.length - lists.length;
+
+			if (offsetCount > 0) {
+				lists = lists.concat(createList(offsetCount));
+			} else if (offsetCount < 0) {
+				removeList(offsetCount);
+			}
+
+			for (var i = 0, len = arr.length; i < len; i++) {
+				var pos = '-' + Number(arr[i]) * unitHeight + 'px';
+				lists[i].setAttribute('style', '-webkit-transform: translate3d(0, ' + pos + ', 0);transform: translate3d(0, ' + pos + ', 0);')
+			}
+		};
+
+		this.add = function (number) {
+			curNumString = +curNumString + number;
+			this.update(curNumString);
+		};
+
+		this.init = function (initialNum) {
+			var that = this;
+
+			setTimeout(function () {
+				initialNum = initialNum.toString();
+				count = initialNum.length;
+				lists = lists.concat(createList(count));
+				unitHeight = lists[0].children[0].offsetHeight;
+				curNumString = initialNum;
+
+				that.update(initialNum);
+			}, 500);
+		};
+
+		if (initialNum !== undefined) {
+			this.init(initialNum);
+		}
+
+		function createList(count) {
+			var docf = document.createDocumentFragment();
+			var ret = [];
+
+			for (var i = 0; i < count; i++) {
+				var ul = document.createElement('ul');
+
+				for (var j = 0; j < 10; j++) {
+					var li = document.createElement('li');
+					li.innerHTML = j.toString();
+					ul.appendChild(li);
+				}
+
+				docf.appendChild(ul);
+				ret.push(ul);
+			}
+
+			panel.appendChild(docf);
+			return ret;
+		}
+
+		function removeList(index) {
+			var removeUls = lists.splice(index);
+			
+			for (var i = 0, len = removeUls.length; i < len; i++) {
+				panel.removeChild(removeUls[i]);
+			}
+		}
+	}
+
+	function getRandomNumber(min, max) {
+		return min + Math.round(Math.random() * (max - min));
+	}
+
+	function serialize(obj) {
+		var arr = [];
+
+		for (var key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				arr.push(key + '=' + encodeURIComponent(obj[key]));
+			}
+		}
+
+		return arr.join('&');
+	}
+
+	function jsonp(options) {
+		var head = document.getElementsByTagName('head')[0];
+		var src = options.url;
+		var serializeStr = serialize(options.data || null);
+		var script = document.createElement('script');
+
+		src += src.indexOf('?') === -1 ? '?' + serializeStr : serializeStr;
+		script.src = src;
+		script.onload = function () {
+			delete window[options.callback];
+			head.removeChild(script);
+		};
+
+		script.onerror = function () {
+			options.error && options.error();
+		};
+
+		window[options.callback] = options.success;
+		head.appendChild(script);
+	}
+
+	//活动人数和奖金金额
+	jsonp({
+		url: 'http://proxy.icomico.com/alldutywealth4h5',
+		callback: 'jsonp_alldutywealth',
+		success: function (data) {
+			if (data.msg === 'ok' && data.ret === 0) {
+				var totalPeople = new NumberPanel('#total-people', data.all_user_count);
+				var totalBonus = new NumberPanel('#total-bonus', Math.round(data.all_duty_money));
+
+				if (!isApp) {
+					setInterval(function () {
+						totalPeople.add(getRandomNumber(1, 5));
+					}, 4000);
+
+					setInterval(function () {
+						totalBonus.add(getRandomNumber(1, 10));
+					}, 4000);
+				}
+			}
+		},
+		error: function () {
+			console.warn('jsonp_alldutywealth is failed.');
+		}
+	});
+
+	//兑换记录滚动
+	jsonp({
+		url: 'http://proxy.icomico.com/exchangelist4h5',
+		callback: 'jsonp_exchangelist',
+		success: function (data) {
+			if (data.msg === 'ok' && data.ret === 0) {
+				var arr = data.records;
+				var contSelector = '.scroll-info';
+				var list = $.one('ul', $.one(contSelector));
+
+				if (arr instanceof Array && arr.length) {
+					var docf = document.createDocumentFragment();
+					arr = arr.slice(0, 10);
+
+					for (var i = 0, len = arr.length; i < len; i++) {
+						var item = arr[i];
+						var li = document.createElement('li');
+
+						li.innerHTML = item.nickname + '用' + item.credits + '酷币' + item.description;
+						docf.appendChild(li);
+					}
+
+					list.appendChild(docf);
+				} else {
+					list.innerHTML = '<li>暂时没有兑换记录~</li>';
+				}
+
+				new Roller(contSelector);
+			}
+		},
+		error: function () {
+			console.warn('jsonp_exchangelist is failed.');
+		}
+	});
+
+	//推广达人榜单
+	jsonp({
+		url: 'http://proxy.icomico.com/invitetalent4h5',
+		callback: 'jsonp_invitetalent',
+		success: function (data) {
+			console.log(data);
+			if (data.msg === 'ok' && data.ret === 0) {
+				var arr = data.talents || [];
+				var list = $.one('.top-list');
+				var docf = document.createDocumentFragment();
+				var formatNumber = function (num) {
+					num = ('000' + num).slice(-3);
+					return '<i>' + num.split('').join('</i><i>') + '</i>';
+				};
+
+				for (var i = 0, len = 5; i < len; i++) {
+					var item = arr[i];
+					var li = document.createElement('li');
+
+					if (item) {
+						li.innerHTML = ''
+							+ '<span class="user-icon">'
+							+ 	'<img src="' + item.icon + '" onerror="imageErrorHandler(this)">'
+							+ '</span>'
+							+ '<span class="user-nick">' + (item.nickname || '神秘人物') + '</span>'
+							+ '<div class="user-invitetimes">' + formatNumber(item.invitetimes) + '人</div>'
+					} else {
+						li.innerHTML = ''
+							+ '<span class="user-icon"></span>'
+							+ '<span class="user-nick">虚位以待~</span>';
+					}
+
+					docf.appendChild(li);
+				}
+
+				list.appendChild(docf);
+			}
+		}
+	});
+
+	var exchangeBtn = $.one('.exchange-btn');
+	var inviteBtn = $.one('.invite-btn');
+
+	if (isApp) {
+		var curAccount = $.one('.cur-account');
+		var curInviteInfo = $.one('.cur-inviteinfo');
+
+		callAppFunction('showShareBtn', {
+			'title': '可米酷一周年，安装赚红包',
+			'describe' : '无节操有内涵的漫画君约你一起赚钱啦，点击即可拿红包，更多精彩请脑补~',
+			'imageurl' : 'http://7xkjeb.com2.z0.glb.qiniucdn.com/comi_share_icon.jpg'
+		});
+
+		function loginCallback(userInfo) {
+			var queryString = serialize(userInfo);
+			var shareJsonObj = {
+			    'title' : '可米酷一周年，安装赚红包',
+			    'describe' : '无节操有内涵的漫画君约你一起赚钱啦，点击即可拿红包，更多精彩请脑补~',
+			    'imageurl' : 'http://7xkjeb.com2.z0.glb.qiniucdn.com/comi_share_icon.jpg',
+			    'page_url': 'http://promote.comicool.cn/app/index.php?' + queryString
+			};
+
+			exchangeBtn.classList.remove('login-btn');
+			exchangeBtn.addEventListener('touchend', function () {
+				try {
+				    callAppFunction('openMallPage', {});
+				} catch(e) {
+				    alert('哇哦，您的可米酷还不是最新版哦～快去更新吧～');
+				}
+			}, false);
+			inviteBtn.addEventListener('touchend', function () {
+				callAppFunction('popupSharePanel', shareJsonObj);
+			}, false);
+
+			//app里获取用户余额
+			jsonp({
+				url: 'http://proxy.icomico.com/wealth_simple4h5',
+				callback: 'jsonp_wealth_simple',
+				data: {
+					ccid: userInfo.ccid,
+					usertype: userInfo.usertype,
+					device_id: userInfo.deviceid,
+					token: userInfo.cctoken
+				},
+				success: function (data) {
+					if (data.msg === 'ok' && data.ret === 0) {
+						if (data.wealth_avail === 0) {
+							curAccount.innerHTML = '您还没有获得奖励，快去邀请吧';
+						} else {
+							curAccount.innerHTML = '您目前已获得奖励' + Math.round(data.wealth_avail) + '酷币，可以兑换奖品了哦~';
+						}
+
+						if (data.invite_rank === -1) {
+							curInviteInfo.innerHTML = '您还没有邀请过好友，赶快去邀请吧！';
+						} else {
+							curInviteInfo.innerHTML = '您当前排<i>' + data.invite_rank + '</i>名,已邀请<i>' + data.invite_times +  '</i>好友激活可米酷！';
+						}
+					}
+				}
+			});
+		}
+
+		function jumpLoginPage() {
+			callAppFunction('openLoginPage', {});
+		}
+
+		//登录面板跳回页面后的回调(安卓的坑：要放在全局空间里)
+		window.loginHandler = function(obj) {
+			setByUserLoginStatus(loginCallback);
+			exchangeBtn.removeEventListener('touchend', jumpLoginPage);
+			inviteBtn.removeEventListener('touchend', jumpLoginPage);
+		}
+
+		setByUserLoginStatus(
+			loginCallback,
+			function () {
+				curAccount.innerHTML = '立即登录兑换奖品';
+
+				exchangeBtn.classList.add('login-btn');
+				exchangeBtn.addEventListener('touchend', jumpLoginPage, false);
+				inviteBtn.addEventListener('touchend', jumpLoginPage, false);
+				//设置App里登录后的回调函数
+				callAppFunction('setJSCallback', {
+				    'account_event': 'loginHandler'
+				});
+			}
+		);
+	} else {
+		//非可米酷app
+		exchangeBtn.classList.add('download-btn');
+		inviteBtn.classList.add('download-btn');
+		exchangeBtn.addEventListener('touchend', jumpDownload, false);
+		inviteBtn.addEventListener('touchend', jumpDownload, false);
+	}
+})();
+</script>
+</html>

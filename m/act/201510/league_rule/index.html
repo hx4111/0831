@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>周赛评选新规则公布</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<script>
+		var caclFontSize = function () {
+			var screenWidth = document.documentElement.offsetWidth;
+			var deviceSizeRatio = window.devicePixelRatio;
+			var baseWidth = 320;
+			var htmlFontSize = (screenWidth / baseWidth) * 20;
+			document.documentElement.style.fontSize = htmlFontSize + 'px';
+		};
+
+		caclFontSize();
+		window.addEventListener('resize', caclFontSize);
+	</script>
+	<style>
+	html {
+		font-size: 20px;
+	}
+	body, ul, li, p {
+		padding: 0;
+		margin: 0;
+	}
+	body {
+		font-family: Arial, Helvetica, 'Microsoft Yahei', sans-serif;
+		font-size: .625rem;
+		line-height: 1.4;
+		color: #018096;
+		background: #a9f2ff url(images/bg.png) center top no-repeat;
+		background-size: contain;
+		-webkit-background-size: contain;
+	}
+	ul, li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+		color: #f67979;
+	}
+	.top-rule {
+		margin-top: 7.85rem;
+		height: 2.2rem;
+		padding: .5rem 1.5rem;
+	}
+	.jury {
+		margin-top: 20rem;
+		padding: 0 .9rem 1.25rem;
+	}
+	.jury li {
+		padding: .75rem 0;
+		border-top: 2px dotted #fff;
+	}
+	.jury .judge1 {
+		padding-top: 0;
+		border: 0;
+	}
+	.jury .photo {
+		float: left;
+		width: 3.4rem;
+		height: 3.4rem;
+		margin-right: .5rem;
+		background: url(images/sprite.png) no-repeat;
+		background-size: 320.28% 195.65%;
+		-webkit-background-size: 320.28% 195.65%;
+	}
+	.jury .judge2 .photo {
+		background-position: -3.4rem 0;
+	}
+	.jury .judge3 .photo {
+		background-position: -6.8rem 0;
+	}
+	.jury .name {
+		display: inline-block;
+		margin-top: .875rem;
+		width: 4rem;
+		height: 1.1rem;
+		font-size: 1rem;
+		background: url(images/sprite.png) no-repeat;
+		background-size: 11.05rem;
+		text-indent: -99em;
+	}
+	.jury .judge1 .name {
+		background-position: 0 -3.45rem;
+	}
+	.jury .judge2 .name {
+		background-position: 0 -4.55rem;
+	}
+	.jury .judge3 .name {
+		background-position: 0 -5.65rem;
+	}
+	.jury .weibo {
+		display: inline-block;
+		margin-left: .75rem;
+		font-size: .5rem;
+		vertical-align: middle;
+	}
+	.jury .weibo:before {
+		content: "";
+		display: inline-block;
+		width: .625rem;
+		height: .5rem;
+		margin-right: .225rem;
+		vertical-align: inherit;
+		background: url(images/sprite.png) right top no-repeat;
+		background-size: 1768% auto;
+		-webkit-background-size: 1768% auto;
+	}
+	.jury .summary {
+		margin-top: .5rem;
+		font-size: .55rem;
+	}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="top-rule">
+			亲爱的酷酱们：<br>
+			精彩周赛再升级，评选新规热启动！<br>
+			备受关注的周赛选拔将于2015年10月26日第17期开始全面升级，来看看评选新规则吧！！
+		</div>
+		<ul class="jury">
+			<li class="judge1">
+				<div class="photo"></div>
+				<strong class="name">CMJ</strong>
+				<a href="http://weibo.com/cmjokers" target="_blank" class="weibo">@CMJ骆驼哥</a>
+				<p class="summary">新锐漫画家，处女作《阳光灿烂的日子3部曲》，并以一部《我的奋斗》一炮走红于互联网，该漫画获得了2008年OACC金龙奖最佳编剧奖。CMJ的作品以独特的视角揭露了一些社会普遍存在的现象，并用他特有的黑色幽默展现再我们面前，极富讽刺意味，他的漫画再当代青年中广受欢迎.
+				<br>代表作：《谁动了我的JB》、《不亮传》、 《MY STRUGGLE》</p>
+			</li>
+			<li class="judge2">
+				<div class="photo"></div>
+				<strong class="name">张晓雨</strong>
+				<a href="http://weibo.com/u/1322633151" target="_blank" class="weibo">@张-晓雨</a>
+				<p class="summary">漫画、插画独立撰稿人，曾任‘科幻世界’杂志社担任编辑、美术总监、主编。目前作品主要在欧洲出版。是中国漫画家在欧美获得最高奖项的画家，2014年10月《面人麻生》获法国第38届尚贝里漫画界金象奖。<br>
+				代表作：《云中兰若》、《面人麻生》、《地球之旅》
+				</p>
+			</li>
+			<li class="judge3">
+				<div class="photo"></div>
+				<strong class="name">李婓</strong>
+				<a href="http://weibo.com/feizimu" target="_blank" class="weibo">@婓子木</a>
+				<p class="summary">陕西省漫画研究会秘书长，从事专业美术创作，常年致力于文人水墨漫画创作，唐长安文化研究、传统文化振兴及童书类项目策划。有多部作品出版、展出及被各界收藏。连环漫画作品曾入选1998年“中国当代连环漫画原作展”、 2000年“2000全国漫画大展”等。
+				<br>代表作：《断翼》、《良禽择木》、《照猫画虎》</p>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

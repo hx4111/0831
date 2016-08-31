@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>可米酷周年大回馈</title>
+	<meta name="description" content="看漫画还赚钱？拿了100元这种好事我只告诉你">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="http://www.comicool.cn/common/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+	<div class="wrap">
+		<div class="data-panel">
+			<div class="data-item">
+				<p class="name">已参加人数</p>
+				<div class="number" id="total-people"></div>
+			</div>
+			<div class="data-item">
+				<p class="name">已发放的奖金金额</p>
+				<div class="number" id="total-bonus"></div>
+			</div>
+		</div>
+		<div class="scroll-info" id="scroll-info">
+			<ul>
+			<!-- 兑换记录 -->
+			</ul>
+		</div>
+		<ul class="goods-list">
+			<li class="one"><img src="images/goods/1.png" alt=""></li>
+			<li class="two"><img src="images/goods/2.png" alt=""></li>
+			<li class="three"><img src="images/goods/3.png" alt=""></li>
+			<li class="four"><img src="images/goods/4.png" alt=""></li>
+			<li class="five"><img src="images/goods/5.png" alt=""></li>
+			<li class="six"><img src="images/goods/6.png" alt=""></li>
+		</ul>
+		<div class="exchange-area">
+			<p class="tip">下载可米酷app兑换奖品</p>
+			<a href="http://app.comicool.cn/down.html" class="index-btn download-btn" title="立即下载"></a>
+			<!-- <a href="">如何兑换奖品？</a> -->
+		</div>
+		<div class="tarento-area">
+			<p class="head">推广达人Top5</p>
+			<ul class="tarento-list">
+			<!-- 推广达人列表 -->
+			</ul>
+			<p class="tip">
+				邀请好友下载可米酷App成为推广达人，红包多多，奖品多多！
+			</p>
+			<a href="http://app.comicool.cn/down.html" class="index-btn download-btn" title="立即下载"></a>
+			<!-- <a href="">如何兑换奖品？</a> -->
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	function Roller(selector) {
+		var view = $(selector)[0],
+			list = view.getElementsByTagName('ul')[0],
+			li = list.children,
+			scrollDis = li[0].offsetHeight,
+			threshold = -list.offsetHeight,
+			curPos = 0,
+			interval = 3000,
+			timmer = null
+
+		var clone = function () {
+			var clonePart = document.createDocumentFragment();
+
+			for (var i = 0, node; node = li[i++];) {
+				clonePart.appendChild(node.cloneNode(true))
+			}
+			list.appendChild(clonePart);
+		};
+
+		var scroll = function () {
+			timmer = setInterval(function () {
+				curPos = curPos - scrollDis;
+
+				$(list).animate({
+					'margin-top': curPos + 'px'
+				}, function () {
+					if (curPos == threshold) {
+						curPos = 0;
+						$(list).css('margin-top', 0)
+					}
+				});
+			}, interval);
+		};
+
+		var init = function () {
+			if (li.length > 1) {
+				clone();
+				scroll();
+			}
+		};
+
+		init();
+	}
+
+	function NumberPanel(selector, initialNum) {
+		var panel = $(selector)[0];
+		var lists = [];
+		var count, unitHeight, curNumString;
+
+		this.update = function(numString) {
+			curNumString = numString.toString();
+			var arr = curNumString.split('');
+			var offsetCount = arr.length - lists.length;
+
+			if (offsetCount > 0) {
+				lists = lists.concat(createList(offsetCount));
+			} else if (offsetCount < 0) {
+				removeList(offsetCount);
+			}
+
+			for (var i = 0, len = arr.length; i < len; i++) {
+				var pos = '-' + Number(arr[i]) * unitHeight;
+				this.animate(lists[i], pos);
+			}
+		};
+
+		this.add = function (number) {
+			curNumString = +curNumString + number;
+			this.update(curNumString);
+		};
+
+		this.init = function (initialNum) {
+			initialNum = initialNum.toString();
+			count = initialNum.length;
+			lists = lists.concat(createList(count));
+			unitHeight = lists[0].children[0].offsetHeight;
+			curNumString = initialNum;
+
+			this.update(initialNum);
+		};
+
+		if (initialNum !== undefined) {
+			this.init(initialNum);
+		}
+
+		function createList(count) {
+			var docf = document.createDocumentFragment();
+			var ret = [];
+
+			for (var i = 0; i < count; i++) {
+				var ul = document.createElement('ul');
+
+				for (var j = 0; j < 10; j++) {
+					var li = document.createElement('li');
+					li.innerHTML = j.toString();
+					ul.appendChild(li);
+				}
+
+				docf.appendChild(ul);
+				ret.push(ul);
+			}
+
+			panel.appendChild(docf);
+			return ret;
+		}
+
+		function removeList(index) {
+			var removeUls = lists.splice(index);
+			
+			for (var i = 0, len = removeUls.length; i < len; i++) {
+				panel.removeChild(removeUls[i]);
+			}
+		}
+	}
+
+	NumberPanel.prototype.animate = function (elem, pos) {
+		var animate;
+
+		if ('webkitTransform' in document.documentElement.style) {
+			animate = function (elem, pos) {
+				$(elem).css({
+					'-webkit-transform': 'translate3d(0, ' + pos + 'px, 0)',
+					'transform': 'translate3d(0, ' + pos + 'px, 0)'
+				});
+			}
+		} else {
+			animate = function (elem, pos) {
+				$(elem).animate({
+					top: pos + 'px'
+				});
+			}
+		}
+
+		NumberPanel.prototype.animate = animate;
+		animate(elem, pos);
+	}
+
+	function getRandomNumber(min, max) {
+		return min + Math.round(Math.random() * (max - min));
+	}
+
+	function imageErrorHandler(elem) {
+		$(elem).attr('src', 'http://comicool.cn/images/league/icon-default.jpg')
+	}
+
+	//活动人数和奖金金额
+	$.ajax({
+		url: 'http://proxy.icomico.com/alldutywealth4h5',
+		dataType: 'jsonp',
+		jsonpCallback: 'jsonp_alldutywealth',
+		success: function (data) {
+			if (data.msg === 'ok' && data.ret === 0) {
+				var totalPeople = new NumberPanel('#total-people', data.all_user_count);
+				var totalBonus = new NumberPanel('#total-bonus', Math.round(data.all_duty_money));
+
+				setInterval(function () {
+					totalPeople.add(getRandomNumber(1, 5));
+				}, 4000);
+
+				setInterval(function () {
+					totalBonus.add(getRandomNumber(1, 10));
+				}, 4000);
+			}
+		},
+		error: function () {
+			console.warn('jsonp_alldutywealth is failed.');
+		}
+	});
+
+	//兑换记录
+	$.ajax({
+		url: 'http://proxy.icomico.com/exchangelist4h5',
+		dataType: 'jsonp',
+		jsonpCallback: 'jsonp_exchangelist',
+		success: function (data) {
+			if (data.msg === 'ok' && data.ret === 0) {
+				var arr = data.records;
+				var contSelector = '.scroll-info';
+				var list = $(contSelector).find('ul')[0];
+
+				if (arr instanceof Array && arr.length) {
+					var docf = document.createDocumentFragment();
+					arr = arr.slice(0, 10);
+
+					for (var i = 0, len = arr.length; i < len; i++) {
+						var item = arr[i];
+						var li = document.createElement('li');
+
+						li.innerHTML = item.nickname + '用' + item.credits + '酷币' + item.description;
+						docf.appendChild(li);
+					}
+
+					list.appendChild(docf);
+				} else {
+					list.innerHTML = '<li>暂时没有兑换记录~</li>';
+				}
+
+				new Roller(contSelector);
+			}
+		}
+	});
+
+	//推广达人榜单
+	$.ajax({
+		url: 'http://proxy.icomico.com/invitetalent4h5',
+		dataType: 'jsonp',
+		jsonpCallback: 'jsonp_invitetalent',
+		success: function (data) {
+			console.log(data)
+			if (data.msg === 'ok' && data.ret === 0) {
+				var arr = data.talents || [];
+				var list = $('.tarento-list')[0];
+				var docf = document.createDocumentFragment();
+				var formatNumber = function (num) {
+					num = ('000' + num).slice(-3);
+					return '<i>' + num.split('').join('</i><i>') + '</i>';
+				};
+
+				for (var i = 0, len = 5; i < len; i++) {
+					var item = arr[i];
+					var li = document.createElement('li');
+
+					if (item) {
+						li.innerHTML = ''
+							+ '<div class="user-photo">'
+							+ 	'<img src="' + item.icon + '" onerror="imageErrorHandler(this)">'
+							+ '</div>'
+							+ '<p class="user-nick">' + (item.nickname || '神秘人物') + '</p>'
+							+ '<div class="user-invitetimes">' + formatNumber(item.invitetimes) + '人</div>'
+					} else {
+						li.innerHTML = ''
+							+ '<span class="user-photo"></span>'
+							+ '<span class="user-nick">虚位以待~</span>';
+					}
+
+					docf.appendChild(li);
+				}
+
+				list.appendChild(docf);
+			}
+		}
+	});
+</script>
+</html>

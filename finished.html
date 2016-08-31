@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>可米酷完结作品|在线漫画_看漫画-可米酷原创漫画_条漫™</title>
+		<meta name="keywords" content="完结作品,在线漫画,看漫画,二次元,少女漫画,搞笑漫画,可米酷漫画" />
+		<meta name="description" content="完结作品|在线漫画:无须担心作品完结，可米酷漫画为你珍藏，漫画多多等你来哟。" />
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="js/common-pc.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+		<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+	</head>
+
+	<body class="body-finished" ng-app="">
+		<div class="top"><!--可米酷漫画头部--></div>
+		<article class="container">
+			<article class="mainbox finished-box cl">
+				<nav class="crumbs">
+					<b>我的位置：</b><a href="index.html" title="可米酷首页">首页</a><em>&gt;</em><span>完结作品</span>
+				</nav>
+				<section class="finish-sec">
+					<h2>完结作品</h2>
+					<div class="finish-t cl">
+						<div class="total-txt"></div>
+						<!-- 				<div id="finish-drop-box" class="drop-box">
+					<div class="drop-inner">
+						<div class="drop-t">
+							<span>全部</span>
+							<i></i>
+						</div>
+						<div class="drop-b">
+							<p><span data-ajax=''>全部111</span></p>
+							<p><span data-ajax=''>全部222</span></p>
+						</div>
+					</div>
+				</div>
+				<div class="choose-order">
+					<a href="javascript:;" class="curr">按阅读顺序</a> |
+					<a href="javascript:;">按推荐顺序</a> |
+					<a href="javascript:;">按更新顺序</a> |
+					<a href="javascript:;">按新旧顺序</a>
+				</div> -->
+					</div>
+					<div class="finish-con">
+						<ul class="loading finish-list cl">
+							<!-- <li>
+						<div class="li-img"><a href="javascript:;"><img src="http://cdn.icomicool.cn/images/finished/1.jpg" /></a></div>
+						<h3>神兽退散</h3>
+						<div class="li-author">五仁月饼</div>
+						<p>为了获得神器东皇钟而穿越到为了获得神器东皇钟而穿越到</p>
+					</li> -->
+						</ul>
+						<!-- <div class="fanye">
+					<a href="javascript:;" class="prev-group"></a>
+					<a href="javascript:;" class="prev"></a>
+					<a href="javascript:;" class="curr">1</a>
+					<a href="javascript:;">2</a>
+					<a href="javascript:;">3</a>
+					<a href="javascript:;">4</a>
+					<a href="javascript:;" class="prev"></a>
+					<a href="javascript:;" class="next-group"></a>
+				</div> -->
+					</div>
+				</section>
+				<aside class="side-right">
+					<!-- <div class="ad-img ad-img1">
+				<img src="http://cdn.icomicool.cn/images/ad/2.jpg" />
+			</div>
+			<div class="ad-img ad-img2">
+				<img src="http://cdn.icomicool.cn/images/ad/3.jpg" />
+			</div> -->
+					<section class="rank-box cl">
+						<h2>官网作品排行榜</h2>
+						<div id="rank-drop-box" class="drop-box">
+							<div class="drop-inner">
+								<div class="drop-t">
+									<span>全部</span>
+									<i></i>
+								</div>
+								<div class="drop-b">
+									<p><span data-ajax='http://www.baidu.com'>全部111</span></p>
+									<p><span data-ajax=''>全部222</span></p>
+								</div>
+							</div>
+						</div>
+						<div class="rank-con scroll-container loader loading">
+							<ul class="rank-list scroll-content">
+								<!--<li>
+							<i class="good">1</i>
+							<div class="li-img">
+								<a href="javascript:;"><img src="http://cdn.icomicool.cn/images/update/1.jpg" /></a>
+							</div>
+							<div class="rank-txt">
+								<h3><a href="javascript:;">神兽退散神兽退散神兽退散</a></h3>
+								<p class="li-author">五仁月饼</p>
+							</div>
+						</li> -->
+							</ul>
+						</div>
+					</section>
+					<!-- <div class="ad-img ad-img3">
+				<img src="http://cdn.icomicool.cn/images/ad/4.jpg" />
+			</div>
+			<div class="ad-img ad-img4">
+				<img src="http://cdn.icomicool.cn/images/ad/5.jpg" />
+			</div>
+			<div class="ad-img ad-img5">
+				<img src="http://cdn.icomicool.cn/images/ad/6.jpg" />
+			</div> -->
+				</aside>
+
+			</article>
+			<!-- 页尾 end -->
+
+
+		</article>
+		<div class="footers"><!--底部引入--></div>
+		<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript">
+			 //今日更新
+			$('.finish-list').getByAjax({
+				api: 'listpageinfo4web?listpageid=162&listpagetype=1',
+				jsonpCallback: 'jsonp_listpageinfo',
+				success: function(data) {
+					var arr = data.comi_list;
+					var html = '';
+					var imgCutSize = '?imageView2/1/w/204/h/136/q/100';
+					$('.total-txt').html('全部（<i>' + arr.length + '</i>）')
+					for (var i = 0, len = arr.length; i < len; i++) {
+						if (i <= 14) {
+							html += '' + '<li><a href="' + CONFIG.detailBase + 'comic_id=' + arr[i].comic_id + '" title="' + arr[i].comic_title + '">' + '<div class="li-img">' + '<img src="' + CONFIG.placeholder + '" data-src="' + CONFIG.imgBase + arr[i].comic_cover_url + imgCutSize + '" alt="可米酷漫画,comicool,手机漫画,原创漫画,漫画app" />' + '</div>' + '<h3 class="ellipsis">' + arr[i].comic_title + '</h3>' + '<div class="li-author">' + arr[i].comic_auth + '</div>' + '<p>' + arr[i].comic_desc_lite + '</p>' + '</a></li>';
+						} else {
+							break;
+						}
+					}
+					//console.log(html);
+					$('.finish-list').html(html);
+				}
+			});
+		</script>
+	</body>
+
+</html>

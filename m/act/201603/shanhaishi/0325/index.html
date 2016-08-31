@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>第二重:曼荼罗</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="狼烟无言巨献《山海师》">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style type="text/css">
+			.imglist img {
+				width: 100%;
+				display: table;
+			}
+			
+			video {
+				width: 100%;
+				height: 9.03rem;
+			}
+			.imglist div {
+				background: #26303a;
+				padding: .5rem;
+			}
+			
+			.imglist div p {
+				margin: 0 auto;
+				width: 100%;
+				text-align: center;
+				color: #fff;
+				font-size: .8rem;
+				line-height: 3em;
+			}
+			
+			#current {
+				background: #8cb8c3;
+				display: table;
+				margin: 0 auto;
+				padding: .5rem 1.5rem;
+				border-radius: .8rem;
+				color: #fff;
+				box-shadow: .1rem .1rem .1rem #00423e;
+			}
+			
+			#toast {
+				position: fixed;
+				bottom: 2rem;
+				left: 50%;
+				font-size: .6rem;
+				transform: translate3d(-50%, 0, 0);
+				-ms-transform: translate3d(-50%, 0, 0);
+				-moz-transform: translate3d(-50%, 0, 0);
+				-webkit-transform: translate3d(-50%, 0, 0);
+				-o-transform: translate3d(-50%, 0, 0);
+				border-radius: .3rem;
+				background: #000;
+				color: #fff;
+				padding: .5rem 1rem;
+				text-align: center;
+				opacity: .7;
+				-webkit-tap-highlight-color: transparent;
+				/*The good stuff */
+				-webkit-transition: opacity 0.5s ease-out;
+				/* Saf3.2+, Chrome */
+				-moz-transition: opacity 0.5s ease-out;
+				/* FF4+ */
+				-ms-transition: opacity 0.5s ease-out;
+				/* IE10? */
+				-o-transition: opacity 0.5s ease-out;
+				/* Opera 10.5+ */
+				transition: opacity 0.5s ease-out;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        第二重:曼荼罗
+        <p>狼烟无言巨献《山海师》</p>
+        <img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/200.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<div id="wxqq">
+			<img src="http://cdn.icomicool.cn/m/images/shareTip.png">
+		</div>
+		<!-- 主要内容：开始 -->
+		<div class="imglist">
+			<img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_01.jpg" alt="狼烟无言巨献《山海师》" />
+			<img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_02.jpg" alt="狼烟无言巨献《山海师》" />
+			<img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_03.jpg" alt="狼烟无言巨献《山海师》" />
+			<img id="two" src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_04.jpg" alt="狼烟无言巨献《山海师》" />
+			<img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_05.jpg" alt="狼烟无言巨献《山海师》" />
+			<div>
+				<video src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0323/tv2.mp4" controls="controls" preload="auto" poster="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/cover.jpg" id="video">您的浏览器不支持 video 标签。</video>
+				<p>友情提示:请在WIFI下观看视频</p>
+				<span id="current">点击翻阅</span>
+			</div>
+			<!--<img id="four" src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_06.jpg" alt="狼烟无言巨献《山海师》" />-->
+			<img id="four" src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_07.jpg" alt="狼烟无言巨献《山海师》" />
+			<img src="http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/index_08.jpg" alt="狼烟无言巨献《山海师》" />
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://cdn.icomicool.cn/m/m-common/js/zepto.min.js"></script>
+		<script>
+			var reader = {
+				hideToast: function() {
+					var alert = document.getElementById("toast");
+					alert.style.opacity = 0;
+					clearInterval(intervalCounter);
+				},
+				drawToast: function(message) {
+					var alert = document.getElementById("toast");
+					if (alert == null) {
+						var toastHTML = '<div id="toast">' + message + '</div>';
+						document.body.insertAdjacentHTML('beforeEnd', toastHTML);
+					} else {
+						$("#toast").remove();
+						reader.drawToast(message);
+					}
+					intervalCounter = setInterval("reader.hideToast()", 2000);
+				},
+				dateGo: function(today) {
+					var myDate = new Date();
+					if (myDate.getDate() >= today) {
+						window.location.href="http://m.comicool.cn/act/201603/shanhaishi/03"+today+"/index.html"
+					} else {
+						reader.drawToast("3月" + today + "日正式开启!");
+					};
+				},
+				readerGo: function(epid) {
+					if (isAndroidApp) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: 11047,
+							ep_id: epid
+						});
+					} else {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=11047&ep_id=' + epid;
+					}
+				}
+			}
+			$(function() {
+				var oVideo = $("#video");
+				var flag = true;
+				oVideo.on("click", function() {
+					if (flag) {
+						oVideo.get(0).play();
+						flag = false;
+					} else {
+						oVideo.get(0).pause();
+						flag = true;
+					}
+				})
+				$("#current").on("click", function() {
+					reader.readerGo(2);
+				})
+				$("#two").on("click", function() {
+					reader.dateGo(24);
+				})
+				$("#four").on("click", function() {
+					reader.dateGo(26);
+				})
+			});
+			setShareInfo({
+				title: '第二重:曼荼罗',
+				describe: '狼烟无言巨献《山海师》',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201603/shanhaishi/0325/images/320.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = wxqq.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				wxqq.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isApp || isWeixin || isQQ || isWeibo) {
+					header.style.display = 'none';
+				}
+			}
+		</script>
+		<script src="http://cdn.icomicool.cn/m/m-common/js/fastclick.min.js"></script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

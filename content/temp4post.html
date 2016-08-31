@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>可米酷漫画阅读页|漫画连载_在线漫画_条漫™</title>
+<meta name="keywords" content="漫画阅读页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载" />
+<meta name="description" content="漫画阅读页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧" />
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="../js/common-pc.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463386207_0576153.css">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+<!--[if lt IE 9]><script src="../js/html5.js"></script><![endif]-->
+<style>
+    .arrow_box {
+        position: relative;
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        padding: 10px;
+        width: 95%;
+        margin: 10px auto;
+        float: right;
+    }
+    .arrow_box::after,
+    .arrow_box::before {
+        position:absolute;
+        content:"";
+        height:0;
+        width: 0;
+        pointer-events: none;
+        border: solid transparent;
+    }
+    /*top*/
+    .arrow_box.top::after, 
+    .arrow_box.top::before {
+        bottom: 100%;
+    }
+
+    .arrow_box.top::after {
+        border-color: rgba(225,225,225, 0);
+        border-bottom-color: #fff;
+        border-width: 10px;
+        left: 90%;
+        margin-left: -10px;
+    }
+    .arrow_box.top::before {
+        border-color: rgba(225,225,225, 0);
+        border-bottom-color: #e6e6e6;
+        border-width: 11px;
+        left: 90%;
+        margin-left: -11px;
+    }
+    .arrow_box .comment-right {width:88%;}
+    .comment-reply {border:0px;}
+    .reply-block {float: right;margin-right: 5px;}
+    .icon-span-index {margin-right: 5px;font-weight: bold;}
+    .icon-praise:hover,.icon-span-praise:hover {color: #e33036;cursor: pointer;}
+    .icon-praised {color: #e33036;}
+    .icon-span-praised {color: #e33036;}
+    .icon-span-reply:hover {cursor: pointer;}
+    .reply-item {border-bottom: 1px solid #e6e6e6;margin-bottom: 10px;padding-bottom: 10px;}
+    .img-block {margin-top: 10px;overflow: hidden;}
+    .img-block img {border-radius: 10px;margin-left: 10px;width: 166px;_width: expression(this.width > 166 ? 166 : this.width);max-height: 100px;display: inline-block;overflow: hidden;}
+    .no-border {border: 0px;}
+    .comment-title {font-size: 14px;font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .comment-list .comment-input {width: 95.7%;}
+    .comment-edit-panel {font-size: 12px;border-top: 1px solid #e6e6e6;padding: 10px 0;}
+    .comment-edit-panel p {font-size: 18px;margin: 10px 0;}
+    .comment-nickname {display: inline-block;color: #5D96D7;}
+    .edit-title input {width: 100%;height: 25px;background-color: #F8F8F8;border: 1px solid #e6e6e6;padding: 5px;}
+    .edit-block {border: 1px solid #e6e6e6;margin-top: 15px;padding: 5px 10px;}
+    .edui-toolbar {font-size: 14px;}
+    .edui-toolbar ul li {cursor: pointer;float: left;}
+    .edui-toolbar ul i {color: #528ED6;}
+    .add-img-btn img {border-radius: 10px;}
+    .img-item {width: 100px; height: 100px;float: left;margin-right: 15px;position: relative;margin-top: 10px;}
+    .fs-percent {color: #fff; font-size: 18px;border-radius: 10px;top: 0px; width: 100px; height: 100px;position: absolute;filter:alpha(opacity=50);z-index: 8; overflow: hidden;}
+    .fs-percent img {width: 100%; _width: expression(this.width > 100 ? 100 : this.width); overflow: hidden;}
+    .icon-guanbi {width: 25px;height: 25px;font-size: 20px;top: -13px;right: -14px;color: #EE6666;background-color: #fff;position: absolute;border-radius: 100%;cursor: pointer;z-index: 10;}
+    .edit-body {margin-top: 5px;}
+    .edit-body textarea {font-size: 14px; margin-top: 10px;width: 98%;background-color: #F8F8F8;border:1px solid #e6e6e6;padding: 5px;}
+    .comment-footer {font-size: 14px;color: #808080;margin-top: 10px;}
+    .post-submit {width: 20%;background-color: #EF2B35;color: #fff;border: 1px solid #e6e6e6;border-radius: 5px;height: 40px;font-size: 18px;}
+    i.icon-fatie, i.icon-scrolltop {font-size: 42px;padding: 10px;color: #fff;}
+    .scroll-top {right: 3.75%;position: fixed;bottom: 28%;}
+    .scroll-top a {text-decoration: none;}
+    .scroll-top li {margin-top: 10px;background-color: #EF2B35;color: #fff;width: 60px;height: 60px;border-radius: 100%;}
+</style>
+</head>
+<body class="body-reader">
+<article>
+	<div class="top">
+        <!--可米酷漫画头部-->
+    </div>
+	<article class="read-box">
+		<section class="read-content">
+			<div class="read-area loader loading">
+			</div>
+			<div class="read-area-txt">
+				<a class="btn-heart">0</a>
+				<p>加载中...</p>
+			</div>
+		</section>
+		<section class="read-slider">
+			<div class="hd">
+				<a href="javascript:;" class="prev"></a>
+				<a href="javascript:;" class="next"></a>
+			</div>
+			<div class="bd">
+				<ul class="read-slider-list cl">
+<!--  					<li class="curr">
+						<a href="javascript:;">
+							<img src="../images/reader/slider.jpg" alt="">
+							<p>[第1话]</p>
+						</a>
+					</li>  -->
+				</ul>
+			</div>
+		</section>
+		<section class="read-bottom cl">
+			<div class="read-comment">
+				<div class="comment-head">
+					讨论区<span>(0)</span>
+				</div>
+				<ul class="comment-list"></ul>
+				<div class="comment-foot">
+					<!-- <a class="comment-more">加载更多</a> -->
+					<!-- <p>没有更多了</p> -->
+				</div>
+				<div class="comment-edit-panel" id="fatie">
+                    <p>发表新帖</p>
+                    <div class="edit-title">
+                        <input id="postTitle" type="text" placeholder="来个标题党吧！">
+                    </div>
+                    <div class="edit-block">
+                        <div class="edui-toolbar clearfix">
+                            <ul class="clearfix" id="upload-container">
+                                <li class="upload-pic" id="upload-pic">
+                                    <i class="iconfont icon-tupian"></i>&nbsp;图片
+                                </li>
+                            </ul> 
+                            <div class="add-img-btn clearfix" id="fsUploadProgress">
+                            </div>
+                        </div>
+                        <div class="edit-body">
+                            <textarea id="postText" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                    <div class="comment-footer">
+                        <div class="fl post-counter">还可以输入1500字</div>
+                        <button class="post-submit fr">发布</button>
+                    </div>
+                </div>
+			</div>
+			<div class="side-right">
+				<div class="rank-box cl">
+					<h2>官网作品排行榜</h2>
+					<div id="rank-drop-box" class="drop-box">
+						<div class="drop-inner">
+							<div class="drop-t">
+							</div>
+							<div class="drop-b">
+							</div>
+						</div>
+					</div>
+					<div class="rank-con scroll-container loader loading">
+						<ul class="rank-list scroll-content">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+	</article>
+	<!--  在global.js 里有对返回顶部append到body后，可以统一用global.js里的方法 -->
+	<div class="scroll-top">
+		<ul>
+			<li><a href="javascript:;" class="link-fatie" alt="发表帖子"><i class="iconfont icon-scroll icon-fatie"></i></a></li>
+			<li><a href="javascript:;" class="link-gotop" alt="回到顶部"><i class="iconfont icon-scroll icon-scrolltop"></i></a></li>
+		</ul>
+	</div>
+</article>
+<div class="footers"><!--底部引入--></div>
+<script type="text/javascript" src="../js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.2.js"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<script type="text/javascript" src="../js/plupload.full.min.js"></script>
+<script type="text/javascript" src="../js/qiniu.min.js"></script>
+<script type="text/javascript">
+var uploadIndex = 0;
+var uploadImgMap = {};
+(function() {
+    $().getByAjax({
+        api: 'upload_token4h5',
+        jsonpCallback: 'jsonp_upload_token',
+        success: function(data) {
+            newUploader(data.upload_token);
+        }
+    });
+    
+    this.newUploader = function (token) {
+        var uploader = Qiniu.uploader({
+            runtimes: 'html5,html4',
+            browse_button: 'upload-pic',
+            container: 'upload-container',
+            max_file_size: '4mb',
+            uptoken:  token,
+            dragdrop: false,
+            domain: 'http://up.cdn.icomico.com/',
+            get_new_uptoken: false,
+            // save_key: true,
+            auto_start: true,
+            init: {
+                'FilesAdded': function(up, files) {
+                    plupload.each(files, function(file) {
+                        var progress = new FileProgress(file, 'fsUploadProgress');
+                        progress.bindUploadCancel(up);
+                    });
+                },
+                'BeforeUpload': function(up, file) {
+                    var user = Comi.Login.check();
+                    if (user == null) {
+                       ComiLoginWindow.resetAnimation();
+                        return false;
+                    }
+                },
+                'UploadProgress': function(up, file) {
+                    var fileProgressID = file.id;
+                    $('#' + fileProgressID).find('.fs-percent').html(file.percent + "%");
+                },
+                'UploadComplete': function(up, file) {
+                    console.info(JSON.stringify(file));
+                },
+                'FileUploaded': function(up, file, info) {
+                    var res = JSON.parse(info);
+                    console.info(JSON.stringify(res));
+                    var fileProgressID = file.id;
+                    var img = new Image();
+                    var domain = up.getOption('domain');
+                    var uploadimgurl = domain + encodeURI(res.key);
+                    img.src = uploadimgurl;
+                    img.onload = function () {
+                        var imgMapItem = {
+                            "content_type": "img",
+                            "img_url": res.key,
+                            "img_width": img.width,
+                            "img_height": img.height,
+                            "mime": file.type,
+                        };
+                        uploadImgMap[(uploadIndex++)] = imgMapItem;
+                        $('#' + fileProgressID).find('.fs-percent').html(img);
+                    };
+                },
+                'Error': function(up, err, errTip) {
+
+                }
+            }
+        });
+
+        uploader.bind('FileUploaded', function() {
+            console.log('hello man,a file is uploaded');
+        });
+    }
+})();
+
+function FileProgress(file, targetID) {
+    this.fileProgressID = file.id;
+    this.file = file;
+    this.$imgItem = $('<div class="img-item" id="' + this.fileProgressID + '" data-uploadIndex="' + uploadIndex + '">'
+        +'    <i class="iconfont icon-guanbi"></i>'
+        +'    <div class="fs-percent"></div>'
+        +'</div>');
+    this.$fs_percent = this.$imgItem.find('.fs-percent');
+    $('#' + targetID).append(this.$imgItem);
+}
+
+FileProgress.prototype.setProgress = function(percentage) {
+
+};
+
+FileProgress.prototype.setComplete = function(up, info) {
+
+};
+FileProgress.prototype.setError = function() {
+    this.$fs_percent.html("上传出错!").css({"top": "0px", "height": "100px"});
+};
+
+// 绑定取消上传事件
+FileProgress.prototype.bindUploadCancel = function(up) {
+    var self = this;
+    if (up) {
+        self.$imgItem.find('.icon-guanbi').on('click', function(){
+            up.removeFile(self.file);
+            var removeIndex = self.$imgItem.data('uploadIndex');
+            for (var prop in uploadImgMap) {
+                if (prop == removeIndex) {
+                    uploadImgMap[prop].useless = true;
+                }
+            }
+            self.$imgItem.remove();
+        });
+    }
+};
+var comic_id = blacklistFilter(getQueryString('comic_id'));
+var ep_id    = getQueryString('ep_id');
+var replyPageSize = 3;
+
+
+//讨论区--帖子列表
+function CommentPanel(container) {
+    var that = this;
+    var user = Comi.Login.check();
+    var $listContainer = $(container);
+    var $footer = $('.comment-foot');
+    var tip = {
+        floor: ['快来抢个沙发吧', '快来抢个板凳吧', '快来抢个地板吧'],
+        end: '没有更多了',
+        more: '加载更多',
+        loading: '加载中...',
+        error: '加载失败'
+    }
+
+    that.pullPost = function(isFirst, beginID, pageSize) {
+        var ajaxData = {
+            // comic_id: comic_id,
+            include: 'irrigation',
+            order_type: 'update_time',
+            post_id: beginID || 0,
+            page_size: pageSize || 5, 
+            page_direction: 2
+        }
+
+        $listContainer.getByAjax({
+            api: 'getpostlist4h5',
+            data: ajaxData,
+            beforeSend: function() {
+                $footer.html('<p>' + tip.loading + '</p>');
+            },
+            jsonpCallback: 'jsonp_getpostlist',
+            success: function(data) {
+                $listContainer.removeClass('loader');
+                console.info(data);
+                var contentArr = data.post_list;
+                var userArr = data.user_list;
+                var total = data.post_count;
+                var lastBeginID;
+
+                lastBeginID = contentArr && contentArr.length ? contentArr[contentArr.length-1].post_id : 0;
+                // CommentEditor.comment_list = contentArr;
+
+                renderComment(1, {contentArr:contentArr, userArr:userArr}, $listContainer);
+
+                if (isFirst) {
+                    that.updateCount(total);
+                    if (total < 3) {
+                        $footer.html('<p>' + tip.floor[total] + '<p>');
+                    } else if (total <= pageSize) {
+                        $footer.html('<p>' + tip.end + '<p>');
+                    } else {
+                        $footer.html('<a class="comment-more" data-begin="' + lastBeginID +'">' + tip.more + '</a>');
+                    }
+                } else {
+                    if (contentArr.length == pageSize) {
+                        $footer.html('<a class="comment-more" data-begin="' + lastBeginID +'">' + tip.more + '</a>');
+                    } else {
+                        $footer.html('<p>' + tip.end + '<p>');
+                    }
+                }
+            },
+            error: function() {
+                $footer.html('<p>' + tip.error + '</p>');
+            }
+        });
+    }
+
+    that.updateCount = function(number) {
+        $('.comment-head span').html(function(i, v) {
+            if (typeof number != 'undefined') {
+                return '(' + number + ')';
+            } else {
+                var count = parseInt(v.substr(1));
+                return '(' + (++count) + ')';
+            }
+        });
+    }
+
+    function bindEvents() {
+        var user = Comi.Login.check();
+
+        $(document).on('click', '.comment-reply', function() {
+            var $li = $(this).parents('li');
+            var $item = $(this).parents('.comment-item').length ? $(this).parents('.comment-item') : $(this).parents('.reply-item');
+            var inputPlaceholder = $item.find('.comment-nickname').html();
+            var postId = $li.data('cid');
+            var refId = $item.data('rid');
+            var launchTarget = 0 ; // 回复框关闭时，直接commit，不做append回复操作
+            var refIndex, refNickname;
+            if ($li.find('.arrow_box').length > 0 && $li.find('.reply-item').length < replyPageSize) { // 回复框打开时，分情况：回复条数多于size时，不做操作，否则append到arrow_box最后
+                launchTarget = $(this).parents('.arrow_box');
+                if (refId) {
+                    refIndex = $item.find('.icon-span-index').html();
+                    refNickname = $item.find('.comment-nickname').html();
+                }
+            }
+
+            if ($item.data('init')) {
+                $item.find('.comment-write-panel').toggle();
+            } else {
+                var replyEditor = new CommentEditor({
+                    'btnText': '提交',
+                    'cancelable': true,
+                    'insertAfter': $item.find('.comment-bottom'),
+                    'placeholder': inputPlaceholder,
+                    'postid': postId, 
+                    'refid': refId,
+                    'refIndex': refIndex,
+                    'refNickname': refNickname,
+                    'launchTarget': launchTarget
+                });
+                $item.data('init', 1);
+            }
+
+            $item.find('textarea').focus();
+            $item.siblings().find('.comment-write-panel').hide();
+            $li.siblings().find('.comment-write-panel').hide();
+            if (refId) {
+                $li.find('.comment-item .comment-write-panel').hide();
+            } else {
+                $li.find('.arrow_box').remove();
+            }
+        });
+
+        $(document).on('click', '.icon-praise', function() {
+            var user = Comi.Login.check();
+            if (user == null) { //由于数据原因，当前点赞需要先登录
+               ComiLoginWindow.resetAnimation();
+                return false;
+            }
+            var $btn = $(this);
+            var $li = $(this).parents('li');
+            var post_id = $li.data('cid');
+            var reply_id = $(this).parents('.reply-item').data('rid');
+            var isPraised = Number($btn.next('span').data('praised')) == 1 ? true : false;
+            var ajaxData = {
+                "praise_type": "posts",
+                "post_id": post_id,
+                "praise": isPraised ? 2 : 1,
+            };
+            if (reply_id) {
+                ajaxData.praise_type = 'reply';
+                ajaxData.reply_id = reply_id;
+            }
+            priasePostComment(ajaxData, $btn);
+        })
+
+        $(document).on('click', '.icon-span-reply', function() {
+            var replyCount = Number($(this).html().match(/\d+/)[0]);
+            var $li = $(this).parents('li');
+            $li.find('.comment-write-panel').hide();
+            var postId = $li.data('cid');
+            if (replyCount == 0) {
+                return false;
+            } else if ($li.find('.arrow_box').length>0) {
+                $li.find('.arrow_box').remove();
+            } else {
+                var $arrowbox = $('<div class="arrow_box top"></div>');
+                var ajaxData = {
+                    "post_id": postId,
+                    "reply_id": 0,
+                    "page_size": replyPageSize,
+                };
+                $li.append($arrowbox);
+                $arrowbox.getByAjax({
+                    api: 'getreplylist4h5',
+                    jsonpCallback: 'jsonp_getreplylist',
+                    data: ajaxData,
+                    beforeSend: function() {
+                        $arrowbox.html('<p>加载中...</p>');
+                    },
+                    success: function(data) {
+                        $arrowbox.html('').removeClass('loader');
+                        var contentArr = data.reply_list;
+                        var userArr = data.user_list;
+                        renderComment(3, {contentArr:contentArr, userArr:userArr}, $arrowbox);
+                        var $arrowboxFoot = $('<div class="comment-foot no-border">'
+                            +'  <a class="comment-more" href="postDetail.html?post_id=' + postId + '&comic_id=' + comic_id + '">点击查看更多</a></div>');
+                        $arrowbox.append($arrowboxFoot);
+                    },
+                    error: function() {
+                        $arrowbox.html('<p>加载失败...</p>');
+                    }
+                });
+            }
+        })
+
+        $(document).on('click', '.comment-more', function() {
+            var beginID = $(this).data('begin');
+            that.pullPost(false, beginID, 5);
+        })
+    }
+
+    function init() {
+        that.pullPost(true, 0, 5);
+        bindEvents();
+    }
+
+    init();
+}
+
+//回复输入
+function CommentEditor(config) {
+    var that = this;
+    var replyLimitLength = 250;
+    var opts = $.extend({
+        limitLength: replyLimitLength,
+        btnText: '发布',
+        cancelable: true,
+        placeholder: '我来说两句',
+        refid: 0,
+        insertAfter: '',
+        commentList: []
+    }, config);
+    var isSendLock = false;
+    var $panel, $counter, $input, $launch, $close;
+    opts.placeholder = '回复&nbsp;' + opts.placeholder + ':';
+
+    function render() {
+        $panel = $(''
+            + '<div class="comment-write-panel">'
+            +   '<textarea class="comment-input">' + opts.placeholder + '</textarea>'
+            +   '<div class="comment-tool cl">'
+            +       '<div class="comment-tool-l">'
+            +           '<span class="comment-counter">还可以输入' + opts.limitLength + '字</span>'
+            +       '</div>'
+            +       '<div class="comment-tool-r">'
+            +           '<a class="comment-send">' + opts.btnText + '</a>'
+            +       '</div>'
+            +   '</div>'
+            + '</div>');
+
+        $(opts.insertAfter).after($panel);
+        // $panel.slideDown();
+
+        $counter = $panel.find('.comment-counter');
+        $input = $panel.find('textarea').css('color', '#aeaeae');
+        $launch = $panel.find('.comment-send');
+
+        if (opts.cancelable) {
+            $close = $('<a class="comment-cancel">取消</a>');
+            $launch.after($close);
+        }
+
+        bindEvents();
+    }
+
+    function bindEvents() {
+        var inputDefValue = $input[0].defaultValue;
+        var limit = opts.limitLength;
+
+        //输入框事件
+        $input.on('focus blur keydown input propertychange', function(e) {
+            var val = $(this).val();
+
+            if (e.type == 'focus' && val == inputDefValue) {
+                $(this).val('');
+            } else if (e.type == 'blur' && val == '') {
+                $(this).val(inputDefValue).css('color', '#aeaeae');
+            } else if (e.type == 'keydown') {
+                var kc = e.keyCode;
+
+                if (kc == 13) {
+                    $input.blur();
+                    $launch.trigger('click');
+                } else if (kc == 27) {
+                    $input.blur();
+                    $close && $close.trigger('click');
+                }
+            } else {
+                var len = val.length;
+
+                $(this).css('color', '#333');
+                if (len <= limit) {
+                    $counter.html('还可以输入' + (limit - len) + '字').css('color', '');
+                } else {
+                    $(this).val(val.slice(0, limit));
+                    $counter.html('已经放不下啦，只能说' + limit + '字！').css('color', '#f00');
+                }
+            }
+        });
+
+        //发布评论
+        $launch.click(function() {
+            var user = Comi.Login.check();
+            var comment_text = $.trim($input.val());
+            var btnText;
+            
+            if (comment_text.length == 0 || comment_text == inputDefValue) {
+                $counter.html('你的评论框空空如也~').css('color', '#f00');
+            } else {
+                if (user == null) {
+                   ComiLoginWindow.resetAnimation();
+                    return false;
+                } else if (isSendLock) {
+                    return false;
+                }
+
+                $().getByAjax({
+                    api: 'replycommit4h5',
+                    jsonpCallback: 'jsonp_replycommit',
+                    data: {
+                        'operate_type': 1,
+                        'post_id': opts.postid,
+                        'ref_id': opts.refid,
+                        'ccid': user.ccid,
+                        'reply_txt': comment_text,
+                    },
+                    beforeSend: function() {
+                        $launch.addClass('btn-disabled').html(function(i, v) {
+                            btnText = v;
+                            return v + '中..';
+                        });
+                        isSendLock = true;
+                        return true;
+                    },
+                    success: function(data) {
+                        var comment_reply = data.reply_info;
+                        var replyIndex = $(opts.launchTarget).find('.reply-item').length + 1;
+                        comment_reply.index = replyIndex;
+                        comment_reply.refIndex = opts.refIndex;
+                        comment_reply.refNickname = opts.refNickname;
+
+                        renderComment(4, {
+                            comment: comment_reply,
+                            user: {
+                                'ccid': user.ccid,
+                                'icon': user.icon,
+                                'nickname': user.nickname,
+                            },
+                            content: CommentEditor.comment_list
+                        }, opts.launchTarget);
+
+                        $input.val('').blur();
+                        $counter.html('还可以输入' + opts.limitLength + '字');
+                        $close && $close.trigger('click');
+                        $replyCount = $input.parents('li').find('.icon-span-reply');
+                        $replyCount.html(function(i, v) {
+                            var rCount = Number(v.match(/\d+/));
+                            return (rCount + 1) + '条回复';
+                        })
+                    },
+                    error: function() {
+                        $counter.html('好像有点不对劲，再试试吧').css('color', '#f00');
+                    },
+                    complete: function() {
+                        isSendLock = false;
+                        $launch.html(btnText).removeClass('btn-disabled');
+                    }
+                })
+            }
+        });
+
+        //隐藏评论面板
+        $close && $close.click(function() {
+            $panel.hide();
+        });
+    }
+
+    render();
+}
+
+//帖子
+function renderComment(renderType, renderData, renderTarget) {
+    var contentArr = renderData.contentArr;
+    var userArr = renderData.userArr;
+
+    if (renderType == 1 || renderType == 3) {//拉取帖子和回复
+        if (contentArr) {
+            var contactArr = new Array();
+            for (var i = 0, len = contentArr.length; i < len; i++) {
+                var contentItem = contentArr[i];
+                var userItem = '';
+                var contactData = {'contentItem': contentItem, 'userItem': userItem};
+                for (var j = 0, len2 = userArr.length;  j < len2; j++) {
+                    if(userArr[j].ccid == contentItem.ccid) {
+                        userItem = userArr[j];
+                        contactData.userItem = userItem;
+                        contactArr[i] = contactData;
+                        break;
+                    }
+                }
+                if (renderType == 1) {
+                    generator(contentItem, userItem, 'bottom');
+                } else {
+                    if (contentItem.ref_id) {
+                        for (var x = 0; x < i; x++) {
+                            if (contentItem.ref_id == contentArr[x].reply_id) {
+                                contentItem.refIndex = (x+1) + '楼';
+                                contentItem.refNickname = contactArr[x].userItem.nickname;
+                                break;
+                            }
+                        }
+                    }
+                    if (i >= replyPageSize) {
+                        break;
+                    } else {
+                        contentItem.index = i+1;
+                        generatorReply(contentItem, userItem);
+                    }
+                }
+            }
+        }
+    } else if(renderType == 2){//发布帖子
+        generator(renderData.comment, renderData.user, 'top');
+    } else { // 发布回复
+        if(renderTarget) {
+            generatorReply(renderData.comment, renderData.user, 'bottom');
+        }
+    }
+
+    function convertTime(timestamp) {
+        var D = new Date(timestamp * 1000);
+        var nowTimestamp = parseInt(new Date().getTime() / 1000);
+        var secondsAgo = nowTimestamp - timestamp;
+        var minutesAgo = parseInt(secondsAgo / 60);
+        var hoursAgo = parseInt(minutesAgo / 60);
+        var daysAgo = parseInt(hoursAgo / 24);
+        var monthsAgo = parseInt(daysAgo / 30);
+
+        //console.log(minutesAgo, hoursAgo, daysAgo);
+        if (secondsAgo >= 0 && monthsAgo < 1) {
+            if (daysAgo) {
+                return daysAgo + '天前';
+            } else if (hoursAgo) {
+                return hoursAgo + '小时前';
+            } else if (minutesAgo) {
+                return minutesAgo + '分钟前';
+            } else {
+                return '刚刚';
+            }
+        } else {
+            var year = D.getFullYear();
+            var month = D.getMonth() + 1;
+            var date = D.getDate();
+            var hour = D.getHours();
+            var minute = D.getMinutes();
+            
+            month = month > 9 ? month : '0' + month;
+            date = date > 9 ? date : '0' + date;
+            hour = hour > 9 ? hour : '0' + hour;
+            minute = minute > 9 ? minute : '0' + minute;
+
+            return year + '-' + month + '-' + date + '&nbsp' + hour + ':' + minute;
+        }
+    }
+
+    function generator(contentObj, userObj, direction) {
+        var isPraised = Number(contentObj.praise) == 1 ? true : false;
+        var postText = '', postImg = '', postTitle = '';
+        var imgViewStr = '?imageView2/1/w/166/h/100';
+
+        if (contentObj.post_rich && contentObj.post_rich.length > 0){
+            for (var i = 0, len = contentObj.post_rich.length; i < len; i++) {
+                var postRichItem = contentObj.post_rich[i];
+                if (postRichItem.content_type == 'text') {
+                    postText = postRichItem.text;
+                    postTitle = contentObj.post_title;
+                } else {
+                    postImg += '<img src="' + CONFIG.postImgBase + postRichItem.img_url + imgViewStr + '" data-src="' + CONFIG.postImgBase + postRichItem.img_url + imgViewStr + '"> ';
+                }
+            }
+        } else {
+            postText = contentObj.post_title;
+        }
+        var userIcon = getUserIcon(userObj);
+        var postTime = convertTime(contentObj.update_time);
+        var li = '<li class="cl" data-cid="' + contentObj.post_id + '">'
+            + '    <div class="comment-item clearfix">'
+            + '        <div class="comment-left">'
+            + '            <img src="' + userIcon + '" data-src="' + userIcon + '">'
+            + '        </div>'
+            + '        <div class="comment-right">'
+            + '            <div>'
+            + '                <div class="comment-nickname">' + userObj.nickname + '</div>'
+            + '                <div class="comment-action">'
+            + '                    <a class="comment-reply">回复</a>'
+            + '                </div>'
+            + '            </div>'
+            + '            <a href="postDetail.html?post_id=' + contentObj.post_id + '"><p class="comment-title">' + postTitle + '</p>'
+            + '            <p class="comment-text">' + postText + '</p></a>';
+        if (postImg && postImg.length > 0) {
+            li += '        <div class="img-block">'+ postImg +'</div>';
+        }
+        li  +='            <div class="comment-bottom">'
+            + '                <div class="fl">'
+            + '                    <span class="comment-time">' + postTime + '</span>'
+            + '                </div>'
+            + '                <div class="fr">'
+            + '                    <i class="iconfont icon-xiaoxi"></i>&nbsp;<span class="icon-span-reply">' + contentObj.reply_count + '条回复</span>'
+            + '                    <i class="iconfont icon-praise"></i>&nbsp;<span class="icon-span-praise" data-praised=' + (isPraised ? 1 : 2) + '>' + contentObj.praise_count + '</span>'
+            + '                </div>'
+            + '            </div>'
+            + '        </div>'
+            + '    </div>'
+            + '</li>';
+        var $li = $(li);
+        var $hand = $li.find('.icon-praise');
+
+        if (isPraised) {
+            $hand.addClass('icon-praised');
+        }
+
+        if (direction == 'top') {
+            $(renderTarget).prepend($li);
+            // $li.imgLoader();
+        } else {
+            $(renderTarget).append($li);
+        }
+    }
+
+    function generatorReply(reply, user, direction) {
+        var isPraised = Number(reply.praise) == 1 ? true : false;
+        var convertReplyTime = convertTime(reply.time);
+        
+        var userIcon = getUserIcon(user);
+        var replyItem = ''
+            +'<div class="reply-item clearfix" data-rid="' + reply.reply_id + '">'
+            +'    <div class="comment-left">'
+            +'        <img src="' + userIcon + '" data-src="' + userIcon + '">'
+            +'    </div>'
+            +'    <div class="comment-right">'
+            +'        <div>'
+            +'            <span class="comment-nickname">' + user.nickname + '</span>';
+        if (reply.ref_id) {
+            replyItem += '<span class="reply-ref-index">&nbsp;回复&nbsp;' + reply.refIndex + '</span>'
+            +'            <span>&nbsp;' + reply.refNickname + '</span>'
+        }
+        replyItem += '    <div class="comment-action">'
+            +'                <a class="comment-reply">回复</a>'
+            +'            </div>'
+            +'        </div>'
+            +'        <p class="comment-text">' + reply.reply_txt + '</p>'
+            +'        <div class="comment-bottom">'
+            +'            <div class="fl">'
+            +'                <span class="comment-time">' + convertReplyTime + '</span>'
+            +'            </div>'
+            +'            <div class="fr">'
+            +'                <span class="icon-span-index">' + reply.index + '楼</span>'
+            +'                <i class="iconfont icon-praise"></i>&nbsp;<span class="icon-span-praise" data-praised=' + (isPraised ? 1 : 2) + '>' + reply.praise_count + '</span>'
+            +'            </div>'
+            +'        </div>'
+            +'    </div>'
+            +'</div>';
+        var $replyItem = $(replyItem);
+        var $hand = $replyItem.find('.icon-praise');
+
+        if (isPraised) {
+            $hand.addClass('icon-praised');
+        }
+
+        if (direction == 'bottom') {
+            $(renderTarget).find('.comment-foot').before($replyItem);
+        } else {
+            $(renderTarget).append($replyItem);
+        }
+    }
+}
+
+// 帖子和回复点赞
+function priasePostComment(praiseData, praiseObj) {
+    var user = Comi.Login.check();
+    $btn = praiseObj;
+    if (user != null) {
+        var ccid = user.ccid;
+        praiseData.ccid = ccid;
+        praiseData.cctoken = user.cctoken;
+        praiseData.usertype = user.usertype;
+    }
+    var isPraised = praiseData.praise == 2 ? true:false;
+    $().getByAjax({
+        api: 'newpraise4h5',
+        jsonpCallback: 'jsonp_newpraise',
+        data: praiseData,
+        success: function(data) {
+            if (!isPraised) {
+                $btn.next('span').data('praised', 1);
+                $btn.next('span').html(function(i, v) {
+                    return +(v) + 1;
+                })
+                !ccid && setCookie(comic_id + ep_id + 'praised', isPraised);
+            } else {
+                $btn.next('span').data('praised', 2);
+                $btn.next('span').html(function(i, v) {
+                    return +(v) - 1;
+                })
+                !ccid && delCookie(comic_id + ep_id + 'praised');
+            }
+
+            $btn.toggleClass('icon-praised');
+        }
+    });
+}
+
+function initBindPost() {
+
+    $(document).on('click', '.post-submit', function() {
+        var user = Comi.Login.check();
+        var isSendLock = false;
+        var $launchBtn = $('.post-submit');
+        var postTitle = $.trim($('#postTitle').val()); 
+        var postText = $.trim($('#postText').val());
+        var $counter = $('.post-counter');
+        var $input = $('#postText');
+        if (postText.length == 0) {
+            $counter.html('你的帖子空空如也~').css('color', '#f00');
+        } else if (postTitle.length == 0){
+            $counter.html('请先填写帖子标题~').css('color', '#f00');
+        } else {
+            if (user == null) {
+               ComiLoginWindow.resetAnimation();
+                return false;
+            } else if (isSendLock) {
+                return false;
+            }
+            var postRich = new Array();
+            postRich.push({
+                "content_type": "text",
+                "text": postText, 
+            });
+            for (var prop in uploadImgMap) {
+                if (!uploadImgMap[prop].useless) {
+                    postRich.push(uploadImgMap[prop]);
+                }
+            }
+            $().getByAjax({
+                api: 'postcommit4h5',
+                jsonpCallback: 'jsonp_postcommit',
+                data: {
+                        "operate_type":1,
+                        "post_id":0,
+                        "post_type":"irrigation",   
+                        "ccid": user.ccid, 
+                        "token": user.expr_ccpwd,
+                        "user_type": user.usertype,
+                        // "comic_id": comic_id,
+                        "post_title": postTitle,
+                        "post_rich": JSON.stringify(postRich)
+                    },
+
+                beforeSend: function() {
+                    $launchBtn.addClass('btn-disabled').html(function(i, v) {
+                        btnText = v;
+                        return v + '中..';
+                    });
+                    isSendLock = true;
+                    return true;
+                },
+                
+                success: function(data) {
+                    console.info(data);
+                    var postId = data.post_list[0].post_id;
+
+                    renderComment(2, {
+                        comment: data.post_list[0], 
+                        user: data.user_list[0],
+                        content: CommentEditor.comment_list
+                    }, $('.comment-list'));
+
+                    $('#postText').val('').blur();
+                    $('#postTitle').val('').blur();
+                    $counter.html('还可以输入1500字');
+                    $('#fsUploadProgress').html('');
+                    commentPanel.updateCount();
+                },
+                error: function() {
+                    $counter.html('好像有点不对劲，再试试吧').css('color', '#f00');
+                },
+                complete: function() {
+                    isSendLock = false;
+                    $launchBtn.html('发布').removeClass('btn-disabled');
+                }
+            })
+        }
+    })
+
+    //输入框事件
+    var postLimit = 1500;
+    $('#postText').on('keyup', function(e) {
+        var val = $(this).val();
+        var len = val.length;
+        var $counter = $('.post-counter')
+        $(this).css('color', '#333');
+        if (len <= postLimit) {
+            $counter.html('还可以输入' + (postLimit - len) + '字').css('color', '');
+        } else {
+            $(this).val(val.slice(0, postLimit));
+            $counter.html('已经放不下啦，只能说' + postLimit + '字！').css('color', '#f00');
+        }
+    });
+
+    //点击发帖导航
+    $('.link-fatie').on('click', function(e) {
+        var windowHeight = $(document).height();
+        $("html,body").animate({scrollTop:windowHeight},200);
+        $('#postTitle').focus();
+    })
+}
+$('.goto-top').remove(); //屏蔽全局的回到顶部图片按钮
+
+var commentPanel = new CommentPanel('.comment-list');
+initBindPost();
+//设置cookie
+
+</script>
+<script type="text/javascript">
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>

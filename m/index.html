@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="loading-page">
+	<head>
+		<meta charset="utf-8" />
+		<title>漫画在线_漫画_在线漫画_可米酷漫画手机版_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="神兽退散全集,DJ情感系列漫画阅读,诡来了恐怖漫画,玻璃花在线漫画,高陵先生漫画,诡来了,高陵先生,玻璃花漫画,在线漫画,下拉漫画,漫画大全,太平镇漫画,恐怖漫画,在线漫画观看,在线漫画阅读,最新在线漫画,漫画网" />
+		<meta name="description" content="可米酷漫画是国内最大最权威的手机彩色条漫阅读平台，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机漫画而生!" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="可米酷漫画">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icon.png" />
+		<link rel="stylesheet" href="css/style.css?v=20160530">
+		<script src="js/base.min.js"></script>
+		<script src="js/config.js"></script>
+		<!--<script type="text/javascript" name="baidu-tc-cerfication" data-appid="7104136" src="http://apps.bdimg.com/cloudaapi/lightapp.js"></script>-->
+		<style type="text/css">
+			.f-article {
+				position: relative;
+			}
+			
+			.f-article footer {
+				top: 2.5rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header header-shadow">
+			<i class="l-icon icon-menu"></i>
+			<a href="genre.html" class="r-icon icon-search"></a>
+		</header>
+		<article class="main-container main-panel offset-minus" style="padding-bottom: 0;">
+		</article>
+		<article class="f-article">
+			<section class="h-block h-notice">
+				<div class="h-notice-inner">
+					<i class="icon-notice"></i>
+					<ul class="h-notice-list list-unstyled">
+						<li class="ellipsis">
+							<a href="down.html">可米酷漫画APP新版本上线啦！！</a>
+						</li>
+						<li class="ellipsis">
+							<a href="">手机漫画新锐可米酷力邀火影之父设布川奖</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<footer class="footer">
+				<!-- <a class="app-download" href="">
+			<i class="logo icon-logo"></i>安装可米酷漫画
+		</a> -->
+		<div id="" class="footer-down">
+			<img src="images/footer-bg.jpg"/>
+		</div>
+		<div class="ft-nav">
+				<nav>
+					<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+					<a href="pro-intr.html">产品介绍</a>
+				</nav>
+				<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+			</div>
+			</footer>
+		</article>
+		<div class="menu"><!-- 菜单 --></div>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script src="js/global.js"></script>
+		<script type="text/javascript">
+			//ajax获取首页数据
+			getByAjax({
+				api: 'homepage4h5',
+				jsonpCallback: 'jsonp_homepage',
+				success: function(data) {
+					if (data.msg == 'success') {
+//						console.log(data.area_list);
+						data.area_list.sort(function(a, b) {
+							return a.area_order > b.area_order;
+						})
+						for (var i = 0, len = data.area_list.length; i < len; i++) {
+							renderFill(data.area_list[i].area_type, data.area_list[i]);
+						}
+					}
+				}
+			});
+
+			function renderFill(type, item) {
+				switch (type) {
+					case 1: //1-banner区域；
+						fillBanner(item);
+						break;
+					case 2: //2-竖海报区域；（已废弃）
+						break;
+					case 3: //3-横海报区域；
+						fillActivityComic(item);
+						break;
+					case 4: //4-ios小横版；
+						break;
+					case 5: //5-排行序列型区域；
+						fillHorizontalComic(item);
+						break;
+					case 6: //6-竖海报+横版大海报混合区域；
+						fillVerticalComic(item);
+						break;
+					case 7: //7-更新模板区域；（已废弃）
+						break;
+					case 8: //8-带有周更入口和全部新番入口的模板区域；今日更新
+						fillTodayComic(item);
+						break;
+					case 9: //9-一行两个纯横图的区域，目前支持新的可米活动样式；
+						break;
+				}
+			}
+
+			function fillBanner(data) {
+				var bannerList = data.area_content;
+				var $bannerContainer = $('' + '<section id="h-slider" class="banner-slider openPage">' + '	<div class="hd">' + '		<ul class="list-unstyled"></ul>' + '	</div>' + '	<div class="bd">' + '		<ul class="list-unstyled">' + '		</ul>' + '	</div>' + '</section>');
+				var $pptvSpecies = "<section id='pptv-species' class='openPage'><a href='large.html' target='_blank'><img src='images/pptv/images/index_new.jpg'></a><a href='genre.html' target='_blank'><img src='images/pptv/images/index_species.jpg'></a></section>";
+				$('.main-container').append($bannerContainer);
+				$('.main-container').append($pptvSpecies);
+				//	PPTV合作	判断域名是否是pptv.com
+				var isPptvUrl = window.location.host;
+				if (isPptvUrl.indexOf("pptv") != -1) {
+					document.querySelector("#pptv-species").style.display = "block";
+				}
+				var html = '';
+				//针对banner返回null时增加防御，以免首页不能打开。
+				if (bannerList === null) {
+//					console.log('bannerList 为 null');
+				} else {
+					for (var i = 0, len = bannerList.length; i < len; i++) {
+						var banner = bannerList[i];
+						var href = '';
+						var imgCutSize = '?imageView2/1/w/480/h/234/q/100';
+						//TODO:统一传过来的url
+						if (banner.content_poster.indexOf('http://') == -1) {
+							banner.content_poster = CONFIG.imgBase + banner.content_poster;
+						}
+						if (banner.content_rating) { //如果是漫画推荐
+							href = CONFIG.detailBase + 'comic_id=' + banner.content_action;
+						} else if (banner.content_type === 5) {
+							href = 'league.html';
+						} else { //活动单页
+							href = banner.content_action;
+						}
+						html += '' + '<li>' + '<a href="' + href + '">' + '<img data-src="' + banner.content_poster + imgCutSize + '">' + '</a>' + '</li>';
+					}
+					$('#h-slider .bd ul').html(html);
+					TouchSlide({
+						slideCell: "#h-slider",
+						titCell: ".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+						mainCell: ".bd ul",
+						effect: "leftLoop",
+						autoPlay: true, //自动播放
+						autoPage: true,
+						switchLoad: "data-src", //切换加载，真实图片路径为"_src"
+						delayTime: 500,
+						interTime: 5000
+					});
+				}
+			}
+
+			function commonTitleHtml($box, data) {
+				var areaTitle = data.area_info.area_title;
+				var areaSub = data.area_info.area_subtitle;
+				//1为分类type, 2为首页进来的type
+				var areaUrl = CONFIG.listBase + 'listpagetype=2' + '&listpageid=' + data.area_id + '&listpagetitle=' + areaTitle;
+				var titleHtml = '' + '<a class="h-block-head" href="' + areaUrl + '">' + '<h2>' + areaTitle + '<small class="text-silver">' + areaSub + '</small>' + '</h2>' + '<i class="icon-angle-right"></i>' + '</a>';
+				$box.prepend(titleHtml);
+			}
+
+			function fillVerticalComic(data) {
+				var $htmlBlock = $('' + '<section class="h-block loader vertical-block">' + '	<div class="h-block-main">' + '	</div>' + '</section>');
+				$('.main-container').append($htmlBlock);
+				var comics = data.area_content;
+				var outerHTML = '',
+					verticalHTML = '',
+					fullHTML = '';
+				//标题标签执行
+				commonTitleHtml($htmlBlock, data);
+				for (var i = 0, len = comics.length; i < len; i++) {
+					var c = comics[i];
+					var ccid = c.content_action;
+					var url = CONFIG.detailBase + 'comic_id=' + ccid;
+					var cover = CONFIG.imgBase + c.content_poster;
+					var score =  Math.floor(c.content_rating * 100) / 100 ;
+					var title = c.content_title;
+					var subtit = c.content_subtitle;
+					var cate = c.content_category;
+					var imgCutSize = '?imageView2/2/w/180';
+					if (typeof cate == 'string') {
+						var cateArr = cate.split('|');
+						for (var j = 0; j < cateArr.length; j++) {
+							var cate = cateArr[j].split('#')[1];
+							if (cate != '') {
+								break;
+							}
+						}
+					}
+					verticalHTML += '' + '<figure>' + '<a data-ccid="' + ccid + '" href="' + url + '">' + '<div class="vertical-poster">' + '<img src="' + cover + imgCutSize + '" alt="' + CONFIG.imgAlt + ' /">' + '</div>' + '<label class="capsule">' + '<span class="capsule-left">' + score + '</span>' + '<span class="capsule-right">' + cate + '</span>' + '</label>' + '<figcaption>' + '<h3 class="ellipsis">' + title + '</h3>' + '<small class="ellipsis">' + subtit + '</small>' + '</figcaption>' + '</a>' + '</figure>';
+				}
+				outerHTML += '' + '<div class="vertical-comic openPage">' + verticalHTML + '</div>';
+				$htmlBlock.find('.h-block-main').html(outerHTML);
+			}
+
+			function fillHorizontalComic(data) {
+				var $htmlBlock = $('' + '<section class="h-block">' + '	<div class="h-block-main">' + '	</div>' + '</section>');
+				var areaTitle = data.area_info.area_title,
+					areaSub = data.area_info.area_subtitle,
+					areaUrl = 'rank.html',
+					titleHtml = '' + '<a class="h-block-head" href="' + areaUrl + '">' + '<h2>' + areaTitle + '<small class="text-silver">' + areaSub + '</small>' + '</h2>' + '<i class="icon-angle-right"></i>' + '</a>',
+					comics = data.area_content,
+					outerHTML = '',
+					innerHTML = '';
+				$('.main-container').append($htmlBlock);
+				//标题标签执行
+				$htmlBlock.prepend(titleHtml);
+				for (var i = 0, len = comics.length; i < len; i++) {
+					var c = comics[i];
+					var ccid = c.content_action;
+					var url = CONFIG.detailBase + 'comic_id=' + ccid;
+					var cover = c.content_poster;
+					var title = c.content_title;
+					var subtit = c.content_subtitle;
+					var order = c.content_id;
+					var imgCutSize = '?imageView2/2/w/180';
+					//console.log(url,c.comic_id)
+					if (i >= 5) {
+						break;
+					}
+					innerHTML += '' + '<figure>' + '<a data-ccid="' + ccid + '" href="' + url + '">' + '<div class="horizontal-poster">' + '<img src="' + CONFIG.imgBase + cover + imgCutSize + '" alt="' + CONFIG.imgAlt + ' /">' + '</div>' + '<figcaption>' + '<h3 class="ellipsis"><span>' + order + '</span>' + title + '</h3>' + '<small class="ellipsis">' + subtit + '</small>' + '</figcaption>' + '</a>' + '</figure>'
+				}
+				outerHTML = '<div class="horizontal-comic openPage">' + innerHTML + '</div>';
+				$htmlBlock.find('.h-block-main').html(outerHTML);
+			}
+
+			function fillActivityComic(data) {
+				var $htmlBlock = $('' + '<section class="h-block">' + '	<div class="h-block-main">' + '	</div>' + '</section>');
+				$('.main-container').append($htmlBlock);
+				var areaTitle = data.area_info.area_title;
+				var areaSub = data.area_info.area_subtitle;
+				var areaUrl = 'activity.html';
+				var titleHtml = '' + '<a class="h-block-head" href="' + areaUrl + '">' + '<h2>' + areaTitle + '<small class="text-silver">' + areaSub + '</small>' + '</h2>' + '<i class="icon-angle-right"></i>' + '</a>';
+				var comics = data.area_content;
+				var outerHTML = '',
+					innerHTML = '';
+//				console.log(comics);
+				//标题标签执行
+				$htmlBlock.prepend(titleHtml);
+				for (var i = 0, len = comics.length; i < len; i++) {
+					var c = comics[i];
+					var url = c.content_action;
+					var cover = c.content_poster;
+					var imgCutSize = '?imageView2/2/w/270';
+					//console.log(url,c.comic_id)
+					//设置详情页ID
+					if (url.indexOf('http://') == -1) {
+						url = CONFIG.detailBase + 'comic_id=' + url;
+					}
+					if (i >= 2) {
+						break;
+					}
+					innerHTML += '' + '<li>' + '<a href="' + url + '">' + '<img src="' + cover + imgCutSize + '" alt="' + CONFIG.imgAlt + ' /">' + '</a>' + '</li>'
+				}
+				outerHTML = '<ul class="h-activity">' + innerHTML + '</ul>';
+				$htmlBlock.find('.h-block-main').html(outerHTML);
+			}
+
+			function fillTodayComic(data) {
+				var $htmlBlock = $('' + '<section class="h-block loader today-block">' + '	<div class="h-block-main">' + '	</div>' + '</section>');
+				$('.main-container').append($htmlBlock);
+				var comics = data.area_content;
+				var outerHTML = '',
+					todayHTML = '',
+					fullHTML = '';
+				//标题标签执行
+				commonTitleHtml($htmlBlock, data);
+				for (var i = 0, len = comics.length; i < len; i++) {
+					var c = comics[i];
+					ccid = c.content_action,
+						url = CONFIG.detailBase + 'comic_id=' + ccid,
+						cover = CONFIG.imgBase + c.content_poster,
+						score =  Math.floor(c.content_rating * 100) / 100,
+						title = c.content_title,
+						third_title = c.third_title,
+						category = c.content_category,
+						subtit = c.content_subtitle,
+						imgCutSize = '?imageView2/2/w/180';
+					categoryID = category.split(/[#|]/)[0];
+					try {
+						category = category.split(/[#|]/)[1];
+						category = category ? category : "未知";
+						categoryID = categoryID ? categoryID : 10;
+					} catch (e) {
+						//TODO handle the exception
+					}
+					todayHTML += '' + '<figure>' + '<a class="openPage" data-ccid="' + ccid + '" href="' + url + '">' + '<div class="vertical-poster">' + '<img src="' + cover + imgCutSize + '" alt="' + CONFIG.imgAlt + ' /"><span>' + third_title + '</span></div>' + '<span class="today_cate" style="background:' + getCategoryColorByID(categoryID, .8) + '"></span>' + '<span class="today_cate_text">' + category + '</span>' + '<figcaption>' + '<h3 class="ellipsis">' + title + '</h3>' + '</figcaption>' + '</a>' + '</figure>';
+				}
+				outerHTML += '' + '<div class="today-comic openPage clearfix">' + todayHTML + '</div>';
+				$htmlBlock.find('.h-block-main').html(outerHTML);
+			}
+		</script>
+	</body>
+
+</html>

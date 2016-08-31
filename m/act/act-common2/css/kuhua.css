@@ -1,0 +1,198 @@
+@charset "utf-8";
+html,body { font-size: 20px; width: 100%; height: 100%;}
+body { color: #333; line-height: 1.42; font-size: .6rem; font-family: Arial,Helvetica,sans-serif;}
+body, div, p, h1, h2, h3, h4, article, section, header, footer, aside, nav, dialog, ul, ol, li, span {
+	margin: 0; padding: 0; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+ul,ol { list-style: none; }
+h1, h2, h3 { line-height: 1.5; font-weight: normal; font-size: .7rem;}
+img { border:0; vertical-align:middle; width: 100%; max-width: 100%;}
+li, i, span, a, img { outline: 0; -webkit-tap-highlight-color: rgba(0,0,0,0);}
+a { text-decoration: none; color: #333;}
+a:active { opacity: .8;}
+.fl { float: left; }
+.fr { float: right; }
+.cl:after { display: block; content: ""; clear: both;}
+
+/*分享详情页*/
+body { background: url(http://cdn.icomicool.cn/common/loading-bg.png) repeat; -webkit-background-size:15px 15px; background-size:15px 15px; }
+.share-page { background-color: #fff;}
+.share-page img {width: 100%;}
+
+.header-t {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    width: 100%;
+    height: 2.5rem;
+    padding: .25rem;
+    background: rgba(255,255,255, .95);
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+.header-t .logo {
+    float: left;
+    width: 7rem;
+}
+.header-t img {
+    display: block;
+    width: 100%;
+}
+.header-comments {
+    float: right;
+    margin-top: .25rem;
+    width: 3rem;
+    height: 1.5rem;
+    line-height: 1.3rem;
+    background: url(../images/kuhua/comments-bg.png) center bottom no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    font-size: .5rem;
+    text-align: center;
+    color: #fff;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.header-b {
+    margin-top: 2.5rem;
+    border-bottom: 1px solid #ddd;
+}
+.header-b a {
+    display: block;
+    padding: .25rem;
+    background: #eee url(../images/kuhua/enter-arrow.png) right no-repeat;
+    -webkit-background-size: 1em;
+    background-size: 1em;
+    background-origin: content-box;
+    font-size: .7rem;
+}
+.sr-con { position: relative;}
+
+.tips { position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background-color:rgba(0,0,0,1); z-index: 999;}
+.hide { display: none;}
+.share-read { width: 100%; position: relative;}
+.share-read img { width: 100%;}
+.sr-head { width: 100%; }
+.sr-contip { position: relative; width: 100%; font-size: 0; z-index: 200; background: rgba(0,0,0,.8); text-align: left;}
+.sr-head-con { position: relative; width: 100%; height: 2.35rem; background: rgba(250,250,250,.8); border-bottom: 1px solid #d5d5d5;}
+.sr-head-con a { position: absolute; z-index: 200;}
+.sr-head-con a.back-btn { right: .6rem; top: .2rem; height: 1.75rem; width: 1.75rem; background:url(../images/kuhua/drop-icon.png) center center no-repeat; -webkit-background-size:75% 75%; background-size:75% 75%;}
+.sr-head-con a.share-btn { display: none;}
+.sr-head-con span { color: #585858; font-size: .7rem; width: 75%; display:block; white-space: nowrap;text-overflow: ellipsis;overflow: hidden; letter-spacing: -1px; line-height: 2.35rem; padding-left: 3%;}
+.toptip-btn { position:absolute; z-index: 250; right: 0; top: 0; width: 30%; height: 100%;}
+.toptip-btn-inner { display: table; width: 100%; height: 100%;}
+.toptip-btn-inner span { display: table-cell; vertical-align: middle; font-size: 0; width: 70%; text-align: center}
+.toptip-btn-inner span:last-child { width: 30%;}
+.toptip-btn-inner a { color: #fff; display: inline-block; width: 100%;}
+.toptip-btn-inner a.clo {  padding:3% 0; font-size: 1.2rem; line-height: 1; font-family: Arial; margin-top: -2px;}
+.toptip-btn-inner a.openLnk { padding: 6% 0 5%; width: 85%; background: #e62c32; color: #fff; border-radius: 6px; font-size: .6rem; background-clip: padding-box; -webkit-background-clip: padding-box;}
+
+.sr-foot { width: 100%; text-align: center; display: none;}
+.sr-foot-inner { padding: .75rem 0; font-size:0;}
+.sr-foot-inner a { vertical-align: middle; display: inline-block; width: 3.075rem; height: 1rem; margin: 0 .5rem; background:url(../images/kuhua/fanye.png) no-repeat; -webkit-background-size:200% 200%; background-size:200% 200%;}
+.sr-foot-inner a.prev-btn { background-position: 0 0;}
+.sr-foot-inner a.prev-btn.curr { background-position: 0 100%;}
+.sr-foot-inner a.next-btn { background-position: 100% 0;}
+.sr-foot-inner a.next-btn.curr { background-position: 100% 100%;}
+
+.sr-foot-inner a.catalog-btn { width: 4.825rem; height: 1.5rem; background:url(../images/kuhua/btn-catalog.png) no-repeat; -webkit-background-size:100% 100%; background-size:100% 100%;}
+.goto-home {
+    position: fixed;
+    right: .45rem;
+    bottom: 2.3rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    padding: .4rem;
+    background: rgba(0,0,0, .6) url(../images/kuhua/icon-home.png) center no-repeat;
+    -webkit-background-origin: content-box;
+    background-origin: content-box;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    -wekbit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+.goto-top {position: fixed;right: .45rem;bottom: 2.3rem;width: 1.6rem;height: 1.6rem;background: rgba(225,225,225,.8);border-radius: .1rem;color: #333;text-align: center;z-index: 100;transition: opacity .3s;opacity: 0;pointer-events: none; line-height: 1.3; overflow: hidden;}
+.show-top {opacity: 1;pointer-events: auto;}
+.goto-top i { width: 0px; border-bottom-width: .4rem; border-bottom-style: solid; border-bottom-color: #000; border-top-color: #000; border-left-width: .4rem !important; border-left-style: solid !important; border-left-color: transparent !important; border-right-width: .4rem !important; border-right-style: solid !important; border-right-color: transparent !important; position: relative; top: -.4rem;}
+
+.drop-tip { position: absolute; z-index: 500; top: 1.8rem; right: .6rem; width: 3.5rem; text-align: center; display: none;}
+.drop-tip span { display:block; width: 0px; border-bottom-width: .2rem; border-bottom-style: solid; border-bottom-color: rgba(51,51,51,.8); border-top-color: rgba(51,51,51,.8); border-left-width: .2rem !important; border-left-style: solid !important; border-left-color: transparent !important; border-right-width: .2rem !important; border-right-style: solid !important; border-right-color: transparent !important; margin-left: 2.4rem;}
+.drop-inner { border-radius: .2rem; background-color: rgba(51,51,51,.8); padding:0 .25rem;}
+.drop-inner p:nth-child(1) { border-bottom: 1px solid #777;}
+.drop-inner a { display: block; width: 100%; color: #fff; line-height: 1.4rem;}
+.ep-interact {
+    position: relative;
+    display: table;
+    width: 100%;
+    height: 3.5rem;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+.ep-interact-btn {
+    display: table-cell;
+    width: 100%;
+    height: 2.2rem;
+    padding-top: .65rem;
+    color: #e42f39;
+    text-align: center;
+}
+.ep-interact-btn i {
+    position: relative;
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    border: 1px solid;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-background-clip:padding-box;
+    background-clip:padding-box;
+}
+.ep-interact-btn i:before {
+    position: absolute;
+    top: .3rem;
+    left: .3rem;
+    width: .6rem;
+    height: .6rem;
+    content: "";
+    background-image: url(../images/kuhua/praise.png);
+    background-repeat: no-repeat;
+    -webkit-background-size: 200% 100%;
+    background-size: 200% 100%; 
+    /*background: url(../images/kuhua/praise.png) no-repeat left/200% auto;*/
+}
+.ep-interact-btn p {
+    margin: 0;
+    margin-top: .5em;
+    line-height: 1;
+}
+.ep-praise-btn i {
+    transition: all .3s;
+}
+.ep-praise-on i {
+    background: #e42f39;
+    color: #fff;
+    -webkit-animation: praise ease-in-out .5s;
+}
+.ep-praise-on i:before {
+    background-color: #e42f39;
+    background-position: right 0;
+    color: #fff;
+    -webkit-animation: praise ease-in-out .5s;
+}
+@-webkit-keyframes praise {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    33% {
+        -webkit-transform: scale(.8);
+    }
+    66% {
+        -webkit-transform: scale(1.4);
+    }
+    100% {
+        -webkit-transform: scale(1);
+    }
+}

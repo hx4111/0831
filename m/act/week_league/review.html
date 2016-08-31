@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>可米酷漫画周赛往期作品|漫画网_二次元</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="keywords" content="漫画周赛,往期作品,漫画网,二次元,在线漫画,看漫画,条漫,可米酷漫画" />
+    <meta name="description" content="可米酷漫画周赛往期作品：忆往昔，追寻我们参赛作品的曾经。" />
+    <link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+    <script src="http://m.comicool.cn/m-common/js/init.js"></script>
+    <style>
+        body, p, ul, li, h1, h2, h3, h4, h5, h6 {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #f0f0f0;
+            line-height: 1.5;
+        }
+        ul, li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .card-list li {
+            margin: .75rem;
+            background: #fff;
+        }
+        .card-list li a {
+            display: block;
+        }
+        .card-list .thumbnails {
+            height: 8rem;
+            background-color: #d8d8d8;
+            background-position: center;
+            background-repeat: no-repeat;
+            -webkit-background-size: 100% auto;
+            background-size: 100% auto;
+            overflow: hidden;
+        }
+        .card-list li .text-info {
+            padding: .5em;
+        }
+        .card-list li h3 {
+            font-size: .8rem;
+            color: #424242;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .card-list li p {
+            font-size: .6rem;
+            color: #979797;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="share-info" style="display:none">
+        忆往昔，追寻我们参赛作品的曾经。
+        <!-- <p>参赛作品预告描述</p> -->
+        <img src="http://cdn.icomicool.cn/m/act/201507/week-game/images/past/share-img2.jpg" alt="漫画周赛往期作品" />
+    </h1>
+    <header class="header header-fixed header-shadow">
+        <a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+        <i class="r-icon icon-share"></i>
+    </header>
+    <ul class="card-list">
+        <script type="text/template" id="tmpl-agolist">
+            {{each ago_list as item index}}
+                <li>
+                    <a href="http://m.comicool.cn/act/201507/week-game/awards-pub.html?league_order={{item.league_order}}">
+                        <div class="thumbnails" style="background-image:url(http://cdn.icomico.com/{{item.champion_comico_cover}})">
+                        </div>
+                        <div class="text-info">
+                            <h3>作者：{{item.champion_auth}}</h3>
+                            <p>第{{item.league_order}}期({{item.league_date | date2string}})</p>
+                        </div>
+                    </a>
+                </li>
+            {{/each}}
+        </script>
+    </ul>
+    <div id="ShareBg"></div>
+    <div class="bdsharebuttonbox sharebox" data-tag="share_1">
+        <div id="ShareCon">
+            <em></em>
+            <h2></h2>
+        </div>
+        <div>
+            <a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+            <a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+            <a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+            <a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+        </div>
+        <div class="share-clo">取消</div>
+    </div>
+    <script src="http://m.comicool.cn/m-common/js/app.js"></script>
+    <script src="http://www.comicool.cn/common/js/template.js"></script>
+    <script>
+        template.helper('date2string', function (str) {
+            var dateArr = str.split('-');
+            var ret = [];
+
+            dateArr.forEach(function (item) {
+                var arr = item.split('.');
+                ret.push(arr[0] + '月' + arr[1] + '日');
+            });
+
+            return ret.join('-');
+        });
+
+        jsonp({
+            url: 'http://proxy.icomico.com/league4h5',
+            data: {
+                league_status: 'later'
+            },
+            callback: 'jsonp_league',
+            success: function (res) {
+                console.log(res);
+                if (res.ret === 0) {
+                    res.ago_list.reverse();
+                    var html = template('tmpl-agolist', res);
+                    document.getElementById('tmpl-agolist').outerHTML = html;
+                }
+            }
+        });
+
+        setShareInfo({
+            title: '可米酷漫画周赛往期作品',
+            describe: '忆往昔，追寻我们参赛作品的曾经。',
+            imageUrl: 'http://cdn.icomicool.cn/m/act/201507/week-game/images/past/share-img.jpg',
+            pageUrl: window.location.href
+        }, {
+            use: 'baidu',
+            init: initBaiduSharePanel
+        });
+
+        function initBaiduSharePanel() {
+            var _ = function(selector, parent) {
+                    return (parent || document).querySelector(selector);
+                },
+                header = _('.header'),
+                trigger = _('.icon-share', header),
+                mask = _('#ShareBg'),
+                panel = _('.bdsharebuttonbox'),
+                cancelBtn = _('.share-clo', panel),
+                panelTitle = _('#ShareCon h2'),
+                panelImageCont = _('#ShareCon em'),
+                panelImage = new Image(),
+                hidePanel = function() {
+                    mask.style.display = panel.style.display = 'none';
+                };
+            header.style.display = 'block';
+            panelTitle.innerHTML = this.title;
+            panelImage.src = this.imageUrl;
+            panelImageCont.appendChild(panelImage);
+            trigger.addEventListener('click', function() {
+                mask.style.display = panel.style.display = 'block';
+            });
+            mask.addEventListener('click', hidePanel);
+            cancelBtn.addEventListener('click', hidePanel);
+        }
+
+        function jsonp(options) {
+            var src = options.url;
+            var data = typeof options.data === 'object' ? options.data : null;
+            var qs = serialize(data);
+            var script = document.createElement('script');
+            var head = document.getElementsByTagName('head')[0];
+
+            if (qs) {
+                if (src.indexOf('?') > -1) {
+                    src += '&' + qs;
+                } else {
+                    src += '?' + qs;
+                }
+            }
+
+            window[options.callback] = options.success;
+            script.src = src;
+            head.appendChild(script);
+
+            function serialize(data) {
+                var arr = [];
+                for (var n in data) {
+                    arr.push(n + '=' + data[n]);
+                }
+                return arr.join('&');
+            }
+        }
+    </script>
+    <!-- 百度统计 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</body>
+</html>

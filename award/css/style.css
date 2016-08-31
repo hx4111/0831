@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {-webkit-text-size-adjust: 100%; /*overflow:hidden;谷歌字体小于12兼容*/ }
+body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,table,tr,th,td{margin:0;padding:0;}
+body,input,textarea,select{font:12px/1.5 Microsoft YaHei,Tahoma,Arial,Helvetica,Geneva,sans-serif; color:#333;}
+ol,ul{list-style:none;}
+input,textarea,select{resize:none;}
+table{width:100%; border-collapse:collapse; border-spacing:0;}
+a{outline:none; blr:expression(this.onFocus=this.blur()); color:#3B5998; cursor: pointer;}
+a,a:hover{text-decoration:none;}
+img{border:none;vertical-align:middle;}
+.cl:before,.cl:after{content:"";display:table;}
+.cl:after{clear:both;}
+.cl{zoom:1;}
+
+
+.container { width:100%; font-family: Microsoft YaHei; background: url(../images/bg.jpg) top center repeat;}
+.h-head { width: 100%; background: url(http://cdn.icomicool.cn/award/images/header.png) top center no-repeat; position: relative;}
+.h-head-inner { width:1024px; height: 558px; margin: auto; position: relative;}
+.h-head-inner a.submit { width: 362px; height: 137px; display: block; position: absolute; bottom: 22px; left: 248px; z-index: 100;}
+.h-head-inner a.submit:hover { opacity: 0.9; filter:alpha(opacity=90);}
+
+.move-tab { position: fixed; width: 140px; right: 5%; top: 210px; z-index: 100;}
+.move-tab .ewm { position: relative; right: -60px; text-align: center;}
+.move-tab .ewm img { width: 100px; height: 100px;}
+.move-tab .ewm p { font-size: 14px; font-weight: bold; letter-spacing: -1px;}
+.move-tab li { width: 100%; height: 30px; line-height: 30px; text-align: right; position: relative; font-size: 14px;}
+.move-tab li a { background: url(../images/yuan.png) 5px -55px no-repeat; position: absolute; display: block; width: 20px; height: 20px; top: 10px; right: 0;}
+.move-tab li.curr a , .move-tab li:hover a { background-position: 5px -15px;}
+.move-tab li span { height:30px; display: none; width: 120px;}
+.move-tab li.curr span { display: block;}
+
+
+.h-con { width: 100%;}
+.h-con li { width: 100%; position: relative;}
+.h-con li a.nonelnk { position: absolute; left: 0;}
+.h-con .lidiv { width: 1024px; margin: auto; position: relative;}
+.h-con li.con-submit a.submit { display: inline-block; vertical-align: top; zoom: 1; *display: inline-block; color: #fd6c00; width: 360px; text-align: left; position: absolute; left: 530px; top: 106px; font: bold 30px/36px Arial;}
+.h-con li.con-submit a.submit:hover { text-decoration: underline;}
+
+.h-con li.con-li1 { background: url(http://cdn.icomicool.cn/award/images/con1.png) top center no-repeat; height: 701px;} 
+.h-con li.con-li2 { background: url(http://cdn.icomicool.cn/award/images/con2.png) top center no-repeat; height: 692px;} 
+.h-con li.con-li3 { background: url(http://cdn.icomicool.cn/award/images/con3.png) top center no-repeat; height: 907px;} 
+.h-con li.con-li4 { background: url(http://cdn.icomicool.cn/award/images/con4.png) top center no-repeat; height: 511px;} 
+.h-con li.con-li4 .lidiv { height: 511px;}
+.h-con li.con-li5 { background: url(http://cdn.icomicool.cn/award/images/con5.png) top center no-repeat; height: 1860px;}
+
+
+.h-foot { height: 170px; color: #5a5a5a; text-align: center;}
+.h-foot h3 { font-size: 0; padding: 36px 0 10px 0; line-height: 22px; color: #282828; overflow: hidden; height: 22px;}
+.h-foot h3 span { top: -1px; left: 0; position: relative; font-size: 12px;}
+.h-foot h3 a { font-size: 14px; margin: 0 32px; color: #282828;}
+.h-foot h3 a:hover { text-decoration: underline;}
+.h-foot p { font-size: 12px; font-family: Arial; line-height: 16px;}

@@ -1,0 +1,22 @@
+var data={
+	'1':{
+	   'bg':'images/1.jpg',
+	   'timing':'20160826'
+	},
+	'2':{
+	   'bg':'images/1.jpg',
+	   'timing':'20160827'
+	},
+	'3':{
+	   'bg':'images/1.jpg',
+	   'timing':'20160828'
+	},
+	'4':{
+	   'bg':'images/1.jpg',
+	   'timing':'20160829'
+	},
+	'5':{
+	   'bg':'images/1.jpg',
+	   'timing':'20160830'
+	},
+}

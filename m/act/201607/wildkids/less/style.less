@@ -1,0 +1,469 @@
+
+body {
+	overflow: hidden;
+}
+
+.loading {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	color: #ccc;
+	z-index: 1000;
+
+	.load-word {
+		text-align: center;
+		margin: 30% auto 0;
+	}
+
+	.spinner {
+		margin: 10px auto 0;
+		width: 150px;
+		text-align: center;
+
+		div {
+			width: 30px;
+			height: 30px;
+			background-color: #2D2D2D;
+
+			border-radius: 100%;
+			display: inline-block;
+			-webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+			animation: bouncedelay 1.4s infinite ease-in-out;
+			/* Prevent first frame from flickering when animation starts */
+			-webkit-animation-fill-mode: both;
+			animation-fill-mode: both;
+
+			&.bounce1 {
+			  	-webkit-animation-delay: -0.32s;
+				animation-delay: -0.32s;
+			}
+
+			&.bounce2 {
+				-webkit-animation-delay: -0.16s;
+				animation-delay: -0.16s;
+			}
+		}
+	}
+}
+
+@-webkit-keyframes bouncedelay {
+	0%, 80%, 100% { -webkit-transform: scale(0.0) }
+	40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+	0%, 80%, 100% {
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	} 40% {
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+
+.img-list {
+	background: #000 url('../images/bg-repeat.jpg') repeat;
+	background-size: 100%;
+	li {
+		position: relative;
+	}
+
+	.header-li {
+		padding-bottom: 18%;
+	}
+
+	.index-word {
+		text-align: center;
+		margin: .2rem auto;
+
+		&.index-word01 {
+			width: 60%;
+		}
+
+
+		&.index-word02 {
+			width: 80%;
+		}
+
+		&.index-word03 {
+			width: 50%;
+		}
+
+		&.index-word04 {
+			width: 60%;
+		}
+	}
+
+	.bg-layer {
+		width: 80%;
+		margin: .5rem auto;
+	}
+
+	.mh-btn {
+		width: 40%;
+		margin: .2rem auto;
+
+		.mh-btn-light {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			&.active {
+				-webkit-animation: fadeIn 1s infinite alternate;
+				animation: fadeIn 1s infinite alternate;
+			}
+		}
+	}
+
+	.bg-border01 {
+		width: 100%;
+
+		.content-img01 {
+			position: absolute;
+			top: 23%;
+			width: 100%;
+			margin: 0 auto;
+			text-align: center;
+			color: #fff;
+			font-size: .6rem;
+
+			img {
+				width: 70%;
+				margin: .2rem auto;
+				overflow: hidden;
+
+			}
+		}
+	}
+
+	.bg-border02 {
+		
+		.content-border02 {
+			width: 84%;
+			margin: 0 auto;
+		}
+
+		.content-img02 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			margin: 0 auto;
+			margin-top: .2rem;
+			text-align: center;
+			color: #fff;
+			font-size: .6rem;
+
+			&.content-img03 {
+				margin-top: .5rem;
+				img {
+					width: 65%;
+				}
+			}
+
+			img {
+				width: 60%;
+				margin: .2rem auto;
+				overflow: hidden;
+			}
+		}
+	}
+
+	.read-btn {
+		width: 70%;
+		margin: .5rem auto;
+		img {
+			z-index: 10;
+		}
+
+		.read-btn-light {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 9;
+
+			&.active {
+				-webkit-animation: fadeIn 1s infinite alternate;
+				animation: fadeIn 1s infinite alternate;
+			}
+		}
+
+		.read-btn-word {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 11;
+		}
+	}
+
+	.video-li {
+
+		.video-container {
+			position: absolute;
+			top: 0;
+			left:0;
+			width: 100%;
+			text-align: center;
+
+			video {
+				width: 90%;
+				margin: 0 auto;
+				margin-top: 5%;
+			}
+		}
+	}
+
+	.praise-li {
+		position: absolute;
+		top: 6%;
+		width: 100%;
+		text-align: center;
+
+		img {
+			margin: 0 auto;
+			width: 30%;
+		}
+
+		.praise-cnt {
+			color: #fff;
+		}
+	}
+}
+
+.header-bottom {
+	position: absolute;
+	top: 73%;
+	left: 0;
+	z-index: 20;
+
+	.header-bottom-light {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		&.active {
+			-webkit-animation: fadeIn 1s infinite alternate;
+			animation: fadeIn 1s infinite alternate;
+		}
+	}
+}
+
+.kids-word {
+	position: absolute;
+	top: 3%;
+	left: 5%;
+	width: 63%;
+	-webkit-transform: translate3d(0, -100%, 0);
+	transform: translate3d(0, -100%, 0);
+	z-index: 10;
+
+	&.active {
+		-webkit-animation: fadeInTop 1s;
+		animation: fadeInTop 1s;
+		-webkit-animation-delay: 2s;
+		animation-delay: 2s;
+	}
+
+	&.animated {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.bg-light {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	width: 83%;
+	opacity: 0;
+	z-index: 11;
+
+	&.active {
+		-webkit-animation: fadeIn 1.5s;
+		animation-delay: 3s;
+	}
+
+	&.animated {
+		opacity: 1;
+	}
+}
+
+.bg-lights {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	width: 83%;
+	z-index: 11;
+	opacity: 0;
+
+	&.active {
+		-webkit-animation: scaleOut 1.5s;
+		animation-delay: 3s;
+	}
+
+	&.animated {
+		opacity: 1;
+		-webkit-transform: none;
+		transform: none;
+	}
+}
+
+.stick-kid {
+	position: absolute;
+	top: 16%;
+	right: 0;
+	width: 40%;
+	-webkit-transform: translate3d(100%, 0, 0);
+	transform: translate3d(100%, 0, 0);
+
+	&.active {
+		-webkit-animation: fadeInRight 1s;
+		animation-delay: 1s;
+	}
+
+	&.animated {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}	
+
+.soldier {
+	position: absolute;
+	bottom: 12%;
+	left: 0;
+	width: 34%;
+
+	&.active {
+		-webkit-animation: soldier-ani 1s;
+		animation: soldier-ani 1s;
+	}
+
+	&.animated {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.gun-fir {
+	position: absolute;
+	bottom: 28%;
+	left: 33%;
+	width: 30%;
+
+	&.active {
+		-webkit-animation: gun-fir-ani 1s;
+		animation: gun-fir-ani 1s;
+	}
+
+	&.animated {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeInTop
+{
+	from { transform: translate3d(0, -100%, 0); }
+	to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeIn
+{
+	from { opacity: 0; }
+	to{ opacity: 1; }
+}
+
+@keyframes fadeInLeft
+{
+	from { transform: translate3d(-100%, 0, 0); }
+	to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeInRight
+{
+	from { transform: translate3d(100%, 0, 0); }
+	to { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes scaleOut 
+{
+	0% {
+		opacity: 1;
+		transform: scale(0.1, 0.1);
+	}
+
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes soldier-ani {
+	0% {
+		transform: translate3d(-100%, 0, 0);
+	}
+
+	50% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	58% {
+		transform: translate3d(0, -3%, 0);
+	}
+
+	66% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	74% {
+		transform: translate3d(0, -3%, 0);
+	}
+
+	82% {
+		transform: translate3d(0, 0, 0);
+	}
+
+	90% {
+		transform: translate3d(0, -3%, 0);
+	}
+
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes gun-fir-ani {
+	0% {
+		opacity: 0;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	58% {
+		opacity: 1;
+	}
+
+	66% {
+		opacity: 0;
+	}
+
+	74% {
+		opacity: 1;
+	}
+
+	82% {
+		opacity: 0;
+	}
+
+	90% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}

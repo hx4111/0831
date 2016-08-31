@@ -1,0 +1,43 @@
+.share-icons {
+	display: inline-block;
+}
+.share-icons:after {
+	display: inline !important;
+}
+.share-icons a {
+	position: relative;
+	display: inline-block;
+	height: 1.5rem;
+	width: 1.5rem;
+	margin: 0 .2rem;
+	line-height: 1.5rem;
+	font-size: .8rem;
+	text-align: center;
+	color: #fff;
+	border-radius: 99em;
+}
+.share-icons .on:after {
+	content: "\e61c";
+	position: absolute;
+	bottom: 0;
+	right: -.2rem;
+	height: .6rem;
+	width: .6rem;
+	line-height: .6rem;
+	text-align: center;
+	font-family: 'comicool-font';
+	font-size: 60%;
+	font-weight: 700;
+	color: #fff;
+	background: #e32e38;
+	border-radius: 50%;
+}
+.share-icons .icon-wechat, .share-icons .icon-moments {
+	background: #2dbf83;
+}
+.share-icons .icon-qq {
+	background: #4bb5fc;
+}
+.share-icons .icon-weibo {
+	background: #fd757b;
+}

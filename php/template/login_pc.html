@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>可米酷漫画</title>
+</head>
+<body>
+	<div class="login-btns">
+		<?php
+			if (CLI_TYPE == 'weixin' || CLI_TYPE == 'weibo' || CLI_TYPE == 'qq' ) {
+				if(CLI_TYPE == 'weixin') {
+					echo '<a href="'.$weixin_url.'" class="login-btn" id="wx-btn">微信登录</a>';
+				}elseif(CLI_TYPE == 'weibo') {
+					echo '<a href="'.$sae_url.'"  class="login-btn" id="wb-btn">微博登录</a>';
+				}elseif(CLI_TYPE == 'qq') {
+					echo '<a href="index.php?goqq=1"  class="login-btn" id="qq-btn">微信登录</a>';
+				}
+			} else {
+				echo '	<a href="index.php?goqq=1"  class="login-btn" id="qq-btn">QQ登录2</a>
+						<a href="'.$sae_url.'"  class="login-btn" id="wb-btn">微博登录</a>
+				';
+
+				if(!IS_MOBILE) {
+					echo '<a href="'.$wx_url.'"  class="login-btn" id="wx-btn">微信登录</a>';
+				}
+			}
+		?>
+	</div>
+
+	<script>
+		function setCookie(name,value,day) {
+			var Days = day || 7;
+			var exp = new Date();
+			exp.setTime(exp.getTime() + Days*24*60*60*1000);
+			document.cookie = name + "="+ escape(value) + ";expires=" + exp.toGMTString();
+			return value;
+		}
+
+		function getCookie(name) {
+			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+			if(arr=document.cookie.match(reg)){
+				return unescape(arr[2]);
+			} else{
+				return null;
+			}
+		}
+
+		function delCookie(name) {
+			var exp = new Date();
+			exp.setTime(exp.getTime() - 1);
+			var cval=this.get(name);
+			if(cval!=null){
+				document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+			}
+		}
+
+		function createDeviceID() {
+			var timeStampToHex = 'a0' + new Date().getTime().toString(16).slice(-10);
+
+			function hex4() {
+				return ("0000" + Math.floor(Math.random() * 0x10000).toString(16)).slice(-4);
+			}
+
+			function hex8() {
+				return ("00000000" + Math.floor(Math.random() * 0x100000000).toString(16)).slice(-8);
+			}
+
+			return timeStampToHex + hex8() + hex8() +hex4();
+		}
+
+		(function () {
+			//设置device_id
+			!getCookie('device_id') && setCookie('device_id', createDeviceID(), 999);
+		})();
+	</script>
+</body>
+</html>

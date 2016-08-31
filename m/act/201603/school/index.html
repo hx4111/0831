@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>迎战开学季</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="迎战开学季">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160311">
+	   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+			#praise span{top: 1rem;}
+		</style>
+	</head>
+
+	<body>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<ul>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_01.jpg" alt="迎战开学季"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_02.jpg" alt="迎战开学季"></li>
+				<li id="praise"><span>0</span><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_03.jpg" alt="迎战开学季"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_04.jpg" alt="迎战开学季"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_05.jpg" alt="迎战开学季"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_06.jpg" alt="迎战开学季"></li>
+				<li data-cid="10946" class="go"><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_07.jpg" alt="你是我的维他命"></li>
+				<li data-cid="10997" class="go"><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_08.jpg" alt="奈何志"></li>
+				<li data-cid="10973" class="go"><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_09.jpg" alt="手办王子"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_10.jpg" alt="迎战开学季"></li>
+				<li id="mall"><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_11.jpg" alt="兑吧"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_12.jpg" alt="迎战开学季"></li>
+				<li><img src="http://cdn.icomicool.cn/m/act/201603/school/images/index_13.jpg" alt="迎战开学季"></li>
+			</ul>
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			$.ajax({
+				url: 'http://comicool.cn/simple_vote.php',
+				dataType: "jsonp",
+				data: {},
+				jsonpCallback: "jsonp_match",
+				success: function(data) {
+					var praise = data.results[3];
+					$("#praise span").html(praise);
+					bindOpenComicEvents();
+				}
+			})
+
+			function bindOpenComicEvents() {
+				var readComic;
+				if (isApp) {
+					readComic = function(cid) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: cid,
+							ep_id: 1
+						});
+					}
+				} else {
+					readComic = function(cid) {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + cid + '&ep_id=1';
+					}
+				}
+				$(".go").on('click', function(e) {
+					var cid = this.dataset.cid;
+					if (cid !== "undefined" && cid !== "") {
+						readComic(cid);
+					}
+				});
+			}
+			if (!getCookie('flag')) {
+				var flag = false;
+			}
+			//下面的按钮点赞
+			$("#praise").on("click", function() {
+				if (getCookie('flag20160311') == "true") {
+					alert("您已经点过赞了!")
+				} else {
+					var num = $("#praise span").html();
+					$("#praise span").html(parseInt(num) + 1);
+					$.get("http://comicool.cn/simple_vote.php?sel=3");
+					setCookie("flag20160311", "true", 30)
+				}
+			})
+
+			var mallBtn = document.getElementById('mall');
+			mall.addEventListener("touchend", function() {
+				callAppFunction('openMallPage', {});
+			});
+
+			//如果是可米酷app
+			if (isApp) {
+				setByUserLoginStatus(
+					loginCallback,
+					function() {
+						mall.addEventListener('touchend', jumpLoginPage, false);
+						//设置App里登录后的回调函数
+						callAppFunction('setJSCallback', {
+							'account_event': 'loginHandler'
+						});
+					}
+				);
+			}
+			window.loginHandler = function(obj) {
+				span(loginCallback);
+				mall.removeEventListener('touchend', jumpLoginPage);
+			}
+
+			function loginCallback(userInfo) {
+				mall.addEventListener('touchend', function() {
+					callAppFunction('openMallPage', {});
+				}, false);
+			}
+
+			function jumpLoginPage() {
+				callAppFunction('openLoginPage', {});
+			}
+
+			function setByUserLoginStatus(isLogin, unLogin) {
+				var userInfo = {};
+				var done = [];
+				var cb = function(i) {
+					done.push(i);
+
+					//所有异步任务完成
+					if (fnQueue.length === done.length) {
+						typeof isLogin === 'function' && isLogin(userInfo);
+					}
+				};
+				var fnQueue = [
+					function(i) {
+						callAppFunction('getDeviceID', {}, function(DeviceID) {
+							userInfo.deviceid = DeviceID;
+							cb(i);
+						});
+					},
+					function(i) {
+						callAppFunction('getChannelId', {}, function(ChannelId) {
+							userInfo.channel = ChannelId;
+							cb(i);
+						});
+					},
+					function(i) {
+						callAppFunction('getAppVersionName', {}, function(AppVersionName) {
+							userInfo.version_code = AppVersionName.split('.').pop();
+							cb(i);
+						});
+					},
+					function(i) {
+						if (isIOSApp) {
+							userInfo.os_type = 'ios';
+						} else if (isAndroidApp) {
+							userInfo.os_type = 'anr';
+						}
+
+						cb(i);
+					}
+				];
+
+				callAppFunction('getAccountInfo', {}, function(result) {
+					var result = function() {
+						if (isAndroidApp) {
+							return result ? JSON.parse(result) : {};
+						}
+
+						return result;
+					}();
+
+					userInfo.ccid = result.ccid;
+					userInfo.usertype = result.usertype;
+					userInfo.cctoken = result.cctoken;
+					userInfo.username = result.nickname || 'TODO用户名';
+
+					//登录
+					if (result.cctoken && result.ccid && result.usertype) {
+						fnQueue.forEach(function(fn, i) {
+							fn(i);
+						});
+					} else {
+						//未登录
+						typeof unLogin === 'function' && unLogin();
+					}
+				});
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

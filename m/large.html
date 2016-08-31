@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html class="loading-page">
+	<!--<html class="">-->
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画-最新_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="可米酷最新漫画,热门漫画,周赛,可米酷漫画" />
+		<meta name="description" content="可米酷最新漫画:助你第一时间找到最新的漫画，条漫阅读看不停。" />
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463386207_0576153.css" />
+		<script src="js/config.js"></script>
+	</head>
+
+	<body class="body-rank">
+		<header class="header header-white header-fixed">
+			<i class="l-icon icon-menu"></i>
+			<h1 class="c-text ellipsis">
+		最新
+	</h1>
+		</header>
+		<article class="main-panel offset-plus large-box">
+			<section class="">
+				<ul class="large-list">
+				</ul>
+			</section>
+			<footer class="footer">
+
+				<nav class="ft-nav">
+					<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+					<a href="pro-intr.html">产品介绍</a>
+				</nav>
+				<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+			</footer>
+		</article>
+		<div class="menu"><!-- 菜单 --></div>
+		<script src="js/base.min.js"></script>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script src="js/global.js"></script>
+		<script>
+			CONFIG.ajaxBase = "http://proxy.icomico.com/"
+			$(function() {
+				var pullPostLock = false;
+				var lastPostId = 0;
+				getPostList(0, 5, 2);
+				window.addEventListener('scroll', checkMeetPageBottom);
+				var windowHeight = document.documentElement.clientHeight;
+
+				function getPostList(content_id, page_size, page_direction) {
+					if (pullPostLock) {
+						return;
+					}
+					pullPostLock = true;
+					getByAjax({
+						api: 'new_recommend4web',
+						data: {
+							"content_id": content_id,
+							"page_size": page_size,
+							"page_direction": page_direction
+						},
+						jsonpCallback: 'jsonp_new_recommend',
+						success: function(data) {
+							if (data.msg == 'success') {
+								pushDiv.add(data);
+							}
+						}
+					});
+				}
+				var pushDiv = {
+					add: function(res) {
+						pullPostLock = false;
+//						console.log(res);
+						var html = "",
+							list = res.content_list;
+						for (var i = 0, len = list.length; i < len; i++) {
+							var host = "http://cdn.icomico.com/",
+								type = list[i].content_type,
+								action = list[i].content_action,
+								category = list[i].content_category,
+								title = list[i].content_title,
+								praise = list[i].content_praise_count,
+								post = list[i].content_post_count,
+								imgUrl = list[i].content_poster,
+								imgCutSize = '?imageView2/1/w/480/h/285/q/100',
+								categoryID = category.split(/[#|]/)[0];
+							category = category.split(/[#|]/);
+							lastPostId = list[list.length - 1].content_id;
+							if (post > 10000) {
+								post = ((post / 10000).toFixed(1) + "万");
+							}
+							if (praise > 10000) {
+								praise = ((praise / 10000).toFixed(1) + "万");
+							}
+							switch (type) {
+								case 1:
+									var ccid = action,
+										go_ccid = 'content/detail.html?comic_id=' + ccid;
+									break;
+								case 2:
+									var arr = action.split("_"),
+										ccid = arr[0],
+										epid = arr[1],
+										go_ccid = 'content/detail.html?comic_id=' + ccid,
+										go_epid = 'content/reader.html?comic_id=' + ccid + '&ep_id=' + epid;
+									break;
+								default:
+									var ccid = 0,
+										epid = 0;
+									break;
+							}
+							try {
+								(function() {
+									for (var i = 0, len = category.length; i < len; i++) {
+										if ((category[i] !== '') && (i % 2 !== 0)) {
+											category = category[i];
+											return category;
+										}
+									}
+								})();
+							} catch (e) {
+								//TODO handle the exception
+							}
+							try {
+								categoryID = categoryID ? categoryID : 10;
+							} catch (e) {
+								//TODO handle the exception
+							}
+							html += "<div><small style='background:" + getCategoryColorByID(categoryID, .8) + "'>" + category + "</small><a href='" + go_epid + "' target='_blank'><img src='" + host + imgUrl + imgCutSize + "'></a><li><span class='large_complete'><a href='" + go_ccid + "' target='_blank'>全集</a></span><span class='large_title'><a href='" + go_epid + "' target='_blank'>" + title + "</a></span><span class='large_message'><a href='" + go_ccid + "&tab=2' target='_blank'><i class='iconfont icon-liuyan'></i>" + post + "</a></span><span class='large_praise'><a href='" + go_ccid + "&tab=2' target='_blank'><i class='iconfont icon-xin'></i>" + praise + "</a></span></li></div>";
+						};
+						$(".large-list").append(html);
+					}
+				}
+
+				function checkMeetPageBottom(e) {
+					var threshold = document.documentElement.scrollHeight - windowHeight - 99;
+					var curScrollTop = document.body.scrollTop;
+					if (curScrollTop >= threshold) {
+						getPostList(lastPostId, 5, 2);
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

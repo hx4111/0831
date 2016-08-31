@@ -1,0 +1,19 @@
+{
+  "name": "pennymall",
+  "version": "1.0.0",
+  "description": "penny mall for comicool",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "eric_comicool",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.8",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.1.0",
+    "gulp-uglify": "^1.5.3"
+  }
+}

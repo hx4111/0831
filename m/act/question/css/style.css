@@ -1,0 +1,126 @@
+*,
+html,
+body {
+	margin: 0;
+	padding: 0
+}
+
+.faqList h1 {
+	font-size: .8rem;
+	font-weight: normal;
+	line-height: 1.5rem;
+	padding: .2rem .5rem;
+	color: #333;
+}
+
+.faqList .iconfont {
+	font-size: 1rem;
+	color: #686669;
+}
+
+#faq {
+	padding-bottom: 2rem;
+}
+
+#faq dl {
+	background: #fff;
+	margin-bottom: .5rem;
+	border-bottom: 1px #d9d9d9 solid;
+	border-top: 1px #d9d9d9 solid;
+	padding: 0 .3rem;
+}
+
+#faq dt {
+	color: #636768;
+	font-size: .7rem;
+	border-bottom: none;
+	border-top: none;
+	cursor: pointer;
+	line-height: 1rem;
+	padding: .5rem 0;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	width: 100%;
+}
+
+#faq dt span {
+	width: 90%;
+	display: inline-block;
+}
+
+#faq dt i {
+	float: right;
+	font-style: normal;
+	width: .8rem;
+	margin-right: .2rem;
+	height: .8rem;
+	text-align: center;
+	line-height: .9rem;
+	color: #ff6058;
+	border-radius: 100%;
+}
+
+#faq dd {
+	display: none;
+	color: #69666d;
+	font-size: .7rem;
+	border-top: 1px #d9d9d9 solid;
+	line-height: 1.2rem;
+	padding: .5rem 0;
+}
+
+#other {
+	border-top: 1px #d9d9d9 solid;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 2rem;
+	background: #f9f9f9;
+	width: 100%;
+	line-height: 2rem;
+	font-size: .8rem;
+}
+
+#other .iconfont {
+	font-size: .8rem;
+	color: #686669;
+	margin-right: .2rem;
+	position: relative;
+	top: -2px;
+	display: inline-block;
+}
+
+#other li:nth-child(2) {
+	display: inline-block;
+}
+#count {
+	display: none;
+	background: red;
+	border-radius: 100%;
+	color: #fff;
+	width: 1rem;
+	height: 1rem;
+	line-height: 1rem;
+	padding: .1rem;
+	margin-left: .2rem;
+	font-size: .7rem;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+@media screen and (min-width: 1025px) {
+	html,
+	body {
+		width: 640px;
+		margin: 0 auto;
+		font-size: 40px !important;
+	}
+}
+
+body {
+	background: #f5f5f5;
+	font-family: "microsoft yahei";
+}

@@ -1,0 +1,19 @@
+<html>
+<head>
+<meta charset="UTF-8" />
+</head>
+<body>
+<a href="http://www.baidu.com" target="_blank" id="test">AAAAA</a>
+<input type="button" id="btn" value="Open Baidu" onclick="openwin();" />
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+window.onload=function(){
+	setTimeout(function(){
+		
+	var abc=document.getElementById("test");
+	abc.click();
+},300)
+}
+</script>
+</body>
+</html>

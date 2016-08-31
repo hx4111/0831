@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>邀请</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="../css/guide.css">
+</head>
+<body>
+	<div class="wrap">
+		<div id="qrcode-box">
+			<span id="qrcode"></span>
+			<p>好友直接扫描二维码，或通过以下步骤在线分享给好友，每当好友安装登录你和ta都能赚到酷币！</p>
+		</div>
+		<img src="images/invite_01.jpg" alt="">
+		<img src="images/invite_02.jpg" alt="">
+		<img src="images/invite_03.jpg" alt="">
+		<img src="images/invite_04.jpg" alt="">
+	</div>
+	<script>
+		var ua=navigator.userAgent.toLowerCase(),
+		    isMobile = ua.indexOf('mobile')>0,
+		    isWeixin = (/micromessenger/.test(ua)) ? true : false,
+		    isQQ = (/qq\//.test(ua)) ? true : false,
+		    isIOS = ua.indexOf('(ip')>0 && isMobile,
+		    isWeibo = (/Weibo/i.test(ua)) ? true : false,
+		    isApp = (/icomico/i.test(ua)) ? true : false,
+		    isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+		    isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+		function callAppFunction (func, args, callback) {
+		    var argsString = JSON.stringify(args);
+		    if (isAndroidApp) {
+		        if (!comicool) {
+		            return false;
+		        }
+		        var result = eval("comicool." + func + "('" + argsString + "');");
+		        if (callback) {
+		            callback(result);
+		        }
+		    } else if (isIOSApp) {
+		        function handleCallback(func, args) {
+		            if (func != "setJSCallback") {
+		                return;
+		            }
+		            for (eventName in args) {
+		                window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+		                    var appDataStr = JSON.stringify(data);
+		                    eval(args[eventName] + "('" + appDataStr + "');");
+		                });
+		            }
+		        }
+
+		        if (window.WebViewJavascriptBridge) {
+		            window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+		            handleCallback(func, args);
+		        } else {
+		            document.addEventListener('WebViewJavascriptBridgeReady', function() {
+		                window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+		                handleCallback(func, args);
+		            }, false);
+		        }
+		    } else {
+		        return false;
+		    }
+		    return true;
+		}
+
+		function setByUserLoginStatus(isLogin, unLogin) {
+			var userInfo = {};
+			var done = [];
+			var cb = function (i) {
+				done.push(i);
+
+				//所有异步任务完成
+				if (fnQueue.length === done.length) {
+					typeof isLogin === 'function' && isLogin(userInfo);
+				}
+			};
+			var fnQueue = [
+				function (i) {
+					callAppFunction('getDeviceID', {}, function (DeviceID) {
+						userInfo.deviceid = DeviceID;
+						cb(i);
+					});
+				},
+				function (i) {
+					callAppFunction('getChannelId', {}, function (ChannelId) {
+						userInfo.channel = ChannelId;
+						cb(i);
+					});
+				},
+				function (i) {
+					callAppFunction('getAppVersionName', {}, function (AppVersionName) {
+						userInfo.version_code = AppVersionName.split('.').pop();
+						cb(i);
+					});
+				},
+				function (i) {
+					if (isIOSApp) {
+						userInfo.os_type = 'ios';
+					} else if (isAndroidApp) {
+						userInfo.os_type = 'anr';
+					}
+
+					cb(i);
+				}
+			];
+
+			callAppFunction('getAccountInfo', {}, function (result) {
+				var result = function () {
+					if (isAndroidApp) {
+						return result ? JSON.parse(result) : {};
+					}
+
+					return result;
+				}();
+
+				userInfo.ccid = result.ccid;
+				userInfo.usertype = result.usertype;
+				userInfo.cctoken = result.cctoken;
+				userInfo.username = result.nickname;
+
+				//登录
+				if (result.cctoken && result.ccid && result.usertype) {
+					fnQueue.forEach(function (fn, i) {
+						fn(i);
+					});
+				} else {
+				//未登录
+					typeof unLogin === 'function' && unLogin();
+				}
+			});
+		}
+
+		function serialize(obj) {
+			var arr = [];
+
+			for (var key in obj) {
+				if (obj.hasOwnProperty(key)) {
+					arr.push(key + '=' + obj[key]);
+				}
+			}
+
+			return arr.join('&');
+		}
+
+		setByUserLoginStatus(function (userInfo) {
+			var qrcodeBox = document.getElementById('qrcode-box');
+			var qrcode = document.getElementById('qrcode');
+			var inviteUrl = 'http://promote.comicool.cn/app/index.php?' + serialize(userInfo);
+			var qrcodeUrl = encodeURIComponent(inviteUrl);
+			
+			qrcodeBox.style.display = 'block';
+			qrcode.outerHTML = '<img src="http://api.cmzz.net/?app=qrcode.get&sign=1vifOb&data=' + qrcodeUrl + '" class="response-img"/>';
+		}, null);
+	</script>
+</body>
+</html>

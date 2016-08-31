@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>可米酷漫画详情页|漫画连载_在线漫画</title>
+    <meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载"/>
+    <meta name="description" content="漫画详情页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧"/>
+    <script type="text/javascript" src="../js/config.js"></script>
+    <script type="text/javascript" src="../js/zepto.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <style>
+        .main-container {
+            margin: 0 3%;
+            width: 100%;
+            padding-top: 2%;
+        }
+
+        .info-container {
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.5);
+            margin-right: 50px;
+            border-radius: 10px;
+            height: 200px;
+        }
+
+        .img-block img {
+            border-radius: 10px;
+            max-height: 180px;
+        }
+
+        .info-block {
+            margin-left: 20px;
+            color: #fff;
+            font-size: 16px;
+            width: 50%;
+            display: inline-block;
+        }
+
+        .info-block div {
+            margin-bottom: 1%;
+        }
+
+        .info-block span {
+            margin-right: 30px;
+        }
+
+        .info-title {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .info-update {
+            text-align: center;
+            padding: 5px 20px;
+            border-radius: 5px;
+            background-color: #0C33C4;
+        }
+
+        .read-btn {
+            opacity: 1;
+            color: #39448a;
+            width: 180px;
+            padding: 10px 20px;
+            border: 1px solid #39448a;
+            border-radius: 5px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .code-img {
+            float: right;
+            width: 13%;
+            display: inline-block;
+        }
+
+        .code-img p {
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .code-div p{
+            width: 90%;
+            text-align: center;
+        }
+
+        .list-block {
+            margin-top: 2%;
+            margin-right: 6%;
+        }
+
+        .li-item {
+            margin-right: 20px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            width: 7%;
+            border: 1px solid #39448a;
+            display: inline-block;
+            text-align: center;
+            padding: 6px 15px;
+            color: #39448a;
+            font-size: 26px;
+            opacity: 1;
+        }
+
+        .focus-block {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        @media screen and (device-width: 960px) {
+            .code-img {
+                width: 20%;
+            }
+
+            .li-item {
+                margin-right: 20px;
+                margin-bottom: 40px;
+                border-radius: 5px;
+                width: 5%;
+                border: 1px solid #39448a;
+                display: inline-block;
+                text-align: center;
+                padding: 6px 15px;
+                color: #39448a;
+                font-size: 16px;
+                opacity: 1;
+            }
+
+            .focus-block {
+                color: #fff;
+                border-color: #fff;
+            }
+        }
+    </style>
+</head>
+<body class="main-container">
+    <div class="container">
+        <div class="info-container">
+            <div class="img-block fl">
+                <img src="" alt="">
+            </div>
+            <div class="info-block">
+            </div>
+            <div class="code-img">
+                <div class="code-div">
+                    <img src="../images/app.jpg" alt="" width="80%">
+                    <p>扫描下载可米酷APP</p>
+                    <p>手机上免费看此漫画</p>
+                </div>
+            </div>
+        </div>
+        <div class="list-block">
+            <ul class="list-ul">
+            </ul>
+        </div>
+    </div>
+<script type="text/javascript" src="../js/common-tv.js"></script>
+<script type="text/javascript">
+    (function () {
+        var comic_id = getQueryString('comic_id');
+        var his = getCookie('his');
+        if (comic_id == null) {
+            $('.main-container').addClass('loading-error');
+            return false;
+        }
+
+        var escUrl = '';
+        if(his == 'category') {
+            var listpagetype =  getCookie('listpagetype');
+            var listpageid = getCookie('listpageid');
+            var listpagetitle = getCookie('listpagetitle');
+            escUrl = CONFIG.rootUrl + '/content/category-list.html?' + 'listpagetype=' + listpagetype + '&listpageid=' + listpageid + '&listpagetitle=' + listpagetitle;
+        } else if ( his == 'rank') {
+            escUrl = CONFIG.rootUrl + '/comi-rank.html';
+        } else if (his == 'video') {
+            escUrl = CONFIG.rootUrl + '/comi-video/list.html';
+        }
+        escPressEvent(escUrl);
+        
+        //阅读列表页
+        getByAjax({
+            api: 'comicdetail4web',
+            data: {'comic_id': comic_id},
+            jsonpCallback: "jsonp_comicdetail",
+            success: function (data) {
+                console.log(data);
+                if (data.msg == 'success') {
+                    //修改第一话不是从0开始的逻辑
+                    var firstEpid = 1;
+                    if (data.ep_list && data.ep_list.length > 0) {
+                        firstEpid = data.ep_list[0].ep_id;
+                    }
+
+                    var html = '', noticeHTML = '';
+                    var comicInfo = data.comic_info;
+                    var update_weekday = comicInfo.update_weekday;
+
+                    //修改标题信息
+                    document.title = comicInfo.comic_title + '-可米酷漫画连载_在线漫画';
+
+                    //如果有漫画基本信息
+                    if (comicInfo.comic_title) {
+
+                        html += ''
+                                + ' <div class="info-title">'
+                                + comicInfo.comic_title
+                                + '     <span class="rank-star"></span>'
+                                + ' </div>'
+                                + ' <div class="author-div ellipsis">'
+                                + '     作者：<span class="info-author">' + comicInfo.comic_auth + '</span>'
+                                + ' </div>'
+                                + ' <div>'
+                                + '     <span class="info-update">更新</span>'
+                                + '     <span>' + comicInfo.update_txt + '</span>'
+                                + ' </div>'
+                                + ' <div class="ellipsis">'
+                                +        comicInfo.comic_desc
+                                + ' </div>'
+                                + ' <div>'
+                                + '     <div class="read-btn" data-a="/content/reader.html?comic_id='+ comic_id + '&ep_id=' + firstEpid + '">开始阅读</div>'
+                                + ' </div>'
+                                + noticeHTML;
+                        var coverSrc = CONFIG.imgBase + comicInfo.pc_vertical_poster + '?imageView2/1/w/200/h/270/q/100';
+                        $('.img-block img').attr('src', coverSrc);
+                        $('.info-block').append(html).removeClass('loading');
+
+                        //ext_list可能为空
+                        try {
+                            if (data.comic_info.ext_list[1].usage === 'category') {
+                                var cate = data.comic_info.ext_list[1].desc.split('|');
+                                var cateHtml = '<span class="info-type"><i>' + data.comic_info.ext_list[1].title + '：</i>';
+
+                                for (var n = 0; n < cate.length; n++) {
+                                    cateHtml += cate[n].split('#')[1] + '&nbsp;&nbsp;&nbsp;&nbsp;';
+                                }
+
+                                cateHtml += '</span>';
+                                $('.author-div').append(cateHtml);
+                            }
+                        } catch (e) {
+                            console.error(e);
+                        }
+                    }
+
+                    //如果有几话列表
+                    if (data.ep_list) {
+                        var epList = data.ep_list.reverse();
+                        var len = epList.length;
+                        var listHTML = '';
+                        var setAnchorBeginTag = function (epInfo) {
+                            return '<li class="li-item" data-a="/content/reader.html?comic_id='+ comic_id + '&ep_id=' + epInfo.ep_id + '&update_weekday=' + update_weekday + '">';
+                        };
+                        for (var i = len-1; i>=0; i--) {
+                            var indexLen = len - i;
+                            var epInfo = epList[i];
+                            if(indexLen < 10) {
+                                indexLen = '0' + indexLen;
+                            }
+                            listHTML += setAnchorBeginTag(epInfo) + indexLen + '</li>';
+                        }
+
+                        $('.list-ul').append(listHTML);
+                    }
+
+                    var keyConfigObj = {
+                        'rowCnt': [0, 9],
+                        'eventArray': [$('.read-btn'), $('.li-item')],
+                        'esckeyCallback': function() {
+                            if(his == 'category') {
+                                var listpagetype =  getCookie('listpagetype');
+                                var listpageid = getCookie('listpageid');
+                                var url = CONFIG.rootUrl + '/content/category-list.html?' + 'listpagetype=' + listpagetype + '&listpageid=' + listpageid;
+                                window.location.href = url;
+                            } else if ( his == 'rank') {
+                                window.location.href = CONFIG.rootUrl + '/comi-rank.html';
+                            } else if (his == 'video') {
+                                window.location.href = CONFIG.rootUrl + '/comi-video/list.html';
+                            }
+                        }
+                    }
+
+                    new KeyPressEvent(keyConfigObj);
+                }
+            }
+        });
+    })();
+</script>
+</body>
+</html>
+
+
+

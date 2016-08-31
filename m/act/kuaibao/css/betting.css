@@ -1,0 +1,835 @@
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearfix {
+	*zoom: 1;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "arial, helvetica, sans-serif";
+	line-height: 1.5;
+}
+html {
+	width: 100%;
+	/*overflow-x: hidden;*/
+	font-size: 20px;
+	/*-webkit-overflow-scrolling: touch;*/
+}
+ul,
+li,
+p,
+h2,
+h3,
+ol,
+dt,
+dd,
+dl {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+	font-size: 14px;
+	background: #f4f4f4;
+	overflow-x: hidden;
+}
+input,
+img,
+button,
+i,
+li {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	outline: 0;
+}
+textarea {
+	resize: vertical;
+}
+a {
+	outline: 0;
+	text-decoration: none;
+	color: #333;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+a:visited {
+	color: #333;
+}
+i,
+em {
+	font-style: normal;
+}
+/* 押宝banner */
+
+.banner-slider {
+	position: relative;
+}
+.banner-slider .hd {
+	position: absolute;
+	z-index: 1;
+	left: 0;
+	bottom: .4rem;
+	width: 100%;
+	text-align: center;
+}
+.banner-slider .hd li {
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	margin: 0 .15rem;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	text-indent: -99em;
+	overflow: hidden;
+}
+.banner-slider .hd .on {
+	background: #fff;
+}
+.banner-slider .bd a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.banner-slider .bd img {
+	width: 100%;
+	height: 100%;
+}
+#h-slider .bd ul,
+#h-slider .bd li {
+	height: 7.7rem;
+}
+/* 押宝 */
+
+.case_betting {
+	background: #fff;
+	padding: .5rem;
+	color: #343434;
+}
+.case_betting .fr span {
+	color: #979799;
+}
+.case_betting i {
+	-moz-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	transform: scaleX(-1);
+	/*IE*/
+	
+	filter: FlipH;
+	display: inline-block;
+}
+.case_betting strong {
+	color: #ff5e5b;
+	padding: 0 .2rem;
+}
+.start_betting,
+.works_betting em,
+.add_betting,
+.time_betting,
+.connot_betting {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/betting_ico.png") no-repeat;
+	background-size: 20rem;
+}
+.start_betting {
+	background-position: -9.52rem 0;
+	width: 2.3rem;
+	height: 2.3rem;
+	text-indent: -9999rem;
+}
+.works_betting em {
+	text-indent: -9999rem;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-position: -8.075rem -2.425rem;
+	width: 1rem;
+	height: 1rem;
+	padding-left: 1rem;
+	padding-bottom: 1rem;
+	-webkit-background-origin: content-box;
+	background-origin: content-box;
+}
+.add_betting {
+	background-position: -13.3rem 0;
+	width: 2.3rem;
+	height: 2.3rem;
+	text-indent: -9999rem;
+}
+.connot_betting {
+	background-position: -11.4rem 0;
+	width: 2.3rem;
+	height: 2.3rem;
+	text-indent: -9999rem;
+}
+.betting {
+	height: 21.5rem;
+	background: #f3f3f3;
+}
+.works_betting {
+	background: #fff;
+	padding: .2rem;
+	position: relative;
+	float: left;
+	margin: .4rem 0 0 .4rem;
+}
+.works_betting ul {
+	float: left;
+	position: relative;
+}
+.go-read li {min-width: 4.6rem;min-height: 6.2rem; background-color: #e5e5e5 !important;}
+.go-read .error-cont {
+	background: url(http://cdn.icomicool.cn/m/act/kuaibao/images/error_img.png) center no-repeat;
+	background-size: auto 50%;
+	-webkit-background-size: auto 50%;
+}
+.go-read .error-cont img {
+	visibility: hidden;
+}
+.works_betting img {
+	width: 4.6rem;
+	height: 6.2rem;
+}
+.works_betting h2 {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: -webkit-linear-gradient(top, rgba(116, 144, 144, 0), rgba(76, 76, 76, 1));
+	line-height: 1.2rem;
+	text-indent: .2rem;
+	width: 100%;
+	color: #fff;
+	font-weight: normal;
+	font-size: .6rem;
+	overflow: hidden;
+	height: 1.2rem;
+}
+.right_betting {
+	top: 1.8rem;
+	text-align: center;
+}
+.time_betting {
+	width: 7rem;
+	height: 6.8rem;
+	float: left;
+	padding: 0 .2rem;
+	position: relative;
+	margin: .4rem 0 0 .4rem;
+}
+.time_betting span {
+	color: #fff;
+	font-size: .8rem;
+	padding-right: 1.1rem;
+}
+.explain_betting {
+	border: 2px #ff4c48 dashed;
+	padding: .4rem;
+	clear: both;
+	margin: .6rem .6rem .4rem .4rem;
+	line-height: 1rem;
+	color: #ff4c48;
+}
+.explain_betting h2 {
+	line-height: 1.4rem;
+}
+.discuss_betting {
+	position: relative;
+	margin: .4rem .6rem .4rem .4rem;
+	padding-bottom: 2rem;
+}
+.talk_title_betting {
+	font-size: .8rem;
+	padding: .4rem 0 0 0;
+}
+.talk_title_betting span {
+	float: right;
+	font-size: .7rem;
+}
+.talk_title_betting span i {
+	font-size: .7rem;
+	margin-right: .2rem;
+}
+.talk_comment {
+	background: #fff;
+	padding: .5rem;
+	position: relative;
+	margin: .5rem 0;
+	min-height: 3rem;
+}
+.post-photo {
+	width: 1.5rem;
+	height: 1.5rem;
+	float: left;
+	background: #f1f1f1;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.talk_comment img {
+	width: 100%;
+	height: 100%;
+	/*border-radius: 50%;*/
+}
+.talk_comment li {
+	clear: both;
+	line-height: 1.5rem;
+}
+.talk_comment li:nth-child(1) {
+	font-size: .5rem;
+}
+.talk_comment li:nth-child(1) h3 {
+	float: left;
+	margin-left: .5rem;
+	color: #212332;
+}
+.talk_comment li:nth-child(1) time {
+	color: #969799;
+	float: right;
+}
+.talk_comment li p {
+	font-size: .5rem;
+	padding: 0 1rem;
+	width: 78%;
+	color: #333;
+}
+.talk_comment small {
+	position: absolute;
+	right: .8rem;
+	top: 2.4rem;
+	font-size: .6rem;
+	color: #808080;
+}
+.talk_comment small i {
+	font-size: .8rem;
+	margin-right: .2rem;
+}
+.post-tip {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	color: #aaa;
+}
+.publish_betting {
+position: fixed;
+	right:.6rem;
+	bottom:.6rem;
+	background: url(http://cdn.icomicool.cn/m/act/tsukkomi/images/icon_input_press.png) no-repeat;
+	height:2.5rem;
+	width: 2.5rem;
+	background-size:2.5rem;
+}
+.publish_betting i {
+	font-size: .6rem;
+}
+.confirm_betting {
+	text-align: center;
+	margin: -3.5rem auto 0;
+	top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+  -ms-transform: translate3d(-50%,0,0);
+  -moz-transform: translate3d(-50%,0,0);
+  -webkit-transform: translate3d(-50%,0,0);
+  -o-transform: translate3d(-50%,0,0);
+	position: fixed;
+	z-index: 999;
+	display: none;
+	background: #fff;
+	border-radius: .5rem;
+	width: 90%;
+	font-size: .8rem;
+	-webkit-tap-highlight-color:transparent;
+}
+.confirm_betting li:nth-child(1) {
+	border-bottom: 1px #efefef solid;
+}
+.confirm_betting h2 {
+	padding: 1.2rem;
+	font-weight: normal;
+	color: #666;
+	font-size: .8rem
+}
+.confirm_betting span {
+	width: 50%;
+	width: 48%;
+	display: inline-block;
+	padding: .6rem 0;
+	color: #0d7afd;
+}
+.confirm_betting .close_betting {
+	border-right: 1px #efefef solid;
+}
+#confirm_bg {
+	background: #000;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 9;
+	top: 0;
+	left: 0;
+	filter: alpha(opacity=30);
+	/* IE */
+	
+	-moz-opacity: 0.3;
+	/* 老版Mozilla */
+	
+	-khtml-opacity: 0.3;
+	/* 老版Safari */
+	
+	opacity: 0.3;
+	display: none;
+}
+/* 押宝明细 */
+
+.betting_details {
+	/*font-size: .8rem;*/
+	
+	padding: .5rem;
+}
+.betting_details h2 {
+	color: #ff6616;
+	font-weight: normal;
+	font-size: .7rem;
+	margin: .5rem 0;
+}
+.betting_details li {
+	color: #959796;
+	background: #fff;
+	padding: .5rem;
+	margin: .5rem 0;
+}
+.betting_details li em {
+	float: right;
+}
+/* 押宝分享 */
+
+.betting_share {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/betting_share_bg.png") no-repeat;
+	width: 100%;
+	background-size: 100%;
+	color: #ffa72b;
+	overflow-x: hidden;
+}
+.betting_share_works {
+	position: relative;
+	top: 13rem;
+	padding-left: 3rem;
+	min-height: 9rem;
+}
+.betting_share_works dt img {
+	width: 10rem;
+	height: 7rem;
+	border-radius: .5rem;
+}
+.betting_share_works dl {
+	line-height: 1rem;
+}
+.betting_share_works dd {
+	height: 1rem;
+	width: 10rem;
+	overflow: hidden;
+}
+#betting_share_btn {
+	margin: 14.6rem 2rem 2rem 3rem;
+	width: 10rem;
+	text-indent: -9999rem;
+	/*position: relative;
+top: 14.6rem;*/
+}
+#betting_share_btn a {
+	display: block;
+	padding: 1.2rem;
+}
+.betting_share_explain {
+	line-height: .8rem;
+	font-size: .5rem;
+	padding: 0 2rem 2rem;
+}
+/* 签到 */
+
+.checkin {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/checkin_bg.png") no-repeat #fff;
+	background-size: 100%;
+	width: 100%;
+	padding-bottom: 1.6rem;
+}
+.checkin_btn,
+.checkin_btn_ok {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/checkin_btn.png") no-repeat;
+	background-size: 20rem;
+	width: 9.475rem;
+	height: 3.25rem;
+	position: relative;
+	top: 6.5rem;
+	left: 3.075rem;
+	text-indent: -9999rem;
+}
+.checkin_btn_ok {
+	background-position: -9.5rem 0;
+}
+.checkin_calendar {
+	position: relative;
+	font-size: .8rem;
+	/*top: 8.4rem;
+	left: 4.2rem;*/
+	width: 6.8rem;
+	margin: 8.4rem auto 0;
+}
+.checkin_claw {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/checkin_btn.png") no-repeat;
+	background-size: 20rem;
+	background-position: -18.79rem 0;
+	width: 1rem;
+	height: 1rem;
+	text-indent: -9999px; 
+}
+.checkin_tag_3, .checkin_tag_7 {
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: 100%;
+	background-size: 100%;
+	text-indent: -9999px;
+}
+.checkin_tag_3 {
+	background-image: url("http://cdn.icomicool.cn/m/act/kuaibao/images/checkin_tag_3.png");
+}
+.checkin_tag_7 {
+	background-image: url("http://cdn.icomicool.cn/m/act/kuaibao/images/checkin_tag_7.png");
+}
+.checkin_calendar .checkin_date {
+	color: #db9327;
+}
+.checkin_recommend img {
+	width: 4rem;
+	height: 4rem;
+	border-radius: 100%;
+	z-index: 999;
+	position: relative;
+}
+.checkin_recommend dt {
+	position: relative;
+}
+.checkin_recommend dt:after {
+	background: #ffbc09;
+	width: 4rem;
+	height: 4rem;
+	border-radius: 100%;
+	content: "\20";
+	position: absolute;
+	top: .2rem;
+	left: 0;
+}
+.checkin_recommend {
+	text-align: center;
+	margin: 4rem 0 0 0;
+}
+.checkin_recommend dl {
+	float: left;
+	margin: 0 .2rem .5rem .8rem
+}
+.checkin_recommend dd {
+	line-height: 1.5rem;
+	color: #dd9200;
+	width: 4rem;
+	height: 1rem;
+	overflow: hidden;
+}
+.checkin_rule {
+	border: 1px #ffb33d dashed;
+	margin: 0 1rem;
+	padding: .4rem;
+	line-height: 1rem;
+	color: #ff8a00;
+}
+.checkin_rule h2 {
+	line-height: 1.5rem;
+	font-weight: normal;
+	font-size: .8rem;
+}
+.time_betting ul {
+	top: 4.3rem;
+	left: .5rem;
+	position: relative;
+	height: 1.3rem;
+	line-height: 1.3rem;
+	/*display: table;*/
+}
+.checkin_calendar span {
+	/*padding: .26rem .08rem .2rem;*/
+	text-align: center;
+	display: inline-block;
+	width: 1rem;
+	color: #f2e8ba;
+	line-height: 1rem;
+	margin: .18rem .13rem;
+}
+
+/* 押宝结果 */
+
+.betting_result {
+	background: url("http://cdn.icomicool.cn/m/act/kuaibao/images/betting_result_bg.png") no-repeat;
+	width: 100%;
+	background-size: 100%;
+	color: #ffa72b;
+	padding-bottom: 1rem;
+	/*overflow-x: hidden;*/
+}
+.beeting_top {
+	margin: 17.85rem 0 0 2rem;
+	min-height: 11rem;
+}
+.beeting_top li {
+	width: 85%;
+	clear: both;
+	height: 3.75rem;
+}
+.beeting_top img {
+	width: 2rem;
+	height: 2rem;
+	border-radius: 100%;
+	padding: .1rem;
+	background: #fff;
+	float: left;
+	margin-right: .2rem;
+}
+.beeting_top span {
+	float: left;
+	line-height: 2rem;
+	width: 52%;
+	height: 2rem;
+	display: block;
+	overflow: hidden;
+}
+.beeting_top em {
+	float: right;
+	background: #ffd253;
+	color: #d63c1d;
+	border-radius: .3rem;
+	padding: .6rem;
+}
+.betting_result_explain {
+	border: 1px #ff6028 dashed;
+	margin: 0 1.4rem;
+	padding: .2rem .8rem;
+	line-height: 1rem;
+}
+.betting_result_explain h2 {
+	line-height: 1.5rem;
+}
+
+.betting_message .close_betting {
+	display: none;
+}
+.betting_message .go_betting {
+	display: block;
+	width: auto;
+}
+.post-empty {
+	text-align: center;
+	color: #aaa;
+	line-height: 4;
+	background: #Fff;
+}
+#toast{  
+position: fixed;  
+bottom: 2rem; 
+  left: 50%;
+  transform: translate3d(-50%,0,0);
+  -ms-transform: translate3d(-50%,0,0);
+  -moz-transform: translate3d(-50%,0,0);
+  -webkit-transform: translate3d(-50%,0,0);
+  -o-transform: translate3d(-50%,0,0);
+border-radius: .3rem;
+background:#000;  
+color: #fff;
+padding: .5rem 1rem ;  
+text-align:center;  
+opacity: .7;  
+ -webkit-tap-highlight-color:transparent;
+/*The good stuff */  
+-webkit-transition: opacity 0.5s ease-out; /* Saf3.2+, Chrome */  
+-moz-transition: opacity 0.5s ease-out; /* FF4+ */  
+-ms-transition: opacity 0.5s ease-out; /* IE10? */  
+-o-transition: opacity 0.5s ease-out; /* Opera 10.5+ */  
+transition: opacity 0.5s ease-out;  
+}
+
+#check_hodgepodge {
+				text-align: center;
+				color: #2b9c98;
+				font-size: .7rem;
+				background: #fff;
+			}
+			
+			#check_hodgepodge img {
+				width: 100%;
+				display: table;
+			}
+			
+			.checkin_calendar {
+				display: none;
+				position: fixed;
+				background: #fff;
+				padding: 1rem;
+				text-align: center;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				border: 1px #ccc solid;
+				margin: 0;
+				z-index: 9999;
+			}
+			
+			.checkin_calendar span {
+				color: #333;
+			}
+			
+			.checkin {
+				background: url(http://cdn.icomicool.cn/m/act/kuaibao/images/top.jpg) #e4fffe no-repeat;
+				background-size: 100%;
+				padding: 0;
+			}
+			
+			.check_explain {
+				margin: 7rem auto 1rem;
+				text-align: center;
+			}
+			
+			.discuss_betting {
+				margin: 0;
+			}
+			
+			.talk_comment {
+				margin: 0;
+				border-top: 1px #ccc dashed;
+			}
+			
+			.talk_comment li {
+				min-height: 1rem;
+			}
+			
+			#checkin_history {
+				position: relative;
+				top: 6.6rem;
+				text-align: center;
+				font-size: .7rem;
+				text-decoration: underline;
+				color: #4B7B7A;
+				outline: none;
+			}
+			
+			video {
+				width: 100%;
+				/*height:9.03rem;*/
+				display: table;
+			}
+			/* 全集btn */
+			
+			#check_all_link {
+				background: #fff;
+				text-align: center;
+				padding: 60px 0;
+		}
+			
+			#check_all_link a {
+				border: 5px #ffd300 solid;
+				padding: 10px 50px;
+				border-radius: 30px;
+				color: #fed201;
+			}
+			/* 点赞按钮 */
+			
+			#zan {
+				position: relative;
+				background: #fff;
+				height: 3rem;
+			}
+			
+			#zan div {
+				text-align: center;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+			}
+			
+			#zan ul i {
+				font-size: 2rem;
+			}
+			
+			#zan span {
+				display: block;
+			}
+			
+			#zan ul {
+				float: left;
+			}
+			
+			#zan ul:nth-child(1) {
+				margin-right: 2rem;
+			}
+			
+			#zan .current {
+				color: red;
+			}
+			
+			#zan ul i:nth-child(2) {
+				font-size: 2.2rem;
+			}
+			
+			#support i {
+				position: relative;
+				top: -8px;
+			}
+			
+			#toast {
+				position: fixed;
+				bottom: 2rem;
+				left: 50%;
+				transform: translate3d(-50%, 0, 0);
+				-ms-transform: translate3d(-50%, 0, 0);
+				-moz-transform: translate3d(-50%, 0, 0);
+				-webkit-transform: translate3d(-50%, 0, 0);
+				-o-transform: translate3d(-50%, 0, 0);
+				border-radius: .3rem;
+				background: #000;
+				color: #fff;
+				padding: .5rem 1rem;
+				text-align: center;
+				opacity: .7;
+				-webkit-tap-highlight-color: transparent;
+				/*The good stuff */
+				-webkit-transition: opacity 0.5s ease-out;
+				/* Saf3.2+, Chrome */
+				-moz-transition: opacity 0.5s ease-out;
+				/* FF4+ */
+				-ms-transition: opacity 0.5s ease-out;
+				/* IE10? */
+				-o-transition: opacity 0.5s ease-out;
+				/* Opera 10.5+ */
+				transition: opacity 0.5s ease-out;
+				z-index: 9999;
+				font-size: .7rem;
+				background: #6B6A6A;
+			}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>宅向动漫答题季</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="宅向动漫答题季,试试你的二次元能力值有多少">
+		<meta name="keywords" content="宅向动漫答题季,漫画App,在线漫画阅读,在线漫画,恐怖漫画,漫画网,可米酷,可米酷漫画" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			(function() {
+				var calcFontSize = function() {
+					var html = document.documentElement;
+					var defaultWidth = 320;
+					var defaultFontSize = 20;
+
+					return function() {
+						var currentWidth = html.clientWidth;
+						var currentFontSize = currentWidth / defaultWidth * defaultFontSize;
+						if (currentWidth > 1200) {
+							html.style.fontSize = '20px';
+						} else {
+							html.style.fontSize = currentFontSize + 'px';
+						}
+					}
+				}();
+
+				calcFontSize();
+				window.addEventListener('resize', calcFontSize);
+			})();
+
+			document.addEventListener('DOMContentLoaded', function() {
+				this.documentElement.classList.add('loaded');
+			});
+		</script>
+		<style type="text/css">
+			.imglist img {
+				display: table;
+				width: 100%;
+			}
+			
+			#fraction {
+				position: relative;
+			}
+			
+			#fraction span {
+				position: absolute;
+				right: 3.5rem;
+				top: 2.3rem;
+				color: #fff;
+				font-size: 1.3rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        宅向动漫答题季
+        <p>试试你的二次元能力值有多少</p>
+        <img src="http://cdn.icomicool.cn/m/act/201607/answer/images/answer_share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home iconfont" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share iconfont"></i>
+		</header>
+		<div class="loading-spinner"></div>
+		<!-- 主要内容：开始 -->
+		<div class="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201607/answer/images/result/result_01.jpg" alt="试试你的二次元能力值有多少" /></li>
+			<li id="fraction"></li>
+			<li id="resultShare"></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201607/answer/images/result/result_04.jpg" alt="试试你的二次元能力值有多少" /></li>
+		</div>
+		<!-- 主要内容：结束 -->
+		<div id="post-and-Ctrl"></div>
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://www.comicool.cn/m/tpl/dist/act-global.min.js" type="text/javascript"></script>
+		<script>
+			ReactDOM.render(React.createElement(PostAndCtrl, {
+				postType: "topic2050"
+			}), document.getElementById('post-and-Ctrl'));
+			//获取页面URL参数名
+			function getQueryString(name) {
+				var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+				var r = window.location.search.substr(1).match(reg);
+				if (r != null) return decodeURI(r[2]);
+				return null;
+			};
+			setShareInfo({
+				title: '宅向动漫答题季',
+				describe: '试试你的二次元能力值有多少',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201607/answer/images/answer_share.jpg',
+				pageUrl: window.location.href + "&restart=1"
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+			window.onload = function() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					trigger = _('#resultShare');
+				var fraction = document.getElementById("fraction"),
+					resultShare = document.getElementById("resultShare"),
+					getKey = getQueryString("key");
+				getKey = getKey ? getKey : 0;
+				if (getKey >= 0 && getKey <= 40) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='images/result/50.jpg'>";
+				} else if (getKey > 42 && getKey <= 60) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='images/result/60.jpg'>";
+				} else if (getKey > 61 && getKey <= 80) {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='images/result/90.jpg'>";
+				} else {
+					fraction.innerHTML = "<span>" + getKey + "分</span><img src='images/result/100.jpg'>";
+				}
+				var restart = getQueryString("restart");
+				if (restart == 1) {
+					trigger.innerHTML = "<img src='http://cdn.icomicool.cn/m/act/201607/answer/images/result/result_033.jpg'>";
+					trigger.addEventListener("click", function() {
+						window.location.href = "index.html";
+					});
+				} else {
+					trigger.innerHTML = "<img src='http://cdn.icomicool.cn/m/act/201607/answer/images/result/result_03.jpg'>";
+					trigger.addEventListener('click', function() {
+						if (CONFIG.isApp) {
+							callAppFunction('popupSharePanel', {
+								"title": '宅向动漫答题季',
+								"describe": '试试你的二次元能力值有多少',
+								"imageurl": 'http://cdn.icomicool.cn/m/act/201607/answer/images/answer_share.jpg',
+								"page_url": window.location.href + "&restart=1",
+								"weibo_describe": "宅向动漫答题季,试试你的二次元能力值有多少"
+							});
+						} else {
+							var mask = _('#ShareBg'),
+								panel = _('.bdsharebuttonbox');
+							mask.style.display = panel.style.display = 'block';
+						}
+					})
+				}
+			}
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				if (CONFIG.isWeixin || CONFIG.isQQ || CONFIG.isWeibo) {
+					trigger.addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'block';
+						document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+						header.style.display = 'none';
+					});
+					document.getElementById('ShareBg').addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'none';
+						header.style.display = 'block';
+					})
+				} else {
+					trigger.addEventListener('click', function() {
+						mask.style.display = panel.style.display = 'block';
+					});
+					mask.addEventListener('click', hidePanel);
+					cancelBtn.addEventListener('click', hidePanel);
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

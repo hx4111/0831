@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>如何兑换奖品？</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/global.js"></script>
+</head>
+<body class="exchange-shiwu">
+	<div class="loading-page"></div>
+	<div class="header">
+		<i class="icon" id="back">返回</i>
+	</div>
+	<ul class="guide-tab clearfix">
+		<li class="shiwu on"></li>
+		<li class="chongzhi"></li>
+	</ul>
+	<ul class="guide-main">
+		<li class="shiwu on">
+			<img src="images/guide/shiwu_1.jpg" alt="">
+			<img src="images/guide/shiwu_2.jpg" alt="">
+			<img src="images/guide/shiwu_3.jpg" alt="">
+		</li>
+		<li class="chongzhi">
+			<img src="images/guide/chongzhi_1.jpg" alt="">
+			<img src="images/guide/chongzhi_2.jpg" alt="">
+			<img src="images/guide/chongzhi_3.jpg" alt="">
+			<img src="images/guide/chongzhi_4.jpg" alt="">
+			<img src="images/guide/chongzhi_5.jpg" alt="">
+			<img src="images/guide/chongzhi_6.jpg" alt="">
+		</li>
+	</ul>
+	<a id="exchange-btns"></a>
+	<script>
+		(function () {
+			var count = 0;
+			var tab = $.one('.guide-tab');
+			var cont = $.one('.guide-main');
+			var body = $.one('body');
+			var classArr = ['exchange-shiwu', 'exchange-chongzhi'];
+			var exchangeBtn = $.one('#exchange-btns');
+			var backIcon = $.one('#back');
+
+			tab.addEventListener('touchend', function (e) {
+				var target = e.target;
+				var curTab = $.one('.on', tab);
+
+				if (target.tagName === 'LI' && target !== curTab) {
+					var index = getIndex(target);
+					var targetCont = $.all('li', cont)[index];
+					var curCont = $.one('.on', cont);
+
+					curTab.classList.remove('on');
+					target.classList.add('on');
+					curCont.classList.remove('on');
+					targetCont.classList.add('on');
+					body.className = classArr[index];
+				}
+			}, false);
+
+			backIcon.addEventListener('touchend', function () {
+				if (history.length > 1) {
+					history.back();
+				} else {
+					window.location.href = 'index.html';
+				}
+			}, false);
+
+			//如果是可米酷app
+			if (isApp) {
+				setByUserLoginStatus(
+					loginCallback,
+					function () {
+						exchangeBtn.addEventListener('touchend', jumpLoginPage, false);
+						//设置App里登录后的回调函数
+						callAppFunction('setJSCallback', {
+						    'account_event': 'loginHandler'
+						});
+					}
+				);
+			} else {
+				exchangeBtn.addEventListener('touchend', jumpDownload, false);
+			}
+
+			window.loginHandler = function(obj) {
+				setByUserLoginStatus(loginCallback);
+				exchangeBtn.removeEventListener('touchend', jumpLoginPage);
+			}
+
+			function loginCallback(userInfo) {
+				exchangeBtn.addEventListener('touchend', function () {
+					callAppFunction('openMallPage', {});
+				}, false);
+			}
+
+			function jumpLoginPage() {
+				callAppFunction('openLoginPage', {});
+			}
+
+			function getIndex(elem) {
+				if (elem.index !== undefined) {
+					return elem.index;
+				}
+
+				var parent = elem.parentNode;
+				var childs = parent.children;
+				var index;
+
+				for (var i = 0, len = childs.length; i < len; i++) {
+					childs[i].index = i;
+
+					if (childs[i] === elem) {
+						index = i;
+					}
+				}
+
+				return index;
+			}
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>可米酷抽奖季</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="可米酷抽奖季">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript">
+	(function () {
+		var caclFontSize = function () {
+			var screenWidth = document.documentElement.offsetWidth;
+			var deviceSizeRatio = window.devicePixelRatio;
+			var baseWidth = 320;
+			var htmlFontSize = (screenWidth / baseWidth) * 20;
+			document.documentElement.style.fontSize = htmlFontSize + 'px';
+		};
+
+		caclFontSize();
+		window.addEventListener('resize', caclFontSize);
+	})();
+</script>
+</head>
+<body>
+<div class="loading-page"></div>
+<!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+<h1 class="share-info" style="display:none">
+    可米酷抽奖季
+    <p>可米酷抽奖季</p>
+    <img src="images/480.jpg" alt="可米酷漫画,comicool" />
+</h1>
+<div class="records">
+	<ul class="records-list">
+	</ul>
+</div>
+<ul class="awards-list">
+	<li class="first"></li>
+	<li class="second"></li>
+	<li class="third"></li>
+	<li class="fourth"></li>
+	<li class="fifth"></li>
+</ul>
+<a href="javascript:;" class="bottom-btn" id="lottery-btn" style="display:block"></a>
+<a href="http://m.app.comicool.cn/smart_open/main.php" class="bottom-btn" id="download-btn"></a>
+<p class="download-tip">请登录后至“我-兑换”处参与</p>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

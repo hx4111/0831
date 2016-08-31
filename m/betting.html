@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<link rel="stylesheet" type="text/css" href="css/betting.css" />
+		<!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_1446605848_0024004.css" /> -->
+		<title>可米酷押宝活动_条漫™</title>
+		<meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网" />
+		<meta name="description" content="可米酷漫画押宝活动,www.comicool.cn" />
+		<meta name="generator" content="Comicool" />
+		<meta name="author" content="Comicool Team and Comicool UI Team" />
+		<meta name="copyright" content="2014-2015 Comicool Inc." />
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="../js/config.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="http://192.168.10.64:8001/target/target-script-min.js#anonymous"></script> -->
+		<script src="../js/vconsole.min.js"></script>
+	</head>
+	<body>
+		<section id="h-slider" class="banner-slider">
+			<div class="hd">
+				<ul class="list-unstyled"></ul>
+			</div>
+			<div class="bd">
+				<script type="text/template" id="tmpl-banner">
+					<ul class="list-unstyled">
+						{{each banner_list as item index}}
+						<li>
+							<a href="{{item.banner_url}}">
+								<img src="{{item.banner_cover}}" />
+							</a>
+						</li>
+						{{/each}}
+					</ul>
+				</script>
+			</div>
+		</section>
+		<section>
+			<script type="text/template" id="tmpl-userbar">
+				<a data-href="betting_details.html" id="user-bar">
+					<div class="case_betting clearfix">
+						<li class="fl">累计押中<strong>{{bet_info.bet_win_money}}</strong>酷币</li>
+						<li class="fr"><span>明细<i class="iconfont icon-fanhui"></i></span></li>
+					</div>
+				</a>
+			</script>
+		</section>
+		<section class="betting clearfix">
+			<script>
+				function imgErrHandler(img) {
+					img.parentNode.classList.add('error-cont');
+				}
+			</script>
+			<script type="text/template" id="tmpl-main">
+				<div class="time_betting clearfix">
+					<ul><span>{{counter.d}}</span><span>{{counter.hh}}</span><span data-delay="{{counter.ss}}">{{counter.mm}}</span></ul>
+				</div>
+				{{each res.ep_list as item index}}
+				<div class="works_betting clearfix" data-cid="{{item.comic_id}}" data-epid="{{item.ep_id}}" data-title="{{item.ep_title}}" data-poster="http://cdn.icomico.com/{{item.ep_poster}}">
+					<ul class="go-read">
+						<li><img src="http://cdn.icomico.com/{{item.ep_poster_v}}" onerror="imgErrHandler(this)"></li>
+						<h2>{{item.ep_title}}</h2></ul>
+					<ul class="right_betting">
+						{{if (res.ep_ext_list || {})[index]}} 
+						    {{if (res.ep_ext_list[index].bet_count>0)}}
+						           <li class="start_betting add_betting">押宝</li>
+						           <li class="bet_count">
+							      {{res.ep_ext_list[index].bet_count}}注
+						          </li>
+						    {{else}}
+								{{if !isBetted}}
+									<li class="start_betting">押宝</li>
+									  <li class="bet_count">
+									  </li>
+							    {{else}}
+									<li class="connot_betting">押宝</li>
+									  <li class="bet_count">
+									  </li>
+								{{/if}}
+						    {{/if}} 
+						{{else}}
+							<li class="start_betting">押宝</li>
+							  <li class="bet_count">
+									  </li>
+						{{/if}} 
+					</ul>
+					<em class="ep-share">分享</em>
+				</div>
+				{{/each}}
+			</script>
+		</section>
+		<!-- 押宝作品end -->
+		<!-- 押宝说明 -->
+		<div class="explain_betting">
+			<h2>押宝说明:</h2>
+			<p>1.一注为50酷币，点击押宝按钮，即表示押该作品在下周周赛中获得冠军，不能花心哦，每期只能押一部哦
+			</p>
+			<p>2.支持加注，每点击一次押宝按钮，即加一注</p>
+			<p>3.若押宝作品最后获得冠军，则押宝所耗酷币会双倍返回至账户</p>
+			<p>4.押宝时间：作品参加周赛前一周</p>
+		</div>
+		<!-- 押宝说明end -->
+		<!-- 押宝讨论区 -->
+		<!-- <div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					押宝讨论区
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'images/betting/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script> -->
+		<!-- 押宝讨论区end -->
+		<div id="post-and-Ctrl"></div>
+		<!-- 确认框 -->
+		<div id="confirm_bg"></div>
+		<div class="confirm_betting">
+			<li>
+				<h2>您确定投注本作品吗?</h2></li>
+			<li><span class="close_betting">取消</span> <span class="go_betting">确定</span></li>
+		</div>
+		<!-- 确认框 end  -->
+		<!-- <div class="publish_betting"></div> -->
+	</body>
+	<script src="http://www.comicool.cn/common/js/template.js"></script>
+	<script src="http://m.comicool.cn/tpl/dist/act-global.min.js" type="text/javascript"></script>
+	<script src="js/TouchSlide.1.1.js"></script>
+	<script src="m-common/js/app.js"></script>
+	<script src="js/betting.js"></script>
+	<script>
+	console.info('CONFIG.league_id : ' + CONFIG.league_id);
+		ReactDOM.render(React.createElement(PostAndCtrl, {postType: "bet"}), document.getElementById('post-and-Ctrl'));
+	</script>
+</html>

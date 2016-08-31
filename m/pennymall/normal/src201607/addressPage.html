@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>填写收货地址</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="可米酷,可米酱的百宝囊">
+    <meta name="description" content="可米酱的百宝囊,只要100酷币就有机会抢得精美手办,快来参与吧">
+    <meta name = "format-detection" content = "telephone=no">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1466492243_479392.css">
+	<script type="text/javascript" src="js/zepto.js"></script>
+	<script type="text/javascript" src="js/config.js"></script>
+	<script type="text/javascript" src="js/Tip.js"></script>
+	<script type="text/javascript" src="js/TouchSlide.1.1.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<script src="http://comicool.cn/m/js/vconsole.min.js"></script>
+</head>
+<body class="addressPage">
+	<h2>填写收货地址</h2>
+	<form>
+		<table>
+			<tbody>
+				<tr>
+					<td class="tdLeft">收货人</td>
+					<td class="tdRight"><input type="text" name="username" id="username"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">联系电话</td>
+					<td class="tdRight"><input type="number" name="phoneNum" id="phoneNum"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">QQ</td>
+					<td class="tdRight"><input type="number" name="userqq" id="userqq"></td>
+				</tr>
+				<tr>
+					<td class="tdLeft">收货地址</td>
+					<td class="tdRight">
+						<textarea id="new-address" rows="3"></textarea>
+						<!-- <select name="userAddress" id="userAddress">
+							<option value="0" selected="selected" id="default-option">暂无收货地址，请添加</option>
+						</select>
+						<span class="addNewAddress"><i class="iconfont icon-plus"></i></span> -->
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="submit-btn-outer">
+			<button class="submit-address-btn">提交</button>
+		</div>
+	</form>
+	<!-- <div class="new-address-container">
+		<i class="iconfont icon-close"></i>
+		<div class="address-header">新增收货地址</div>
+		<textarea id="new-address" rows="5"></textarea>
+		<div class="add-btn-outer">
+			<button class="add">提交</button>
+		</div>
+	</div> -->
+
+	<script>
+		window.onload = function() {
+			var ccid = getQueryString('ccid');
+			var oid = getQueryString('oid');
+			var sid = getQueryString('sid');
+
+			/*jsonp({
+				url: 'user/address',
+				callback: 'addressCallback',
+	            success: function(data) {
+	                console.info(JSON.stringify(data));
+	                if (data && data.length) {
+	                	$('#default-option').html('请选择');
+	                	renderOption(data);
+	                }
+	            }
+			})*/
+
+			$('.submit-address-btn').on('click', function() {
+				var username = $('#username').val();
+				var phoneNum = $('#phoneNum').val();
+				var userqq = $('#userqq').val();
+				var address = $('#new-address').val();
+				if (username && phoneNum && userqq && address) {
+					var info = '姓名: ' + username + ', 电话: ' + phoneNum + ', QQ: ' + userqq + ', 地址: ' + address;
+					jsonp({
+						url: 'user/address',
+						callback: 'addressCallbak',
+						data: {
+							sid: sid,
+							order_id: oid,
+							address: info
+						},
+			            success: function(data) {
+			                console.info(JSON.stringify(data));
+			            }
+					})
+				} else {
+					alert('收货信息不完善！')
+				}
+			})
+
+		}
+
+		/*function bindEvent() {
+			$('.addNewAddress').on('click', function() {
+				$('.new-address-container').show();
+			})
+
+			$('.icon-close').on('click', function() {
+				$('.new-address-container').hide();
+			})
+
+			
+		}
+
+		var renderOption = function(data) {
+			var optionHtml = '';
+			if (data && data.length) {
+
+				for (var i = 0, opLen = data.length; i < opLen; i++) {
+					optionHtml += '<option value="' + data[i] + '" >' + data[i] + '</option>';
+				}
+
+				$('#userAddress').append(optionHtml);
+			}	
+		}*/
+	</script>
+</body>
+</html>

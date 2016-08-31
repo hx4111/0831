@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>新周赛</title>
+		<!--<link rel="stylesheet" type="text/css" href="http://www.comicool.cn/m/css/common.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/betting.css" />
+		<script src="http://www.comicool.cn/m/m-common/js/init.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://www.comicool.cn/m/js/config.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	</head>
+
+	<body>
+		<div id="league-top">
+			<li class="leftCenter">
+				<span>第0届新人王</span>
+			</li>
+		</div>
+		<div class="tip_mess">
+			献上3000元大奖奖金，以及可米酷的签约机会！
+		</div>
+		<div id="league-betting" class="margin">
+			<div id="league-champion" class="clearfix">
+				<!-- 冠军 -->
+			</div>
+			<div class="league-ranking" id="league-runner-up">
+				<!-- 亚军 -->
+			</div>
+		</div>
+		<div id="ranklist">
+
+		</div>
+		<div id="lottery-box">
+			<img src="images/announcements.jpg" />
+			<div class="userMarquee clearfix">
+				<big>开奖公告</big>
+				<div class="txtMarquee-top">
+					<div class="bd">
+						<ul id="announce-list">
+							<!-- 开奖公告 -->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="announcement clearfix">
+				<big>菠菜汁王</big>
+				<ul id="announce-top-three">
+					<li><img src="http://cdn.icomicool.cn/images/icon/icon_25.jpg">是否还会看t见吧 200注</li>
+					<li><img src="http://cdn.icomicool.cn/images/icon/icon_25.jpg">过儿 134注</li>
+					<li><img src="http://cdn.icomicool.cn/images/icon/icon_25.jpg">厄特时光 123注</li>
+				</ul>
+			</div>
+			<div class="league-bet clearfix">
+				<li>
+					<p>下一期菠菜王就是我<br /> 一发入魂!咸鱼翻生!</p>
+				</li>
+				<li><a href="betting.html"><span>我要买注</span></a></li>
+			</div>
+		</div>
+		<div class="league-ranking league-review margin" id="ago_list">
+			<!-- 上届信息 -->
+		</div>
+		<div class="league-history">
+			<a href="http://m.comicool.cn/act/201507/week-game/past.html" title="周赛往期作品">
+				<img src="images/history.jpg" />
+			</a>
+		</div>
+		<script src="http://cdn.icomicool.cn/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/js/jquery.SuperSlide.2.1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			function jsonp(options) {
+				var src = options.url;
+				var data = typeof options.data === 'object' ? options.data : null;
+				var qs = serialize(data);
+				var script = document.createElement('script');
+				var head = document.getElementsByTagName('head')[0];
+				if (qs) {
+					if (src.indexOf('?') > -1) {
+						src += '&' + qs;
+					} else {
+						src += '?' + qs;
+					}
+				}
+				window[options.callback] = options.success;
+				script.src = src;
+				head.appendChild(script);
+
+				function serialize(data) {
+					var arr = [];
+					for (var n in data) {
+						arr.push(n + '=' + data[n]);
+					}
+					return arr.join('&');
+				}
+			}
+
+			function getQueryString(param) {
+				var qs = window.location.search.slice(1);
+				var r = new RegExp('&?' + param + '=([^&]+)', 'ig');
+				var match = r.exec(qs) || [];
+				return match[1];
+			}
+			(function() {
+				var frequency = getQueryString('league_order');
+				frequency = frequency ? frequency : '';
+				var readerList = {
+					champion: function(k, content) {
+						var html = '<ul class="go" data-ccid="' + content.id + '" data-epid="' + content.ep_id + '"><img src="' + content.img + '" alt="" /><li><i class="icon fl">第一名</i><h2><span>' + k + '</span>' + content.title + '</h2><small>' + content.author + '</small></li><p>' + content.desc + '</p></ul>';
+						$('#league-champion').html(html);
+					},
+					runnerUp: function(k, content) {
+						var html = '<ul class="clearfix go"  data-ccid="' + content.id + '" data-epid="' + content.ep_id + '"><img src="' + content.img + '" alt="" /><div class="runner-up"><li><h2><span>' + k + '</span>' + content.title + '</h2><small>' + content.author + '</small></li><i class="icon second">第二名</i><span>800元奖金+专人指导</span></div></ul><p class="league-present">' + content.desc + '</p>';
+						$('#league-runner-up').html(html);
+					},
+					other: function(k, content) {
+						var html = '<dl class="go" data-ccid="' + content.id + '" data-epid="' + content.ep_id + '"><img src="' + content.img + '" alt="" /><dt><span>' + k + '</span>' + content.title + '</dt><dd>' + content.author + '</dd></dl>';
+						$('#ranklist').append(html);
+					}
+				}
+				jsonp({
+					url: CONFIG.ajaxBase + 'league4h5', //'http://proxy.icomico.com/league4h5',
+					callback: 'jsonp_league',
+					data: {
+						league_order: frequency,
+						vote_support: 1
+					},
+					success: function(res) {
+//						console.log(res);
+						if (res.msg == 'success') {
+							var idMap = {},
+								praiseCountMap = {},
+								totalPraise = 0,
+								imgCutSize = '?imageView2/1/w/480/h/285/q/100';
+							for (var i = 0, len = res.ep_ext_list.length; i < len; i++) {
+								var item = res.ep_ext_list[i],
+									count = item.praise_count,
+									comic_id = item.comic_id;
+								idMap[item.comic_id] = item.ep_id;
+								totalPraise += count;
+								praiseCountMap[item.comic_id] = count;
+							}
+							res.praiseCountMap = praiseCountMap;
+							res.totalPraise = totalPraise;
+							res.ep_list = res.ep_list.sort(function(item1, item2) {
+								var num2 = praiseCountMap[item2.comic_id],
+									num1 = praiseCountMap[item1.comic_id];
+								if (num1 == num2) {
+									return item1.comic_id - item2.comic_id;
+								} else {
+									return num2 - num1;
+								}
+							});
+							for (var i = 0, len = res.ep_list.length; i < len; i++) {
+								var data = res.ep_list[i],
+									img = CONFIG.icomicoBase + data.ep_poster + imgCutSize,
+									title = data.ep_title,
+									author = data.author_name,
+									desc = data.ep_desc,
+									id = data.comic_id,
+									ep_id = data.ep_id,
+									k = i + 1,
+									content = {
+										'img': img,
+										'title': title,
+										'author': author,
+										'desc': desc,
+										'id': id,
+										'ep_id': ep_id
+									};
+								switch (k) {
+									case 1: //	第一名
+										readerList.champion(k, content)
+										break;
+									case 2:
+										//	第二名
+										readerList.runnerUp(k, content);
+										break;
+									case 3:
+										readerList.other(k, content);
+										break;
+									case 4:
+										readerList.other(k, content);
+										break;
+									case 5:
+										readerList.other(k, content);
+										break;
+									default:
+										break;
+								}
+							}
+							var issue = res.league_info.league_order;
+							if (issue > 1) {
+								var previous = issue - 2,
+									agoInfo = res.ago_list[previous];
+								$('.leftCenter span').html('第' + issue + '届新人王');
+								$('#ago_list').html('<h3>上届新人王</h3><ul class="clearfix go" data-ccid="' + content.id + '" data-epid="' + content.ep_id + '"><img src="' + CONFIG.icomicoBase + agoInfo.champion_comico_cover + '"><div class="runner-up"><li>' + '<h2>' + agoInfo.champion_comico_name + '</h2>' + '<small>' + agoInfo.champion_auth + '</small>' + '</li>' + '<i class="icon">上届</i>' + '<span>第' + agoInfo.league_order + '届新人王</span></ul></div>')
+							}
+							var userBetInfo = res.pre_user_bet;
+							$('.go').on('click', function(e) {
+								var ccid = this.dataset.ccid;
+								var epid = this.dataset.epid ? this.dataset.epid : 1;
+								if (ccid !== undefined && ccid !== "") {
+									readComic(ccid, epid);
+								}
+							});
+							var readComic;
+							if (CONFIG.isApp) {
+								if (CONFIG.isPPTV) {
+									readComic = function(ccid, epid) {
+										callAppFunction('openNewBrowser', {
+											'url': 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=' + epid,
+											'title': '可米酷漫画'
+										})
+									}
+								} else {
+									readComic = function(ccid, epid) {
+										callAppFunction('openEpisodeReaderPage', {
+											comic_id: ccid,
+											ep_id: epid
+										});
+									}
+								}
+							} else {
+								readComic = function(ccid, epid) {
+									window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=' + ccid + '&ep_id=' + epid;
+								}
+							}
+							if (userBetInfo && userBetInfo.length >= 3) { //当押注人数不小于3时才显示押注信息
+								var announceListHtml = '';
+								var announceTopThreeHtml = '';
+
+								for (var i = 0, len = userBetInfo.length; i < len; i++) {
+									var userBet = userBetInfo[i];
+									if (i < 3) {
+										var avatar = userBet.avatar ? userBet.avatar : 'http://cdn.icomicool.cn/images/icon/icon_25.jpg';
+										announceTopThreeHtml += '<li><img src="' + avatar + '">' + userBet.nick_name + ' 赢得 ' + userBet.bet_win + '酷币</li>'
+									}
+									announceListHtml += '<li>' + userBet.nick_name + '押中获得了' + userBet.bet_win + '酷币</li>';
+								}
+								$('.userMarquee').show();
+								$('.announcement').show();
+								$('#announce-list').html(announceListHtml);
+								$('#announce-top-three').html(announceTopThreeHtml);
+								$(".txtMarquee-top").slide({
+									mainCell: ".bd ul",
+									autoPlay: true,
+									effect: "topMarquee",
+									vis: 5,
+									interTime: 50
+								});
+
+							} else {
+								return;
+							}
+						}
+					}
+				});
+			})();
+		</script>
+	</body>
+
+</html>

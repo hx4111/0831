@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画详情页|漫画连载_在线漫画_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画详情页,漫画大全,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,漫画连载" />
+		<meta name="description" content="漫画详情页|故事简介:可米酷漫画看了都说好，朋友们还等什么，赶紧下载可米酷app应用吧" />
+		<link rel="stylesheet" href="../css/style.css">
+		<!--<link rel="stylesheet" href="//at.alicdn.com/t/font_1463478490_8874226.css" />-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<script src="../js/config.js"></script>
+		<style type="text/css">
+			.l-icon, .r-icon {
+				width: auto;
+				height: auto;
+				line-height: initial;
+			}
+		</style>
+	</head>
+
+	<body class="body-detail">
+		<article class="main-panel">
+			<div class="detail-cover">
+				<!-- 		<img src="images/detail/cover.jpg" alt=""> -->
+			</div>
+			<section class="detail-box">
+				<div class="detail-head">
+					<div class="detail-head-text">
+						<h2><strong></strong><small></small></h2>
+						<div class="author_name"></div>
+						<!-- <a href="javascript:;" class="read-btn">开始阅读</a> -->
+					</div>
+
+				</div>
+				<div id="detail-tab">
+					<nav class="detail-nav hd">
+						<ul class="detail-nav-inner list-unstyled">
+							<li>详情</li>
+							<li id="drama">剧集 <i class='icon-shangjiantou iconfont'></i></li>
+							<li class="nav-comment">评论</li>
+						</ul>
+					</nav>
+					<div class="detail-content">
+						<div class="detail-con-inner bd clearfix" id="tabBox2-bd">
+							<div class="tab-con tab-brief">
+								<div class="brief-inner">
+									<p class="tab-brief-text"></p>
+									<ul></ul>
+									<!--<div class="tab-brief-ext clearfix"></div>-->
+								</div>
+							</div>
+							<!-- detail-brief  结束 -->
+
+							<div class="tab-con tab-action">
+								<ul class="common-list detail-list author_ord">
+									<!-- <li>
+								<div class="li-img">
+									<img src="images/update/update-cover.jpg" />
+								</div><div class="li-txt">
+									<h3>恋爱最简单</h3>
+									<p></p>
+									<div class="li-txtbot"><span><i class="icon-good"></i><b>239</b></span><em>五仁月饼</em></div>
+								</div>
+							</li> -->
+								</ul>
+							</div>
+
+							<div class="tab-con tab-comment">
+								<div class="comment-inner">
+									<ul class="comment-list">
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- detail-content  结束 -->
+				</div>
+				<!-- detail-tab  结束 -->
+			</section>
+		</article>
+		<div class="publish-post-btn"><i class="iconfont icon-post"></i></div>
+		<div class="top-dialog" id="comment-dialog">
+			<header class="header header-white header-fixed">
+				<div class="c-text">发帖</div>
+			</header>
+			<div class="post-container">
+				<div class="comment-input"><input id="post-title" type="text" placeholder="来个标题党呗(最多20字哦)"> </div>
+				<textarea class="top-dialog-input" id="comment-content" rows="5" placeholder="我来说一句"></textarea>
+				<div id="upload-container">
+					<div class="upload-pic" id="upload-pic">
+						<i class="iconfont icon-tupian"></i>
+						<span>图片</span>
+					</div>
+				</div>
+				<div class="add-img-btn" id="fsUploadProgress"></div>
+			</div>
+			<div class="top-dialog-control">
+				<a class="btn-red" id="comment-send">发布</a>
+				<span class="text-counter">0/1500</span>
+			</div>
+		</div>
+		<div class="comment-panel">
+			<header class="header header-white header-fixed">
+				<i class="l-icon icon-angle-left"></i>
+				<div class="c-text">评论</div>
+			</header>
+			<ul class="comment-list offset-plus">
+			</ul>
+			<div class="comment-loading">
+				正在加载...
+			</div>
+		</div>
+		<script src="../js/base.min.js"></script>
+		<script src="../js/TouchSlide.1.1.js"></script>
+		<script src="../js/global.js"></script>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-share.min.js" type="text/javascript"></script>
+		<script type="text/javascript" src="../js/plupload.full.min.js"></script>
+		<script type="text/javascript" src="../js/qiniu.min.js"></script>
+		<!--<script src="http://m.comicool.cn/m-common/js/app.js" type="text/javascript"></script>-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var uploadIndex = 0,
+					uploadImgMap = {},
+					uploadtoken = '';
+				$(function() {
+					getByAjax({
+						api: 'upload_token4h5',
+						jsonpCallback: 'jsonp_upload_token',
+						success: function(data) {
+							newuploader(data.upload_token);
+						}
+					});
+					var newuploader = function(token) {
+						var uploader = Qiniu.uploader({
+							runtimes: 'html5,flash,html4',
+							browse_button: 'upload-pic',
+							container: 'upload-container',
+							max_file_size: '4mb',
+							uptoken: token,
+							dragdrop: false,
+							domain: 'http://up.cdn.icomico.com/',
+							get_new_uptoken: false,
+							auto_start: true,
+							init: {
+								'FilesAdded': function(up, files) {
+									plupload.each(files, function(file) {
+										var progress = new FileProgress(file, 'fsUploadProgress');
+										progress.bindUploadCancel(up);
+									});
+								},
+								'BeforeUpload': function(up, file) {
+									if (!CONFIG.isLogin) {
+										window.location.href = CONFIG.rootUrl + '/login.html';
+									}
+								},
+								'UploadProgress': function(up, file) {
+									var fileProgressID = file.id;
+									$('#' + fileProgressID).find('.fs-percent').html(file.percent + "%");
+								},
+								'UploadComplete': function(up, file) {
+									console.info(JSON.stringify(file));
+								},
+								'FileUploaded': function(up, file, info) {
+									var res = JSON.parse(info);
+									console.info(JSON.stringify(res));
+									var fileProgressID = file.id;
+									var img = new Image();
+									var domain = up.getOption('domain');
+									var uploadimgurl = domain + encodeURI(res.key);
+									img.src = uploadimgurl;
+									img.onload = function() {
+										var imgMapItem = {
+											"content_type": "img",
+											"img_url": res.key,
+											"img_width": img.width,
+											"img_height": img.height,
+											"mime": file.type,
+										};
+										uploadImgMap[(uploadIndex++)] = imgMapItem;
+										$('#' + fileProgressID).find('.fs-percent').html(img);
+									};
+								},
+								'Error': function(up, err, errTip) {}
+							}
+						});
+						uploader.bind('FileUploaded', function() {
+							console.log('hello man,a file is uploaded');
+						});
+					}
+				});
+
+				function FileProgress(file, targetID) {
+					this.fileProgressID = file.id;
+					this.file = file;
+					this.$imgItem = $('<div class="img-item" id="' + this.fileProgressID + '" data-uploadIndex="' + uploadIndex + '">' + '    <i class="iconfont icon-guanbi"></i>' + '    <div class="fs-percent"></div>' + '</div>');
+					this.$fs_percent = this.$imgItem.find('.fs-percent');
+					$('#' + targetID).append(this.$imgItem);
+				}
+				FileProgress.prototype.setProgress = function(percentage) {};
+				FileProgress.prototype.setComplete = function(up, info) {};
+				FileProgress.prototype.setError = function() {
+					this.$fs_percent.html("上传出错!").css({
+						"top": "0px",
+						"height": "100px"
+					});
+				};
+				// 绑定取消上传事件
+				FileProgress.prototype.bindUploadCancel = function(up) {
+					var self = this;
+					if (up) {
+						self.$imgItem.find('.icon-guanbi').on('click', function() {
+							up.removeFile(self.file);
+							var removeIndex = self.$imgItem.data('uploadIndex');
+							for (var prop in uploadImgMap) {
+								if (prop == removeIndex) {
+									uploadImgMap[prop].useless = true;
+								}
+							}
+							self.$imgItem.remove();
+						});
+					}
+				};
+				//剧集升序降序
+				$("#drama").on('click', function() {
+					$(".icon-shangjiantou").toggleClass("icon-hricon46");
+					$(".common-list").toggleClass("author_ord");
+				});
+				var comic_id = blacklistFilter(getQueryString('comic_id')),
+					author_id = getQueryString('author_id'),
+					recentReadId = getCookie(comic_id),
+					praiseInfo, comicInfo, commentInfo,
+					getCommentLock = false,
+					defaultIndex = getQueryString('tab') || 1;
+				$('#icon-back').on('click', function() {
+					window.location.href = '../index.html';
+				});
+				//调取点赞数
+				getByAjax({
+					api: 'getextinfo4h5',
+					type: 'GET',
+					data: {
+						comic_id: comic_id
+					},
+					dataType: 'jsonp',
+					jsonpCallback: 'jsonp_getextinfo',
+					success: function(data) {
+						if (data.msg == 'success') {
+							praiseInfo = data.ep_ext_list;
+							if (comicInfo) {
+								praiseInfo = praiseInfo.reverse();
+								for (var i = 0, len = praiseInfo.length; i < len; i++) {
+									var praiseCount = praiseInfo[i].praise_count;
+									$('.detail-list li').eq(i).find('.li-txt span b').html(praiseCount);
+								}
+							}
+						}
+					}
+				});
+				//获取漫画详情
+				getByAjax({
+					api: 'comicdetail4h5',
+					data: {
+						'comic_id': comic_id
+					},
+					jsonpCallback: "jsonp_comicdetail",
+					success: function(data) {
+						//						console.log(data);
+						if (data.msg == 'success') {
+							var authorInfo = data.comic_info,
+								avatar = authorInfo.avatar,
+								icon = authorInfo.comic_auth_icon,
+								cover = CONFIG.imgBase + authorInfo.comic_cover_large,
+								title = authorInfo.comic_title,
+								rating = Math.floor(authorInfo.rating * 10) / 10,
+								author = authorInfo.comic_auth ? authorInfo.comic_auth : "佚名",
+								desc = authorInfo.comic_desc,
+								auid = authorInfo.comic_auth_id,
+								epBase = CONFIG.readerBase + 'comic_id=' + comic_id + '&ep_id=',
+								updateText = '',
+								list = '',
+								bukaHtml = '',
+								weekId = +authorInfo.update_weekday,
+								weekday = ['一', '二', '三', '四', '五', '六', '日'],
+								hasPraiseInfo = !!praiseInfo,
+								flag = authorInfo.flag;
+							if (icon) {
+								var authorIcon = icon;
+							} else if (avatar) {
+								if (avatar.indexOf('http://') != -1) {
+									var authorIcon = avatar;
+								} else {
+									var authorIcon = CONFIG.iconBase + avatar + '.jpg';
+								}
+							} else {
+								var authorIcon = CONFIG.defaultAvatar;
+							}
+							comicInfo = {}; //修改标题信息
+							document.title = title + '-可米酷漫画连载_在线漫画';
+							//阅读按钮
+							if (recentReadId) {
+								var readBtn = '<a class="readcss" href="' + epBase + recentReadId + '">继续阅读</a>';
+							} else {
+								var readBtn = '<a class="readcss" href="' + epBase + 1 + '">开始阅读</a>';
+							}
+							//ext_list可能为空
+							try {
+								if (data.comic_info.ext_list[1].usage === 'category') {
+									var cate = data.comic_info.ext_list[1].desc.split('|'),
+										cateText = [];
+									for (var n = 0, len = cate.length; n < len; n++) {
+										cateText.push('<span>' + cate[n].split('#')[1] + '</span>');
+									}
+									updateText += cateText.join('');
+								}
+							} catch (e) {
+								//							console.error(e);
+							}
+							$('.detail-cover').html('<img src="' + cover + '?imageView2/2/w/540">');
+							$('.detail-head-text strong').html(title);
+							$('.author_name').html('<li class="author_photo"><a href="center.html?comic_id=' + comic_id + '&author_id=' + auid + '"><img src="' + authorIcon + '"></li>' + '<li><span>' + author + '</span></a></li>');
+							$('.detail-head-text  small').html(rating);
+							$('.detail-head-text').append(readBtn);
+							$('.tab-brief-text').html(desc);
+							$(".brief-inner ul").html(updateText);
+							//							分享
+							setNewShareInfo({
+								title: title,
+								describe: title,
+								imageurl: cover,
+								page_url: window.location.href
+							}, {
+								use: 'customize',
+								init: ''
+							});
+							var myDate = new Date(),
+								mytime = myDate.toLocaleDateString().replace(/\//g, '.'), //获取当前时间
+								listData = data.ep_list.reverse();
+							for (var i = 0, j = data.ep_list.length; i < j, j > 0; i++, j--) {
+								var ep = data.ep_list[i],
+									epId = ep.ep_id,
+									epImg = CONFIG.imgBase + ep.ep_poster,
+									epTitle = ep.ep_title,
+									epUrl = epBase + epId,
+									praiseCount = hasPraiseInfo ? praiseInfo[i].praise_count : 0,
+									imgCutSize = '?imageView2/2/w/180',
+									litxt = !flag && flag.length == 0 ? '<div class="li-img">' + '<img src="' + epImg + imgCutSize + '">' + '</div>' + '<div class="li-txt">' : '<div class="li-txt li-noimage">';
+								if (ep.update_date == mytime) {
+									list += '' + '<li>' + '<a href="' + epUrl + '">' + litxt + '<h3>' + epTitle + '</h3>' + '<big>#' + j + '</big>' + '<p></p>' + '<div class="li-txtbot">' + '<span>' + '<i class="icon-good"></i>' + '<b>' + praiseCount + '</b>' + '</span>' + ep.update_date + '<em>' + '<small>' + '新' + '</small>' + '</em>' + '</div>' + '</div>' + '</a>' + '</li>';
+								} else {
+									list += '' + '<li>' + '<a href="' + epUrl + '">' + litxt + '<h3>' + epTitle + '</h3>' + '<big>#' + j + '</big>' + '<p></p>' + '<div class="li-txtbot">' + '<span>' + '<i class="icon-good"></i>' + '<b>' + praiseCount + '</b>' + '</span>' + '<em>' + ep.update_date + '</em>' + '</div>' + '</div>' + '</a>' + '</li>';
+								}
+							}
+							$('.common-list').html(list);
+						}
+					},
+					complete: function() {
+						TouchSlide({
+							slideCell: "#detail-tab",
+							defaultIndex: defaultIndex,
+							endFun: function(i) { //高度自适应
+								var bd = document.getElementById("tabBox2-bd");
+								bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+								if (i > 0) bd.parentNode.style.transition = "200ms"; //添加动画效果
+								var $oncell = $('.detail-nav-inner .on');
+								if ($oncell[0] == $('.detail-nav-inner').find('li').eq(2)[0]) {
+									$('.publish-post-btn').show();
+								} else {
+									$('.publish-post-btn').hide();
+								}
+							}
+						});
+						//console.warn(commentInfo);
+						if (commentInfo) {
+							bindCommentEvents();
+						}
+					}
+				});
+				/**
+				 * 通过传入comment_id去评论内容池里取评论或者直接传入一个评论数据对象
+				 * @param  {Object | Number} params
+				 * @return {Object}        jQuery的DOM节点
+				 */
+				function generateCommentsHTML(param) {
+					var arr = commentInfo.post_list;
+					var userArr = commentInfo.user_list;
+					if (typeof param == 'object') {
+						return generator(param);
+					} else {
+						for (var i = 0, len = arr.length; i < len; i++) {
+							var obj = arr[i];
+							if (obj.post_id == param) {
+								for (var j = 0, userLen = userArr.length; j < userLen; j++) {
+									if (obj.ccid == userArr[j].ccid) {
+										obj.userInfo = userArr[j];
+										break;
+									}
+								}
+								// arr.splice(i, 1);
+								return generator(obj);
+							}
+						}
+					}
+
+					function generator(obj) {
+						var time = convertTime(obj.post_time);
+						var userInfo = obj.userInfo ? obj.userInfo : '';
+						var userIcon = userInfo.icon ? userInfo.icon : '';
+						var postText = '',
+							postTitle = '',
+							postImg = '';
+						var commentImgWidth = Math.floor(document.body.clientWidth * 0.85 / 3);
+						var commentImgStr = '?imageView2/1/w/' + commentImgWidth + '/h/' + commentImgWidth;
+						var isPraised = Number(obj.praise) == 1 ? true : false;
+						if (userIcon.length == 0) {
+							if (userInfo.avatar && userInfo.avatar.length != 0) {
+								userIcon = CONFIG.iconBase + userInfo.avatar + '.jpg';
+							} else {
+								userIcon = CONFIG.errorImg;
+							}
+						}
+						if (obj.post_rich && obj.post_rich.length > 0) {
+							for (var i = 0, len = obj.post_rich.length; i < len; i++) {
+								var postRichItem = obj.post_rich[i];
+								if (postRichItem.content_type == 'text') {
+									postTitle = obj.post_title;
+									postText = postRichItem.text;
+								} else {
+									postImg += '<img class="comment-imgs" src="' + CONFIG.postImgBase + postRichItem.img_url + commentImgStr + '" data-src="' + CONFIG.postImgBase + postRichItem.img_url + commentImgStr + '"> ';
+								}
+							}
+						} else {
+							postText = obj.post_title;
+						}
+						var $li = $('' + '<li data-cid="' + obj.post_id + '">' + '<div class="comment-top">' + '<div class="comment-photo">' + '<img src="' + userIcon + '">' + '</div>' + '<div class="comment-extra">' + '<strong>' + userInfo.nickname + '</strong>' + '<em class="praise-em"><i class="iconfont icon-praise"></i><span data-praised=' + (isPraised ? 1 : 2) + '>' + obj.praise_count + '</span></em>' + '</div>' + '</div>' + '<div class="comment-master">' + '<p class="comment-title">' + postTitle + '</p>' + '<p>' + postText + '</p>' + postImg + '</div>' + '<div class="comment-footer">' + '	<span class="comment-time">' + time + '</span> 更新' + '	<i class="iconfont icon-reply"></i><span class="reply-cnt">' + obj.reply_count + '</span>' + '</div>' + '</li>');
+						if (isPraised) {
+							$li.find('.icon-praise').addClass('icon-praised');
+						}
+						return $li;
+					}
+
+					function convertTime(timestamp) {
+						var D = new Date(timestamp * 1000);
+						var nowTimestamp = parseInt(new Date().getTime() / 1000);
+						var secondsAgo = nowTimestamp - timestamp;
+						var minutesAgo = parseInt(secondsAgo / 60);
+						var hoursAgo = parseInt(minutesAgo / 60);
+						var daysAgo = parseInt(hoursAgo / 24);
+						var monthsAgo = parseInt(daysAgo / 30);
+						//console.log(minutesAgo, hoursAgo, daysAgo);
+						if (secondsAgo >= 0 && monthsAgo < 1) {
+							if (daysAgo) {
+								return daysAgo + '天前';
+							} else if (hoursAgo) {
+								return hoursAgo + '小时前';
+							} else if (minutesAgo) {
+								return minutesAgo + '分钟前';
+							} else {
+								return '刚刚';
+							}
+						} else {
+							var year = D.getFullYear();
+							var month = D.getMonth() + 1;
+							var date = D.getDate();
+							var hour = D.getHours();
+							var minute = D.getMinutes();
+							month = month > 9 ? month : '0' + month;
+							date = date > 9 ? date : '0' + date;
+							hour = hour > 9 ? hour : '0' + hour;
+							minute = minute > 9 ? minute : '0' + minute;
+							return year + '-' + month + '-' + date + '&nbsp' + hour + ':' + minute;
+						}
+					}
+				}
+				//获取评论列表
+				function pullCommentsList(beginID, pageSize) {
+					var isInit = arguments.length == 0 ? true : false;
+					var ajaxData = {
+						comic_id: comic_id,
+						include: 'comic',
+						order_type: 'update_time',
+						post_id: beginID || 0,
+						page_size: pageSize || 5,
+						page_direction: 2
+					};
+					getByAjax({
+						api: 'getpostlist4h5',
+						data: ajaxData,
+						beforeSend: function() {
+							getCommentLock = true;
+						},
+						jsonpCallback: 'jsonp_getpostlist',
+						success: function(data) {
+							//							console.log(data);
+							//console.log('success', getCommentLock);
+							if (data) {
+								// var commentMap = data.comment_page_list;
+								// var commentCon = data.comment_list;
+								var commentMap = data.post_list,
+									commentCon = data.user_list,
+									$tabCont = $('.tab-comment .comment-list'),
+									$panelCont = $('.comment-panel .comment-list'),
+									amount = commentMap == null ? 0 : commentMap.length,
+									total = data.post_count;
+								commentInfo = data;
+								getCommentLock = false;
+								if (amount != 0) {
+									for (var i = 0, len = commentMap.length; i < len; i++) {
+										var cid = commentMap[i].post_id;
+										var $li = generateCommentsHTML(cid);
+										if (isInit && i <= 4) {
+											var $tabLi = $li.clone();
+											bindCommentPhotoError($tabLi);
+											$tabCont.append($tabLi);
+										}
+										$panelCont.append($li);
+										bindCommentPhotoError($li);
+									}
+									isInit && $tabCont.after('<a class="comment-btn-all">查看全部评论</a>');
+								} else {
+									isInit && $tabCont.after('<p class="comment-empty-tip">快来抢个沙发吧~</p>');
+								}
+								updateCommentCounter();
+								updateCommentHeight();
+								if (isInit && comicInfo) {
+									bindCommentEvents();
+								}
+								if (commentMap == null) {
+									$('.comment-panel .comment-loading').html('没有更多了');
+									getCommentLock = true;
+								}
+							}
+						},
+						notDefaultErr: true,
+						error: function() {
+							// alert('获取评论失败！');
+							console.info('获取评论失败！');
+						}
+					});
+				}
+				pullCommentsList();
+
+				function bindCommentPhotoError($el) {
+					$el.find('.comment-photo img').on('error', function() {
+						$(this).attr('src', '../images/icon-error.png');
+					});
+				}
+
+				function updateCommentHeight() {
+					var height = $('.author_ord').height();
+					$('.tab-comment').parents('.tempWrap').css('height', height);
+				}
+
+				function updateCommentCounter(isAdd) {
+					var total = +commentInfo.post_count;
+					isAdd ? total++ : total;
+					$('.nav-comment, .comment-panel .c-text').html(function(i, v) {
+						var txt = total > 999 ? '999+' : total;
+						if (i == 0) {
+							return '评论(' + txt + ')';
+						} else {
+							return '评论(' + total + ')';
+						}
+					});
+				}
+
+				function bindCommentEvents() {
+					var $trigger = $('.publish-post-btn'),
+						$dialog = $('#comment-dialog'),
+						$title = $('#post-title'),
+						$input = $('#comment-content'),
+						$panel = $('.comment-panel .comment-list'),
+						$mask = $('#new-share-bg'),
+						$counter = $dialog.find('.text-counter'),
+						limitLength = +$counter.html().split('/')[1],
+						listenPos = '',
+						pullLimitTime = 10000,
+						defaultTip = '我来说两句',
+						pos = {
+							tab: 0,
+							layer: 0
+						},
+						userStr = Comi.Utils.LocalStorage.get('comiUserData'),
+						user = JSON.parse(userStr);
+					$('.icon-praise').on('click', function() {
+						event.stopPropagation();
+						if (!CONFIG.isLogin) { //由于数据原因，当前点赞需要先登录
+							window.location.href = CONFIG.rootUrl + '/login.html';
+						}
+						var $btn = $(this),
+							$li = $(this).parents('li'),
+							post_id = $li.data('cid'),
+							isPraised = Number($btn.next('span').data('praised')) == 1 ? true : false,
+							ajaxData = {
+								"praise_type": "posts",
+								"post_id": post_id,
+								"praise": isPraised ? 2 : 1,
+							};
+						priasePostComment(ajaxData, $btn);
+					})
+
+					function showCommentDialog() {
+						checkUserLoginStatus();
+						if (CONFIG.isLogin) {
+							$mask.show();
+							$dialog.show();
+							$title.focus();
+							$input.attr('placeholder', defaultTip).data('reply', '');
+							setTimeout(function() {
+								$mask.one('click', hideCommentDialog);
+							}, 300);
+							$('.moxie-shim').css({
+								'width': '3rem',
+								'height': '1rem'
+							});
+						} else {
+							window.location.href = CONFIG.rootUrl + '/login.html';
+						}
+					}
+
+					function hideCommentDialog() {
+						$dialog.hide();
+						$mask.hide();
+					}
+					$trigger.on('click', showCommentDialog);
+					$input.on('input propertychange', function(e) {
+						var value = $.trim($(this).val());
+						if (value.length <= limitLength) {
+							$counter.html(value.length + '/' + limitLength);
+						} else {
+							value = value.substr(0, limitLength);
+							$input.val(value);
+							$counter.html('<span style="color:red">只能说这么多啦！</span>');
+						}
+					});
+					$title.on('input propertychange', function(e) {
+						var titleLimitLength = 20,
+							value = $.trim($(this).val());
+						if (value.length <= titleLimitLength) {
+							$counter.html(value.length + '/' + titleLimitLength);
+						} else {
+							value = value.substr(0, titleLimitLength);
+							$title.val(value);
+							$counter.html('<span style="color:red">标题党只能输入20字哦!</span>');
+						}
+					});
+					//查看全部评论
+					$('a.comment-btn-all').click(function() {
+						pos.tab = document.body.scrollTop;
+						$('.comment-panel').show();
+						$('.main-panel, body > .header').css('visibility', 'hidden');
+						document.body.scrollTop = pos.layer;
+					});
+					//跳转帖子详情
+					$(document).on('click', '.comment-list li', function() {
+						var postId = $(this).data('cid');
+						window.location.href = CONFIG.postBase + 'comic_id=' + comic_id + '&post_id=' + postId;
+					});
+					//评论界面交互
+					$('.comment-panel .icon-angle-left').off('click').on('click', function() {
+						pos.layer = document.body.scrollTop;
+						$('.comment-panel').hide();
+						$('.main-panel, body > .header').css('visibility', 'visible');
+						document.body.scrollTop = pos.tab;
+					});
+					$panel.on('touchstart touchmove', function(e) {
+						var top = document.body.scrollTop;
+						if (e.type == 'touchstart') {
+							listenPos = ($panel.height() - $(window).height() * 2);
+						} else {
+							if (top > listenPos && !getCommentLock) {
+								var beginID = commentInfo.post_list[commentInfo.post_list.length - 1].post_id;
+								pullCommentsList(beginID);
+							}
+						}
+					});
+					//发表评论
+					$('#comment-send').click(function() {
+						if (!CONFIG.isLogin) {
+							window.location.href = CONFIG.rootUrl + '/login.html';
+						}
+						var $btn = $(this);
+						var commitTitle = $title.val();
+						var content = $input.val();
+						var postRich = [{
+							"content_type": "text",
+							"text": content,
+						}, ];
+						for (var prop in uploadImgMap) {
+							if (!uploadImgMap[prop].useless) {
+								postRich.push(uploadImgMap[prop]);
+							}
+						}
+						var ajaxData = {
+							"operate_type": 1,
+							"post_id": 0,
+							"post_type": "comic",
+							"ccid": user.ccid,
+							"token": user.cctoken,
+							"user_type": user.usertype,
+							"comic_id": comic_id,
+							"post_title": commitTitle,
+							"post_rich": JSON.stringify(postRich)
+						};
+						var btnWord;
+						getByAjax({
+							api: 'postcommit4h5',
+							data: ajaxData,
+							jsonpCallback: 'jsonp_postcommit',
+							beforeSend: function() {
+								console.info('beforeSend', ajaxData);
+								$btn.html(function(i, v) {
+									btnWord = v;
+									return v + '中..';
+								});
+							},
+							success: function(data) {
+								console.info('success', data);
+								if (data) {
+									var postId = data.post_list[0].post_id;
+									var $li = generateCommentsHTML({
+										'post_id': postId,
+										'post_time': new Date().getTime() / 1000,
+										'post_title': commitTitle,
+										'post_rich': [{
+											"content_type": "text",
+											"text": content,
+										}, ],
+										'userInfo': {
+											'nickname': user.nickname,
+											'icon': user.icon,
+										},
+										'praise_count': data.post_list[0].praise_count,
+										'reply_count': data.post_list[0].reply_count
+									});
+									if ($('.comment-empty-tip').size()) {
+										$('.comment-empty-tip').remove();
+									}
+									$('.comment-list').prepend($li);
+									$btn.html(btnWord);
+									$title.attr('placeholder', '来个标题党呗!').val('');
+									$input.attr('placeholder', defaultTip).val('');
+									$counter.html('0/' + limitLength);
+									updateCommentHeight();
+									hideCommentDialog();
+									updateCommentCounter(true);
+								}
+							},
+							notDefaultErr: true,
+							error: function() {
+								alert('发表失败！');
+							}
+						});
+					});
+				}
+				// 帖子和回复点赞
+				function priasePostComment(praiseData, praiseObj) {
+					if (!CONFIG.isLogin) {
+						window.location.href = CONFIG.rootUrl + '/login.html';
+					}
+					var user = Comi.Utils.getUserInfo();
+					$btn = praiseObj;
+					if (user != null) {
+						var ccid = user.ccid;
+						praiseData.ccid = ccid;
+						praiseData.cctoken = user.cctoken;
+						praiseData.usertype = user.usertype;
+					}
+					var isPraised = praiseData.praise == 2 ? true : false;
+					getByAjax({
+						api: 'newpraise4h5',
+						jsonpCallback: 'jsonp_newpraise',
+						data: praiseData,
+						success: function(data) {
+							if (!isPraised) {
+								$btn.next('span').data('praised', 1);
+								$btn.next('span').html(function(i, v) {
+									return +(v) + 1;
+								})
+							} else {
+								$btn.next('span').data('praised', 2);
+								$btn.next('span').html(function(i, v) {
+									return +(v) - 1;
+								})
+							}
+							$btn.toggleClass('icon-praised');
+						}
+					});
+				}
+			})
+		</script>
+	</body>
+
+</html>

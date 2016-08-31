@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>快来领取红包哟!</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网"/>
+    <meta name="description" content="快来领取红包哟,www.comicool.cn"/>
+    <meta name="generator" content="Comicool"/>
+    <meta name="author" content="Comicool Team and Comicool UI Team"/>
+    <meta name="copyright" content="2014-2015 Comicool Inc."/>
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/thanksgiving/css/style.css" />
+		<script type="text/javascript" src="http://cdn.icomicool.cn/app/app-common/js/zepto.min.js"></script>
+		     <script src="http://cdn.icomicool.cn/thanksgiving/js/style.js"></script>
+</head>
+<body class="draw">
+<article>
+        <div class="draw_in"><input type="tel" id="draw_phone" placeholder="输入手机号领取红包哟~">
+            <button id="btn" type="button">领取</button>
+        </div>
+        <div class="draw_explain"><h2>活动说明：</h2>
+
+            <p>1.每安装一个好友安装可米酷并登录，即可获得1.5元红包；被安装的好友则获得2元的见面礼</p>
+
+            <p>2.红包将以酷币的形式发放，2元红包相当200酷币，可米酱的杂货铺有多多的礼物等你兑换，手办，话费， Q币...抢到你手软</p>
+        </div>
+</article>
+<script src="js/style.js"></script>
+<script>
+
+    window.onload = function () {
+        var sPhone = document.getElementById("draw_phone");
+        var sBtn = document.getElementById("btn");
+
+        function isNum(num) {
+            var reNum = /^1\d{10}$/;
+            return (reNum.test(num));
+        }
+
+        sBtn.onclick = function () {
+            if (!isNum(sPhone.value)) {
+                alert("请输入你的11位手机号码");
+            }
+            else {
+                $.get("draw.php?mobile=" + sPhone.value + "&tg_ccid=" + GetQueryString("ccid"), function (d) {
+                    alert(d.info);
+                    if(d.url) {
+                        location.href= d.url;
+                    }
+                });
+//                alert("输入成功!");
+            }
+        }
+    };
+
+
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+</script>
+</body>
+</html>

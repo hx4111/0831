@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>腐女节BL推荐</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="腐女节BL推荐">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=2016030302">
+		<!--<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1457071981_5607245.css" />
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/act/act-common/js/jquery.ferro.ferroMenu-1.1.min.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/act/act-common/js/jquery.transit.min.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<script type="text/javascript">
+			var currentIndex = 0;
+			var currentId = "camera";
+		</script>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        腐女节BL推荐
+        <p>腐女节BL推荐</p>
+        <img src="http://cdn.icomicool.cn/m/act/201603/fu/images/share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<div id="wxqq">
+				<img src="http://cdn.icomicool.cn/m/images/shareTip.png">
+			</div>
+			<ul id="newNav">
+				<li><a href="javascript:;"><i class="icon-share2 iconfont"></i></a></li>
+				<li><a href="javascript:;"><i class="icon-zan iconfont"></i></a></li>
+				<li><a href="javascript:;"><i class="icon-liuyan iconfont"></i></a></li>
+			</ul>
+		</header>
+		<div>
+			
+		</div>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_01.jpg" alt="腐女节BL推荐" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_02.jpg" alt="腐女节BL推荐" /></li>
+			<li class="go" data-cid="701"><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_03.jpg" alt="白诡纪年" /></li>
+			<li class="go" data-cid="10940"><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_04.jpg" alt="别闹！我想静静" /></li>
+			<li class="go" data-cid="10665"><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_05.jpg" alt="软乎乎的狼大人" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_06.jpg" alt="腐女节BL推荐" /></li>
+			<li id="praise"><span>0</span><img src="http://cdn.icomicool.cn/m/act/201603/fu/images/index_07.jpg" alt="腐女节BL推荐" /></li>
+		</div>
+		<div class="discuss_betting" id="discuss">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="http://cdn.icomicool.cn/m/act/act-common/js/comment.js?t=2016030302"></script>
+		<script>
+		var timestamp = Date.parse(new Date());
+			setShareInfo({
+				title: '腐女节BL推荐',
+				describe: '腐女节BL推荐',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201603/fu/images/share.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share2', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					wxqq = _('#wxqq'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = wxqq.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+					$.fn.ferroMenu.toggleMenu(newNav);
+				});
+				mask.addEventListener('click', hidePanel);
+				wxqq.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isApp || isWeixin || isQQ || isWeibo) {
+					header.style.display = 'none';
+				}
+			}
+			jQuery(document).ready(function($) {
+				$("#newNav").ferroMenu({
+					position: "right-center",
+					delay: 50,
+					rotation: 720,
+					margin: 20,
+					radius: 70
+				});
+				$.ajax({
+					url: 'http://comicool.cn/simple_vote.php?'+timestamp,
+					dataType: "jsonp",
+					data: {},
+					jsonpCallback: "jsonp_match",
+					success: function(data) {
+						var praise = data.results[2];
+						$("#praise span").html(praise);
+						bindOpenComicEvents();
+					}
+				})
+
+				function bindOpenComicEvents() {
+					var readComic;
+					if (isAndroidApp) {
+						readComic = function(cid) {
+							callAppFunction('openEpisodeReaderPage', {
+								comic_id: cid,
+								ep_id: 1
+							});
+						}
+					} else if (isIOS) {
+						readComic = function(cid) {
+							callAppFunction('openNewBrowser', {
+								"url": 'http://m.comicool.cn/content/reader.html?comic_id='+cid+'&ep_id=1',
+								"title": "腐女节BL推荐"
+							});
+						}
+					} else {
+						readComic = function(cid) {
+							window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id='+cid+'&ep_id=1';
+						}
+					}
+					$(".go").on('click', function(e) {
+						var cid = this.dataset.cid;
+						if (cid !== "undefined" && cid !== "") {
+							readComic(cid);
+						}
+					});
+				}
+				if (!getCookie('flag')) {
+					var flag = false;
+				}
+				//				下面的按钮点赞
+				$("#praise").on("click", function() {
+//					clearCookie("flag")
+					if (getCookie('flag') == "true") {
+						alert("您已经点过赞了!")
+					} else {
+						var num = $("#praise span").html();
+						$("#praise span").html(parseInt(num) + 1);
+						$.get("http://comicool.cn/simple_vote.php?sel=2");
+						setCookie("flag", "true", 30)
+					}
+				})
+				$('.icon-liuyan').click(function() {
+					$('html,body').animate({
+						scrollTop: $('.discuss_betting').offset().top
+					}, 800);
+					$.fn.ferroMenu.toggleMenu(newNav);
+				});
+			});
+			//取得cookie    
+			function getCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';'); //把cookie分割成组    
+				for (var i = 0; i < ca.length; i++) {
+					var c = ca[i]; //取得字符串    
+					while (c.charAt(0) == ' ') { //判断一下字符串有没有前导空格    
+						c = c.substring(1, c.length); //有的话，从第二位开始取    
+					}
+					if (c.indexOf(nameEQ) == 0) { //如果含有我们要的name    
+						return unescape(c.substring(nameEQ.length, c.length)); //解码并截取我们要值    
+					}
+				}
+				return false;
+			}
+			//清除cookie    
+			function clearCookie(name) {
+				setCookie(name, "", -1);
+			}
+			//设置cookie    
+			function setCookie(name, value, seconds) {
+				seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。    
+				var expires = "";
+				if (seconds != 0) { //设置cookie生存时间    
+					var date = new Date();
+					date.setTime(date.getTime() + (seconds * 1000 * 360 * 24 * 365));
+					expires = "; expires=" + date.toGMTString();
+				}
+				document.cookie = name + "=" + escape(value) + expires + "; path=/"; //转码并赋值    
+			}
+			
+				function getPostList(post_id, page_size) {
+		if (pullPostLock) {
+			return;
+		}
+		pullPostLock = true;
+		setPostTip('正在加载..');
+		jsonp({
+			url: CONFIG.ajaxBase + 'getpostlist4h5',
+			callback: 'jsonp_getpostlist',
+			data: {
+				include: 'topic2016030301',
+				order_type: 'update_time',
+				page_direction: 2,
+				post_id: post_id,
+				page_size: page_size
+			},
+			success: function(res) {
+				var callback = function() {
+					var tip = $('.post-tip');
+					if (tip) {
+						tip.remove(tip);
+						//						tip.parentNode.removeChild(tip);
+					}
+				};
+				pullPostLock = false;
+				//第一次加载
+				if (post_id === 0) {
+					render('tmpl-discuss', res, callback);
+					postCounter = $('#post-counter');
+				} else {
+					renderPostInfo.postAdd(res.post_list, res.user_list, 2, callback);
+				}
+				//有评论信息
+				if (res.post_list) {
+					lastPostId = res.post_list[res.post_list.length - 1].post_id;
+				} else {
+					if (post_id === 0) {
+						setPostTip('暂时还没有讨论', true);
+					} else {
+						setPostTip('没有更多讨论了', true);
+					}
+				}
+			}
+		});
+	}
+	postBtn.on('click', function() {
+			callAppFunction('openPostSend', {
+				post_type: "topic2016030301"
+			});
+		if (!isApp) {
+			window.location.href = "http://m.app.comicool.cn/down.html";
+		}
+	});
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

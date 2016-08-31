@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>评论</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css?_=20160619">
+		<style type="text/css">
+			#imglist img {
+				width: 100%;
+			}
+			#imglist a {outline: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display: none">
+        可米酷新人赛等你来
+        <p>参加可米酷新人赛踏上漫画家的职业之路</p>
+        <img src="http://cdn.icomicool.cn/m/act/201606/ranklist/images/ranklist_share.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon iconfont icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon iconfont icon-share"></i>
+		</header>
+		<div id="imglist">
+			<a href="index.html"><img src="images/back.jpg" alt="返回新人赛" /></a>
+		</div>
+		<div id="post-and-Ctrl"></div>
+				<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/tpl/dist/act-global.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			(function() {
+				var calcFontSize = function() {
+					var html = document.documentElement;
+					var defaultWidth = 320;
+					var defaultFontSize = 20;
+
+					return function() {
+						var currentWidth = html.clientWidth;
+						var currentFontSize = currentWidth / defaultWidth * defaultFontSize;
+						if (currentWidth > 1200) {
+							html.style.fontSize = '20px';
+						} else {
+							html.style.fontSize = currentFontSize + 'px';
+						}
+					}
+				}();
+
+				calcFontSize();
+				window.addEventListener('resize', calcFontSize);
+			})();
+
+			document.addEventListener('DOMContentLoaded', function() {
+				this.documentElement.classList.add('loaded');
+			});
+
+			ReactDOM.render(React.createElement(PostAndCtrl, {
+				postType: "topic2033"
+			}), document.getElementById('post-and-Ctrl'));
+			var shareJsonObj = {
+				'title': '可米酷新人赛等你来',
+				'describe': '参加可米酷新人赛踏上漫画家的职业之路',
+				'imageUrl': 'http://cdn.icomicool.cn/m/act/201606/ranklist/images/ranklist_share.jpg',
+				'pageUrl': window.location.href
+			};
+			setShareInfo(shareJsonObj, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					shareBtn = _('#share-btn'),
+					panelTitle = _('#ShareCon h2'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				if (CONFIG.isWeixin) {
+					trigger.addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'block';
+						document.getElementById('ShareBg').innerHTML = '<img src="http://cdn.icomicool.cn/m/images/shareTip.png" >';
+						header.style.display = 'none';
+					});
+					document.getElementById('ShareBg').addEventListener('click', function() {
+						document.getElementById('ShareBg').style.display = 'none';
+						header.style.display = 'block';
+					})
+				} else {
+					trigger.addEventListener('click', function() {
+						mask.style.display = panel.style.display = 'block';
+					});
+					mask.addEventListener('click', hidePanel);
+					cancelBtn.addEventListener('click', hidePanel);
+				}
+			}
+		</script>
+	</body>
+
+</html>

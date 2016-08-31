@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>抢红包</title>
+<meta name="keywords" content="抢红包" />
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/config.js"></script>
+</head>
+<body>
+<!-- 
+**** 动画思路如下：
+******* 第一步：倒计时动画
+******* 第二步：点击“点我拆红包”按钮后，红包一系列动画整合。
+	    红包整体抖动动画（可加可不加）、红包飞出、天上金币掉落、得到金币数额展示。
+
+**** 动画效果整合衔接：
+******* 用JS控制延迟时间比较方便
+******* 也可以使用css3控制各块动画的延迟时间,样式里手动添加,查找不便。
+
+**** 其它说明：
+******* 倒计时里的遮罩切除显示单个红包效果，涉及SVG，暂时未研究，有待补习......
+******* 动画样式里未加上-ms-前缀，如果是使用Windows Phone手机的话，需要加上。
+		没有wp手机设备测试的孩纸泪笨飘过
+******* 若熟练使用less开发，比较快捷。(自己less水平有待补习，慕课网上有关注课程，尚未到熟练less开发阶段 - -!)
+ -->
+	<article class="container pf">
+	    <header class="header pr border-box bg-set">
+	    	<span class="top-coin border-box">
+	    		2.8元
+	    	</span><span class="top-time border-box">
+	    		10.00秒
+	    	</span>
+	    </header>
+
+		<!-- 倒计时部分 -->
+	    <section class="countdown pf">
+	    	<div class="count-num pr">
+	    		<span></span>
+	    	</div>
+	    	<div class="cut-bg pa">
+	    		<span></span>
+	    	</div>
+	    </section>
+
+		<!-- 红包整体相关 -->
+	    <section class="redbox pa bg-set">
+	    	<div class="red-bot pr"></div>
+	    	<div class="red-obj pa">
+	    		<span><img src="images/red-obj.png" /></span>
+	    	</div>
+	    	<div class="red-btn pa">
+	    		<div class="red-btn-inner">
+		    		<span class="red-btn-img"><img src="images/point.png" /></span>
+		    		<p>点我拆红包</p>
+	    		</div>
+	    	</div>
+	    	<div class="red-num pa">
+	    		<span>+0.2元</span>
+	    	</div>
+	    </section>
+
+		<!-- 底部多红包背景 -->
+	    <footer class="footer pa">
+	    	<i></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i></i>
+	    </footer>
+
+		<!-- 全屏金币掉落部分 -->
+	    <section class="drop-coin pa">
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    </section>
+	    <section class="drop-coin drop-coin2 pa">
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    </section>
+	    <section class="drop-coin drop-coin3 pa">
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    	<i class="sm"></i>
+	    	<i></i>
+	    	<i class="sm"></i>
+	    </section>
+	    
+	</article>
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="js/act.js"></script>
+</html>

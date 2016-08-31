@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JSSDK</title>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+var url = encodeURIComponent(location.origin + location.pathname + location.search);
+
+$.ajax({
+	url: 'http://comicool.cn/webapi/wxauth.php?url=' + url,
+	type: 'GET',
+	dataType: 'json',
+	success: function(data) {
+        alert(JSON.stringify(data));
+		wx.config({
+		    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		    appId: data.appId, // 必填，公众号的唯一标识
+		    timestamp: data.timestamp, // 必填，生成签名的时间戳
+		    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+		    signature: data.signature,// 必填，签名，见附录1
+		    jsApiList: ['checkJsApi','onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ', 'onMenuShareWeibo'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+		});
+
+		wx.ready(function() {
+			var shareObj = {
+				title: '万眼引力 吸睛大法', // 分享标题
+			    desc: '只是为了在人群中闪瞎你的眼', // 分享描述
+			    link: 'http://m.comicool.cn/act/201505/bargain/index.html', // 分享链接
+			    imgUrl: 'http://m.comicool.cn/act/201505/bargain/images/share-img2.jpg', // 分享图标
+			    success: function () { 
+			    	alert('分享成功！')
+			        // 用户确认分享后执行的回调函数
+			    },
+			    cancel: function () { 
+			    	alert('取消分享！')
+			        // 用户取消分享后执行的回调函数
+			    }
+			};
+
+			wx.onMenuShareAppMessage(shareObj);
+			wx.onMenuShareTimeline(shareObj);
+			wx.onMenuShareQQ(shareObj);
+			wx.onMenuShareWeibo(shareObj);
+		});
+
+		wx.error(function(res) {
+			alert('发生错误：' + res.errMsg);
+		});
+	},
+	error: function() {
+		alert('连接错误！');
+	}
+})
+</script>
+</head>
+<body>
+Hello world!
+</body>
+</html>

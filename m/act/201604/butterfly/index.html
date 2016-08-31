@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>怀念 无限大！光叔一路的陪伴~泪奔</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="曾为《数码宝贝》演唱主题曲《Butter-Fly》的日本著名歌手和田光司于四月三日因病在日本去世，享年42岁。">
+		<link rel="stylesheet" href="http://cdn.icomicool.cn/m/act/act-common/css/common.css?t=20160309">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<!--<link rel="stylesheet" href="css/style.css">-->
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<script src="http://cdn.icomicool.cn/m/js/config.js"></script>
+		<style type="text/css">
+		#praise span {
+				top: initial;
+				bottom: 2rem;
+				color: white;
+			}
+			
+			#audio-btn {
+				width: 44px;
+				height: 44px;
+				margin: 100px auto;
+				background-size: 100% 100%;
+				position: fixed;
+				right:.5rem;
+				z-index: 9999;
+			}
+		.on {
+			background: url('http://cdn.icomicool.cn/m/act/201604/butterfly/images/music_on.png') no-repeat 0 0;
+			-webkit-animation: rotating 1.2s linear infinite;
+			animation: rotating 1.2s linear infinite;
+		}
+		.off {
+			background: url('http://cdn.icomicool.cn/m/act/201604/butterfly/images/music_off.png') no-repeat 0 0;
+		}
+		@-webkit-keyframes rotating {
+			from {
+				-webkit-transform: rotate(0deg);
+				-moz-transform: rotate(0deg);
+				-ms-transform: rotate(0deg);
+				-o-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+			
+			to {
+				-webkit-transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+				-ms-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+		@keyframes rotating {
+			from {
+				-webkit-transform: rotate(0deg);
+				-moz-transform: rotate(0deg);
+				-ms-transform: rotate(0deg);
+				-o-transform: rotate(0deg);
+				transform: rotate(0deg);
+			}
+			
+			to {
+				-webkit-transform: rotate(360deg);
+				-moz-transform: rotate(360deg);
+				-ms-transform: rotate(360deg);
+				-o-transform: rotate(360deg);
+				transform: rotate(360deg);
+			}
+		}
+	
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        怀念 无限大！光叔一路的陪伴~泪奔
+        <p>曾为《数码宝贝》演唱主题曲《Butter-Fly》的日本著名歌手和田光司于四月三日因病在日本去世，享年42岁。</p>
+        <img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/320.jpg">
+    </h1>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div id="audio-btn" class="on" onclick="guangshu.changeClass(this,'media')">
+			<audio loop="loop" autoplay="autoplay" src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butter-fly.mp3" id="media" preload="auto"></audio>
+		</div>
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_01.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_02.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_03.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_04.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_05.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_06.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_07.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+			<li id="praise"><span>0</span><img src="http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_08.jpg" alt="怀念 无限大！光叔一路的陪伴~泪奔" /></li>
+		</div>
+		<div class="discuss_betting">
+			<script type="text/template" id="tmpl-discuss">
+				<div class="talk_title_betting">
+					<span><i class="iconfont icon-liuyan" id="post-counter">{{post_count}}</i></span>
+				</div>
+				{{if post_list && post_list.length}} {{include 'tmpl-comments'}} {{/if}}
+			</script>
+		</div>
+		<script type="text/template" id="tmpl-comments">
+			{{each post_list as item index}}
+			<div class="talk_comment" data-id="{{item.post_id}}">
+				<li>
+					<div class="post-photo">
+						<img src="{{item.ccid | getUserInfo:user_list,'icon', 'http://cdn.icomicool.cn/m/act/act-common/images/default_avatar.png'}}">
+					</div>
+					<h3>{{item.ccid | getUserInfo:user_list,'nickname','酷酱'}}</h3>
+					<time>{{item.post_time | date2string}}</time>
+				</li>
+				<li>
+					<p class="comment-content">{{item.post_text}}</p>
+				</li>
+				<li class="post_rich comment-content">
+					{{each item.post_rich as n}} {{if n.img_url}}
+					<img src='http://up.cdn.icomico.com/{{n.img_url}}'> {{/if}} {{/each}}
+				</li>
+				<small><i class="iconfont icon-xin"></i>{{item.praise_count}}</small>
+			</div>
+			{{/each}}
+		</script>
+		<div class="publish_betting"></div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/common/js/template.js"></script>
+		<script src="js/comment.js"></script>
+		<script>
+			setShareInfo({
+				title: '怀念光叔一路的陪伴~泪奔',
+				describe: '曾为《数码宝贝》演唱主题曲《Butter-Fly》的日本著名歌手和田光司于四月三日因病在日本去世，享年42岁。',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201604/butterfly/images/320.jpg',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+				if (isQQ || isWeibo || isWeixin) {
+					header.style.display = 'none';
+				}
+			}
+			$.ajax({
+				url: 'http://comicool.cn/simple_vote.php',
+				dataType: "jsonp",
+				data: {},
+				jsonpCallback: "jsonp_match",
+				success: function(data) {
+					var praise = data.results[12];
+					$("#praise span").html(praise);
+					bindOpenComicEvents();
+				}
+			})
+
+			function bindOpenComicEvents() {
+				$(".go").on('click', function() {
+					if (isApp) {
+						callAppFunction('openEpisodeReaderPage', {
+							comic_id: 10934,
+							ep_id: 6
+						});
+					} else {
+						window.location.href = 'http://m.comicool.cn/content/reader.html?comic_id=10934&ep_id=6';
+					}
+				});
+			}
+			var guangshu = {
+				changeClass: function(target, id) {
+					var className = $(target).attr('class');
+					var ids = document.getElementById(id);
+					(className == 'on') ? $(target).removeClass('on').addClass('off'): $(target).removeClass('off').addClass('on');
+					(className == 'on') ? ids.pause(): ids.play();
+				},
+				play: function() {
+					document.getElementById('media').play();
+				}
+			}
+			guangshu.play();
+			if (!getCookie('flag_Twelve')) {
+				var flag_Twelve = false;
+			} else {
+				$("#praise img").attr("src", "http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_082.jpg");
+			}
+			//				下面的按钮点蜡烛
+			$("#praise").on("click", function() {
+					//					clearCookie("flag_Twelve")
+					if (getCookie('flag_Twelve') == "true") {
+						alert("您已经点过蜡烛了!")
+					} else {
+						var num = $("#praise span").html();
+						$("#praise span").html(parseInt(num) + 1);
+						$("#praise img").attr("src", "http://cdn.icomicool.cn/m/act/201604/butterfly/images/butterfly_082.jpg");
+						$.get("http://comicool.cn/simple_vote.php?sel=12");
+						setCookie("flag_Twelve", "true", 30)
+					}
+				})
+				//取得cookie    
+			function getCookie(name) {
+				var nameEQ = name + "=";
+				var ca = document.cookie.split(';'); //把cookie分割成组    
+				for (var i = 0; i < ca.length; i++) {
+					var c = ca[i]; //取得字符串    
+					while (c.charAt(0) == ' ') { //判断一下字符串有没有前导空格    
+						c = c.substring(1, c.length); //有的话，从第二位开始取    
+					}
+					if (c.indexOf(nameEQ) == 0) { //如果含有我们要的name    
+						return unescape(c.substring(nameEQ.length, c.length)); //解码并截取我们要值    
+					}
+				}
+				return false;
+			}
+			//清除cookie    
+			function clearCookie(name) {
+				setCookie(name, "", -1);
+			}
+			//设置cookie    
+			function setCookie(name, value, seconds) {
+				seconds = seconds || 0; //seconds有值就直接赋值，没有为0，这个根php不一样。    
+				var expires = "";
+				if (seconds != 0) { //设置cookie生存时间    
+					var date = new Date();
+					date.setTime(date.getTime() + (seconds * 1000 * 360 * 24 * 365));
+					expires = "; expires=" + date.toGMTString();
+				}
+				document.cookie = name + "=" + escape(value) + expires + "; path=/"; //转码并赋值    
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

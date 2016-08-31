@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>可米酷下午茶邀请函</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="可米酷下午茶邀请函">
+		<!--<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">-->
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css">
+		<!--<script src="../../../../js/vconsole.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<style type="text/css">
+			#imglist img {
+				width: 100%;
+				display: table;
+			}
+			
+			#ShareBg {
+				filter: alpha(opacity=70);
+				-moz-opacity: 0.7;
+				-khtml-opacity: 0.7;
+				opacity: 0.7;
+			}
+			
+			#comment {
+				margin-bottom: 2rem;
+			}
+			
+			#comment img {
+				width: 50%;
+				margin: 0 auto;
+			}
+			
+			.bdshare-button-style0-32 a {
+				background-image: none !important;
+			}
+		</style>
+		<script type="text/javascript">
+			(function() {
+				var calcFontSize = function() {
+					var html = document.documentElement;
+					var defaultWidth = 320;
+					var defaultFontSize = 20;
+
+					return function() {
+						var currentWidth = html.clientWidth;
+						var currentFontSize = currentWidth / defaultWidth * defaultFontSize;
+						if (currentWidth > 1200) {
+							html.style.fontSize = '20px';
+						} else {
+							html.style.fontSize = currentFontSize + 'px';
+						}
+					}
+				}();
+
+				calcFontSize();
+				window.addEventListener('resize', calcFontSize);
+			})();
+
+			document.addEventListener('DOMContentLoaded', function() {
+				this.documentElement.classList.add('loaded');
+			});
+		</script>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+        可米酷下午茶邀请函
+        <p>(๑•̀ㅂ•́) ✧等你哟~</p>
+        <img src="http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/afternoon-teashare.jpg">
+    </h1>
+		<div class="loading-spinner"></div>
+		<!-- 主要内容：开始 -->
+		<div id="imglist">
+			<li><img src="http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/index_01.jpg" alt="您收到了一封下午茶邀请函" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/index_02.jpg" alt="您收到了一封下午茶邀请函" /></li>
+			<li><img src="http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/index_03.jpg" alt="您收到了一封下午茶邀请函" /></li>
+			<li id="comment"><img src="http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/comment.jpg" alt="您收到了一封下午茶邀请函" /></li>
+		</div>
+		<!-- 主要内容：结束 -->
+		<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://m.comicool.cn/tpl/dist/act-global.js" type="text/javascript"></script>
+		<script src="http://cdn.icomicool.cn/m/tpl/dist/act-share.min.js" type="text/javascript"></script>
+		<script>
+		$( document ).ready(function(){
+				setNewShareInfo({
+					title: '可米酷下午茶邀请函',
+					describe: '(๑•̀ㅂ•́) ✧等你哟~',
+					imageurl: 'http://cdn.icomicool.cn/m/act/201608/afternoon-tea/images/afternoon-teashare.jpg',
+					page_url: window.location.href
+				}, {
+					use: 'customize',
+					init: ''
+				});
+		})
+		
+
+			$('#comment').on('click', function() {
+				if (CONFIG.isApp && !CONFIG.isPPTV) {
+					callAppFunction('openPostDetail', {
+						"post_id": 4045962
+					});
+				} else {
+					new TipBox({
+						str: '需要下载APP才能评论哦!',
+						btnText: ['取消', '确认'],
+						btnCallback: function() {
+							var uri = 'http://m.app.comicool.cn/smart_open/main.php';
+							if (this.innerText == '确认') {
+								window.location.href = uri;
+							} else {
+								return;
+							}
+						}
+					})
+				}
+			})
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

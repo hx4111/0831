@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>连接断开</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<style>
+		html {
+			height: 100%;
+		}
+		body, p {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			height: 100%;
+			background: url(images/abort_bg.jpg) center no-repeat;
+			-webkit-background-size: 100% auto;
+			        background-size: 100% auto;
+		}
+		.wrap {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+		}
+		.text {
+			margin-top: 36.1%;
+			text-align: center;
+			text-indent: 1em;
+			color: #9ab6ff;
+		}
+		.back {
+			margin-top: 10px;
+			font-size: 12px;
+		}
+		.back a {
+			color: inherit;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="text">
+			<p class="error">&nbsp;&nbsp;连接断开，提不起劲...</p>
+			<div class="back">
+				<!-- <span id="count">10</span>秒后自动跳转
+				<a id="back-btn" href="http://m.comicool.cn/act/201509/one_year/">立即返回</a> -->
+				请重新登录后重试
+			</div>
+		</div>
+	</div>
+	<!-- 
+	<script>
+	(function () {
+		var jumpUrl = document.getElementById('back-btn').href;
+		var counter = document.getElementById('count');
+		var count = +counter.innerHTML;
+
+		setInterval(function () {
+			count--;
+			if (count === 0) {
+				window.location.href = jumpUrl;
+			} else {
+				counter.innerHTML = count;
+			}
+		}, 1000);
+	})();
+	</script>
+	-->
+</body>
+</html>

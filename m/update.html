@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="loading-page">
+<head>
+<meta charset="utf-8"/>
+<title>可米酷漫画-今日更新_条漫™</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="keywords" content="今日更新,漫画大全,二次元,看漫画,作品周更,少女漫画,搞笑漫画" />
+<meta name="description" content="今日更新|看漫画:可米酷漫画大全，周周更，天天看，简约而不简单" />
+<link rel="stylesheet" href="css/style.css">
+<script src="js/config.js"></script>
+</head>
+<body class="body-update">
+<header class="header header-white header-fixed">
+	<i class="l-icon icon-menu"></i>
+	<h1 class="c-text ellipsis">
+		今日更新
+	</h1>
+</header>
+<article class="main-panel offset-plus">
+	<section id="update-box" class="update-box">
+		<nav class="update-nav hd">
+			<ul class="update-nav-inner clearfix">
+				<!-- <li>一</li>
+				<li class="now">二</li>
+				<li>三</li>
+				<li>四</li>
+				<li>五</li>
+				<li>六</li>
+				<li>日</li>
+				<li>完</li> -->
+			</ul>
+		</nav>
+		<div class="update-daily">
+			<div class="daily-inner bd clearfix" id="tabBox1-bd">
+				<!-- <ul class="common-list update-list">
+					<li>
+						<div class="li-img">
+							<img src="images/update/update-cover.jpg" />
+						</div><div class="li-txt">
+							<h3>恋爱最简单</h3>
+							<p>关于虎与人的虐恋故事</p>
+							<div class="li-txtbot"><span><i class="icon-good"></i><b>239</b></span><em>五仁月饼</em></div>
+						</div>
+					</li>
+				</ul> -->
+			</div>
+		</div>
+
+	</section>
+	<footer class="footer">
+		
+		<nav class="ft-nav">
+			<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+			<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+			<a href="pro-intr.html">产品介绍</a>
+		</nav>
+		<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+	</footer>
+</article>
+<div class="menu"><!-- 菜单 --></div>
+<script src="js/base.min.js"></script>
+<script src="js/TouchSlide.1.1.js"></script>
+<script src="js/global.js"></script>
+<script>
+getByAjax({
+	api: 'timeline4h5',
+	jsonpCallback: 'jsonp_timeline',
+	success: function(data) {
+//		console.log(data);
+		if (data.msg == 'success') {
+			var now = data.now_weekid - 1;
+			var dailyList = data.timeline_list;
+			var tabText = ['一', '二', '三', '四', '五', '六', '日', '完'];
+			var tabHTML = '', listHTML = '';
+
+			for (var i = 0, len = dailyList.length; i < len; i++) {
+				var comiList = dailyList[i].comi_list;
+				var liHTML = '';
+				
+				if (i == now) {
+					tabHTML += '<li class="on now">' + tabText[i] + '</li>';
+				} else {
+					tabHTML += '<li>' + tabText[i] + '</li>';
+				}
+				if (comiList && comiList.length) {
+					for (var j = 0, len2 = comiList.length; j < len2; j++) {
+						var comic = comiList[j];
+						var thumb = CONFIG.imgBase + comic.comic_cover_url;
+						var title = comic.comic_title;
+						var subtit = comic.comic_desc_lite;
+						var author = comic.comic_auth;
+						var hearts = comic.praise_count;
+						var href = CONFIG.detailBase + 'comic_id=' + comic.comic_id;
+						var imgCutSize = '?imageView2/2/w/180';
+
+						liHTML += ''
+							+ '<li>'
+							+	'<a href="' + href + '">'
+							+ 		'<div class="li-img">'
+							+ 			'<img src="' + thumb + imgCutSize + '" />'
+							+ 		'</div>'
+							+ 		'<div class="li-txt">'
+							+ 			'<h3>' + title + '</h3>'
+							+ 			'<p>' + subtit + '</p>'
+							+ 			'<div class="li-txtbot">'
+							+ 				'<span>'
+							+ 					'<i class="icon-good"></i>'
+							+ 					'<b>' + hearts + '</b>'
+							+ 				'</span>'
+							+ 				'<em>' + author + '</em>'
+							+			'</div>'
+							+ 		'</div>'
+							+	'</a>'
+							+ '</li>';
+					}
+				}
+				
+				listHTML += '<div class="con"><ul class="common-list update-list">' + liHTML + '</ul></div>';
+			}
+
+			$('.update-nav-inner').html(tabHTML);
+			$('.daily-inner').html(listHTML);
+
+			TouchSlide({
+				slideCell: "#update-box",
+				defaultIndex: now,
+				endFun:function(i){ //高度自适应
+					var bd = document.getElementById("tabBox1-bd");
+					bd.parentNode.style.height = bd.children[i].children[0].offsetHeight+"px";
+					if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
+				}
+			});
+
+		}
+	}
+});
+</script>
+</body>
+</html>

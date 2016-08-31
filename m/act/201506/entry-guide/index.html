@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="HandheldFriendly" content="true" />
+<title>可米酷漫画周赛参赛指引</title>
+<meta name="keywords" content="可米酷漫画,可米酷大赏,可米酷app,comicool,lezhin,手机漫画,漫画app,原创漫画,二次元,漫画连载" />
+<meta name="description" content="可米酷漫画，国内首款手机彩色条漫阅读软件，带来长长的二次元超爽阅感！原创漫画每日更新，观看轻松流畅，漫画收藏快捷方便，阅读体验绝佳，可米酷app，只为手机而生，现可米酷大赏活动正在火爆进行中。" />
+<script src="http://m.comicool.cn/act/act-common/config.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+    <h1 class="share-info" style="display:none">
+        可米酷漫画周赛参赛指引
+        <p>周周有大赛，投稿即获奖</p>
+        <img src="http://cdn.icomicool.cn/m/act/201506/entry-guide/images/share-img2.jpg" alt="可米酷漫画,comicool" />
+    </h1>
+    <header class="topbar cl">
+        <a class="icon-home" href="http://m.comicool.cn/"><img src="http://m.comicool.cn/act/act-common/icon-home.png"></a>
+        <a class="icon-share"><img src="http://m.comicool.cn/act/act-common/icon-share.png"></a>
+    </header>
+    <article class="pagebox entry-guide">
+        <div class="page-t">
+            <img src="images/top.jpg" alt="可米酷漫画,comicool" />
+        </div>
+		<section class="page-con">
+            <ul class="page-list">
+                <!-- 生成图片内容 -->
+            </ul>
+        </section>
+    </article>
+    <div class="sharebox">
+        <div class="share-table">
+            <div class="share-table-cell">
+                <div class="share-inner">
+                    <a href="javascript:;" class="share-clo">×</a>
+                    <div class="bdsharebuttonbox" data-tag="share_1">
+                      <a class="bds_tsina" data-cmd="tsina"></a><a class="bds_weixin" data-cmd="weixin"></a><a class="bds_tqq" data-cmd="tqq"></a><a class="bds_qzone" data-cmd="qzone"></a><a class="bds_renren" data-cmd="renren"></a><a class="bds_count" data-cmd="count"></a>
+                    </div>
+                    <p>带我分享带我飞︿(￣︶￣)︿</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tipbox">
+        <img src="images/tip.png" alt="可米酷漫画,comicool" />
+    </div>
+    <div class="float-fix">
+        <div class="float-img">
+            <img src="images/float-tip.png" alt="可米酷漫画,comicool" />
+        </div>
+        <span class="open-btn">立即打开</span>
+        <span class="float-clo">×</span>
+    </div>
+</body>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://apps.bdimg.com/libs/fastclick/1.0.0/fastclick.min.js"></script>
+<script type="text/javascript">
+window.addEventListener('load', function() {
+  FastClick.attach(document.body);
+}, false);
+
+var retry = true;
+var ua=navigator.userAgent.toLowerCase(),
+    isMobile = ua.indexOf('mobile')>0,
+    isWeixin = (/micromessenger/.test(ua)) ? true : false,
+    isQQ = (/qq\//.test(ua)) ? true : false,
+    isIOS = ua.indexOf('(ip')>0 && isMobile,
+    isWeibo = (/Weibo/i.test(ua)) ? true : false,
+    isApp = (/icomico/i.test(ua)) ? true : false,
+    isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+    isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+
+var shareTextInfo = {
+    title: '可米酷漫画周赛参赛指引',
+    describe: '周周有大赛，投稿即获奖',
+    imageUrl: 'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/share-img.jpg',
+    pageUrl: 'http://m.comicool.cn/act/201506/entry-guide/index.html'
+}
+
+var list = [
+	'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/1.jpg',
+    'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/2.jpg',
+    'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/3.jpg',
+    'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/4.jpg',
+    'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/5.jpg'
+];
+
+(function(){
+    if (!isApp) {
+        //底部状态条，打开app
+        $('.float-fix').show();
+        var floatHeight = $('.float-fix').height();
+        $('.pagebox').css('padding-bottom', floatHeight +'px');
+
+        $('.float-clo').on('click', function(){
+            $('.float-fix').hide();
+            $('.pagebox').css('padding-bottom', 0);
+        });
+
+        $('.float-img, .open-btn').on('click', function(){
+             window.location.href = 'http://m.app.comicool.cn/smart_open/main.php';
+        });
+
+        //微信\QQ\微博下无顶部状态条
+        if (isWeixin || isQQ ||isWeibo) {
+            /*$('.icon-share').on('click', function () {
+                $('.tipbox').show();
+            });
+            $('.tipbox').on('click', function () {
+                $(this).hide();
+            });*/
+        } else {
+            $('.topbar').show();
+            $('.icon-share').on('click', function () {
+                $('.sharebox').show();
+            });
+            $('a.share-clo').on('click', function () {
+                $('.sharebox').hide();
+            });
+        }
+    }
+})();
+
+loadpic (list, function(){
+    $('.page-list li').eq(1).append('<a href="http://post.comicool.cn/" class="btn-post"></a>');
+});
+
+// 图片递归加载
+function loadpic(list,callback){
+    if( $.isArray(list) && list.length ){
+        var item = list.shift();
+        var image = new Image();
+        var $imgHtml = $('<li></li>');
+            image.src = item;
+            image.alt = '可米酷漫画,comicool,手机漫画,原创漫画,漫画app';
+
+        image.onload = function(){
+             $('.page-list').append($imgHtml);
+             $imgHtml.append($(this));
+             loadpic(list,callback);
+        };
+    }else{
+        $.isFunction(callback) && callback(list);
+    }
+}
+
+window.onload = function() {
+    //app分享与微信分享
+    if (isApp) {
+        var appShareObj = {
+            'title' : shareTextInfo.title,
+            'describe' : shareTextInfo.describe,
+            'imageurl' : shareTextInfo.imageUrl,
+            'page_url' : shareTextInfo.pageUrl
+        };
+        var appShareStr = JSON.stringify(appShareObj);
+
+        try {
+            comicool.showShareBtn(appShareStr);
+        } catch (e) {
+            window.location.href= 'http://comicool/showShareBtn?title=' + appShareObj.title + '&describe=' + appShareObj.describe + '&imageurl=' + appShareObj.imageurl + '&page_url=' + encodeURIComponent(appShareObj.page_url);
+        }
+        //callAppFunction("showShareBtn", appShareObj);
+    };
+    
+    if (isWeixin) {
+        shareTextInfo.imageUrl = 'http://cdn.icomicool.cn/m/act/201506/entry-guide/images/share-img2.jpg';
+        var wxUrl = 'http://comicool.cn/webapi/wxauth.php?url=' + encodeURIComponent(location.origin + location.pathname + location.search);
+
+        $.ajax({
+            url: wxUrl,
+            type: 'GET',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            jsonpCallback: 'jsonp_wxapi',
+            success: function(data) {
+                //alert(data);
+                wx.config({
+                    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                    appId: data.appId, // 必填，公众号的唯一标识
+                    timestamp: data.timestamp, // 必填，生成签名的时间戳
+                    nonceStr: data.nonceStr, // 必填，生成签名的随机串
+                    signature: data.signature,// 必填，签名，见附录1
+                    jsApiList: ['onMenuShareAppMessage', 'onMenuShareTimeline', 'onMenuShareQQ'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+                });
+
+                wx.ready(function() {
+                    var wxShareObj = {
+                        title: shareTextInfo.title, // 分享标题
+                        desc: shareTextInfo.describe, // 分享描述
+                        link: shareTextInfo.pageUrl, // 分享链接
+                        imgUrl: shareTextInfo.imageUrl
+                    };
+
+                    wx.onMenuShareAppMessage(wxShareObj);
+                    wx.onMenuShareTimeline(wxShareObj);
+                    wx.onMenuShareQQ(wxShareObj);
+                });
+            }
+        });
+    }
+
+}   //window.onload 结束
+</script>
+<script>
+  window._bd_share_config = {
+    common: {
+        bdText : shareTextInfo.title, 
+        bdDesc : shareTextInfo.describe, 
+        bdUrl : shareTextInfo.pageUrl,   
+        bdPic : shareTextInfo.imageUrl
+      },
+      share: [{
+        "bdSize" : 32
+      }]
+  };
+
+  //以下为js加载部分
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+
+  //百度统计代码安装
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+</html>

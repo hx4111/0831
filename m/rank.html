@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="loading-page">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>可米酷漫画-排行榜_条漫™</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画排行榜,热门漫画,周赛,实时排行榜,月度排行榜,可米酷漫画" />
+		<meta name="description" content="漫画排行榜:助你第一时间找到最热门的漫画，条漫阅读看不停。" />
+		<link rel="stylesheet" href="css/style.css">
+		<script src="js/config.js"></script>
+	</head>
+
+	<body class="body-rank">
+		<header class="header header-white header-fixed">
+			<i class="l-icon icon-menu"></i>
+			<h1 class="c-text ellipsis">
+		排行榜
+	</h1>
+		</header>
+		<article class="main-panel offset-plus">
+			<section class="rank-box">
+				<ul class="rank-list clearfix">
+				</ul>
+			</section>
+			<footer class="footer">
+
+				<nav class="ft-nav">
+					<a href="about.html">关于我们</a>&nbsp;|&nbsp;
+					<a href="contact.html">联系我们</a>&nbsp;|&nbsp;
+					<a href="pro-intr.html">产品介绍</a>
+				</nav>
+				<p>Copyright ©2014-2015ComiCool.All Rights Reserved</p>
+			</footer>
+		</article>
+		<div class="menu"><!-- 菜单 --></div>
+		<script src="js/base.min.js"></script>
+		<script src="js/TouchSlide.1.1.js"></script>
+		<script src="js/global.js"></script>
+		<script>
+			$(function() {
+				var pullPostLock = false,
+					place = 0,
+					lastPostId = 0;
+				getPostList(0, 10, 2);
+				window.addEventListener('scroll', checkMeetPageBottom);
+				var windowHeight = document.documentElement.clientHeight;
+				function getPostList(content_id, page_size, page_direction) {
+					if (pullPostLock) {
+						return;
+					}
+					pullPostLock = true;
+					getByAjax({
+						api: 'allcomic4h5',
+						data: {
+							"comic_id": content_id,
+							"page_size": page_size,
+							"page_direction": page_direction,
+							"list_type": "all",
+							"order_type": "rating",
+							"req_id": 0,
+							"req_param": 0
+						},
+						jsonpCallback: 'jsonp_allcomic',
+						success: function(data) {
+							pushDiv.add(data);
+						}
+					});
+				}
+				var pushDiv = {
+					add: function(res) {
+						pullPostLock = false;
+						console.log(res);
+						var html = "",
+							list = res.content_list;
+						for (var i = 0, len = list.length; i < len; i++) {
+							var host = "http://cdn.icomico.com/",
+								type = list[i].content_type,
+								action = list[i].content_action,
+								category = list[i].content_category,
+								title = list[i].content_title,
+								abstract = list[i].content_desc_lite2,
+								author = list[i].content_subtitle,
+								praise = list[i].content_praise_count,
+								imgUrl = list[i].content_poster,
+								imgCutSize = '?imageView2/1/w/155/h/92/q/100';
+							lastPostId = list[list.length - 1].content_action;
+							categoryID = category.split(/[#|]/)[0];
+							place++;
+							switch (type) {
+								case 1:
+									var ccid = action,
+										go_ccid = 'content/detail.html?comic_id=' + ccid;
+									break;
+								case 2:
+									var arr = action.split("_"),
+										ccid = arr[0],
+										epid = arr[1],
+										go_ccid = 'content/detail.html?comic_id=' + ccid,
+										go_epid = 'content/reader.html?comic_id=' + ccid + '&ep_id=' + epid;
+									break;
+								default:
+									var ccid = 0,
+										epid = 0;
+									break;
+							}
+							try {
+								category = category.split(/[#|]/)[1];
+								category = category ? category : "未知";
+								categoryID = categoryID ? categoryID : 10;
+							} catch (e) {
+								//TODO handle the exception
+							}
+							html += '<figure><div><a href="' + go_ccid + '"><img src="' + host + imgUrl + imgCutSize + '"></a><span class="rank_cate" style="background:' + getCategoryColorByID(categoryID, .8) + '"></span>' + '<span class="rank_cate_text">' + category + '</span>' + '</div><div><a href="' + go_ccid + '"><h3>' + title + '</h3><span class="rank_author">' + author + '</span><p>' + abstract + '</p></a></div><small>' + place + '</small></figure>'
+						};
+						$(".rank-list").append(html);
+					}
+				}
+
+				function checkMeetPageBottom(e) {
+					var threshold = document.documentElement.scrollHeight - windowHeight - 99;
+					var curScrollTop = document.body.scrollTop;
+					if (curScrollTop >= threshold) {
+						getPostList(lastPostId, 5, 2);
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

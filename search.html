@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>可米酷漫画搜索|热门漫画_搜你所想-漫画从此就这么看_条漫™</title>
+<meta name="keywords" content="漫画搜索,热门漫画,少女漫画,耽美漫画,搞笑漫画,恐怖漫画,校园漫画,看漫画" />
+<meta name="description" content="漫画搜索|热门漫画:可米酷原创漫画，搞笑贱逗萌，少女情窦记，校园恐怖耽美不会少，丰富漫画连载内容看不完哟。" />
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/common-pc.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.comicool.cn/images/favicon.ico" media="screen" />
+<!--[if lt IE 9]><script src="js/html5.js"></script><![endif]-->
+</head>
+<body class="body-read">
+<div class="top"><!--可米酷漫画头部--></div>
+	<article class="mainbox" data-errorimg>
+		<nav class="crumbs">
+			<b>我的位置：</b><a href="index.html" title="可米酷首页">首页</a><em>&gt;</em><span>搜索结果</span>
+		</nav>
+		<section class="search-result">
+			<form class="search-result-t" data-target="self">
+				<input type="text" value='请输入关键字' id="search-result-kw">
+				<input type="reset" value="" class='rs'>
+			</form>
+			<div class="search-result-b" data-ajax="http://proxy.icomico.com/searchinfo4web">
+				<h2 class="search-result-tit">搜索结果</h2>
+				<p class="search-result-total"></p>
+				<ul class="cl search-result-list">
+					<!-- <li>
+						<a href="">
+							<img src="http://cdn.icomicool.cn/images/search/case.jpg" alt="">
+							<h3>神兽退散</h3>
+							<i>五仁月饼</i>
+							<p>为了获得神器东皇钟而穿越到为了获得神器东皇钟而穿越到</p>
+						</a>
+					</li> -->
+				</ul>
+				 <!-- 没有搜索内容 -->
+				<div class="search-result-empty">
+					<i></i>
+					<p>对不起，我们没有找到您要找的[<span id="keyVal"></span>]</p>
+				</div> 
+			</div>
+		</section>
+	</article>
+
+<div class="footers"><!--底部引入--></div>
+
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript">
+(function() {
+    var lastSearchTime = getCookie('lastSearchTime');
+	var keyVal = getQueryString('keyword');
+	var url = encodeURI(CONFIG.ajaxBase + 'searchinfo4web?keyword=' + keyVal + '&from=search'+'&t='+(new Date()).valueOf());
+
+	$('.search-result-list').getByAjax({
+		url: url,
+		jsonpCallback: 'jsonp_searchinfo',
+		beforeSend: function (XMLHttpRequest) {
+            //3秒内只能搜索一次
+            if(new Date().getTime() - lastSearchTime < 3000) {
+                setCookie('lastSearchTime', new Date().getTime());
+                $('.search-result-list').remove();
+                $('.search-result-empty').show().find('p').html('你操作的太频繁啦~');
+                return false;
+            } else {
+            	return true;
+            }
+		},
+		success: function (response, status, xhr) {
+			if (response.msg == 'success') {
+				var arr = response.search_result_list;
+				var count = arr ? arr.length : 0;
+				var html = '';
+				var imgCutSize = '?imageView2/1/w/204/h/137/q/100';
+
+				$('.search-result-total').html('总共（' + count + '）');
+				if(count) {
+					for (var i = 0, len = count; i < len; i++) {
+						//获取查找的相关数据
+						html += ''
+							 +	'<li>'
+							 +   	'<a href="' + CONFIG.detailBase + 'comic_id=' + arr[i].action + '">'
+							 +   		'<img src="' + CONFIG.placeholder + '" data-src="' + CONFIG.imgBase + arr[i].url + imgCutSize + '" alt="' + CONFIG.title + '" />'
+							 +   		'<h3 class="ellipsis">' + arr[i].title + '</h3>'
+							 +   		'<i>' + arr[i].title_third + '</i>'
+							 +   		'<p>' + arr[i].title_sub + '</p>'
+							 +		'</a>'
+							 +  '</li>';
+					}
+					$('.search-result-list').append(html);
+				} else {
+					$('.search-result-list').remove();
+					$('#keyVal').html(keyVal);
+					$('.search-result-empty').show();
+				}
+        	}
+		},
+		complete: function (XMLHttpRequest, textStatus) {
+            setCookie('lastSearchTime', new Date().getTime());
+		}
+	});
+
+	$('#search-result-kw').val(keyVal).css('color', '#333');
+
+})();
+</script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+</body>
+</html>

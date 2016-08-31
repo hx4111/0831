@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>高陵先生完结撒花</title>
+	<meta name="keywords" content="高陵先生,">
+	<meta name="description" content="高陵先生完结撒花,投票迎福利图">
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1463478490_8874226.css">
+	<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/m/tpl/css/style.min.css?_=1468223173180">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="http://cdn.icomicool.cn/m/js/base.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://cdn.icomicool.cn/m/js/md5.min.js"></script>
+</head>
+<body>
+	<ul class="img-list">
+		<li><img src="images/index_01.jpg" alt=""></li>
+		<li><img src="images/index_02.jpg" alt=""></li>
+		<li><img src="images/index_03.jpg" alt=""></li>
+		<li><img src="images/index_04.jpg" alt=""></li>
+		<li><img src="images/index_05.jpg" alt=""></li>
+		<li>
+			<div class="votes-block">
+				<ul class="vote-list">
+					<li class="vote-item" id="bd-comi-read-01">
+						<div class="vote-left">
+							<img src="images/icon-01.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								小美
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item" id="bd-comi-read-02">
+						<div class="vote-left">
+							<img src="images/icon-02.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								姬娜
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item" id="bd-comi-read-03">
+						<div class="vote-left">
+							<img src="images/icon-03.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								小贝
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item">
+						<div class="vote-left">
+							<img src="images/icon-04.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								小雪/小雅
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item">
+						<div class="vote-left">
+							<img src="images/icon-05.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								叶菲
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item">
+						<div class="vote-left">
+							<img src="images/icon-06.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								点点
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+					<li class="vote-item">
+						<div class="vote-left">
+							<img src="images/icon-07.png" alt="">
+						</div><div class="vote-right">
+							<div class="vote-progress"></div>
+							<div class="text-l">
+								龙克锋
+							</div><div class="text-r">
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</li>
+		<li>
+			<img src="images/index_07.jpg" alt="">
+			<div class="go" data-ccid="93" id="bd-comi-read-04"></div>
+		</li>
+	</ul>
+<script src="js/vote.js?_=1468223173181" type="text/javascript"></script>
+<script src="http://cdn.icomicool.cn/m/tpl/dist/act-global.min.js?_=1468223173181" type="text/javascript"></script>
+<script type="text/javascript">
+	$('.vote-item').on('click', function() {
+		var id = $(this).attr('id');
+		$.get('http://stat.comicool.cn/act/201608/rvoetglsx/index.html?' + id);
+
+		var testCnt = {};
+		var indexTest = $(this).index();
+		testCnt.api = 'handleVote';
+		testCnt.id = 'votetest';
+		testCnt.pid = indexTest;
+		testCnt.sign = PraiseFun.getSign({id: 'votetest', pid: indexTest});
+
+		$.ajax({
+			url: 'http://www.comicool.cn/api/vote.php',
+			dataType: 'jsonp',
+			data: testCnt,
+			jsonpCallback: 'jsonp_doPraiseTest',
+			success: function(data) {
+				console.info('test success');
+			}
+		})
+	})
+
+	window.onload = function() {
+		var vote = new Vote({arrLength: 7}, renderVote);
+		var cookieIndex = getCookie('rvoetglsxPid');
+		if (cookieIndex && Number(cookieIndex) >= 0) {
+			$('.vote-item').eq(cookieIndex).find('.vote-right').addClass('vote-now-block');
+			$('.vote-item').eq(cookieIndex).find('.vote-progress').addClass('vote-now');
+		}
+
+		$('.vote-item').on('click', function() {
+			if ($('.vote-now-block').length > 0) {
+				new TipBox({type: 'toastBox', str: '您已经投过票了'});
+				return;
+			} else {
+				var index = $(this).index();
+				PraiseFun.doPraise(index).then(function(data) {
+					if (data) {
+						vote.init();
+					}
+				});
+				$(this).find('.vote-right').addClass('vote-now-block');
+				$(this).find('.vote-progress').addClass('vote-now');
+				setCookie('rvoetglsxPid', index);
+			}
+		})
+
+		function renderVote(voteArr, votePercent) {
+			for (var i = 0, len = voteArr.length; i < len; i++) {
+				$('.vote-item').eq(i).find('.text-r').html(voteArr[i] + '(' + votePercent[i] + '%)');
+				$('.vote-item').eq(i).find('.vote-progress').css('width', votePercent[i] + '%');
+			}
+		}
+	}
+
+</script>
+<!-- 百度统计 -->
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

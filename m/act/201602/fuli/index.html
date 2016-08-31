@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>一大波红包转盘来袭</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="一大波红包转盘来袭">
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<!--<script src="http://m.comicool.cn/m-common/js/zepto.min.js"></script>-->
+		<style type="text/css">
+			* {
+	margin: 0;
+	padding: 0;
+}
+ul,li {list-style: none;}
+img {width: 100%;display: table;}
+@media screen and (min-width:640px) {
+				html,
+				body {
+					width: 640px;
+					margin: 0 auto;
+					font-size: 40px !important;
+				}
+			}
+@media screen and (min-width:640px) {
+				#userTip {
+					width: 640px !important;
+					margin: 0 auto;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div class="box">
+<li><img src="images/index_01.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_02.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_03.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_04.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_05.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_06.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_07.jpg" alt="一大波红包转盘来袭" /></li>
+<li id="exchange-btns"><img src="images/index_08.jpg" alt="一大波红包转盘来袭" /></li>
+<li><img src="images/index_09.jpg" alt="一大波红包转盘来袭" /></li>
+<li id="task"><img src="images/index_10.jpg" alt="一大波红包转盘来袭" /></li>
+			</div>
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script>
+			function jumpDownload() {
+				window.location.href = "http://m.app.comicool.cn/smart_open/main.php";
+			}
+			window.onload = function() {
+				var exchangeBtn = document.getElementById('exchange-btns'),
+				    taskBtn = document.getElementById('task');
+				exchangeBtn.addEventListener("touchend", function() {
+					callAppFunction('openMallPage', {});
+				});
+				taskBtn.addEventListener("touchend", function() {
+					if (isApp) {
+						callAppFunction('returnToMainTab', {
+							"tab_name": "mine",
+						});
+					}
+				});
+				//如果是可米酷app
+				if (isApp) {
+					setByUserLoginStatus(
+						loginCallback,
+						function() {
+							exchangeBtn.addEventListener('touchend', jumpLoginPage, false);
+							//设置App里登录后的回调函数
+							callAppFunction('setJSCallback', {
+								'account_event': 'loginHandler'
+							});
+						}
+					);
+				} else {
+					exchangeBtn.addEventListener('touchend', jumpDownload, false);
+				}
+				window.loginHandler = function(obj) {
+					setByUserLoginStatus(loginCallback);
+					exchangeBtn.removeEventListener('touchend', jumpLoginPage);
+				}
+
+				function loginCallback(userInfo) {
+					exchangeBtn.addEventListener('touchend', function() {
+						callAppFunction('openMallPage', {});
+					}, false);
+				}
+
+				function jumpLoginPage() {
+					callAppFunction('openLoginPage', {});
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

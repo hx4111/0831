@@ -1,0 +1,68 @@
+
+.ctrl-box {
+	position: fixed;
+	right: 0rem;
+	bottom: 5rem;
+	color: #008CEE;
+	background-color: #333;
+	border-radius: 5px;
+	opacity: .7; 
+	z-index: 999;
+	.ctrl-comps {
+		display: inline-block;
+		padding-left: .3rem;
+		.ctrl-comp {
+			clear: both;
+			color: #fff;
+			margin-right: .7rem;
+			.iconfont {
+				font-size: 1.2rem;
+			}
+		}
+		.ctrl-post {
+		}
+		.ctrl-top {
+			display: none;
+		}
+		.ctrl-praise {
+			.is-praised {
+				color: #e33036;
+			}
+		}
+	}
+
+	.hide-ctrl-comps {
+		display: none;
+	}
+
+	.ctrl-btn {
+		display: inline-block;
+		.icon-right, .icon-left {
+			font-size: 1.2rem;
+			// background-color: #fff;
+			border-radius: 100%;
+			margin-right: .3rem;
+			margin-left: .3rem;
+		}
+	}
+}
+
+.ctrl-container {
+	display: none;
+	position: fixed;
+	right: 0.2rem;
+	bottom: 5rem;
+	color: #fff;
+	z-index: 999;
+
+	.ctrl-comp {
+		padding: .3rem 0.5rem;
+		border-radius: 100%;
+		background-color: #008cee;
+		margin-bottom: .5rem;
+	}
+
+	&.ctrl-show {
+		display: block;
+	}
+}

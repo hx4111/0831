@@ -1,0 +1,124 @@
+@charset "utf-8";
+/* CSS Document */
+html, body {-webkit-text-size-adjust: 100%; /*overflow:hidden;谷歌字体小于12兼容*/ }
+body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,table,tr,th,td{margin:0;padding:0;}
+body,input,textarea,select{font:12px/1.5 Microsoft YaHei,Tahoma,Arial,Helvetica,Geneva,sans-serif; color:#333;}
+ol,ul{list-style:none;}
+input,textarea,select{resize:none;}
+table{width:100%; border-collapse:collapse; border-spacing:0;}
+a{outline:none; blr:expression(this.onFocus=this.blur()); color:#4c4c4c; cursor: pointer;}
+a,a:hover{text-decoration:none;}
+img{border:none;vertical-align:middle;}
+.cl:before,.cl:after{content:"";display:table;}
+.cl:after{clear:both;}
+.cl{zoom:1;}
+
+.container { width:100%; font-family: Microsoft YaHei; background: #fff;}
+.h-head { width: 100%; background: #E62C32;}
+.h-head-inner { width:1000px; height: 60px; margin: auto;}
+.h-logo { float: left; width: 277px; height: 60px; overflow: hidden; padding-left: 42px;}
+a.h-zplnk { display: block; float: right; width: 144px; height: 39px; color: #fff; margin:10px 42px 0 0; background: url(http://cdn.icomicool.cn/images/sprite.png) 0 -270px no-repeat;}
+a.h-zplnk:hover { opacity: 0.9; filter:alpha(opacity=90);}
+
+.h-banner { height: 530px; background: url(http://cdn.icomicool.cn/images/h-banner.jpg) center top no-repeat; margin: auto;}
+
+.h-con { width: 100%;}
+.h-con li { height: 598px; width: 100%; text-align: center; border-top: 1px solid #DBE3E4; background: #fff;}
+.h-con li.con-li2 { background: #F1F5F6}
+
+.h-foot { background: #f2f2f2; color: #c0c0c0;}
+.h-foot-inner { width: 916px; margin: auto; height: 211px; background: url(http://cdn.icomicool.cn/images/foot-img.jpg) right top no-repeat; padding-top: 36px;}
+.downbox { width: 100%;}
+.downbox div { float: left;}
+
+.down-ewm { width: 128px; height: 128px; padding: 6px; background: #fff;}
+.down-ewm img { width: 128px; height: 128px;} 
+.down-lnk { width: 320px; padding-top: 45px; font-size: 0; text-align: center;}
+.down-lnk a { display: inline-block; margin: 0 11px; background: url(http://cdn.icomicool.cn/images/sprite.png) no-repeat; width: 130px; height: 50px;}
+.down-lnk a:hover { opacity: 0.9; filter:alpha(opacity=90);}
+.down-lnk a.iOS-downbtn { background-position: 0 -70px;}
+.down-lnk a.Andr-downbtn { background-position: 0 -170px;}
+.iOS-tip { position: absolute; top: -20px; left: 140px; height: 30px; width: 220px; text-align: center; background: #575757; z-index: 50; line-height: 30px; font-size: 14px; display: none; color: #fff; border-radius: 6px;}
+.h-foot-bottom {}
+.h-foot-bottom h3 { padding: 22px 0 4px;}
+.h-foot-bottom h3 a, .h-foot-bottom h3 span { font-size: 14px; margin-right: 20px; color: #4c4c4c;}
+.h-foot-bottom h3 a:hover { opacity: 0.9; filter:alpha(opacity=90);}
+.h-foot-bottom p { font-family: Arial;}
+
+.dialoge-bg { width: 100%; height: 100%; cursor: pointer; position: fixed; top: 0; left: 0; background: url(http://cdn.icomicool.cn/images/dialoge-bg.png) repeat; z-index: 100; display: none;}
+.wx-dialoge{ width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 150; display: none;} 
+.wx-main { width: 230px; position: relative; margin: auto; background: #fff; height: 286px; overflow: hidden;}
+.wx-ewm { height: 230px;}
+.wx-ewm img { width: 230px; height: 230px;}
+.wx-main p { padding: 0 15px 20px; color: #999;}
+.wx-main a.wx-clo { position: absolute; right: 0; top: 0; display: block; width: 22px; text-align: center; z-index: 150; font: bold 22px/1 Arial;}
+.wx-main a.wx-clo:hover { color: red;}
+
+
+/*关于我们页面*/
+.main-con { min-height: 768px; padding: 0 42px 50px; margin: auto; width: 916px;}
+.main-con h1 { line-height: 76px; height: 80px; color: #e32f38; font-size: 50px; font-weight: normal;}
+.main-con h1 em { font: normal 34px/1 Arial; margin-left: 14px;}
+.about-con { padding-top: 37px;}
+
+.l-side { float: left; width: 132px; border: 1px solid #E5E5E5; border-bottom: 0;}
+.l-side li { width: 100%; line-height: 46px; height: 47px; text-align: center; border-bottom: 1px solid #E5E5E5;}
+.l-side li.curr { background: #e5e5e5;}
+.l-side li a { color: #033333; font-size: 14px;}
+.l-side li a:hover { text-decoration: underline;}
+
+.r-inner-con { float: right; width: 700px; border: 1px solid #E5E5E5; padding: 40px 30px; min-height: 480px;}
+.inner-txt { display: none; color: #000; font-size: 18px;}
+.inner-txt h2 { font-size: 20px; line-height: 40px; padding:0 0 2px 6px; border-bottom: 1px solid #EEEEEE; color: #444; font-weight: normal;}
+.inner-txt .txt-con a:hover { text-decoration: underline;}
+.inner-txt .txt-con { padding: 20px 10px;}
+
+.about-txt { font-size: 16px;}
+.about-txt .txt-con p { line-height: 32px; text-indent: 40px;}
+
+.contact-txt .txt-con { padding: 15px 10px 15px 56px;}
+.contact-txt h1 { line-height: 24px; height: 24px; color: #333; font-size: 24px; text-align: center; font-weight: bold;}
+.contact-txt .txt-con p { line-height: 32px; text-indent: 0; font-size: 16px;}
+.contact-txt .txt-top { font-size: 18px}
+.contact-txt .txt-top { padding: 20px 10px 15px 0;}
+.contact-txt .txt-top p { font-size: 18px;}
+
+/*用户协议部分*/
+.legacy-page .legacy-head { padding-bottom: 12px; }
+.legacy-page h3 { font-size: 14px; font-weight: bold; padding-bottom: 2px;}
+.legacy-head p { text-indent: 24px;}
+.legacy-page p { font-size: 14px; padding:0;}
+.legacy-page p.first { font-size: 14px; padding-bottom:4px;}
+.legacy-page p.last { padding: 12px 0;text-align: right;}
+.legacy-txt { padding-bottom: 8px;}
+
+/*免责声明部分*/
+.note-page, .legacy-page { letter-spacing: 1px;}
+.note-page h3 { font-size: 14px; font-weight: normal;}
+.note-txt { padding-bottom: 8px;}
+.note-txt p { font-size: 14px; padding:0 0 0 18px;}
+.note-txt ul { padding:0 0 0 21px; list-style:disc inside none;}
+.note-txt li { font-size: 14px;}
+
+/*产品介绍部分*/
+.prointr-txt { font-size: 16px;}
+.prointr-txt .txt-con h3 { font-size: 16px; padding-bottom: 5px;}
+.prointr-txt .txt-con h4 { font-size: 16px; padding: 5px 0; font-weight: normal;}
+.prointr-txt .txt-con p { line-height: 26px; text-indent: 0;}
+.prointr-txt .txt-con ol { padding-left: 0;}
+.prointr-txt .txt-con { border-bottom: 1px dashed #E5E5E5;}
+
+/*友情链接*/
+.link-con { padding-top: 37px; min-height: 500px;}
+.link-inner { padding: 30px 0; font-size: 0; min-height: 300px;}
+.link-inner a { margin: 0 15px 30px 0; font-size: 18px; color: #333; line-height: 34px;}
+.link-inner a:hover { text-decoration: underline;}
+.link-inner a img { width: 88px; height: 31px; border-radius: 3px;}
+
+
+
+/*@media screen and (max-width: 1000px) {
+    .h-head-inner,.h-banner,.downbox-inner { width:100%;}
+    img { max-width: 100%;}
+}
+*/

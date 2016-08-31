@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>想拿红包?快去把可米酷安利给新盆友!</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="漫画网,漫画大全,在线漫画,二次元,少女漫画,搞笑漫画,可米酷漫画官网" />
+		<meta name="description" content="快来领取红包哟,www.comicool.cn" />
+		<meta name="generator" content="Comicool" />
+		<meta name="author" content="Comicool Team and Comicool UI Team" />
+		<meta name="copyright" content="2014-2015 Comicool Inc." />
+		<link rel="stylesheet" type="text/css" href="http://cdn.icomicool.cn/thanksgiving/css/style.css" />
+		<script type="text/javascript" src="http://cdn.icomicool.cn/app/app-common/js/zepto.min.js"></script>
+		     <script src="http://cdn.icomicool.cn/thanksgiving/js/style.js"></script>
+	</head>
+
+	<body class="draw_back" >
+<div class="draw_top">
+	<!--<div id="people">已有20人领取该红包并成功激活</div>-->
+	<div id="draw_phone"><!--<li><em>1.</em><img src='http://div.io/uploads/avatar/987_s.jpg'><s>撒旦飞洒</s><span>￥500</span></li>--></div>
+</div>
+<div class='install_comi'><a href="http://m.app.comicool.cn/smart_open/main.php?ch=share"  target="_blank">安装可米酷</a></div>
+<div id="ShareBg"></div>
+<div class="share_tip"></div>
+<script>
+if(isQQ || isWeixin){
+	$(".install_comi").on("click",function(e){
+		e.preventDefault();
+		$("#ShareBg").show();
+		$(".share_tip").show();
+	})
+	
+$(".share_tip").on("click",function(){
+	$("#ShareBg").hide();
+		$(".share_tip").hide();
+})	
+}
+
+// 推广排名 
+$.ajax({
+				url: 'http://proxy.icomico.com/invitetalent4h5',
+				type: 'GET',
+				data:{
+				},
+				dataType: 'jsonp',
+				jsonpCallback: 'jsonp_invitetalent',
+				success: function(data) {
+console.log(data)
+var html="";
+if(data.talents.length !=="" && data.talents.length !==0){
+	for(var i=1;i<=5;i++){
+		var num =data.talents[i];
+		num.icon=num.icon?num.icon:'http://cdn.icomicool.cn/images/image_people.png';
+var money =(num.invitetimes *1.5);
+html +="<li><em>"+i+".</em><img src='"+num.icon+"'><s>"+num.nickname+"</s><span>￥"+money+"</span></li>"
+}
+}
+else(
+	html+="暂时无数据"
+)
+var oTop=document.getElementById("draw_phone");
+oTop.innerHTML=html
+				}
+			});
+
+		</script>
+	
+
+	</body>
+
+</html>

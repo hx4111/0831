@@ -1,0 +1,231 @@
+{
+  "ID": "a2ee0952-26b5-49ae-8bf9-4f1d6279b798",
+  "Version": "3.10.0.0",
+  "Name": "MainScene",
+  "Content": {
+    "Content": {
+      "Animation": {
+        "Duration": 0,
+        "Speed": 1.0,
+        "Timelines": [],
+        "ctype": "TimelineActionData"
+      },
+      "AnimationList": [],
+      "ObjectData": {
+        "Children": [
+          {
+            "FileData": {
+              "Type": "PlistSubImage",
+              "Path": "beigongji/01.png",
+              "Plist": "NianShouA.plist"
+            },
+            "BlendFunc": {
+              "Src": 1,
+              "Dst": 771
+            },
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 310.0,
+              "Y": 480.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.4844,
+              "Y": 0.5
+            },
+            "PreSize": {
+              "X": 0.7031,
+              "Y": 0.8333
+            },
+            "LeftMargin": 85.0,
+            "RightMargin": 105.0,
+            "TopMargin": 80.0,
+            "BottomMargin": 80.0,
+            "Tag": 21,
+            "ActionTag": 327767113,
+            "Size": {
+              "X": 450.0,
+              "Y": 800.0
+            },
+            "Name": "nian",
+            "ctype": "SpriteObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Default",
+              "Path": "Default/Button_Disable.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "PlistSubImage",
+              "Path": "魔法攻击点击态.png",
+              "Plist": "ui.plist"
+            },
+            "NormalFileData": {
+              "Type": "PlistSubImage",
+              "Path": "魔法攻击.png",
+              "Plist": "ui.plist"
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 143,
+            "Scale9Height": 38,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 400.0,
+              "Y": 393.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.625,
+              "Y": 0.4094
+            },
+            "PreSize": {
+              "X": 0.2703,
+              "Y": 0.0625
+            },
+            "LeftMargin": 313.5,
+            "RightMargin": 153.5,
+            "TopMargin": 537.0,
+            "BottomMargin": 363.0,
+            "Tag": 22,
+            "ActionTag": 485525645,
+            "Size": {
+              "X": 173.0,
+              "Y": 60.0
+            },
+            "Name": "Button_1",
+            "ctype": "ButtonObjectData"
+          },
+          {
+            "FontSize": 14,
+            "ButtonText": "",
+            "TextColor": {
+              "R": 65,
+              "G": 65,
+              "B": 70
+            },
+            "DisabledFileData": {
+              "Type": "Default",
+              "Path": "Default/Button_Disable.png",
+              "Plist": ""
+            },
+            "PressedFileData": {
+              "Type": "PlistSubImage",
+              "Path": "普通攻击点击态.png",
+              "Plist": "ui.plist"
+            },
+            "NormalFileData": {
+              "Type": "PlistSubImage",
+              "Path": "普通攻击.png",
+              "Plist": "ui.plist"
+            },
+            "Scale9Enable": true,
+            "Scale9OriginX": 15,
+            "Scale9OriginY": 11,
+            "Scale9Width": 143,
+            "Scale9Height": 38,
+            "OutlineColor": {
+              "G": 0,
+              "B": 0
+            },
+            "ShadowColor": {
+              "R": 110,
+              "G": 110,
+              "B": 110
+            },
+            "ShadowOffsetX": 2.0,
+            "ShadowOffsetY": -2.0,
+            "TouchEnable": true,
+            "AnchorPoint": {
+              "ScaleX": 0.5,
+              "ScaleY": 0.5
+            },
+            "Position": {
+              "X": 158.0,
+              "Y": 386.0
+            },
+            "Scale": {
+              "ScaleX": 1.0,
+              "ScaleY": 1.0
+            },
+            "CColor": {},
+            "IconVisible": false,
+            "PrePosition": {
+              "X": 0.2469,
+              "Y": 0.4021
+            },
+            "PreSize": {
+              "X": 0.2703,
+              "Y": 0.0625
+            },
+            "LeftMargin": 71.5,
+            "RightMargin": 395.5,
+            "TopMargin": 544.0,
+            "BottomMargin": 356.0,
+            "CallBackType": "Click",
+            "Tag": 23,
+            "ActionTag": 2144624995,
+            "Size": {
+              "X": 173.0,
+              "Y": 60.0
+            },
+            "Name": "Button_2",
+            "ctype": "ButtonObjectData"
+          }
+        ],
+        "Size": {
+          "X": 640.0,
+          "Y": 960.0
+        },
+        "Name": "Scene",
+        "ctype": "SingleNodeObjectData"
+      },
+      "UsedResources": [
+        "Default/Button_Disable.png",
+        "NianShouA.plist",
+        "NianShouA.png",
+        "ui.plist",
+        "ui.png"
+      ],
+      "ctype": "GameFileData"
+    }
+  },
+  "Type": "Scene"
+}

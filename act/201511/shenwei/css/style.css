@@ -1,0 +1,124 @@
+@charset "utf-8";
+/* CSS Document */
+
+html,
+body {
+	-webkit-text-size-adjust: 100%;
+	/*overflow:hidden;谷歌字体小于12兼容*/
+	
+	width: 100%;
+}
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+table,
+tr,
+th,
+td {
+	margin: 0;
+	padding: 0;
+}
+body,
+input,
+textarea,
+select {
+	font: 12px/1.5 Microsoft YaHei, Tahoma, Arial, Helvetica, Geneva, sans-serif;
+	color: #333;
+}
+ol,
+ul {
+	list-style: none;
+}
+input,
+textarea,
+select {
+	resize: none;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a {
+	outline: none;
+	blr: expression(this.onFocus=this.blur());
+	color: #333;
+	cursor: pointer;
+}
+a,
+a:hover {
+	text-decoration: none;
+}
+img {
+	border: 0;
+	vertical-align: middle;
+}
+.cl:before,
+.cl:after {
+	content: "";
+	display: table;
+}
+.cl:after {
+	clear: both;
+}
+.cl {
+	zoom: 1;
+}
+body {
+	background: #000;
+}
+.pagebox {
+	margin: auto;
+	width: 780px;
+}
+.imglist li {
+	position: relative;
+}
+.imglist {
+	background: #fff;
+	margin: 0 auto;
+	text-align: center;
+}
+.imglist li:last-child img {
+	position: relative;
+}
+.weibo {
+	position: absolute;
+	bottom: 205px;
+	left: 152px;
+	width: 240px;
+	height: 50px;
+}
+.zp { position: absolute;
+  bottom: 100px;
+  width: 300px;
+  height: 50px;
+  left: 200px;
+}
+.imglist li:last-child a {
+	bottom: 84px;
+	left: 0;
+	display: block;
+	height: 185px;
+	z-index: 9999;
+	position: absolute;
+	width: 100%;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>马老师作画集《寻师伏魔录》</title>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+/* gallery */
+.gallery {padding:1rem;}
+.gallery li{display:block;float:left;margin:.2rem;width:6.2rem;border: .2rem #ff95a1 solid;border-radius:.7rem;}
+.gallery li a img{max-width:6.2rem;border-radius:.5rem;box-shadow: .2rem .2rem .4rem #ff95a1;}
+#auto-loop {
+	background: url(http://cdn.icomicool.cn/m/act/201601/comic-con/images/mz_02.jpg) repeat-y;background-size:100%;
+}
+.clearfix{overflow:auto;_height:1%}
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/lightGallery.css" />
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/201601/comic-con/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.icomicool.cn/m/act/201601/comic-con/js/lightGallery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#auto-loop").lightGallery({
+		loop:true,
+		auto:false,
+		pause:4000
+	});
+	//页面字体大小全局改变
+function caclFontSize() {
+	var screenWid = document.documentElement.offsetWidth; //测试window.screen.availWidth,window.screen.width在各平台、各浏览器有差异，故舍弃
+	var deviceSizeRatio = window.devicePixelRatio;
+	var fixWid = 320; //设置页面宽度基准值
+	var htmlFontSize = (screenWid / fixWid) * 20; //字体大小比例，20为页面html样式字体大小
+	document.documentElement.style.fontSize = htmlFontSize + 'px';
+}
+//执行函数
+caclFontSize();
+window.onresize = caclFontSize;
+});
+</script>
+
+</head>
+<body>
+	<div>
+		<img src="images/mls_01.jpg" width="100%">
+
+<ul id="auto-loop" class="gallery clearfix">
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/1.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/1.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/2.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/2.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/3.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/3.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/4.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/4.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/5.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/5.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/6.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/6.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/7.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/7.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/8.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/8.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/9.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/9.JPG" /></a></li>
+	<li data-src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/10.JPG"><a href="#"><img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/photo2/10.JPG" /></a></li>
+</ul>
+		<img src="http://cdn.icomicool.cn/m/act/201601/comic-con/images/mz_04.jpg" width="100%">
+	</div>
+</body>
+</html>

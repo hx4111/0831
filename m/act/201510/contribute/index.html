@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>投稿可米酷,踏上漫画家之路</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="keywords" content="投稿可米酷,新作预告,萌宠漫画,日常漫画,搞笑漫画,条漫,原创漫画" />
+		<meta name="description" content="投稿可米酷,踏上漫画家之路,www.comicool.cn" />
+		<meta name="generator" content="Comicool" />
+		<meta name="author" content="Comicool Team and Comicool UI Team" />
+		<meta name="copyright" content="2014-2015 Comicool Inc." />
+		<link rel="stylesheet" href="http://m.comicool.cn/act/act-common/css/common.css">
+		<link rel="stylesheet" href="http://at.alicdn.com/t/font_1447060501_1939075.css">
+		<script src="http://m.comicool.cn/m-common/js/init.js"></script>
+		<style>
+			.imglist li {
+				position: relative;
+			}
+			.imglist {
+				background: #fff;
+				margin: 0 auto;
+				text-align: center;
+			}
+			.tougao {
+				position: absolute;
+				left: 1.5rem;
+				top: 3.6rem;
+				width: 13rem;
+				height: 2rem;
+			}
+	
+			.imglist li img {
+				width: 100%;
+				display: inherit;
+			}
+		 a.contribute-btn {
+  position: absolute;
+  bottom: 1.3rem;
+  right: 4rem;
+  display: block;
+  width: 35%;
+  height: 2rem;
+		</style>
+	</head>
+
+	<body>
+		<!-- 一般化分享 -->
+		<h1 class="thumbnails" style="display:none">
+       投稿可米酷,踏上漫画家之路
+        <p>快来投稿吧!</p>
+        <img src="http://cdn.icomicool.cn/m/act/201510/contribute/images/zhenggao.png">
+    </h1>
+		<div class="loading-spinner"></div>
+		<header class="header header-fixed header-shadow">
+			<a class="l-icon icon-home" href="http://m.comicool.cn"></a>
+			<i class="r-icon icon-share"></i>
+		</header>
+		<!-- 主要内容：开始 -->
+		<div class="pagebox">
+			<div>
+				<ul class="imglist">
+				</ul>
+			</div>
+		</div>
+		<!-- 主要内容：结束 -->
+		<!-- 百度分享面板 -->
+		<div id="ShareBg"></div>
+		<div class="bdsharebuttonbox sharebox" data-tag="share_1">
+			<div id="ShareCon">
+				<em></em>
+				<h2></h2>
+			</div>
+			<div>
+				<a data-cmd="tsina"></a><i class="icon-xinlangweibo iconfont"></i>
+				<a data-cmd="sqq"></a><i class="icon-qq iconfont" data-cmd="bds_sqq"></i>
+				<a data-cmd="qzone"></a><i class="icon-qqkongjian iconfont" data-cmd="bds_qzone"></i>
+				<a data-cmd="douban"></a><i class="icon-douban iconfont" data-cmd="bds_douban"></i>
+			</div>
+			<div class="share-clo">取消</div>
+		</div>
+		<script src="http://m.comicool.cn/m-common/js/app.js"></script>
+		<script src="http://www.comicool.cn/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+		<script>
+			setShareInfo({
+				title: '投稿可米酷,踏上漫画家之路',
+				describe: '投稿可米酷,踏上漫画家之路',
+				imageUrl: 'http://cdn.icomicool.cn/m/act/201510/contribute/images/zhenggao_share.png',
+				pageUrl: window.location.href
+			}, {
+				use: 'baidu',
+				init: initBaiduSharePanel
+			});
+
+			function initBaiduSharePanel() {
+				var _ = function(selector, parent) {
+						return (parent || document).querySelector(selector);
+					},
+					header = _('.header'),
+					trigger = _('.icon-share', header),
+					mask = _('#ShareBg'),
+					panel = _('.bdsharebuttonbox'),
+					cancelBtn = _('.share-clo', panel),
+					panelTitle = _('#ShareCon h2'),
+					panelImageCont = _('#ShareCon em'),
+					panelImage = new Image(),
+					hidePanel = function() {
+						mask.style.display = panel.style.display = 'none';
+					};
+				header.style.display = 'block';
+				panelTitle.innerHTML = this.title;
+				panelImage.src = this.imageUrl;
+				panelImageCont.appendChild(panelImage);
+				trigger.addEventListener('click', function() {
+					mask.style.display = panel.style.display = 'block';
+				});
+				mask.addEventListener('click', hidePanel);
+				cancelBtn.addEventListener('click', hidePanel);
+			}
+			var list = [
+//				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_01.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_01.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_02.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_03.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_04.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_05.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_06.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_07.png',
+				'http://cdn.icomicool.cn/m/act/201510/contribute/images/1_08.png',
+			];
+			loadpic(list, function() {
+//			var sTip = ;
+				$('.imglist li').eq(4).append('<a  href=javascript:alert("暂不支持移动端投稿,请用电脑登录!") class="tougao"></a>');
+				$('.imglist li').last().append('<a  href="http://weibo.com/u/5446368605" title="进入可米酷官方微博" class="contribute-btn"></a>');
+			});
+
+			function callAppFunction(func, args, callback) {
+					var argsString = JSON.stringify(args);
+					if (isAndroidApp) {
+						if (!comicool) {
+							return false;
+						}
+						var result = eval("comicool." + func + "('" + argsString + "');");
+						if (callback) {
+							callback(result);
+						}
+					} else if (isIOSApp) {
+						function handleCallback(func, args) {
+							if (func != "setJSCallback") {
+								return;
+							}
+							for (eventName in args) {
+								window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+									var appDataStr = JSON.stringify(data);
+									eval(args[eventName] + "('" + appDataStr + "');");
+								});
+							}
+						}
+						if (window.WebViewJavascriptBridge) {
+							window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+							handleCallback(func, args);
+						} else {
+							document.addEventListener('WebViewJavascriptBridgeReady', function() {
+								window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+								handleCallback(func, args);
+							}, false);
+						}
+					} else {
+						return false;
+					}
+					return true;
+				}
+				// 图片递归加载
+
+			function loadpic(list, callback) {
+				if ($.isArray(list) && list.length) {
+					var item = list.shift(),
+						image = new Image(),
+						$imgHtml = $('<li></li>');
+					// loadpic(list);
+					image.src = item;
+					image.alt = '漫画投稿,漫画app';
+					image.onload = function() {
+						$('.imglist').append($imgHtml);
+						$imgHtml.append($(this));
+						loadpic(list, callback);
+					};
+				} else {
+					$.isFunction(callback) && callback(list);
+				}
+			}
+		</script>
+		<!-- 百度统计 -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "//hm.baidu.com/hm.js?91ce1b276d999b0757a6bf47b0e86df6";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>

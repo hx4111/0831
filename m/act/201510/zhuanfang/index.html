@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>可米酷周赛冠军专访之秋山先生</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<style>
+html {
+	font-size: 20px;
+}
+body, p, h6 {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .6rem;
+	line-height: 1.5;
+	color: #fff;
+}
+.wrap {
+	position: relative;
+}
+.wrap img {
+	display: block;
+	width: 100%;
+	border: 0;
+}
+.weibo, .comic1, .comic2 {
+	position: absolute;
+	left: 4.75rem;
+	height: 1.45rem;
+}
+.weibo {
+	bottom: 42.4rem;
+	right: 4.25rem;
+}
+.comic1 {
+	bottom: 40.95rem;
+	right: 8rem;
+}
+.comic2 {
+	bottom: 38rem;
+	right: 7rem;
+}
+</style>
+<script>
+	(function () {
+		var caclFontSize = function () {
+			var screenWidth = document.documentElement.offsetWidth;
+			var baseWidth = 320;
+			var htmlFontSize = (screenWidth / baseWidth) * 20;
+			document.documentElement.style.fontSize = htmlFontSize + 'px';
+		};
+
+		caclFontSize();
+		window.addEventListener('resize', caclFontSize);
+	})();
+</script>
+</head>
+<body>
+	<!-- 微信，qq分享图用 参照'http://www.uisdc.com/play-with-html5-improvement' -->
+	<h1 class="share-info" style="display:none">
+	    可米酷周赛冠军专访之秋山先生
+	    <p>可米酷周赛冠军专访之秋山先生</p>
+	    <img src="images/480.jpg" alt="可米酷漫画,comicool" />
+	</h1>
+	<div class="wrap">
+		<img src="images/img_01.png" alt="">
+		<img src="images/img_02.png" alt="">
+		<img src="images/img_03.png" alt="">
+		<img src="images/img_04.png" alt="">
+		<img src="images/img_05.png" alt="">
+		<img src="images/img_06.jpg" alt="">
+		<img src="images/img_07.jpg" alt="">
+		<a href="http://weibo.com/u/5647255716" target="_blank" class="weibo"></a>
+		<a href="http://m.comicool.cn/content/detail.html?comic_id=10222" target="_blank" class="comic1"></a>
+		<a href="http://m.comicool.cn/content/detail.html?comic_id=1149" target="_blank" class="comic2"></a>
+	</div>
+	<script>
+		var ua=navigator.userAgent.toLowerCase(),
+		    isMobile = ua.indexOf('mobile')>0,
+		    isWeixin = (/micromessenger/.test(ua)) ? true : false,
+		    isQQ = (/qq\//.test(ua)) ? true : false,
+		    isIOS = ua.indexOf('(ip')>0 && isMobile,
+		    isWeibo = (/Weibo/i.test(ua)) ? true : false,
+		    isApp = (/icomico/i.test(ua)) ? true : false,
+		    isIOSApp = (/icomico_ios./i.test(ua)) ? true : false,
+		    isAndroidApp = (/icomico_adr./i.test(ua)) ? true : false;
+		    
+		function callAppFunction (func, args, callback) {
+		    var argsString = JSON.stringify(args);
+		    if (isAndroidApp) {
+		        if (!comicool) {
+		            return false;
+		        }
+		        var result = eval("comicool." + func + "('" + argsString + "');");
+		        if (callback) {
+		            callback(result);
+		        }
+		    } else if (isIOSApp) {
+		        function handleCallback(func, args) {
+		            if (func != "setJSCallback") {
+		                return;
+		            }
+		            for (eventName in args) {
+		                window.WebViewJavascriptBridge.registerHandler(args[eventName], function(data, responseCallback) {
+		                    var appDataStr = JSON.stringify(data);
+		                    eval(args[eventName] + "('" + appDataStr + "');");
+		                });
+		            }
+		        }
+
+		        if (window.WebViewJavascriptBridge) {
+		            window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+		            handleCallback(func, args);
+		        } else {
+		            document.addEventListener('WebViewJavascriptBridgeReady', function() {
+		                window.WebViewJavascriptBridge.callHandler(func, argsString, callback);
+		                handleCallback(func, args);
+		            }, false);
+		        }
+		    } else {
+		        return false;
+		    }
+		    return true;
+		}
+
+		callAppFunction('showShareBtn', {
+			'title': '可米酷周赛冠军专访之秋山先生',
+			'describe' : '可米酷周赛冠军专访之秋山先生',
+			'imageurl' : 'http://m.comicool.cn/act/201510/zhuanfang/images/540.jpg'
+		});
+	</script>
+</body>
+</html>
